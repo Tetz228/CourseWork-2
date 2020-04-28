@@ -48,7 +48,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.BackColor = System.Drawing.Color.Lime;
+            this.buttonLogin.BackColor = System.Drawing.Color.Green;
             this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -67,7 +67,7 @@
             this.TextBoxPass.BackColor = System.Drawing.Color.White;
             this.TextBoxPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TextBoxPass.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TextBoxPass.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBoxPass.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextBoxPass.Location = new System.Drawing.Point(32, 168);
             this.TextBoxPass.Multiline = true;
             this.TextBoxPass.Name = "TextBoxPass";
@@ -82,7 +82,7 @@
             this.TextBoxLog.BackColor = System.Drawing.Color.White;
             this.TextBoxLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TextBoxLog.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TextBoxLog.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBoxLog.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextBoxLog.Location = new System.Drawing.Point(32, 90);
             this.TextBoxLog.Multiline = true;
             this.TextBoxLog.Name = "TextBoxLog";
@@ -97,7 +97,7 @@
             this.ForgotLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ForgotLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForgotLabel.ForeColor = System.Drawing.Color.Black;
-            this.ForgotLabel.Location = new System.Drawing.Point(226, 173);
+            this.ForgotLabel.Location = new System.Drawing.Point(220, 177);
             this.ForgotLabel.Name = "ForgotLabel";
             this.ForgotLabel.Size = new System.Drawing.Size(103, 13);
             this.ForgotLabel.TabIndex = 13;
@@ -111,7 +111,7 @@
             this.registrationLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.registrationLabel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registrationLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.registrationLabel.Location = new System.Drawing.Point(226, 95);
+            this.registrationLabel.Location = new System.Drawing.Point(220, 97);
             this.registrationLabel.Name = "registrationLabel";
             this.registrationLabel.Size = new System.Drawing.Size(91, 13);
             this.registrationLabel.TabIndex = 14;
@@ -124,10 +124,10 @@
             // 
             this.labelAuth.AutoSize = true;
             this.labelAuth.Enabled = false;
-            this.labelAuth.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAuth.Location = new System.Drawing.Point(85, 3);
+            this.labelAuth.Font = new System.Drawing.Font("Verdana", 16F);
+            this.labelAuth.Location = new System.Drawing.Point(84, 9);
             this.labelAuth.Name = "labelAuth";
-            this.labelAuth.Size = new System.Drawing.Size(171, 29);
+            this.labelAuth.Size = new System.Drawing.Size(158, 26);
             this.labelAuth.TabIndex = 17;
             this.labelAuth.Text = "Авторизация";
             // 
@@ -163,7 +163,7 @@
             // labelDashAuthLog
             // 
             this.labelDashAuthLog.AutoSize = true;
-            this.labelDashAuthLog.Location = new System.Drawing.Point(33, 106);
+            this.labelDashAuthLog.Location = new System.Drawing.Point(33, 109);
             this.labelDashAuthLog.Name = "labelDashAuthLog";
             this.labelDashAuthLog.Size = new System.Drawing.Size(178, 13);
             this.labelDashAuthLog.TabIndex = 21;
@@ -172,7 +172,7 @@
             // labelDashAuthPass
             // 
             this.labelDashAuthPass.AutoSize = true;
-            this.labelDashAuthPass.Location = new System.Drawing.Point(33, 184);
+            this.labelDashAuthPass.Location = new System.Drawing.Point(33, 187);
             this.labelDashAuthPass.Name = "labelDashAuthPass";
             this.labelDashAuthPass.Size = new System.Drawing.Size(178, 13);
             this.labelDashAuthPass.TabIndex = 22;

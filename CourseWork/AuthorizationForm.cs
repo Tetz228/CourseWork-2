@@ -16,6 +16,44 @@ namespace CourseWork
         public AuthorizationForm()
         {
             InitializeComponent();
+            labelDashAuthLog.ForeColor = Color.DeepSkyBlue;
+        }
+
+        // Авторизация в систему
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            Form main = new MainForm();
+            ConnectionDB connection = new ConnectionDB();
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            string loginUser = TextBoxLog.Text;
+            string passUser = TextBoxPass.Text;
+
+            // Делаем запрос к бд и заменяем заглушки на переменные для того, чтобы обезопасить бд
+            SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
+            command.Parameters.Add("@log", SqlDbType.NVarChar).Value = loginUser;
+            command.Parameters.Add("@pass", SqlDbType.NVarChar).Value = passUser;
+
+            // Какую команду будем выполнять
+            adapter.SelectCommand = command;
+
+            // Заполняем таблицу
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                main.Left = this.Left;
+                main.Top = this.Top;
+                this.Hide();
+                main.Show();
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
+                labelDashAuthPass.ForeColor = Color.Red;
+                labelDashAuthLog.ForeColor = Color.Red;
+            }
         }
 
         // Перемещение формы
@@ -69,6 +107,7 @@ namespace CourseWork
             ForgotLabel.ForeColor = Color.Black;
         }
 
+        // При клике на TextBox`ы
         private void TextBoxLog_Click(object sender, EventArgs e)
         {
             labelDashAuthLog.ForeColor = Color.DeepSkyBlue;
@@ -79,55 +118,15 @@ namespace CourseWork
             labelDashAuthPass.ForeColor = Color.DeepSkyBlue;
         }
 
-        // Авторизация в систему
-        private void buttonLogin_Click(object sender, EventArgs e)
-        {
-            Form main = new MainForm();
-            ConnectionDB connection = new ConnectionDB();
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            string loginUser = TextBoxLog.Text;
-            string passUser = TextBoxPass.Text;
-
-            // Делаем запрос к бд и заменяем заглушки на переменные для того, чтобы обезопасить бд
-            SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
-            command.Parameters.Add("@log", SqlDbType.NVarChar).Value = loginUser;
-            command.Parameters.Add("@pass", SqlDbType.NVarChar).Value = passUser;
-
-            // Какую команду будем выполнять
-            adapter.SelectCommand = command;
-
-            // Заполняем таблицу
-            adapter.Fill(table);
-
-            if (table.Rows.Count > 0)
-            {
-                main.Left = this.Left;
-                main.Top = this.Top;
-                this.Hide();
-                main.Show();
-            }
-            else
-            {
-                MessageBox.Show("Неверный логин или пароль");
-                labelDashAuthPass.ForeColor = Color.Red;
-                labelDashAuthLog.ForeColor = Color.Red;
-            }
-                
-        }
-
         // При выходе из TextBox`ов
         private void TextBoxLog_Leave(object sender, EventArgs e)
         {
             labelDashAuthLog.ForeColor = Color.Black;
-
         }
 
         private void TextBoxPass_Leave(object sender, EventArgs e)
         {
             labelDashAuthPass.ForeColor = Color.Black;
-
         }
 
         // Закрытие приложения
