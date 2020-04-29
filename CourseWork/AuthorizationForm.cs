@@ -19,7 +19,7 @@ namespace CourseWork
             labelDashAuthLog.ForeColor = Color.DeepSkyBlue;
         }
 
-        // Авторизация в систему
+        // Авторизация в системе
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Form main = new MainForm();
@@ -31,12 +31,13 @@ namespace CourseWork
             string passUser = TextBoxPass.Text;
 
             // Делаем запрос к бд и заменяем заглушки на переменные для того, чтобы обезопасить бд
-            SqlCommand command = new SqlCommand("SELECT * FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
-            command.Parameters.Add("@log", SqlDbType.NVarChar).Value = loginUser;
-            command.Parameters.Add("@pass", SqlDbType.NVarChar).Value = passUser;
+            SqlCommand selectLogPass = new SqlCommand("SELECT login, password FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
+            //command.CommandType = CommandType.StoredProcedure;
+            selectLogPass.Parameters.Add("@log", SqlDbType.VarChar).Value = loginUser;
+            selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = passUser;
 
             // Какую команду будем выполнять
-            adapter.SelectCommand = command;
+            adapter.SelectCommand = selectLogPass;
 
             // Заполняем таблицу
             adapter.Fill(table);
@@ -45,7 +46,7 @@ namespace CourseWork
             {
                 main.Left = this.Left;
                 main.Top = this.Top;
-                this.Hide();
+                this.Close();
                 main.Show();
             }
             else

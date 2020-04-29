@@ -232,6 +232,7 @@
             this.buttonReg.TabIndex = 18;
             this.buttonReg.Text = "Зарегистрироваться";
             this.buttonReg.UseVisualStyleBackColor = false;
+            this.buttonReg.Click += new System.EventHandler(this.buttonReg_Click);
             // 
             // labelDashLname
             // 

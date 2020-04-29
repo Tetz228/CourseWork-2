@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,46 @@ namespace CourseWork
         {
             InitializeComponent();
             labelDashLname.ForeColor = Color.DeepSkyBlue;
+        }
+
+        // Регистрация в системе
+        private void buttonReg_Click(object sender, EventArgs e)
+        {
+            ConnectionDB connection = new ConnectionDB();
+
+            connection.OpenConnect();
+
+            SqlCommand insertIntoEmp = new SqlCommand("INSERT INTO Employees(employee_lname,employee_fname,employee_mname,Email) VALUES(@employee_lname, @employee_fname, @employee_mname, @Email)", connection.GetSqlConnect());
+            //command.CommandType = CommandType.StoredProcedure;
+
+            insertIntoEmp.Parameters.Add("@employee_lname", SqlDbType.NVarChar).Value = TextBoxLname.Text;
+            insertIntoEmp.Parameters.Add("@employee_fname", SqlDbType.NVarChar).Value = TextBoxFname.Text;
+            insertIntoEmp.Parameters.Add("@employee_mname", SqlDbType.NVarChar).Value = TextBoxMname.Text;
+            insertIntoEmp.Parameters.Add("@Email", SqlDbType.NVarChar).Value = TextBoxEmail.Text;
+
+            if (insertIntoEmp.ExecuteNonQuery() == 1)
+            {
+                SqlCommand selectIdEmp = new SqlCommand("SELECT id_employee FROM Employees WHERE @mail = Email", connection.GetSqlConnect());
+                selectIdEmp.Parameters.Add("@mail", SqlDbType.NVarChar).Value = TextBoxEmail.Text;
+
+                string idEmp = selectIdEmp.ExecuteScalar().ToString();
+
+                SqlCommand insertIntoUser = new SqlCommand("INSERT INTO Users(login,password,fk_role_user,fk_employee) VALUES(@log, @pass,@role, @fk_employee)", connection.GetSqlConnect());
+                insertIntoUser.Parameters.Add("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text;
+                insertIntoUser.Parameters.Add("@pass", SqlDbType.VarChar).Value = TextBoxRegPass.Text;
+                insertIntoUser.Parameters.Add("@role", SqlDbType.Int).Value = 2;
+                insertIntoUser.Parameters.Add("@fk_employee", SqlDbType.Int).Value = Convert.ToInt32(idEmp);
+
+                //Если команда = 1, то есть она успешно выполняется, то аккаунт будет создан
+                if (insertIntoUser.ExecuteNonQuery() == 1)
+                    MessageBox.Show("Аккаунт был создан");
+                else
+                    MessageBox.Show("Аккаунт не был создан");
+            }
+            else
+                MessageBox.Show("Ошибка");
+
+            connection.CloseConnect();
         }
 
         // Перемещение формы
@@ -110,6 +151,6 @@ namespace CourseWork
         private void TextBoxEmail_Leave(object sender, EventArgs e)
         {
             labelDashEmail.ForeColor = Color.Black;
-        }
+        }        
     }
 }
