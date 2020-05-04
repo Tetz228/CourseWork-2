@@ -424,7 +424,7 @@
             this.panelConfirmationMail.Controls.Add(this.labelConfirmationMail);
             this.panelConfirmationMail.Controls.Add(this.buttonConfirmationMail);
             this.panelConfirmationMail.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panelConfirmationMail.Location = new System.Drawing.Point(41, 128);
+            this.panelConfirmationMail.Location = new System.Drawing.Point(41, 123);
             this.panelConfirmationMail.Name = "panelConfirmationMail";
             this.panelConfirmationMail.Size = new System.Drawing.Size(413, 202);
             this.panelConfirmationMail.TabIndex = 36;
@@ -443,7 +443,7 @@
             this.linkLabelConfirmationCode.TabIndex = 37;
             this.linkLabelConfirmationCode.TabStop = true;
             this.linkLabelConfirmationCode.Text = "Отправить код ещё раз";
-            this.linkLabelConfirmationCode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelConfirmationCode_LinkClicked);
+            this.linkLabelConfirmationCode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelResubmissionCode_LinkClicked);
             // 
             // labelDashConfirmationMail
             // 
@@ -523,7 +523,7 @@
             this.buttonConfirmationMail.TabIndex = 1;
             this.buttonConfirmationMail.Text = "Подтвердить";
             this.buttonConfirmationMail.UseVisualStyleBackColor = false;
-            this.buttonConfirmationMail.Click += new System.EventHandler(this.buttonConfirmationMail_Click);
+            this.buttonConfirmationMail.Click += new System.EventHandler(this.buttonСodeСomparisons_Click);
             // 
             // RegistrationForm
             // 

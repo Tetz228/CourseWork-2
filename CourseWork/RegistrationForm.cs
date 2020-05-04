@@ -29,40 +29,40 @@ namespace CourseWork
         // Вызов всех проверок и переход к панели подтвержения почты 
         private void ButtonReg_Click(object sender, EventArgs e)
         {
-            if (ValidationReg())
+            if (CheckNullAndSpace())
                 return;
             else
 
-                if (CheckLog())
+                if (CheckLogLength())
                 return;
             else
 
-                if (CheckPass())
+                if (CheckPassLength())
                 return;
             else
 
-                if (CheckEmail())
+                if (CheckEmailLength())
                 return;
             else
 
-                if (LoginExist())
+                if (LoginOriginality())
                 return;
             else
 
                 if (!ValidationEmail(TextBoxEmail.Text))
-            {
-                labelValidEmail.Text = "Некорректная почта";
-                labelValidEmail.Show();
+                {
+                    labelValidEmail.Text = "Некорректная почта";
+                    labelValidEmail.Show();
 
-                return;
-            }
+                    return;
+                }
             else
 
-                if (MailExist())
+                if (MailOriginality())
                 return;
             else
             {
-                СonfirmationСode();
+                ReceivingСode();
 
                 panelConfirmationMail.Show();
 
@@ -76,8 +76,8 @@ namespace CourseWork
             }
         }
 
-        // Валидация всех TextBox`ов в регистрации
-        private bool ValidationReg()
+        // Проверка TextBox`ов на пустоту
+        private bool CheckNullAndSpace()
         {
             int check = 0;
 
@@ -134,7 +134,7 @@ namespace CourseWork
         }
 
         // Проверка логина на нужную длину
-        private bool CheckLog()
+        private bool CheckLogLength()
         {
             if (TextBoxRegLog.Text.Length < 4)
             {
@@ -148,7 +148,7 @@ namespace CourseWork
         }
 
         // Проверка пароля на нужную длину
-        private bool CheckPass()
+        private bool CheckPassLength()
         {
             if (TextBoxRegPass.Text.Length < 6)
             {
@@ -162,7 +162,7 @@ namespace CourseWork
         }
 
         // Проверка почты нужную длину
-        private bool CheckEmail()
+        private bool CheckEmailLength()
         {
             if (TextBoxEmail.Text.Length < 4)
             {
@@ -176,7 +176,7 @@ namespace CourseWork
         }
 
         // Проверка на уникальность логина
-        private bool LoginExist()
+        private bool LoginOriginality()
         {
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
@@ -216,7 +216,7 @@ namespace CourseWork
         }
 
         // Проверка на уникальность почты
-        private bool MailExist()
+        private bool MailOriginality()
         {
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
@@ -245,13 +245,13 @@ namespace CourseWork
         }
 
         //Получение кода подтвеждения с помощью глобальной переменной 
-        public void СonfirmationСode()
+        public void ReceivingСode()
         {
-            global = MailConfirmation(TextBoxEmail.Text);
+            global = SendingCode(TextBoxEmail.Text);
         }
 
         // Отправка кода подтверждения
-        public string MailConfirmation(string email)
+        public string SendingCode(string email)
         {
             Random random = new Random();
 
@@ -283,13 +283,13 @@ namespace CourseWork
         }
 
         // Повторная отправка кода
-        private void linkLabelConfirmationCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabelResubmissionCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            СonfirmationСode();
+            ReceivingСode();
         }
 
-        //Сравнение введенного кода с полученным кодом в глобальной переменной 
-        private void buttonConfirmationMail_Click(object sender, EventArgs e)
+        // Сравнение введенного кода с полученным кодом в глобальной переменной 
+        private void buttonСodeСomparisons_Click(object sender, EventArgs e)
         {
             string kod = textBoxConfirmationMail.Text;
 
@@ -297,6 +297,16 @@ namespace CourseWork
                 Registration();
             else
                 labelConfirmationMail.Show();
+        }
+
+        // Хеширование пароля пока без соли
+        private string HashPassword(byte[] val)
+        {
+            using (SHA512Managed sha512 = new SHA512Managed())
+            {
+                var hash = sha512.ComputeHash(val);
+                return Convert.ToBase64String(hash);
+            }
         }
 
         // Регистрация пользователя в базу данных
@@ -319,18 +329,18 @@ namespace CourseWork
 
             if (insertIntoEmp.ExecuteNonQuery() == 1)
             {
+                byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxRegPass.Text.ToString());
+
                 SqlCommand selectIdEmp = new SqlCommand("SELECT id_employee FROM Employees WHERE @mail = Email", connection.GetSqlConnect());
 
                 selectIdEmp.Parameters.Add("@mail", SqlDbType.NVarChar).Value = TextBoxEmail.Text;
-
-                string idEmp = selectIdEmp.ExecuteScalar().ToString();
-
+              
                 SqlCommand insertIntoUser = new SqlCommand("INSERT INTO Users(login,password,fk_role_user,fk_employee) VALUES(@log, @pass, @role, @fk_employee)", connection.GetSqlConnect());
 
                 insertIntoUser.Parameters.Add("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text;
-                insertIntoUser.Parameters.Add("@pass", SqlDbType.VarChar).Value = TextBoxRegPass.Text;
+                insertIntoUser.Parameters.Add("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
                 insertIntoUser.Parameters.Add("@role", SqlDbType.Int).Value = 2;
-                insertIntoUser.Parameters.Add("@fk_employee", SqlDbType.Int).Value = Convert.ToInt32(idEmp);
+                insertIntoUser.Parameters.Add("@fk_employee", SqlDbType.Int).Value = selectIdEmp.ExecuteScalar();
 
                 //Если команда = 1, то есть она успешно выполняется, то аккаунт будет создан
                 if (insertIntoUser.ExecuteNonQuery() == 1)
@@ -344,8 +354,6 @@ namespace CourseWork
 
             connection.CloseConnect();
         }
-
-
 
         // Скрывать Label в "Фамилии" и ввод только определенных символов
         private void TextBoxLname_KeyPress(object sender, KeyPressEventArgs e)

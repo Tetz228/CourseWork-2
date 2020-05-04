@@ -38,21 +38,21 @@
             this.labelDashEmail = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panelEntryСode = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.TextBoxCode = new System.Windows.Forms.TextBox();
-            this.panelFurther = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelCode = new System.Windows.Forms.Label();
-            this.buttonBackCode = new System.Windows.Forms.Button();
             this.panelNewPass = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxNewPassAgain = new System.Windows.Forms.TextBox();
             this.buttonBackPass = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.textBoxNewPass = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxNewPassAgain = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.buttonBackCode = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelCode = new System.Windows.Forms.Label();
+            this.panelFurther = new System.Windows.Forms.Button();
+            this.TextBoxCode = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxForgotRollUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxForgotExit)).BeginInit();
             this.panelEntryСode.SuspendLayout();
@@ -166,77 +166,11 @@
             this.panelEntryСode.Controls.Add(this.panelFurther);
             this.panelEntryСode.Controls.Add(this.TextBoxCode);
             this.panelEntryСode.Controls.Add(this.label2);
-            this.panelEntryСode.Location = new System.Drawing.Point(0, 37);
+            this.panelEntryСode.Location = new System.Drawing.Point(106, 37);
             this.panelEntryСode.Name = "panelEntryСode";
             this.panelEntryСode.Size = new System.Drawing.Size(404, 180);
             this.panelEntryСode.TabIndex = 41;
             this.panelEntryСode.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(9, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(247, 18);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Введите код подтверждения";
-            // 
-            // TextBoxCode
-            // 
-            this.TextBoxCode.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.TextBoxCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TextBoxCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TextBoxCode.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TextBoxCode.ForeColor = System.Drawing.Color.White;
-            this.TextBoxCode.Location = new System.Drawing.Point(12, 66);
-            this.TextBoxCode.MaxLength = 6;
-            this.TextBoxCode.Name = "TextBoxCode";
-            this.TextBoxCode.Size = new System.Drawing.Size(66, 20);
-            this.TextBoxCode.TabIndex = 39;
-            this.TextBoxCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxCode_KeyPress);
-            // 
-            // panelFurther
-            // 
-            this.panelFurther.Location = new System.Drawing.Point(12, 157);
-            this.panelFurther.Name = "panelFurther";
-            this.panelFurther.Size = new System.Drawing.Size(75, 23);
-            this.panelFurther.TabIndex = 40;
-            this.panelFurther.Text = "Далее";
-            this.panelFurther.UseVisualStyleBackColor = true;
-            this.panelFurther.Click += new System.EventHandler(this.panelFurther_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "----------------------";
-            // 
-            // labelCode
-            // 
-            this.labelCode.AutoSize = true;
-            this.labelCode.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCode.ForeColor = System.Drawing.Color.Red;
-            this.labelCode.Location = new System.Drawing.Point(9, 98);
-            this.labelCode.Name = "labelCode";
-            this.labelCode.Size = new System.Drawing.Size(92, 13);
-            this.labelCode.TabIndex = 41;
-            this.labelCode.Text = "Неверный код";
-            this.labelCode.Visible = false;
-            // 
-            // buttonBackCode
-            // 
-            this.buttonBackCode.Location = new System.Drawing.Point(324, 157);
-            this.buttonBackCode.Name = "buttonBackCode";
-            this.buttonBackCode.Size = new System.Drawing.Size(75, 23);
-            this.buttonBackCode.TabIndex = 43;
-            this.buttonBackCode.Text = "Назад";
-            this.buttonBackCode.UseVisualStyleBackColor = true;
-            this.buttonBackCode.Click += new System.EventHandler(this.buttonBackCode_Click);
             // 
             // panelNewPass
             // 
@@ -248,11 +182,45 @@
             this.panelNewPass.Controls.Add(this.button2);
             this.panelNewPass.Controls.Add(this.textBoxNewPass);
             this.panelNewPass.Controls.Add(this.label6);
-            this.panelNewPass.Location = new System.Drawing.Point(3, 2);
+            this.panelNewPass.Location = new System.Drawing.Point(182, 3);
             this.panelNewPass.Name = "panelNewPass";
             this.panelNewPass.Size = new System.Drawing.Size(399, 178);
             this.panelNewPass.TabIndex = 44;
             this.panelNewPass.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(9, 75);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(216, 18);
+            this.label8.TabIndex = 46;
+            this.label8.Text = "Введите пароль ещё раз";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(151, 13);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "------------------------------------------------";
+            // 
+            // textBoxNewPassAgain
+            // 
+            this.textBoxNewPassAgain.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.textBoxNewPassAgain.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxNewPassAgain.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxNewPassAgain.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxNewPassAgain.ForeColor = System.Drawing.Color.White;
+            this.textBoxNewPassAgain.Location = new System.Drawing.Point(12, 100);
+            this.textBoxNewPassAgain.MaxLength = 25;
+            this.textBoxNewPassAgain.Name = "textBoxNewPassAgain";
+            this.textBoxNewPassAgain.Size = new System.Drawing.Size(234, 20);
+            this.textBoxNewPassAgain.TabIndex = 44;
+            this.textBoxNewPassAgain.UseSystemPasswordChar = true;
             // 
             // buttonBackPass
             // 
@@ -307,39 +275,71 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Введите новый пароль";
             // 
-            // label5
+            // buttonBackCode
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 118);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 13);
-            this.label5.TabIndex = 45;
-            this.label5.Text = "------------------------------------------------";
+            this.buttonBackCode.Location = new System.Drawing.Point(324, 157);
+            this.buttonBackCode.Name = "buttonBackCode";
+            this.buttonBackCode.Size = new System.Drawing.Size(75, 23);
+            this.buttonBackCode.TabIndex = 43;
+            this.buttonBackCode.Text = "Назад";
+            this.buttonBackCode.UseVisualStyleBackColor = true;
+            this.buttonBackCode.Click += new System.EventHandler(this.buttonBackCode_Click);
             // 
-            // textBoxNewPassAgain
+            // label3
             // 
-            this.textBoxNewPassAgain.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.textBoxNewPassAgain.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxNewPassAgain.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxNewPassAgain.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxNewPassAgain.ForeColor = System.Drawing.Color.White;
-            this.textBoxNewPassAgain.Location = new System.Drawing.Point(12, 100);
-            this.textBoxNewPassAgain.MaxLength = 25;
-            this.textBoxNewPassAgain.Name = "textBoxNewPassAgain";
-            this.textBoxNewPassAgain.Size = new System.Drawing.Size(234, 20);
-            this.textBoxNewPassAgain.TabIndex = 44;
-            this.textBoxNewPassAgain.UseSystemPasswordChar = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "----------------------";
             // 
-            // label8
+            // labelCode
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(9, 75);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(216, 18);
-            this.label8.TabIndex = 46;
-            this.label8.Text = "Введите пароль ещё раз";
+            this.labelCode.AutoSize = true;
+            this.labelCode.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCode.ForeColor = System.Drawing.Color.Red;
+            this.labelCode.Location = new System.Drawing.Point(9, 98);
+            this.labelCode.Name = "labelCode";
+            this.labelCode.Size = new System.Drawing.Size(92, 13);
+            this.labelCode.TabIndex = 41;
+            this.labelCode.Text = "Неверный код";
+            this.labelCode.Visible = false;
+            // 
+            // panelFurther
+            // 
+            this.panelFurther.Location = new System.Drawing.Point(12, 157);
+            this.panelFurther.Name = "panelFurther";
+            this.panelFurther.Size = new System.Drawing.Size(75, 23);
+            this.panelFurther.TabIndex = 40;
+            this.panelFurther.Text = "Далее";
+            this.panelFurther.UseVisualStyleBackColor = true;
+            this.panelFurther.Click += new System.EventHandler(this.panelFurther_Click);
+            // 
+            // TextBoxCode
+            // 
+            this.TextBoxCode.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.TextBoxCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TextBoxCode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBoxCode.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextBoxCode.ForeColor = System.Drawing.Color.White;
+            this.TextBoxCode.Location = new System.Drawing.Point(12, 66);
+            this.TextBoxCode.MaxLength = 6;
+            this.TextBoxCode.Name = "TextBoxCode";
+            this.TextBoxCode.Size = new System.Drawing.Size(66, 20);
+            this.TextBoxCode.TabIndex = 39;
+            this.TextBoxCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxCode_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(9, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(247, 18);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Введите код подтверждения";
             // 
             // ForgotPass
             // 

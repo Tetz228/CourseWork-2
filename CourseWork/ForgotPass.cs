@@ -49,12 +49,43 @@ namespace CourseWork
                 labelValidEmail.Show();
         }
 
+        private void ChangePassword()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            string email = TextBoxEmail.Text;
+
+            SqlCommand selectEmail = new SqlCommand("SELECT password, Email " +
+                "from Users " +
+                "left join Employees ON fk_employee = id_employee " +
+                "where Email = '@email'", connection.GetSqlConnect());
+            selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = email;
+
+            // Выполняем команду
+            adapter.SelectCommand = selectEmail;
+
+            // Заполняем таблицу
+            adapter.Fill(table);
+
+            // Если таблица содержит хоть 1 ряд
+            if (table.Rows.Count > 0)
+            {
+                //СonfirmationСode();
+                MessageBox.Show("Nashel");
+            }
+            else
+                labelValidEmail.Show();
+            
+        }
+
         //Получение кода подтвеждения с помощью глобальной переменной 
         private void СonfirmationСode()
         {
             RegistrationForm registration = new RegistrationForm();
 
-            global = registration.MailConfirmation(TextBoxEmail.Text);
+            global = registration.SendingCode(TextBoxEmail.Text);
         }
 
         private void pictureBoxForgotExit_Click(object sender, EventArgs e)
@@ -65,8 +96,8 @@ namespace CourseWork
 
         private void Further_Click(object sender, EventArgs e)
         {
-            panelEntryСode.Show();
-            //SearchUser();
+            SearchUser();
+            //panelEntryСode.Show();
         }
 
         private void TextBoxEmail_Code_KeyPress(object sender, KeyPressEventArgs e)
