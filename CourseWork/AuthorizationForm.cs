@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Runtime.Remoting.Messaging;
+using System.Threading;
 
 namespace CourseWork
 {
@@ -16,11 +18,19 @@ namespace CourseWork
         public AuthorizationForm()
         {
             InitializeComponent();
-            labelDashAuthLog.ForeColor = Color.DeepSkyBlue;
+            labelDashAuthLog.ForeColor = Color.White;
         }
 
         // Авторизация в системе
         private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            if (ValidationAuth())
+                return;
+            else
+                Authorization();
+        }
+
+        private void Authorization()
         {
             Form main = new MainForm();
             ConnectionDB connection = new ConnectionDB();
@@ -30,23 +40,22 @@ namespace CourseWork
             string loginUser = TextBoxLog.Text;
             string passUser = TextBoxPass.Text;
 
-            // Делаем запрос к бд и заменяем заглушки на переменные для того, чтобы обезопасить бд
             SqlCommand selectLogPass = new SqlCommand("SELECT login, password FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
-            //command.CommandType = CommandType.StoredProcedure;
             selectLogPass.Parameters.Add("@log", SqlDbType.VarChar).Value = loginUser;
             selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = passUser;
 
-            // Какую команду будем выполнять
+            // Выполняем команду
             adapter.SelectCommand = selectLogPass;
 
             // Заполняем таблицу
             adapter.Fill(table);
 
+            // Если таблица содержит хоть 1 ряд
             if (table.Rows.Count > 0)
             {
                 main.Left = this.Left;
                 main.Top = this.Top;
-                this.Close();
+                this.Hide();
                 main.Show();
             }
             else
@@ -55,6 +64,31 @@ namespace CourseWork
                 labelDashAuthPass.ForeColor = Color.Red;
                 labelDashAuthLog.ForeColor = Color.Red;
             }
+        }
+        
+        // Валидация авторизации
+        public bool ValidationAuth()
+        {
+            int check = 0;
+
+            if (string.IsNullOrEmpty(TextBoxLog.Text))
+            {
+                labelValidAuthLog.Show();
+                labelDashAuthLog.ForeColor = Color.Red;
+                check = 1;
+            }
+            else
+            if (string.IsNullOrEmpty(TextBoxPass.Text))
+            {
+                labelValidAuthPass.Show();
+                labelDashAuthPass.ForeColor = Color.Red;
+                check = 1;
+            }
+
+            if (check == 1)
+                return true;
+            else
+                return false;
         }
 
         // Перемещение формы
@@ -75,48 +109,31 @@ namespace CourseWork
         }
 
         // Переход в форму регистрации
-        private void registrationLabel_Click(object sender, EventArgs e)
+        private void registrationLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            TextBoxLog.Text = "";
+            TextBoxPass.Text = "";
+
             Form registration = new RegistrationForm();
 
             // Задает открываемой форме позицию слева, равную позиции текущей формы
             registration.Left = this.Left;
             // Задает открываемой форме позицию сверху, равную позиции текущей формы
-            registration.Top = this.Top; 
+            registration.Top = this.Top;
             this.Hide();
+            
             registration.Show();
-        }
-
-        // Покраска Label`ов в различных ситуациях
-        private void registrationLabel_MouseHover(object sender, EventArgs e)
-        {
-            registrationLabel.ForeColor = Color.DeepSkyBlue;
-        }
-
-        private void registrationLabel_MouseLeave(object sender, EventArgs e)
-        {
-            registrationLabel.ForeColor = Color.Black;
-        }
-
-        private void ForgotLabel_MouseHover(object sender, EventArgs e)
-        {
-            ForgotLabel.ForeColor = Color.DeepSkyBlue;
-        }
-
-        private void ForgotLabel_MouseLeave(object sender, EventArgs e)
-        {
-            ForgotLabel.ForeColor = Color.Black;
         }
 
         // При клике на TextBox`ы
         private void TextBoxLog_Click(object sender, EventArgs e)
         {
-            labelDashAuthLog.ForeColor = Color.DeepSkyBlue;
+            labelDashAuthLog.ForeColor = Color.White;
         }
 
         private void TextBoxPass_Click(object sender, EventArgs e)
         {
-            labelDashAuthPass.ForeColor = Color.DeepSkyBlue;
+            labelDashAuthPass.ForeColor = Color.White;
         }
 
         // При выходе из TextBox`ов
@@ -134,6 +151,45 @@ namespace CourseWork
         private void pictureBoxAuthExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        // Скрывать Label`ы при вводе в TextBox`ы и при нажатии на Enter происходит авторизация
+        private void TextBoxLog_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelValidAuthLog.Hide();
+
+            if (e.KeyChar == 13)
+                buttonLogin_Click(sender, e);
+        }
+
+        private void TextBoxPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelValidAuthPass.Hide();
+
+            if (e.KeyChar == 13)
+                buttonLogin_Click(sender, e);
+        }
+
+        // Сворачивать окно
+        private void pictureBoxRollUp_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void ForgotPassLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            TextBoxLog.Text = "";
+            TextBoxPass.Text = "";
+
+            Form fogotPass = new ForgotPass();
+
+            // Задает открываемой форме позицию слева, равную позиции текущей формы
+            fogotPass.Left = this.Left;
+            // Задает открываемой форме позицию сверху, равную позиции текущей формы
+            fogotPass.Top = this.Top;
+            this.Hide();
+
+            fogotPass.Show();
         }
     }
 }
