@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseWork
@@ -17,6 +14,16 @@ namespace CourseWork
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AuthorizationForm());
+        }
+
+        public static class DataEmailReg
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class ReturnDataReg
+        {
+            public static string Value { get; set; }
         }
     }
 }

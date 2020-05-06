@@ -1,6 +1,6 @@
 ﻿namespace CourseWork
 {
-    partial class ForgotPass
+    partial class ForgotPassForm
     {
         /// <summary>
         /// Required designer variable.

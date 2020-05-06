@@ -13,11 +13,11 @@ using System.Text.RegularExpressions;
 
 namespace CourseWork
 {
-    public partial class ForgotPass : Form
+    public partial class ForgotPassForm : Form
     {
-        private string global;
 
-        public ForgotPass()
+
+        public ForgotPassForm()
         {
             InitializeComponent();
         }
@@ -85,7 +85,7 @@ namespace CourseWork
         {
             RegistrationForm registration = new RegistrationForm();
 
-            global = registration.SendingCode(TextBoxEmail.Text);
+            //global = registration.SendingCode(TextBoxEmail.Text);
         }
 
         private void pictureBoxForgotExit_Click(object sender, EventArgs e)

@@ -56,17 +56,8 @@
             this.labelValidEmail = new System.Windows.Forms.Label();
             this.pictureBoxRegRollUp = new System.Windows.Forms.PictureBox();
             this.pictureBoxRegExit = new System.Windows.Forms.PictureBox();
-            this.panelConfirmationMail = new System.Windows.Forms.Panel();
-            this.linkLabelConfirmationCode = new System.Windows.Forms.LinkLabel();
-            this.labelDashConfirmationMail = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxConfirmationMail = new System.Windows.Forms.TextBox();
-            this.buttonBackConfirmationMail = new System.Windows.Forms.Button();
-            this.labelConfirmationMail = new System.Windows.Forms.Label();
-            this.buttonConfirmationMail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRegRollUp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRegExit)).BeginInit();
-            this.panelConfirmationMail.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -412,126 +403,12 @@
             this.pictureBoxRegExit.TabStop = false;
             this.pictureBoxRegExit.Click += new System.EventHandler(this.pictureBoxRegExit_Click);
             // 
-            // panelConfirmationMail
-            // 
-            this.panelConfirmationMail.BackColor = System.Drawing.Color.DodgerBlue;
-            this.panelConfirmationMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelConfirmationMail.Controls.Add(this.linkLabelConfirmationCode);
-            this.panelConfirmationMail.Controls.Add(this.labelDashConfirmationMail);
-            this.panelConfirmationMail.Controls.Add(this.label8);
-            this.panelConfirmationMail.Controls.Add(this.textBoxConfirmationMail);
-            this.panelConfirmationMail.Controls.Add(this.buttonBackConfirmationMail);
-            this.panelConfirmationMail.Controls.Add(this.labelConfirmationMail);
-            this.panelConfirmationMail.Controls.Add(this.buttonConfirmationMail);
-            this.panelConfirmationMail.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panelConfirmationMail.Location = new System.Drawing.Point(41, 123);
-            this.panelConfirmationMail.Name = "panelConfirmationMail";
-            this.panelConfirmationMail.Size = new System.Drawing.Size(413, 202);
-            this.panelConfirmationMail.TabIndex = 36;
-            this.panelConfirmationMail.Visible = false;
-            // 
-            // linkLabelConfirmationCode
-            // 
-            this.linkLabelConfirmationCode.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabelConfirmationCode.AutoSize = true;
-            this.linkLabelConfirmationCode.Font = new System.Drawing.Font("Verdana", 8F);
-            this.linkLabelConfirmationCode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabelConfirmationCode.LinkColor = System.Drawing.Color.Black;
-            this.linkLabelConfirmationCode.Location = new System.Drawing.Point(244, 84);
-            this.linkLabelConfirmationCode.Name = "linkLabelConfirmationCode";
-            this.linkLabelConfirmationCode.Size = new System.Drawing.Size(146, 13);
-            this.linkLabelConfirmationCode.TabIndex = 37;
-            this.linkLabelConfirmationCode.TabStop = true;
-            this.linkLabelConfirmationCode.Text = "Отправить код ещё раз";
-            this.linkLabelConfirmationCode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelResubmissionCode_LinkClicked);
-            // 
-            // labelDashConfirmationMail
-            // 
-            this.labelDashConfirmationMail.AutoSize = true;
-            this.labelDashConfirmationMail.Location = new System.Drawing.Point(161, 95);
-            this.labelDashConfirmationMail.Name = "labelDashConfirmationMail";
-            this.labelDashConfirmationMail.Size = new System.Drawing.Size(70, 13);
-            this.labelDashConfirmationMail.TabIndex = 36;
-            this.labelDashConfirmationMail.Text = "---------------------";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(21, 6);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(369, 32);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "Подтверждение почты";
-            // 
-            // textBoxConfirmationMail
-            // 
-            this.textBoxConfirmationMail.BackColor = System.Drawing.Color.DodgerBlue;
-            this.textBoxConfirmationMail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxConfirmationMail.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxConfirmationMail.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxConfirmationMail.ForeColor = System.Drawing.Color.White;
-            this.textBoxConfirmationMail.Location = new System.Drawing.Point(165, 77);
-            this.textBoxConfirmationMail.MaxLength = 6;
-            this.textBoxConfirmationMail.Name = "textBoxConfirmationMail";
-            this.textBoxConfirmationMail.Size = new System.Drawing.Size(64, 20);
-            this.textBoxConfirmationMail.TabIndex = 34;
-            this.textBoxConfirmationMail.Click += new System.EventHandler(this.textBoxConfirmationMail_Click);
-            this.textBoxConfirmationMail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxConfirmationMail_KeyPress);
-            this.textBoxConfirmationMail.Leave += new System.EventHandler(this.textBoxConfirmationMail_Leave);
-            // 
-            // buttonBackConfirmationMail
-            // 
-            this.buttonBackConfirmationMail.BackColor = System.Drawing.Color.Red;
-            this.buttonBackConfirmationMail.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonBackConfirmationMail.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.buttonBackConfirmationMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBackConfirmationMail.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonBackConfirmationMail.ForeColor = System.Drawing.Color.White;
-            this.buttonBackConfirmationMail.Location = new System.Drawing.Point(228, 151);
-            this.buttonBackConfirmationMail.Name = "buttonBackConfirmationMail";
-            this.buttonBackConfirmationMail.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonBackConfirmationMail.Size = new System.Drawing.Size(180, 40);
-            this.buttonBackConfirmationMail.TabIndex = 33;
-            this.buttonBackConfirmationMail.Text = "Назад";
-            this.buttonBackConfirmationMail.UseVisualStyleBackColor = false;
-            this.buttonBackConfirmationMail.Click += new System.EventHandler(this.buttonBackConfirmationMail_Click);
-            // 
-            // labelConfirmationMail
-            // 
-            this.labelConfirmationMail.AutoSize = true;
-            this.labelConfirmationMail.Font = new System.Drawing.Font("Verdana", 8F);
-            this.labelConfirmationMail.ForeColor = System.Drawing.Color.Red;
-            this.labelConfirmationMail.Location = new System.Drawing.Point(154, 108);
-            this.labelConfirmationMail.Name = "labelConfirmationMail";
-            this.labelConfirmationMail.Size = new System.Drawing.Size(92, 13);
-            this.labelConfirmationMail.TabIndex = 32;
-            this.labelConfirmationMail.Text = "Неверный код";
-            this.labelConfirmationMail.Visible = false;
-            // 
-            // buttonConfirmationMail
-            // 
-            this.buttonConfirmationMail.BackColor = System.Drawing.Color.LimeGreen;
-            this.buttonConfirmationMail.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
-            this.buttonConfirmationMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConfirmationMail.Font = new System.Drawing.Font("Verdana", 12F);
-            this.buttonConfirmationMail.ForeColor = System.Drawing.Color.White;
-            this.buttonConfirmationMail.Location = new System.Drawing.Point(3, 151);
-            this.buttonConfirmationMail.Name = "buttonConfirmationMail";
-            this.buttonConfirmationMail.Size = new System.Drawing.Size(180, 40);
-            this.buttonConfirmationMail.TabIndex = 1;
-            this.buttonConfirmationMail.Text = "Подтвердить";
-            this.buttonConfirmationMail.UseVisualStyleBackColor = false;
-            this.buttonConfirmationMail.Click += new System.EventHandler(this.buttonСodeСomparisons_Click);
-            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(498, 441);
-            this.Controls.Add(this.panelConfirmationMail);
             this.Controls.Add(this.pictureBoxRegExit);
             this.Controls.Add(this.pictureBoxRegRollUp);
             this.Controls.Add(this.labelValidEmail);
@@ -570,8 +447,6 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.RegistrationForm_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRegRollUp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRegExit)).EndInit();
-            this.panelConfirmationMail.ResumeLayout(false);
-            this.panelConfirmationMail.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -607,13 +482,5 @@
         private System.Windows.Forms.Label labelValidEmail;
         private System.Windows.Forms.PictureBox pictureBoxRegRollUp;
         private System.Windows.Forms.PictureBox pictureBoxRegExit;
-        private System.Windows.Forms.Panel panelConfirmationMail;
-        private System.Windows.Forms.Button buttonConfirmationMail;
-        private System.Windows.Forms.TextBox textBoxConfirmationMail;
-        private System.Windows.Forms.Button buttonBackConfirmationMail;
-        private System.Windows.Forms.Label labelConfirmationMail;
-        private System.Windows.Forms.Label labelDashConfirmationMail;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.LinkLabel linkLabelConfirmationCode;
     }
 }

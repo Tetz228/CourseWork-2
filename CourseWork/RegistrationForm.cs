@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
-using System.Net.Mail;
-using System.Net;
 
 namespace CourseWork
 {
     public partial class RegistrationForm : Form
     {
-        private string global;
-
         public RegistrationForm()
         {
             InitializeComponent();
@@ -26,7 +19,7 @@ namespace CourseWork
             labelDashLname.ForeColor = Color.White;
         }
 
-        // Вызов всех проверок и переход к панели подтвержения почты 
+        // Вызов всех проверок и переход к форме подтвержения почты 
         private void ButtonReg_Click(object sender, EventArgs e)
         {
             if (CheckNullAndSpace())
@@ -50,29 +43,29 @@ namespace CourseWork
             else
 
                 if (!ValidationEmail(TextBoxEmail.Text))
-                {
-                    labelValidEmail.Text = "Некорректная почта";
-                    labelValidEmail.Show();
+            {
+                labelValidEmail.Text = "Некорректная почта";
+                labelValidEmail.Show();
 
-                    return;
-                }
+                return;
+            }
             else
 
                 if (MailOriginality())
                 return;
             else
             {
-                ReceivingСode();
 
-                panelConfirmationMail.Show();
+                Program.DataEmailReg.Value = TextBoxEmail.Text;
 
-                // Только чтение, чтобы пользователь не мог изменить данные,так как выслан код подтверждения
-                TextBoxLname.ReadOnly = true;
-                TextBoxFname.ReadOnly = true;
-                TextBoxMname.ReadOnly = true;
-                TextBoxRegLog.ReadOnly = true;
-                TextBoxRegPass.ReadOnly = true;
-                TextBoxEmail.ReadOnly = true;
+                ConfirmationMailForm mailForm = new ConfirmationMailForm();
+                mailForm.Left = this.Left;
+                mailForm.Top = this.Top;
+                this.Hide();
+                mailForm.ShowDialog();
+
+                if (Program.ReturnDataReg.Value == "Сorrect code")
+                    Registration();
             }
         }
 
@@ -242,62 +235,7 @@ namespace CourseWork
             }
             else
                 return false;
-        }
-
-        //Получение кода подтвеждения с помощью глобальной переменной 
-        public void ReceivingСode()
-        {
-            global = SendingCode(TextBoxEmail.Text);
-        }
-
-        // Отправка кода подтверждения
-        public string SendingCode(string email)
-        {
-            Random random = new Random();
-
-            string kod;
-
-            MailAddress fromMailAddress = new MailAddress("itproject719@gmail.com", "ITProject");
-
-            MailAddress toMailAddress = new MailAddress(email);
-
-            using (MailMessage mailMessager = new MailMessage(fromMailAddress, toMailAddress))
-
-            using (SmtpClient smtp = new SmtpClient("smtp.mail.ru", 465))
-            {
-                kod = Convert.ToString(random.Next(100000, 999999));
-
-                mailMessager.Subject = "Подтверждение почты";
-                mailMessager.Body = "Код подтверждения - " + kod;
-
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(fromMailAddress.Address, "%*kHy#l7~x");
-                smtp.Send(mailMessager);
-
-                return kod;
-            }
-        }
-
-        // Повторная отправка кода
-        private void linkLabelResubmissionCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            ReceivingСode();
-        }
-
-        // Сравнение введенного кода с полученным кодом в глобальной переменной 
-        private void buttonСodeСomparisons_Click(object sender, EventArgs e)
-        {
-            string kod = textBoxConfirmationMail.Text;
-
-            if (kod == global)
-                Registration();
-            else
-                labelConfirmationMail.Show();
-        }
+        } 
 
         // Хеширование пароля пока без соли
         private string HashPassword(byte[] val)
@@ -447,22 +385,7 @@ namespace CourseWork
             }
         }
 
-        // Ввод только определенных символов
-        private void textBoxConfirmationMail_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            labelConfirmationMail.Hide();
-
-            char key = e.KeyChar;
-
-            //Только цифры
-            if (!(key >= 48 && key <= 57 ||
-                // Ctrl + A, Ctrl + C, Ctrl + X, Ctrl + Z
-                key == 001 || key == 003 || key == 024 || key == 026))
-
-                e.Handled = true;
-        }
-
-        // Перемещение формы
+        //Перемещение формы
         Point point;
 
         private void RegistrationForm_MouseMove(object sender, MouseEventArgs e)
@@ -533,12 +456,6 @@ namespace CourseWork
             labelDashEmail.ForeColor = Color.White;
         }
 
-        // При клике на TextBox "Подтверждение Email`a"
-        private void textBoxConfirmationMail_Click(object sender, EventArgs e)
-        {
-            labelDashConfirmationMail.ForeColor = Color.White;
-        }
-
         // При выходе из TextBox`а "Фамилия"
         private void TextBoxLname_Leave(object sender, EventArgs e)
         {
@@ -575,12 +492,6 @@ namespace CourseWork
             labelDashEmail.ForeColor = Color.Black;
         }
 
-        // При выходе из TextBox`а "Подтверждение Email`a"
-        private void textBoxConfirmationMail_Leave(object sender, EventArgs e)
-        {
-            labelDashConfirmationMail.ForeColor = Color.Black;
-        }
-
         // Сворачивание окна
         private void pictureBoxRollUp_Click(object sender, EventArgs e)
         {
@@ -593,20 +504,6 @@ namespace CourseWork
             this.Close();
 
             Application.Exit();
-        }
-
-        // При возврате к регистрации
-        private void buttonBackConfirmationMail_Click(object sender, EventArgs e)
-        {
-            // Снятие ограничения "Только чтение" из-за скрытия панели
-            TextBoxLname.ReadOnly = false;
-            TextBoxFname.ReadOnly = false;
-            TextBoxMname.ReadOnly = false;
-            TextBoxRegLog.ReadOnly = false;
-            TextBoxRegPass.ReadOnly = false;
-            TextBoxEmail.ReadOnly = false;
-
-            panelConfirmationMail.Hide();
         }
     }
 }

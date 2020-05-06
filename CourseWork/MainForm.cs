@@ -19,14 +19,48 @@ namespace CourseWork
             
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ListProjectsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                ProjectsForm proj = new ProjectsForm();
+
+                proj.MdiParent = this;
+                proj.WindowState = FormWindowState.Maximized;
+                proj.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                proj.Show();
+            }
+        }
+
+        private void Status_projectsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                Status_projectsForm stat_proj = new Status_projectsForm();
+
+                stat_proj.MdiParent = this;
+                stat_proj.Location = new Point(0, 0);
+                stat_proj.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                stat_proj.Show();
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            ProjectsForm proj = new ProjectsForm();
+
+            proj.MdiParent = this;
+            proj.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            proj.Show();
         }
     }
 }
