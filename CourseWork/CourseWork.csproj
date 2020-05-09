@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -78,6 +81,24 @@
     <Compile Include="ProjectsForm.Designer.cs">
       <DependentUpon>ProjectsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjectsFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectsFormAdd.Designer.cs">
+      <DependentUpon>ProjectsFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectsFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectsFormEdit.Designer.cs">
+      <DependentUpon>ProjectsFormEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projects_roleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projects_roleForm.Designer.cs">
+      <DependentUpon>Projects_roleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -96,6 +117,18 @@
     <Compile Include="Status_projectsForm.Designer.cs">
       <DependentUpon>Status_projectsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Status_projectsFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Status_projectsFormAdd.Designer.cs">
+      <DependentUpon>Status_projectsFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Status_projectsFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Status_projectsFormEdit.Designer.cs">
+      <DependentUpon>Status_projectsFormEdit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +144,15 @@
     <EmbeddedResource Include="ProjectsForm.resx">
       <DependentUpon>ProjectsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProjectsFormAdd.resx">
+      <DependentUpon>ProjectsFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectsFormEdit.resx">
+      <DependentUpon>ProjectsFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projects_roleForm.resx">
+      <DependentUpon>Projects_roleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -122,6 +164,13 @@
     <EmbeddedResource Include="Status_projectsForm.resx">
       <DependentUpon>Status_projectsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Status_projectsFormAdd.resx">
+      <DependentUpon>Status_projectsFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Status_projectsFormEdit.resx">
+      <DependentUpon>Status_projectsFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

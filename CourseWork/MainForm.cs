@@ -8,20 +8,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace CourseWork
 {
-    public partial class MainForm : Form
+    public partial class MainForm : MaterialForm
     {
         public MainForm()
         {
             InitializeComponent();
-            
+
+            var material = MaterialSkinManager.Instance;
+
+            material.AddFormToManage(this);
+            material.Theme = MaterialSkinManager.Themes.DARK;
+            //Шапка
+            material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            ProjectsForm proj = new ProjectsForm();
+
+            proj.MdiParent = this;
+            proj.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            proj.Show();
         }
 
         private void ListProjectsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -33,7 +50,6 @@ namespace CourseWork
                 ProjectsForm proj = new ProjectsForm();
 
                 proj.MdiParent = this;
-                proj.WindowState = FormWindowState.Maximized;
                 proj.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 proj.Show();
             }
@@ -47,20 +63,24 @@ namespace CourseWork
 
                 Status_projectsForm stat_proj = new Status_projectsForm();
 
-                stat_proj.MdiParent = this;
-                stat_proj.Location = new Point(0, 0);
+                stat_proj.MdiParent = this;   
                 stat_proj.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 stat_proj.Show();
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void Projects_roleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProjectsForm proj = new ProjectsForm();
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
 
-            proj.MdiParent = this;
-            proj.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            proj.Show();
+                Projects_roleForm proj_role = new Projects_roleForm();
+
+                proj_role.MdiParent = this;
+                proj_role.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                proj_role.Show();
+            }
         }
     }
 }

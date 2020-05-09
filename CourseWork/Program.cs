@@ -13,7 +13,7 @@ namespace CourseWork
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AuthorizationForm());
+            Application.Run(new MainForm());
         }
 
         public static class DataEmailReg
@@ -21,9 +21,79 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
-        public static class ReturnDataReg
+        public static class DataReturnReg
         {
             public static string Value { get; set; }
         }
+
+        ///////////////////////////////////////////////
+  
+        public static class DataAddStatus_project
+        {
+            public static string Value { get; set; }
+        }
+
+        ///
+
+        public static class DataEditStatus_project
+        {
+            public static string Value { get; set; }
+        }
+
+        ///////////////////////////////////////////////
+
+        public static class DataAddProjectName
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataAddProjectTarget
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataAddProjectStart
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataAddProjectCompletion
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataAddProjectLeader
+        {
+            public static string Value { get; set; }
+        }
+
+        /// 
+     
+        public static class DataEditProjectName
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditProjectTarget
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditProjectStart
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditProjectCompletion
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditProjectLeader
+        {
+            public static string Value { get; set; }
+        }
+
+        ///////////////////////////////////////////////
     }
 }

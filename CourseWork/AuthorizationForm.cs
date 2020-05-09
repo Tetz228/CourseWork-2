@@ -3,21 +3,28 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace CourseWork
 {
-    public partial class AuthorizationForm : Form
+    public partial class AuthorizationForm : MaterialForm
     {
         public AuthorizationForm()
         {
             InitializeComponent();
-            labelDashAuthLog.ForeColor = Color.White;
+            
+            var material = MaterialSkinManager.Instance;
+
+            material.AddFormToManage(this);
+            material.Theme = MaterialSkinManager.Themes.DARK;
+            material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
         // Авторизация в системе
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (ValidationAuth())
+            if (!ValidationAuth())
                 return;
             else
                 Authorization();
@@ -52,36 +59,41 @@ namespace CourseWork
                 main.Show();
             }
             else
-            {
                 MessageBox.Show("Неверный логин или пароль");
-                labelDashAuthPass.ForeColor = Color.Red;
-                labelDashAuthLog.ForeColor = Color.Red;
-            }
         }
         
         // Валидация авторизации
         public bool ValidationAuth()
         {
-            int check = 0;
+
+            if (string.IsNullOrEmpty(TextBoxLog.Text) && string.IsNullOrEmpty(TextBoxPass.Text))
+            {
+                labelValidAuthLog.Show();
+                labelValidAuthLog.ForeColor = Color.Red;
+
+                labelValidAuthPass.Show();
+                labelValidAuthPass.ForeColor = Color.Red;
+
+                return false;
+            }    
 
             if (string.IsNullOrEmpty(TextBoxLog.Text))
             {
                 labelValidAuthLog.Show();
-                labelDashAuthLog.ForeColor = Color.Red;
-                check = 1;
-            }
-            else
-            if (string.IsNullOrEmpty(TextBoxPass.Text))
-            {
-                labelValidAuthPass.Show();
-                labelDashAuthPass.ForeColor = Color.Red;
-                check = 1;
-            }
+                labelValidAuthLog.ForeColor = Color.Red;
 
-            if (check == 1)
-                return true;
-            else
                 return false;
+            }
+            else
+                if (string.IsNullOrEmpty(TextBoxPass.Text))
+                {               
+                    labelValidAuthPass.Show();
+                    labelValidAuthPass.ForeColor = Color.Red;
+
+                    return false;
+                }
+                else
+                    return true;
         }
 
         // Перемещение формы
@@ -107,6 +119,9 @@ namespace CourseWork
             TextBoxLog.Text = "";
             TextBoxPass.Text = "";
 
+            labelValidAuthLog.Hide();
+            labelValidAuthPass.Hide();
+
             Form registration = new RegistrationForm();
 
             // Задает открываемой форме позицию слева, равную позиции текущей формы
@@ -116,34 +131,6 @@ namespace CourseWork
             this.Hide();
             
             registration.Show();
-        }
-
-        // При клике на TextBox`ы
-        private void TextBoxLog_Click(object sender, EventArgs e)
-        {
-            labelDashAuthLog.ForeColor = Color.White;
-        }
-
-        private void TextBoxPass_Click(object sender, EventArgs e)
-        {
-            labelDashAuthPass.ForeColor = Color.White;
-        }
-
-        // При выходе из TextBox`ов
-        private void TextBoxLog_Leave(object sender, EventArgs e)
-        {
-            labelDashAuthLog.ForeColor = Color.Black;
-        }
-
-        private void TextBoxPass_Leave(object sender, EventArgs e)
-        {
-            labelDashAuthPass.ForeColor = Color.Black;
-        }
-
-        // Закрытие приложения
-        private void pictureBoxAuthExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         // Скрывать Label`ы при вводе в TextBox`ы и при нажатии на Enter происходит авторизация
@@ -163,12 +150,6 @@ namespace CourseWork
                 buttonLogin_Click(sender, e);
         }
 
-        // Сворачивать окно
-        private void pictureBoxRollUp_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
         private void ForgotPassLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MessageBox.Show("В разработке");
@@ -184,6 +165,6 @@ namespace CourseWork
             //this.Hide();
 
             //fogotPass.Show();
-        }
+        }   
     }
 }

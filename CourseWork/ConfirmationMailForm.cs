@@ -73,7 +73,7 @@ namespace CourseWork
 
             if (returnCode == enteredCode)
             {
-                Program.ReturnDataReg.Value = "Сorrect code";
+                Program.DataReturnReg.Value = "Сorrect code";
                 this.Close();
             }
             else

@@ -4,54 +4,47 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace CourseWork
 {
-    public partial class RegistrationForm : Form
+    public partial class RegistrationForm : MaterialForm
     {
         public RegistrationForm()
         {
             InitializeComponent();
-            
-            labelDashLname.ForeColor = Color.White;
+
+            var material = MaterialSkinManager.Instance;
+
+            material.AddFormToManage(this);
+            material.Theme = MaterialSkinManager.Themes.DARK;
+            material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
         // Вызов всех проверок и переход к форме подтвержения почты 
         private void ButtonReg_Click(object sender, EventArgs e)
         {
-            if (CheckNullAndSpace())
+            if (!CheckNullAndSpace())
                 return;
             else
-
-                if (CheckLogLength())
+                if (!CheckLogAndPassLength())
                 return;
             else
-
-                if (CheckPassLength())
+                if (!LoginOriginality())
                 return;
             else
-
-                if (CheckEmailLength())
-                return;
-            else
-
-                if (LoginOriginality())
-                return;
-            else
-
                 if (!ValidationEmail(TextBoxEmail.Text))
-            {
-                labelValidEmail.Text = "Некорректная почта";
-                labelValidEmail.Show();
+                {
+                    labelValidEmail.Text = "Некорректная почта";
+                    labelValidEmail.Show();
 
-                return;
-            }
+                    return;
+                }
             else
-
-                if (MailOriginality())
+                if (!MailOriginality())
                 return;
             else
             {
@@ -64,7 +57,7 @@ namespace CourseWork
                 this.Hide();
                 mailForm.ShowDialog();
 
-                if (Program.ReturnDataReg.Value == "Сorrect code")
+                if (Program.DataReturnReg.Value == "Сorrect code")
                     Registration();
             }
         }
@@ -79,16 +72,12 @@ namespace CourseWork
                 labelValidLname.Text = "Введите фамилию";
                 labelValidLname.Show();
 
-                labelDashLname.ForeColor = Color.Red;
-
                 check = 1;
             }
             if (string.IsNullOrWhiteSpace(TextBoxFname.Text))
             {
                 labelValidFname.Text = "Введите имя";
                 labelValidFname.Show();
-
-                labelDashFname.ForeColor = Color.Red;
 
                 check = 1;
             }
@@ -97,16 +86,12 @@ namespace CourseWork
                 labelValidRegLog.Text = "Введите логин";
                 labelValidRegLog.Show();
 
-                labelDashRegLog.ForeColor = Color.Red;
-
                 check = 1;
             }
             if (string.IsNullOrEmpty(TextBoxRegPass.Text))
             {
                 labelValidRegPass.Text = "Введите пароль";
                 labelValidRegPass.Show();
-
-                labelDashRegPass.ForeColor = Color.Red;
 
                 check = 1;
             }
@@ -115,58 +100,49 @@ namespace CourseWork
                 labelValidEmail.Text = "Введите почту";
                 labelValidEmail.Show();
 
-                labelDashEmail.ForeColor = Color.Red;
-
                 check = 1;
             }
 
             if (check == 1)
-                return true;
-            else
                 return false;
+            else
+                return true;
         }
 
         // Проверка логина на нужную длину
-        private bool CheckLogLength()
+        private bool CheckLogAndPassLength()
         {
+            if (TextBoxRegLog.Text.Length < 4 && TextBoxRegPass.Text.Length < 6)
+            {
+                labelValidRegLog.Text = "Логин должен быть длиной\nот 4 до 25 символов";
+                labelValidRegLog.Show();
+
+                labelValidRegPass.Text = "Пароль должен быть длиной\nот 6 до 25 символов";
+                labelValidRegPass.Show();
+
+                return false;
+            }
+            else
             if (TextBoxRegLog.Text.Length < 4)
             {
                 labelValidRegLog.Text = "Логин должен быть длиной\nот 4 до 25 символов";
                 labelValidRegLog.Show();
 
-                return true;
+                return false;
             }
             else
-                return false;
-        }
 
-        // Проверка пароля на нужную длину
-        private bool CheckPassLength()
-        {
             if (TextBoxRegPass.Text.Length < 6)
             {
                 labelValidRegPass.Text = "Пароль должен быть длиной\nот 6 до 25 символов";
                 labelValidRegPass.Show();
 
-                return true;
+                return false;
             }
             else
-                return false;
-        }
-
-        // Проверка почты нужную длину
-        private bool CheckEmailLength()
-        {
-            if (TextBoxEmail.Text.Length < 4)
-            {
-                labelValidEmail.Text = "Почта должен быть длиной\nот 4 до 31 символов";
-                labelValidEmail.Show();
-
                 return true;
-            }
-            else
-                return false;
         }
+
 
         // Проверка на уникальность логина
         private bool LoginOriginality()
@@ -189,13 +165,10 @@ namespace CourseWork
             {
                 labelValidRegLog.Text = "Пользователь с таким логином\nуже существует!";
                 labelValidRegLog.Show();
-
-                labelDashRegLog.ForeColor = Color.Red;
-
-                return true;
+                return false;
             }
             else
-                return false;
+                return true; 
         }
 
         // Валидация почты
@@ -230,11 +203,11 @@ namespace CourseWork
                 labelValidEmail.Text = "Пользователь с такой почтой\nуже существует!";
                 labelValidEmail.Show();
 
-                labelDashEmail.ForeColor = Color.Red;
-                return true;
+                
+                return false;
             }
             else
-                return false;
+                return true;
         } 
 
         // Хеширование пароля пока без соли
@@ -284,6 +257,7 @@ namespace CourseWork
                 if (insertIntoUser.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("Аккаунт успешно создан!");
+
                     this.Close();
                 }
                 else
@@ -293,7 +267,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Скрывать Label в "Фамилии" и ввод только определенных символов
+        // Ввод только определенных символов
         private void TextBoxLname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidLname.Hide();
@@ -309,7 +283,7 @@ namespace CourseWork
                 ButtonReg_Click(sender, e);
         }
 
-        // Скрывать Label в "Имя" и ввод только определенных символов
+        // Ввод только определенных символов
         private void TextBoxFname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidFname.Hide();
@@ -341,7 +315,7 @@ namespace CourseWork
                 ButtonReg_Click(sender, e);
         }
 
-        // Скрывать Label в "Логин" и ввод только определенных символов 
+        // Ввод только определенных символов 
         private void TextBoxRegLog_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidRegLog.Hide();
@@ -356,7 +330,7 @@ namespace CourseWork
             }
         }
 
-        // Запрет на ввод отпределенных символов
+        // Запрет на ввод определенных символов
         private void TextBoxRegPass_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidRegPass.Hide();
@@ -418,92 +392,6 @@ namespace CourseWork
             authorization.Left = this.Left;
             authorization.Top = this.Top;
             authorization.Show();
-        }
-
-        // При клике на TextBox "Фамилия"
-        private void TextBoxFname_Click(object sender, EventArgs e)
-        {
-            labelDashFname.ForeColor = Color.White;
-        }
-
-        // При клике на TextBox "Имя"
-        private void TextBoxLname_Click(object sender, EventArgs e)
-        {
-            labelDashLname.ForeColor = Color.White;
-        }
-
-        // При клике на TextBox "Отчество"
-        private void TextBoxMname_Click(object sender, EventArgs e)
-        {
-            labelDashMname.ForeColor = Color.White;
-        }
-
-        // При клике на TextBox "Логин"
-        private void TextBoxRegLog_Click(object sender, EventArgs e)
-        {
-            labelDashRegLog.ForeColor = Color.White;
-        }
-
-        // При клике на TextBox "Пароль"
-        private void TextBoxRegPass_Click(object sender, EventArgs e)
-        {
-            labelDashRegPass.ForeColor = Color.White;
-        }
-
-        // При клике на TextBox "Email"
-        private void TextBoxEmail_Click(object sender, EventArgs e)
-        {
-            labelDashEmail.ForeColor = Color.White;
-        }
-
-        // При выходе из TextBox`а "Фамилия"
-        private void TextBoxLname_Leave(object sender, EventArgs e)
-        {
-            labelDashLname.ForeColor = Color.Black;
-        }
-
-        // При выходе из TextBox`а "Имя"
-        private void TextBoxFname_Leave(object sender, EventArgs e)
-        {
-            labelDashFname.ForeColor = Color.Black;
-        }
-
-        // При выходе из TextBox`а "Отчество"
-        private void TextBoxMname_Leave(object sender, EventArgs e)
-        {
-            labelDashMname.ForeColor = Color.Black;
-        }
-
-        // При выходе из TextBox`а "Логин"
-        private void TextBoxRegLog_Leave(object sender, EventArgs e)
-        {
-            labelDashRegLog.ForeColor = Color.Black;
-        }
-
-        // При выходе из TextBox`а "Пароль"
-        private void TextBoxRegPass_Leave(object sender, EventArgs e)
-        {
-            labelDashRegPass.ForeColor = Color.Black;
-        }
-
-        // При выходе из TextBox`а "Email"
-        private void TextBoxEmail_Leave(object sender, EventArgs e)
-        {
-            labelDashEmail.ForeColor = Color.Black;
-        }
-
-        // Сворачивание окна
-        private void pictureBoxRollUp_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        // Закрытие приложения
-        private void pictureBoxRegExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            Application.Exit();
         }
     }
 }
