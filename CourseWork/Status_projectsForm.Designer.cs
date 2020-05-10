@@ -44,7 +44,6 @@
             // dataGridViewStatus_projects
             // 
             this.dataGridViewStatus_projects.AllowUserToAddRows = false;
-            this.dataGridViewStatus_projects.AllowUserToDeleteRows = false;
             this.dataGridViewStatus_projects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -59,6 +58,7 @@
             this.dataGridViewStatus_projects.Size = new System.Drawing.Size(1037, 465);
             this.dataGridViewStatus_projects.TabIndex = 6;
             this.dataGridViewStatus_projects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStatus_projects_CellDoubleClick);
+            this.dataGridViewStatus_projects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewStatus_projects_UserDeletingRow);
             // 
             // Column_id_status_project
             // 

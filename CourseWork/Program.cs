@@ -40,6 +40,13 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
+        ///
+
+        public static class DataValidStatus_project
+        {
+            public static string Value { get; set; }
+        }
+
         ///////////////////////////////////////////////
 
         public static class DataAddProjectName
@@ -95,5 +102,51 @@ namespace CourseWork
         }
 
         ///////////////////////////////////////////////
+
+        public static class DataAddProjects_role
+        {
+            public static string Value { get; set; }
+        }
+
+        ///
+
+        public static class DataEditProjects_role
+        {
+            public static string Value { get; set; }
+        }
+
+        ///////////////////////////////////////////////
+
+        public static class DataAddHistoryProject
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataAddHistoryStatus
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataAddHistoryDate
+        {
+            public static string Value { get; set; }
+        }
+
+        ///
+
+        public static class DataEditHistoryProject
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditHistoryStatus
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditHistoryDate
+        {
+            public static string Value { get; set; }
+        }
     }
 }

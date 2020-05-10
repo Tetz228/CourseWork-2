@@ -28,6 +28,7 @@ namespace CourseWork
             this.dataGridViewProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
 
+        // При загрузки формы
         private void Projects_Load(object sender, EventArgs e)
         {
             this.dataGridViewProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -37,6 +38,7 @@ namespace CourseWork
             SelectDateProject();
         }
 
+        // Добавление данных из базы данных в dataGridView
         private void SelectDateProject()
         {
             ConnectionDB connection = new ConnectionDB();
@@ -52,6 +54,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
+        // Заполнение ComboBox`а "Руководитель"
         private void SelectEmployeeComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
@@ -69,6 +72,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
+        // Функция добавления строки
         private void AddRowProject()
         {
             ConnectionDB connection = new ConnectionDB();
@@ -95,6 +99,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
+        // Функция редактирования строки
         private void EditRowProject()
         {
             ConnectionDB connection = new ConnectionDB();
@@ -133,7 +138,27 @@ namespace CourseWork
 
             formEdit.ShowDialog();
 
-           // EditRowProject();
+           EditRowProject();
+        }
+
+        private void dataGridViewProjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow view = dataGridViewProjects.Rows[e.RowIndex];
+
+                Program.DataEditProjectName.Value = view.Cells[1].Value.ToString();
+                Program.DataEditProjectTarget.Value = view.Cells[2].Value.ToString();
+                Program.DataEditProjectStart.Value = view.Cells[3].Value.ToString();
+                Program.DataEditProjectCompletion.Value = view.Cells[4].Value.ToString();
+                Program.DataEditProjectLeader.Value = view.Cells[5].Value.ToString();
+
+                ProjectsFormEdit formEdit = new ProjectsFormEdit();
+
+                formEdit.ShowDialog();
+
+                EditRowProject();
+            }
         }
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,26 +188,6 @@ namespace CourseWork
             }
 
             SelectDateProject();
-        }
-
-        private void dataGridViewProjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex != -1)
-            {
-                DataGridViewRow view = dataGridViewProjects.Rows[e.RowIndex];
-
-                Program.DataEditProjectName.Value = view.Cells[1].Value.ToString();
-                Program.DataEditProjectTarget.Value = view.Cells[2].Value.ToString();
-                Program.DataEditProjectStart.Value = view.Cells[3].Value.ToString();
-                Program.DataEditProjectCompletion.Value = view.Cells[4].Value.ToString();
-                Program.DataEditProjectLeader.Value = view.Cells[5].Value.ToString();
-
-                ProjectsFormEdit formEdit = new ProjectsFormEdit();
-
-                formEdit.ShowDialog();
-
-                EditRowProject();
-            }
         }
     }
 }

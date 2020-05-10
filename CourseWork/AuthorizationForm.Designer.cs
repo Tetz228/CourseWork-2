@@ -105,6 +105,7 @@
             this.TextBoxLog.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextBoxLog.Hint = "Логин";
             this.TextBoxLog.Location = new System.Drawing.Point(35, 106);
+            this.TextBoxLog.MaxLength = 32767;
             this.TextBoxLog.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxLog.Name = "TextBoxLog";
             this.TextBoxLog.PasswordChar = '\0';
@@ -113,6 +114,7 @@
             this.TextBoxLog.SelectionStart = 0;
             this.TextBoxLog.Size = new System.Drawing.Size(233, 23);
             this.TextBoxLog.TabIndex = 34;
+            this.TextBoxLog.TabStop = false;
             this.TextBoxLog.UseSystemPasswordChar = false;
             this.TextBoxLog.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxLog_KeyPress);
             // 
@@ -123,6 +125,7 @@
             this.TextBoxPass.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextBoxPass.Hint = "Пароль";
             this.TextBoxPass.Location = new System.Drawing.Point(35, 180);
+            this.TextBoxPass.MaxLength = 32767;
             this.TextBoxPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxPass.Name = "TextBoxPass";
             this.TextBoxPass.PasswordChar = '\0';
@@ -131,19 +134,23 @@
             this.TextBoxPass.SelectionStart = 0;
             this.TextBoxPass.Size = new System.Drawing.Size(234, 23);
             this.TextBoxPass.TabIndex = 36;
+            this.TextBoxPass.TabStop = false;
             this.TextBoxPass.UseSystemPasswordChar = true;
             this.TextBoxPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPass_KeyPress);
             // 
             // buttonLogin
             // 
             this.buttonLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonLogin.AutoSize = true;
+            this.buttonLogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonLogin.Depth = 0;
             this.buttonLogin.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.Icon = null;
             this.buttonLogin.Location = new System.Drawing.Point(121, 243);
             this.buttonLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Primary = true;
-            this.buttonLogin.Size = new System.Drawing.Size(147, 35);
+            this.buttonLogin.Size = new System.Drawing.Size(67, 36);
             this.buttonLogin.TabIndex = 41;
             this.buttonLogin.Text = "Войти";
             this.buttonLogin.UseVisualStyleBackColor = true;

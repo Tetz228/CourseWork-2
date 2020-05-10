@@ -30,14 +30,11 @@ namespace CourseWork
         {
             SelectEmployeeComboBox();
 
-            int i = -1;
-            i += Convert.ToInt32(Program.DataEditProjectLeader.Value);
-
             textBoxProject_name.Text = Program.DataEditProjectName.Value;
             textBoxProject_target.Text = Program.DataEditProjectTarget.Value;
             textBoxDate_start.Text = Program.DataEditProjectStart.Value;
             textBoxDate_completion.Text = Program.DataEditProjectCompletion.Value;
-            comboBox_fk_leader.SelectedIndex = i;
+            comboBox_fk_leader.SelectedValue = Convert.ToInt32(Program.DataEditProjectLeader.Value);
         }
 
         private void SelectEmployeeComboBox()
@@ -58,16 +55,13 @@ namespace CourseWork
             connection.CloseConnect();
         }  
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void buttonEdit_Click(object sender, EventArgs e)
         {
-            int i = 1;
-            i += comboBox_fk_leader.SelectedIndex;
-
             Program.DataEditProjectName.Value = textBoxProject_name.Text;
             Program.DataEditProjectTarget.Value = textBoxProject_target.Text;
             Program.DataEditProjectStart.Value = textBoxDate_start.Text;
             Program.DataEditProjectCompletion.Value = textBoxDate_completion.Text;
-            Program.DataEditProjectLeader.Value = i.ToString();
+            Program.DataEditProjectLeader.Value = comboBox_fk_leader.SelectedValue.ToString();
 
             this.Close();
         }

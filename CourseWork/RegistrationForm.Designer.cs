@@ -108,6 +108,7 @@
             this.TextBoxLname.Depth = 0;
             this.TextBoxLname.Hint = "Фамилия*";
             this.TextBoxLname.Location = new System.Drawing.Point(12, 94);
+            this.TextBoxLname.MaxLength = 32767;
             this.TextBoxLname.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxLname.Name = "TextBoxLname";
             this.TextBoxLname.PasswordChar = '\0';
@@ -116,6 +117,7 @@
             this.TextBoxLname.SelectionStart = 0;
             this.TextBoxLname.Size = new System.Drawing.Size(180, 23);
             this.TextBoxLname.TabIndex = 36;
+            this.TextBoxLname.TabStop = false;
             this.TextBoxLname.UseSystemPasswordChar = false;
             this.TextBoxLname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxLname_KeyPress);
             // 
@@ -124,6 +126,7 @@
             this.TextBoxFname.Depth = 0;
             this.TextBoxFname.Hint = "Имя*";
             this.TextBoxFname.Location = new System.Drawing.Point(209, 94);
+            this.TextBoxFname.MaxLength = 32767;
             this.TextBoxFname.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxFname.Name = "TextBoxFname";
             this.TextBoxFname.PasswordChar = '\0';
@@ -132,6 +135,7 @@
             this.TextBoxFname.SelectionStart = 0;
             this.TextBoxFname.Size = new System.Drawing.Size(180, 23);
             this.TextBoxFname.TabIndex = 37;
+            this.TextBoxFname.TabStop = false;
             this.TextBoxFname.UseSystemPasswordChar = false;
             this.TextBoxFname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxFname_KeyPress);
             // 
@@ -140,6 +144,7 @@
             this.TextBoxMname.Depth = 0;
             this.TextBoxMname.Hint = "Отчество";
             this.TextBoxMname.Location = new System.Drawing.Point(406, 94);
+            this.TextBoxMname.MaxLength = 32767;
             this.TextBoxMname.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxMname.Name = "TextBoxMname";
             this.TextBoxMname.PasswordChar = '\0';
@@ -148,6 +153,7 @@
             this.TextBoxMname.SelectionStart = 0;
             this.TextBoxMname.Size = new System.Drawing.Size(180, 23);
             this.TextBoxMname.TabIndex = 38;
+            this.TextBoxMname.TabStop = false;
             this.TextBoxMname.UseSystemPasswordChar = false;
             this.TextBoxMname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxMname_KeyPress);
             // 
@@ -156,6 +162,7 @@
             this.TextBoxRegLog.Depth = 0;
             this.TextBoxRegLog.Hint = "Логин*";
             this.TextBoxRegLog.Location = new System.Drawing.Point(12, 168);
+            this.TextBoxRegLog.MaxLength = 32767;
             this.TextBoxRegLog.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxRegLog.Name = "TextBoxRegLog";
             this.TextBoxRegLog.PasswordChar = '\0';
@@ -164,6 +171,7 @@
             this.TextBoxRegLog.SelectionStart = 0;
             this.TextBoxRegLog.Size = new System.Drawing.Size(180, 23);
             this.TextBoxRegLog.TabIndex = 39;
+            this.TextBoxRegLog.TabStop = false;
             this.TextBoxRegLog.UseSystemPasswordChar = false;
             this.TextBoxRegLog.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxRegLog_KeyPress);
             // 
@@ -172,6 +180,7 @@
             this.TextBoxRegPass.Depth = 0;
             this.TextBoxRegPass.Hint = "Пароль*";
             this.TextBoxRegPass.Location = new System.Drawing.Point(209, 168);
+            this.TextBoxRegPass.MaxLength = 32767;
             this.TextBoxRegPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxRegPass.Name = "TextBoxRegPass";
             this.TextBoxRegPass.PasswordChar = '\0';
@@ -180,6 +189,7 @@
             this.TextBoxRegPass.SelectionStart = 0;
             this.TextBoxRegPass.Size = new System.Drawing.Size(180, 23);
             this.TextBoxRegPass.TabIndex = 40;
+            this.TextBoxRegPass.TabStop = false;
             this.TextBoxRegPass.UseSystemPasswordChar = true;
             this.TextBoxRegPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxRegPass_KeyPress);
             // 
@@ -188,6 +198,7 @@
             this.TextBoxEmail.Depth = 0;
             this.TextBoxEmail.Hint = "Email*";
             this.TextBoxEmail.Location = new System.Drawing.Point(406, 168);
+            this.TextBoxEmail.MaxLength = 32767;
             this.TextBoxEmail.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxEmail.Name = "TextBoxEmail";
             this.TextBoxEmail.PasswordChar = '\0';
@@ -196,17 +207,21 @@
             this.TextBoxEmail.SelectionStart = 0;
             this.TextBoxEmail.Size = new System.Drawing.Size(180, 23);
             this.TextBoxEmail.TabIndex = 41;
+            this.TextBoxEmail.TabStop = false;
             this.TextBoxEmail.UseSystemPasswordChar = false;
             this.TextBoxEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxEmail_KeyPress);
             // 
             // buttonReg
             // 
+            this.buttonReg.AutoSize = true;
+            this.buttonReg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonReg.Depth = 0;
+            this.buttonReg.Icon = null;
             this.buttonReg.Location = new System.Drawing.Point(12, 235);
             this.buttonReg.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonReg.Name = "buttonReg";
             this.buttonReg.Primary = true;
-            this.buttonReg.Size = new System.Drawing.Size(180, 34);
+            this.buttonReg.Size = new System.Drawing.Size(179, 36);
             this.buttonReg.TabIndex = 42;
             this.buttonReg.Text = "Зарегистрироваться";
             this.buttonReg.UseVisualStyleBackColor = true;
@@ -214,12 +229,15 @@
             // 
             // buttonExit
             // 
+            this.buttonExit.AutoSize = true;
+            this.buttonExit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonExit.Depth = 0;
-            this.buttonExit.Location = new System.Drawing.Point(406, 235);
+            this.buttonExit.Icon = null;
+            this.buttonExit.Location = new System.Drawing.Point(513, 235);
             this.buttonExit.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Primary = true;
-            this.buttonExit.Size = new System.Drawing.Size(180, 34);
+            this.buttonExit.Size = new System.Drawing.Size(68, 36);
             this.buttonExit.TabIndex = 43;
             this.buttonExit.Text = "Назад";
             this.buttonExit.UseVisualStyleBackColor = true;

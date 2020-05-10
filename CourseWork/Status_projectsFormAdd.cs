@@ -20,8 +20,43 @@ namespace CourseWork
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            Program.DataAddStatus_project.Value = textBoxNameStatus.Text;
-            this.Close();
+            if (!CheckTextBox())
+                return;
+            else
+            {
+                Program.DataAddStatus_project.Value = textBoxNameStatus.Text;
+
+                this.Close();
+            }
+        }
+
+        private bool CheckTextBox()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxNameStatus.Text))
+            {
+                labelValid.Show();
+
+                return false;
+            }
+            else
+            {
+                Program.DataValidStatus_project.Value = "true";
+
+                return true;
+            }
+        }
+
+        private void textBoxNameStatus_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelValid.Hide();
+        }
+
+        private void Status_projectsFormAdd_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Program.DataValidStatus_project.Value == "true")
+                return;
+            else
+                Program.DataValidStatus_project.Value = "false";
         }
     }
 }

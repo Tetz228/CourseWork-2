@@ -1,6 +1,6 @@
 ﻿namespace CourseWork
 {
-    partial class Status_projectsFormEdit
+    partial class Projects_roleFormEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -28,43 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxEdit = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.buttonEdit = new MaterialSkin.Controls.MaterialRaisedButton();
             this.buttonBack = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.buttonEdit = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.textBoxEdit = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.SuspendLayout();
-            // 
-            // textBoxEdit
-            // 
-            this.textBoxEdit.Depth = 0;
-            this.textBoxEdit.Hint = "Наименование";
-            this.textBoxEdit.Location = new System.Drawing.Point(21, 102);
-            this.textBoxEdit.MaxLength = 35;
-            this.textBoxEdit.MouseState = MaterialSkin.MouseState.HOVER;
-            this.textBoxEdit.Name = "textBoxEdit";
-            this.textBoxEdit.PasswordChar = '\0';
-            this.textBoxEdit.SelectedText = "";
-            this.textBoxEdit.SelectionLength = 0;
-            this.textBoxEdit.SelectionStart = 0;
-            this.textBoxEdit.Size = new System.Drawing.Size(231, 23);
-            this.textBoxEdit.TabIndex = 14;
-            this.textBoxEdit.TabStop = false;
-            this.textBoxEdit.UseSystemPasswordChar = false;
-            // 
-            // buttonEdit
-            // 
-            this.buttonEdit.AutoSize = true;
-            this.buttonEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonEdit.Depth = 0;
-            this.buttonEdit.Icon = null;
-            this.buttonEdit.Location = new System.Drawing.Point(12, 158);
-            this.buttonEdit.MouseState = MaterialSkin.MouseState.HOVER;
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Primary = true;
-            this.buttonEdit.Size = new System.Drawing.Size(95, 36);
-            this.buttonEdit.TabIndex = 15;
-            this.buttonEdit.Text = "Изменить";
-            this.buttonEdit.UseVisualStyleBackColor = true;
-            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonBack
             // 
@@ -77,11 +44,44 @@
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Primary = true;
             this.buttonBack.Size = new System.Drawing.Size(95, 36);
-            this.buttonBack.TabIndex = 16;
+            this.buttonBack.TabIndex = 19;
             this.buttonBack.Text = "Отменить";
             this.buttonBack.UseVisualStyleBackColor = true;
             // 
-            // Status_projectsFormEdit
+            // buttonEdit
+            // 
+            this.buttonEdit.AutoSize = true;
+            this.buttonEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonEdit.Depth = 0;
+            this.buttonEdit.Icon = null;
+            this.buttonEdit.Location = new System.Drawing.Point(12, 158);
+            this.buttonEdit.MouseState = MaterialSkin.MouseState.HOVER;
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Primary = true;
+            this.buttonEdit.Size = new System.Drawing.Size(95, 36);
+            this.buttonEdit.TabIndex = 18;
+            this.buttonEdit.Text = "Изменить";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // textBoxEdit
+            // 
+            this.textBoxEdit.Depth = 0;
+            this.textBoxEdit.Hint = "Наименование";
+            this.textBoxEdit.Location = new System.Drawing.Point(21, 102);
+            this.textBoxEdit.MaxLength = 32767;
+            this.textBoxEdit.MouseState = MaterialSkin.MouseState.HOVER;
+            this.textBoxEdit.Name = "textBoxEdit";
+            this.textBoxEdit.PasswordChar = '\0';
+            this.textBoxEdit.SelectedText = "";
+            this.textBoxEdit.SelectionLength = 0;
+            this.textBoxEdit.SelectionStart = 0;
+            this.textBoxEdit.Size = new System.Drawing.Size(231, 23);
+            this.textBoxEdit.TabIndex = 17;
+            this.textBoxEdit.TabStop = false;
+            this.textBoxEdit.UseSystemPasswordChar = false;
+            // 
+            // Projects_roleFormEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -89,13 +89,12 @@
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.textBoxEdit);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.MaximizeBox = false;
-            this.Name = "Status_projectsFormEdit";
+            this.Name = "Projects_roleFormEdit";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Изменить статус";
-            this.Load += new System.EventHandler(this.Status_projectsFormEdit_Load);
+            this.Text = "Изменить";
+            this.Load += new System.EventHandler(this.Projects_roleFormEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,8 +102,8 @@
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialSingleLineTextField textBoxEdit;
-        private MaterialSkin.Controls.MaterialRaisedButton buttonEdit;
         private MaterialSkin.Controls.MaterialRaisedButton buttonBack;
+        private MaterialSkin.Controls.MaterialRaisedButton buttonEdit;
+        private MaterialSkin.Controls.MaterialSingleLineTextField textBoxEdit;
     }
 }

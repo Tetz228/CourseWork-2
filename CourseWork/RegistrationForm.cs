@@ -92,7 +92,7 @@ namespace CourseWork
             {
                 labelValidRegPass.Text = "Введите пароль";
                 labelValidRegPass.Show();
-
+                
                 check = 1;
             }
             if (string.IsNullOrEmpty(TextBoxEmail.Text))

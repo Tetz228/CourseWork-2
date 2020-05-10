@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.buttonBack = new MaterialSkin.Controls.MaterialFlatButton();
-            this.buttonAdd1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.buttonEdit = new MaterialSkin.Controls.MaterialFlatButton();
             this.textBoxDate_start = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.textBoxDate_completion = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.textBoxProject_target = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -42,37 +42,40 @@
             this.buttonBack.AutoSize = true;
             this.buttonBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonBack.Depth = 0;
+            this.buttonBack.Icon = null;
             this.buttonBack.Location = new System.Drawing.Point(450, 265);
             this.buttonBack.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.buttonBack.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Primary = true;
-            this.buttonBack.Size = new System.Drawing.Size(68, 36);
+            this.buttonBack.Size = new System.Drawing.Size(77, 36);
             this.buttonBack.TabIndex = 27;
             this.buttonBack.Text = "Отмена";
             this.buttonBack.UseVisualStyleBackColor = true;
             // 
-            // buttonAdd1
+            // buttonEdit
             // 
-            this.buttonAdd1.AutoSize = true;
-            this.buttonAdd1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonAdd1.Depth = 0;
-            this.buttonAdd1.Location = new System.Drawing.Point(14, 265);
-            this.buttonAdd1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.buttonAdd1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.buttonAdd1.Name = "buttonAdd1";
-            this.buttonAdd1.Primary = true;
-            this.buttonAdd1.Size = new System.Drawing.Size(86, 36);
-            this.buttonAdd1.TabIndex = 26;
-            this.buttonAdd1.Text = "Изменить";
-            this.buttonAdd1.UseVisualStyleBackColor = true;
-            this.buttonAdd1.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonEdit.AutoSize = true;
+            this.buttonEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonEdit.Depth = 0;
+            this.buttonEdit.Icon = null;
+            this.buttonEdit.Location = new System.Drawing.Point(14, 265);
+            this.buttonEdit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.buttonEdit.MouseState = MaterialSkin.MouseState.HOVER;
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Primary = true;
+            this.buttonEdit.Size = new System.Drawing.Size(95, 36);
+            this.buttonEdit.TabIndex = 26;
+            this.buttonEdit.Text = "Изменить";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // textBoxDate_start
             // 
             this.textBoxDate_start.Depth = 0;
             this.textBoxDate_start.Hint = "Дата начала";
             this.textBoxDate_start.Location = new System.Drawing.Point(14, 153);
+            this.textBoxDate_start.MaxLength = 32767;
             this.textBoxDate_start.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxDate_start.Name = "textBoxDate_start";
             this.textBoxDate_start.PasswordChar = '\0';
@@ -81,6 +84,7 @@
             this.textBoxDate_start.SelectionStart = 0;
             this.textBoxDate_start.Size = new System.Drawing.Size(230, 23);
             this.textBoxDate_start.TabIndex = 30;
+            this.textBoxDate_start.TabStop = false;
             this.textBoxDate_start.UseSystemPasswordChar = false;
             // 
             // textBoxDate_completion
@@ -89,6 +93,7 @@
             this.textBoxDate_completion.Depth = 0;
             this.textBoxDate_completion.Hint = "Дата сдачи";
             this.textBoxDate_completion.Location = new System.Drawing.Point(288, 153);
+            this.textBoxDate_completion.MaxLength = 32767;
             this.textBoxDate_completion.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxDate_completion.Name = "textBoxDate_completion";
             this.textBoxDate_completion.PasswordChar = '\0';
@@ -97,6 +102,7 @@
             this.textBoxDate_completion.SelectionStart = 0;
             this.textBoxDate_completion.Size = new System.Drawing.Size(230, 23);
             this.textBoxDate_completion.TabIndex = 31;
+            this.textBoxDate_completion.TabStop = false;
             this.textBoxDate_completion.UseSystemPasswordChar = false;
             // 
             // textBoxProject_target
@@ -105,6 +111,7 @@
             this.textBoxProject_target.Hint = "Цель проекта";
             this.textBoxProject_target.ImeMode = System.Windows.Forms.ImeMode.On;
             this.textBoxProject_target.Location = new System.Drawing.Point(288, 95);
+            this.textBoxProject_target.MaxLength = 32767;
             this.textBoxProject_target.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxProject_target.Name = "textBoxProject_target";
             this.textBoxProject_target.PasswordChar = '\0';
@@ -113,6 +120,7 @@
             this.textBoxProject_target.SelectionStart = 0;
             this.textBoxProject_target.Size = new System.Drawing.Size(230, 23);
             this.textBoxProject_target.TabIndex = 29;
+            this.textBoxProject_target.TabStop = false;
             this.textBoxProject_target.UseSystemPasswordChar = false;
             // 
             // textBoxProject_name
@@ -120,6 +128,7 @@
             this.textBoxProject_name.Depth = 0;
             this.textBoxProject_name.Hint = "Название проекта";
             this.textBoxProject_name.Location = new System.Drawing.Point(14, 95);
+            this.textBoxProject_name.MaxLength = 32767;
             this.textBoxProject_name.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxProject_name.Name = "textBoxProject_name";
             this.textBoxProject_name.PasswordChar = '\0';
@@ -128,6 +137,7 @@
             this.textBoxProject_name.SelectionStart = 0;
             this.textBoxProject_name.Size = new System.Drawing.Size(230, 23);
             this.textBoxProject_name.TabIndex = 28;
+            this.textBoxProject_name.TabStop = false;
             this.textBoxProject_name.UseSystemPasswordChar = false;
             // 
             // comboBox_fk_leader
@@ -153,7 +163,7 @@
             this.Controls.Add(this.textBoxProject_name);
             this.Controls.Add(this.comboBox_fk_leader);
             this.Controls.Add(this.buttonBack);
-            this.Controls.Add(this.buttonAdd1);
+            this.Controls.Add(this.buttonEdit);
             this.MaximizeBox = false;
             this.Name = "ProjectsFormEdit";
             this.Sizable = false;
@@ -166,7 +176,7 @@
 
         #endregion
         private MaterialSkin.Controls.MaterialFlatButton buttonBack;
-        private MaterialSkin.Controls.MaterialFlatButton buttonAdd1;
+        private MaterialSkin.Controls.MaterialFlatButton buttonEdit;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxDate_start;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxDate_completion;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxProject_target;

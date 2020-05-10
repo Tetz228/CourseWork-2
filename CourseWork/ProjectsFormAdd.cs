@@ -49,14 +49,11 @@ namespace CourseWork
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            int i = 1;
-            i += comboBox_fk_leader.SelectedIndex;
-
             Program.DataAddProjectName.Value = textBoxProject_name.Text;
             Program.DataAddProjectTarget.Value = textBoxProject_target.Text;
             Program.DataAddProjectStart.Value = textBoxDate_start.Text;
             Program.DataAddProjectCompletion.Value = textBoxDate_completion.Text;
-            Program.DataAddProjectLeader.Value = i.ToString();
+            Program.DataAddProjectLeader.Value = comboBox_fk_leader.SelectedValue.ToString();
 
             this.Close();
         }

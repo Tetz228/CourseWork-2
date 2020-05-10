@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+      <HintPath>..\packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,6 +68,24 @@
     <Compile Include="ForgotPassForm.Designer.cs">
       <DependentUpon>ForgotPassForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="History_projectsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History_projectsForm.Designer.cs">
+      <DependentUpon>History_projectsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History_projectsFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History_projectsFormAdd.Designer.cs">
+      <DependentUpon>History_projectsFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History_projectsFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History_projectsFormEdit.Designer.cs">
+      <DependentUpon>History_projectsFormEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +116,18 @@
     </Compile>
     <Compile Include="Projects_roleForm.Designer.cs">
       <DependentUpon>Projects_roleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projects_roleFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projects_roleFormAdd.Designer.cs">
+      <DependentUpon>Projects_roleFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projects_roleFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projects_roleFormEdit.Designer.cs">
+      <DependentUpon>Projects_roleFormEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -138,6 +168,15 @@
     <EmbeddedResource Include="ForgotPassForm.resx">
       <DependentUpon>ForgotPassForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="History_projectsForm.resx">
+      <DependentUpon>History_projectsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History_projectsFormAdd.resx">
+      <DependentUpon>History_projectsFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History_projectsFormEdit.resx">
+      <DependentUpon>History_projectsFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +191,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Projects_roleForm.resx">
       <DependentUpon>Projects_roleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projects_roleFormAdd.resx">
+      <DependentUpon>Projects_roleFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projects_roleFormEdit.resx">
+      <DependentUpon>Projects_roleFormEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
