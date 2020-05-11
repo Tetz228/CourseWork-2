@@ -18,18 +18,37 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // При закрытии формы передать определенный текст в класс
+        private void Status_projectsFormAdd_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Program.DataValidAddStatus_project.Value == "true")
+                return;
+            else
+                Program.DataValidAddStatus_project.Value = "false";
+        }
+
+        // При нажатии валидация и передача текста в класс
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
                 return;
             else
             {
-                Program.DataAddStatus_project.Value = textBoxNameStatus.Text;
+                Program.DataAddStatus_project.Value = textBoxNameStatus.Text.Trim();
 
                 this.Close();
             }
         }
 
+        // При нажатии передать определенный текст в класс
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            Program.DataValidAddStatus_project.Value = "false";
+
+            this.Close();
+        }
+
+        // Валидация TextBox`а
         private bool CheckTextBox()
         {
             if (string.IsNullOrWhiteSpace(textBoxNameStatus.Text))
@@ -40,23 +59,16 @@ namespace CourseWork
             }
             else
             {
-                Program.DataValidStatus_project.Value = "true";
+                Program.DataValidAddStatus_project.Value = "true";
 
                 return true;
             }
         }
 
+        // При вводе в TextBox скрывать label
         private void textBoxNameStatus_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValid.Hide();
-        }
-
-        private void Status_projectsFormAdd_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Program.DataValidStatus_project.Value == "true")
-                return;
-            else
-                Program.DataValidStatus_project.Value = "false";
         }
     }
 }

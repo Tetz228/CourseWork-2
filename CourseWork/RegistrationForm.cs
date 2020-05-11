@@ -48,7 +48,6 @@ namespace CourseWork
                 return;
             else
             {
-
                 Program.DataEmailReg.Value = TextBoxEmail.Text;
 
                 ConfirmationMailForm mailForm = new ConfirmationMailForm();
@@ -102,6 +101,13 @@ namespace CourseWork
 
                 check = 1;
             }
+            if (string.IsNullOrEmpty(TextBoxRegPassRepeat.Text))
+            {
+                labelValidRegPassRepeat.Text = "Введите ещё раз пароль";
+                labelValidRegPassRepeat.Show();
+
+                check = 1;
+            }
 
             if (check == 1)
                 return false;
@@ -109,7 +115,7 @@ namespace CourseWork
                 return true;
         }
 
-        // Проверка логина на нужную длину
+        // Проверка логина и пароля
         private bool CheckLogAndPassLength()
         {
             if (TextBoxRegLog.Text.Length < 4 && TextBoxRegPass.Text.Length < 6)
@@ -140,7 +146,14 @@ namespace CourseWork
                 return false;
             }
             else
-                return true;
+
+            if(TextBoxRegPass.Text != TextBoxRegPassRepeat.Text)
+            {
+                labelValidRegPassRepeat.Text = "Пароли должны совпадать";
+                labelValidRegPassRepeat.Show();
+                return false;
+            }
+            return true;
         }
 
 
@@ -154,7 +167,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             SqlCommand selectLog = new SqlCommand("SELECT login FROM Users WHERE login = @log", connection.GetSqlConnect());
-            selectLog.Parameters.Add("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text;
+            selectLog.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text;
 
             adapter.SelectCommand = selectLog;
             adapter.Fill(table);
@@ -191,7 +204,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             SqlCommand selectLog = new SqlCommand("SELECT Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
-            selectLog.Parameters.Add("@email", SqlDbType.VarChar).Value = TextBoxEmail.Text;
+            selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = TextBoxEmail.Text;
 
             adapter.SelectCommand = selectLog;
             adapter.Fill(table);
@@ -202,7 +215,6 @@ namespace CourseWork
             {
                 labelValidEmail.Text = "Пользователь с такой почтой\nуже существует!";
                 labelValidEmail.Show();
-
                 
                 return false;
             }
@@ -229,14 +241,14 @@ namespace CourseWork
 
             SqlCommand insertIntoEmp = new SqlCommand("INSERT INTO Employees(employee_lname, employee_fname, employee_mname, Email) VALUES(@employee_lname, @employee_fname, @employee_mname, @Email) ", connection.GetSqlConnect());
 
-            insertIntoEmp.Parameters.Add("@employee_lname", SqlDbType.NVarChar).Value = TextBoxLname.Text;
-            insertIntoEmp.Parameters.Add("@employee_fname", SqlDbType.NVarChar).Value = TextBoxFname.Text;
-            insertIntoEmp.Parameters.Add("@Email", SqlDbType.NVarChar).Value = TextBoxEmail.Text;
+            insertIntoEmp.Parameters.AddWithValue("@employee_lname", SqlDbType.NVarChar).Value = TextBoxLname.Text.Trim();
+            insertIntoEmp.Parameters.AddWithValue("@employee_fname", SqlDbType.NVarChar).Value = TextBoxFname.Text.Trim();
+            insertIntoEmp.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = TextBoxEmail.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(TextBoxMname.Text))
-                insertIntoEmp.Parameters.Add("@employee_mname", SqlDbType.NVarChar).Value = "Не указано";
+                insertIntoEmp.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = "Не указано";
             else
-                insertIntoEmp.Parameters.Add("@employee_mname", SqlDbType.NVarChar).Value = TextBoxMname.Text;
+                insertIntoEmp.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = TextBoxMname.Text.Trim();
 
             if (insertIntoEmp.ExecuteNonQuery() == 1)
             {
@@ -244,14 +256,14 @@ namespace CourseWork
 
                 SqlCommand selectIdEmp = new SqlCommand("SELECT id_employee FROM Employees WHERE @mail = Email", connection.GetSqlConnect());
 
-                selectIdEmp.Parameters.Add("@mail", SqlDbType.NVarChar).Value = TextBoxEmail.Text;
+                selectIdEmp.Parameters.AddWithValue("@mail", SqlDbType.NVarChar).Value = TextBoxEmail.Text.Trim();
               
                 SqlCommand insertIntoUser = new SqlCommand("INSERT INTO Users(login,password,fk_role_user,fk_employee) VALUES(@log, @pass, @role, @fk_employee)", connection.GetSqlConnect());
 
-                insertIntoUser.Parameters.Add("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text;
-                insertIntoUser.Parameters.Add("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
-                insertIntoUser.Parameters.Add("@role", SqlDbType.Int).Value = 2;
-                insertIntoUser.Parameters.Add("@fk_employee", SqlDbType.Int).Value = selectIdEmp.ExecuteScalar();
+                insertIntoUser.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text.Trim();
+                insertIntoUser.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
+                insertIntoUser.Parameters.AddWithValue("@role", SqlDbType.Int).Value = 2;
+                insertIntoUser.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = selectIdEmp.ExecuteScalar();
 
                 //Если команда = 1, то есть она успешно выполняется, то аккаунт будет создан
                 if (insertIntoUser.ExecuteNonQuery() == 1)
@@ -342,6 +354,18 @@ namespace CourseWork
                 e.Handled = true;
         }
 
+        // Запрет на ввод определенных символов
+        private void TextBoxRegPassRepeat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelValidRegPassRepeat.Hide();
+
+            //Запрет на ввод space, кириллицы, Ctrl + V
+            char key = e.KeyChar;
+
+            if (key == 32 || key <= 'я' && key >= 'а' || key >= 'А' && key <= 'Я' || key == 13 || key == 022)
+                e.Handled = true;
+        }
+
         // Ввод только определенных символов
         private void TextBoxEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -392,6 +416,6 @@ namespace CourseWork
             authorization.Left = this.Left;
             authorization.Top = this.Top;
             authorization.Show();
-        }
+        } 
     }
 }

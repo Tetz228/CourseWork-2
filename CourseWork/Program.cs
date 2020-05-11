@@ -42,7 +42,12 @@ namespace CourseWork
 
         ///
 
-        public static class DataValidStatus_project
+        public static class DataValidAddStatus_project
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataValidEditStatus_project
         {
             public static string Value { get; set; }
         }
@@ -101,6 +106,18 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
+        ///
+
+        public static class DataValidAddProject
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataValidEditProject
+        {
+            public static string Value { get; set; }
+        }
+
         ///////////////////////////////////////////////
 
         public static class DataAddProjects_role
@@ -111,6 +128,18 @@ namespace CourseWork
         ///
 
         public static class DataEditProjects_role
+        {
+            public static string Value { get; set; }
+        }
+
+        ///
+
+        public static class DataValidAddProjects_role
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataValidEditProjects_role
         {
             public static string Value { get; set; }
         }

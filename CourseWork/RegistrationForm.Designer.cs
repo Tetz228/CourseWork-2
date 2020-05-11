@@ -41,6 +41,8 @@
             this.TextBoxEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.buttonReg = new MaterialSkin.Controls.MaterialRaisedButton();
             this.buttonExit = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.TextBoxRegPassRepeat = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.labelValidRegPassRepeat = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelValidLname
@@ -217,7 +219,7 @@
             this.buttonReg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonReg.Depth = 0;
             this.buttonReg.Icon = null;
-            this.buttonReg.Location = new System.Drawing.Point(12, 235);
+            this.buttonReg.Location = new System.Drawing.Point(12, 301);
             this.buttonReg.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonReg.Name = "buttonReg";
             this.buttonReg.Primary = true;
@@ -233,7 +235,7 @@
             this.buttonExit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonExit.Depth = 0;
             this.buttonExit.Icon = null;
-            this.buttonExit.Location = new System.Drawing.Point(513, 235);
+            this.buttonExit.Location = new System.Drawing.Point(518, 301);
             this.buttonExit.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Primary = true;
@@ -243,12 +245,44 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.ButtonExit_Click);
             // 
+            // TextBoxRegPassRepeat
+            // 
+            this.TextBoxRegPassRepeat.Depth = 0;
+            this.TextBoxRegPassRepeat.Hint = "Ещё раз пароль*";
+            this.TextBoxRegPassRepeat.Location = new System.Drawing.Point(209, 237);
+            this.TextBoxRegPassRepeat.MaxLength = 32767;
+            this.TextBoxRegPassRepeat.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TextBoxRegPassRepeat.Name = "TextBoxRegPassRepeat";
+            this.TextBoxRegPassRepeat.PasswordChar = '\0';
+            this.TextBoxRegPassRepeat.SelectedText = "";
+            this.TextBoxRegPassRepeat.SelectionLength = 0;
+            this.TextBoxRegPassRepeat.SelectionStart = 0;
+            this.TextBoxRegPassRepeat.Size = new System.Drawing.Size(180, 23);
+            this.TextBoxRegPassRepeat.TabIndex = 45;
+            this.TextBoxRegPassRepeat.TabStop = false;
+            this.TextBoxRegPassRepeat.UseSystemPasswordChar = true;
+            this.TextBoxRegPassRepeat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxRegPassRepeat_KeyPress);
+            // 
+            // labelValidRegPassRepeat
+            // 
+            this.labelValidRegPassRepeat.AutoSize = true;
+            this.labelValidRegPassRepeat.Font = new System.Drawing.Font("Verdana", 8F);
+            this.labelValidRegPassRepeat.ForeColor = System.Drawing.Color.Red;
+            this.labelValidRegPassRepeat.Location = new System.Drawing.Point(209, 263);
+            this.labelValidRegPassRepeat.Name = "labelValidRegPassRepeat";
+            this.labelValidRegPassRepeat.Size = new System.Drawing.Size(154, 13);
+            this.labelValidRegPassRepeat.TabIndex = 44;
+            this.labelValidRegPassRepeat.Text = "Введите ещё раз пароль";
+            this.labelValidRegPassRepeat.Visible = false;
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(593, 281);
+            this.ClientSize = new System.Drawing.Size(593, 349);
+            this.Controls.Add(this.TextBoxRegPassRepeat);
+            this.Controls.Add(this.labelValidRegPassRepeat);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonReg);
             this.Controls.Add(this.TextBoxEmail);
@@ -266,7 +300,7 @@
             this.MaximizeBox = false;
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Регистрация";
+            this.Text = "Регистрация нового пользователя";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrationForm_FormClosed);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RegistrationForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.RegistrationForm_MouseMove);
@@ -289,5 +323,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField TextBoxEmail;
         private MaterialSkin.Controls.MaterialRaisedButton buttonReg;
         private MaterialSkin.Controls.MaterialRaisedButton buttonExit;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TextBoxRegPassRepeat;
+        private System.Windows.Forms.Label labelValidRegPassRepeat;
     }
 }

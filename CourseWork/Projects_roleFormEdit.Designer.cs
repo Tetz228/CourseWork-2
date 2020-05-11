@@ -31,6 +31,7 @@
             this.buttonBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.buttonEdit = new MaterialSkin.Controls.MaterialRaisedButton();
             this.textBoxEdit = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.labelValid = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonBack
@@ -47,6 +48,7 @@
             this.buttonBack.TabIndex = 19;
             this.buttonBack.Text = "Отменить";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonEdit
             // 
@@ -69,7 +71,7 @@
             this.textBoxEdit.Depth = 0;
             this.textBoxEdit.Hint = "Наименование";
             this.textBoxEdit.Location = new System.Drawing.Point(21, 102);
-            this.textBoxEdit.MaxLength = 32767;
+            this.textBoxEdit.MaxLength = 50;
             this.textBoxEdit.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxEdit.Name = "textBoxEdit";
             this.textBoxEdit.PasswordChar = '\0';
@@ -80,12 +82,26 @@
             this.textBoxEdit.TabIndex = 17;
             this.textBoxEdit.TabStop = false;
             this.textBoxEdit.UseSystemPasswordChar = false;
+            this.textBoxEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxEdit_KeyPress);
+            // 
+            // labelValid
+            // 
+            this.labelValid.AutoSize = true;
+            this.labelValid.Font = new System.Drawing.Font("Verdana", 8F);
+            this.labelValid.ForeColor = System.Drawing.Color.Red;
+            this.labelValid.Location = new System.Drawing.Point(18, 128);
+            this.labelValid.Name = "labelValid";
+            this.labelValid.Size = new System.Drawing.Size(141, 13);
+            this.labelValid.TabIndex = 46;
+            this.labelValid.Text = "Некорректные данные";
+            this.labelValid.Visible = false;
             // 
             // Projects_roleFormEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 200);
+            this.Controls.Add(this.labelValid);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.textBoxEdit);
@@ -93,7 +109,8 @@
             this.Name = "Projects_roleFormEdit";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Изменить";
+            this.Text = "Изменить роль";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Projects_roleFormEdit_FormClosed);
             this.Load += new System.EventHandler(this.Projects_roleFormEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -105,5 +122,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton buttonBack;
         private MaterialSkin.Controls.MaterialRaisedButton buttonEdit;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxEdit;
+        private System.Windows.Forms.Label labelValid;
     }
 }

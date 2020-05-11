@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -25,10 +18,58 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // При нажатии валидация и передача текста в класс
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            Program.DataAddProjects_role.Value = textBoxNameRole.Text;
+            if (!CheckTextBox())
+                return;
+            else
+            {
+                Program.DataAddProjects_role.Value = textBoxNameRole.Text.Trim();
+
+                this.Close();
+            }
+            
+        }
+
+        // При нажатии передать определенный текст в класс
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            Program.DataValidAddProjects_role.Value = "false";
+
             this.Close();
         }
+
+        // Валидация TextBox`а
+        private bool CheckTextBox()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxNameRole.Text))
+            {
+                labelValid.Show();
+
+                return false;
+            }
+            else
+            {
+                Program.DataValidAddProjects_role.Value = "true";
+
+                return true;
+            }
+        }
+
+        // При вводе в TextBox скрывать label
+        private void textBoxNameRole_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelValid.Hide();
+        }
+
+        // При закрытии формы передать определенный текст в класс
+        private void Projects_roleFormAdd_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Program.DataValidAddProjects_role.Value == "true")
+                return;
+            else
+                Program.DataValidAddProjects_role.Value = "false";
+        }  
     }
 }

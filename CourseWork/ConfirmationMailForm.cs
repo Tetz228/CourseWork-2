@@ -3,16 +3,24 @@ using System.Drawing;
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace CourseWork
 {
-    public partial class ConfirmationMailForm : Form
+    public partial class ConfirmationMailForm : MaterialForm
     {
         private string global;
 
         public ConfirmationMailForm()
         {
             InitializeComponent();
+
+            var material = MaterialSkinManager.Instance;
+
+            material.AddFormToManage(this);
+            material.Theme = MaterialSkinManager.Themes.DARK;
+            material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
         // Перемещение формы
@@ -102,15 +110,6 @@ namespace CourseWork
             global = SendingCode(Program.DataEmailReg.Value);
         }
 
-        private void textBoxCode_Click(object sender, EventArgs e)
-        {
-            labelDashConfirmationMail.ForeColor = Color.White;
-        }
-
-        private void textBoxCode_Leave(object sender, EventArgs e)
-        {
-            labelDashConfirmationMail.ForeColor = Color.Black;
-        }
 
         private void ConfirmationMailForm_FormClosed(object sender, FormClosedEventArgs e)
         {

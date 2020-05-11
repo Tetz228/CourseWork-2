@@ -28,6 +28,7 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // При загрузки формы
         private void Projects_roleForm_Load(object sender, EventArgs e)
         {
             this.dataGridViewProjects_role.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -35,6 +36,7 @@ namespace CourseWork
             SelectDateProjects_role();
         }
 
+        // Добавление данных из базы данных в dataGridView
         private void SelectDateProjects_role()
         {
             ConnectionDB connection = new ConnectionDB();
@@ -63,7 +65,7 @@ namespace CourseWork
 
             command.Parameters.AddWithValue("@project_role_name", SqlDbType.NVarChar).Value = Program.DataAddProjects_role.Value;
 
-            SqlParameter parameter = command.Parameters.Add("@id_project_role", SqlDbType.Int, 0, "id_project_role");
+            SqlParameter parameter = command.Parameters.AddWithValue("@id_project_role", SqlDbType.Int);
 
             parameter.Direction = ParameterDirection.Output;
 
@@ -97,62 +99,54 @@ namespace CourseWork
         // Функция удаления строки
         private void DeleteRowProjects_role()
         {
-            if (dataGridViewProjects_role.CurrentRow.Cells["Column_id_project_role"].Value != DBNull.Value)
-                if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    ConnectionDB connection = new ConnectionDB();
-                    SqlCommand command = new SqlCommand("DeleteProjects_role", connection.GetSqlConnect());
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("DeleteProjects_role", connection.GetSqlConnect());
 
-                    connection.OpenConnect();
+            connection.OpenConnect();
 
-                    command.CommandType = CommandType.StoredProcedure;
+            command.CommandType = CommandType.StoredProcedure;
 
-                    command.Parameters.AddWithValue("@id_project_role", Convert.ToInt32(dataGridViewProjects_role.CurrentRow.Cells["Column_id_project_role"].Value));
+            command.Parameters.AddWithValue("@id_project_role", Convert.ToInt32(dataGridViewProjects_role.CurrentRow.Cells["Column_id_project_role"].Value));
 
-                    command.ExecuteNonQuery();
+            command.ExecuteNonQuery();
 
-                    connection.CloseConnect();
-                }
-                else
-                    return;
-            else
-            {
-                MessageBox.Show("Вы не выбрали строку. Выберите строку и повторите удаление.");
-                return;
-            }
+            connection.CloseConnect();
 
             SelectDateProjects_role();
         }
 
+        // При клике на "Правка" -> "Добавить" открывается форма для добавления, после чего вызов функции добавления строки
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Projects_roleFormAdd formAdd = new Projects_roleFormAdd();
 
             formAdd.ShowDialog();
 
-            AddRowProjects_role();
+            if (Program.DataValidAddProjects_role.Value == "true")
+            {
+                AddRowProjects_role();
+                Program.DataValidAddProjects_role.Value = "";
+            }
         }
 
+        // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Projects_roleFormEdit formEdit = new Projects_roleFormEdit();
 
             formEdit.ShowDialog();
 
-            EditRowProjects_role();
+            if (Program.DataValidEditProjects_role.Value == "true")
+            {
+                EditRowProjects_role();
+                Program.DataValidEditProjects_role.Value = "";
+            }
         }
 
         // Cобытие при 2-ом клике на ячейку позволяет провести редактирование
-
-
-
-        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DeleteRowProjects_role();
-        }
-
         private void dataGridViewProjects_role_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //Если не выбрана строка, содержащие заголовки
             if (e.RowIndex != -1)
             {
                 DataGridViewRow view = dataGridViewProjects_role.Rows[e.RowIndex];
@@ -163,8 +157,32 @@ namespace CourseWork
 
                 formEdit.ShowDialog();
 
-                EditRowProjects_role();
+                if (Program.DataValidEditProjects_role.Value == "true")
+                {
+                    EditRowProjects_role();
+                    Program.DataValidEditProjects_role.Value = "";
+                }
             }
+        }
+
+        // При клике на "Правка" -> "Удалить"
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DeleteRowProjects_role();
+            else
+                return;
+        }
+
+        // При выделение строки и нажание на клавишу Delete
+        private void dataGridViewProjects_role_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DeleteRowProjects_role();
+            else
+                e.Cancel = true;
+
+            e.Cancel = true;
         }
     }
 }

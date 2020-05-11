@@ -30,7 +30,7 @@
         {
             this.buttonAdd = new MaterialSkin.Controls.MaterialRaisedButton();
             this.textBoxNameStatus = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.buttonBack1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.buttonBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.labelValid = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -68,20 +68,21 @@
             this.textBoxNameStatus.UseSystemPasswordChar = false;
             this.textBoxNameStatus.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNameStatus_KeyPress);
             // 
-            // buttonBack1
+            // buttonBack
             // 
-            this.buttonBack1.AutoSize = true;
-            this.buttonBack1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonBack1.Depth = 0;
-            this.buttonBack1.Icon = null;
-            this.buttonBack1.Location = new System.Drawing.Point(177, 158);
-            this.buttonBack1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.buttonBack1.Name = "buttonBack1";
-            this.buttonBack1.Primary = true;
-            this.buttonBack1.Size = new System.Drawing.Size(95, 36);
-            this.buttonBack1.TabIndex = 16;
-            this.buttonBack1.Text = "Отменить";
-            this.buttonBack1.UseVisualStyleBackColor = true;
+            this.buttonBack.AutoSize = true;
+            this.buttonBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonBack.Depth = 0;
+            this.buttonBack.Icon = null;
+            this.buttonBack.Location = new System.Drawing.Point(177, 158);
+            this.buttonBack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Primary = true;
+            this.buttonBack.Size = new System.Drawing.Size(95, 36);
+            this.buttonBack.TabIndex = 16;
+            this.buttonBack.Text = "Отменить";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // labelValid
             // 
@@ -101,7 +102,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 200);
             this.Controls.Add(this.labelValid);
-            this.Controls.Add(this.buttonBack1);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.textBoxNameStatus);
             this.Controls.Add(this.buttonAdd);
             this.MaximizeBox = false;
@@ -119,7 +120,7 @@
 
         private MaterialSkin.Controls.MaterialRaisedButton buttonAdd;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxNameStatus;
-        private MaterialSkin.Controls.MaterialRaisedButton buttonBack1;
+        private MaterialSkin.Controls.MaterialRaisedButton buttonBack;
         private System.Windows.Forms.Label labelValid;
     }
 }

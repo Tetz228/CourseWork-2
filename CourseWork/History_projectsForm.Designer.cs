@@ -36,15 +36,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewHistory_projects = new System.Windows.Forms.DataGridView();
-            this.Column_id_history_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBox_fk_project = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ComboBox_fk_status_project = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_history_date_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripHistory_projects = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Column_id_history_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComboBox_fk_project = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ComboBox_fk_status_project = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_history_date_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory_projects)).BeginInit();
             this.menuStripHistory_projects.SuspendLayout();
             this.SuspendLayout();
@@ -91,46 +91,6 @@
             this.dataGridViewHistory_projects.TabIndex = 0;
             this.dataGridViewHistory_projects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHistory_projects_CellDoubleClick);
             // 
-            // Column_id_history_project
-            // 
-            this.Column_id_history_project.DataPropertyName = "id_history_project";
-            this.Column_id_history_project.HeaderText = "Id";
-            this.Column_id_history_project.Name = "Column_id_history_project";
-            this.Column_id_history_project.ReadOnly = true;
-            this.Column_id_history_project.Visible = false;
-            // 
-            // ComboBox_fk_project
-            // 
-            this.ComboBox_fk_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_project.DataPropertyName = "fk_project";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_project.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ComboBox_fk_project.HeaderText = "Проект";
-            this.ComboBox_fk_project.Name = "ComboBox_fk_project";
-            this.ComboBox_fk_project.ReadOnly = true;
-            // 
-            // ComboBox_fk_status_project
-            // 
-            this.ComboBox_fk_status_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_status_project.DataPropertyName = "fk_status_project";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_status_project.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ComboBox_fk_status_project.HeaderText = "Статус";
-            this.ComboBox_fk_status_project.Name = "ComboBox_fk_status_project";
-            this.ComboBox_fk_status_project.ReadOnly = true;
-            // 
-            // Column_history_date_project
-            // 
-            this.Column_history_date_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_history_date_project.DataPropertyName = "history_date_project";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.Column_history_date_project.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column_history_date_project.HeaderText = "Дата";
-            this.Column_history_date_project.Name = "Column_history_date_project";
-            this.Column_history_date_project.ReadOnly = true;
-            this.Column_history_date_project.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column_history_date_project.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // menuStripHistory_projects
             // 
             this.menuStripHistory_projects.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -155,23 +115,65 @@
             // AddToolStripMenuItem
             // 
             this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.AddToolStripMenuItem.Text = "Добавить";
             this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.EditToolStripMenuItem.Text = "Изменить";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
+            // 
+            // Column_id_history_project
+            // 
+            this.Column_id_history_project.DataPropertyName = "id_history_project";
+            this.Column_id_history_project.HeaderText = "Id";
+            this.Column_id_history_project.Name = "Column_id_history_project";
+            this.Column_id_history_project.ReadOnly = true;
+            this.Column_id_history_project.Visible = false;
+            // 
+            // ComboBox_fk_project
+            // 
+            this.ComboBox_fk_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_project.DataPropertyName = "fk_project";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_project.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ComboBox_fk_project.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_project.HeaderText = "Проект";
+            this.ComboBox_fk_project.Name = "ComboBox_fk_project";
+            this.ComboBox_fk_project.ReadOnly = true;
+            // 
+            // ComboBox_fk_status_project
+            // 
+            this.ComboBox_fk_status_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_status_project.DataPropertyName = "fk_status_project";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_status_project.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ComboBox_fk_status_project.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_status_project.HeaderText = "Статус";
+            this.ComboBox_fk_status_project.Name = "ComboBox_fk_status_project";
+            this.ComboBox_fk_status_project.ReadOnly = true;
+            // 
+            // Column_history_date_project
+            // 
+            this.Column_history_date_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_history_date_project.DataPropertyName = "history_date_project";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.Column_history_date_project.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column_history_date_project.HeaderText = "Дата";
+            this.Column_history_date_project.Name = "Column_history_date_project";
+            this.Column_history_date_project.ReadOnly = true;
+            this.Column_history_date_project.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_history_date_project.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // History_projectsForm
             // 
@@ -197,14 +199,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewHistory_projects;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_id_history_project;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ComboBox_fk_project;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ComboBox_fk_status_project;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_history_date_project;
         private System.Windows.Forms.MenuStrip menuStripHistory_projects;
         private System.Windows.Forms.ToolStripMenuItem MainToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AddToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_id_history_project;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ComboBox_fk_project;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ComboBox_fk_status_project;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_history_date_project;
     }
 }
