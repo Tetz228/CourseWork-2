@@ -52,10 +52,13 @@
             // dataGridViewHistory_projects
             // 
             this.dataGridViewHistory_projects.AllowUserToAddRows = false;
+            this.dataGridViewHistory_projects.BackgroundColor = System.Drawing.Color.Gray;
+            this.dataGridViewHistory_projects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewHistory_projects.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -67,20 +70,24 @@
             this.ComboBox_fk_status_project,
             this.Column_history_date_project});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewHistory_projects.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewHistory_projects.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewHistory_projects.Location = new System.Drawing.Point(0, 64);
+            this.dataGridViewHistory_projects.MaximumSize = new System.Drawing.Size(1042, 499);
+            this.dataGridViewHistory_projects.MinimumSize = new System.Drawing.Size(1042, 499);
+            this.dataGridViewHistory_projects.MultiSelect = false;
             this.dataGridViewHistory_projects.Name = "dataGridViewHistory_projects";
             this.dataGridViewHistory_projects.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -145,6 +152,7 @@
             // 
             this.ComboBox_fk_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ComboBox_fk_project.DataPropertyName = "fk_project";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.ComboBox_fk_project.DefaultCellStyle = dataGridViewCellStyle2;
             this.ComboBox_fk_project.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
@@ -156,6 +164,7 @@
             // 
             this.ComboBox_fk_status_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ComboBox_fk_status_project.DataPropertyName = "fk_status_project";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.ComboBox_fk_status_project.DefaultCellStyle = dataGridViewCellStyle3;
             this.ComboBox_fk_status_project.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
@@ -167,6 +176,7 @@
             // 
             this.Column_history_date_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_history_date_project.DataPropertyName = "history_date_project";
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.Column_history_date_project.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column_history_date_project.HeaderText = "Дата";

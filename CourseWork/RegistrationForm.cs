@@ -156,7 +156,6 @@ namespace CourseWork
             return true;
         }
 
-
         // Проверка на уникальность логина
         private bool LoginOriginality()
         {

@@ -201,6 +201,8 @@
             this.Column_date_start.DataPropertyName = "date_start";
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
             this.Column_date_start.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column_date_start.HeaderText = "Дата начала";
             this.Column_date_start.Name = "Column_date_start";

@@ -93,10 +93,10 @@ namespace CourseWork
         }
 
         // Функция добавления строки
-        private void AddRowHistory()
+        private void AddRowHistoryProject()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("AddHistory", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("AddHistoryProjects", connection.GetSqlConnect());
 
             command.CommandType = CommandType.StoredProcedure;
 
@@ -118,10 +118,10 @@ namespace CourseWork
         }
 
         // Функция редактирования строки
-        private void EditRowHistory()
+        private void EditRowHistoryProject()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("EditHistory", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("EditHistoryProjects", connection.GetSqlConnect());
 
             command.CommandType = CommandType.StoredProcedure;
 
@@ -140,13 +140,32 @@ namespace CourseWork
             SelectDateHistory_projects();
         }
 
+        // Функция удаления строки
+        private void DeleteRowProject()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("DeleteHistoryProjects", connection.GetSqlConnect());
+
+            connection.OpenConnect();
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@id_history_project", Convert.ToInt32(dataGridViewHistory_projects.CurrentRow.Cells["Column_id_history_project"].Value));
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
+
+            SelectDateHistory_projects();
+        }
+
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             History_projectsFormAdd formAdd = new History_projectsFormAdd();
 
             formAdd.ShowDialog();
 
-            AddRowHistory();
+            AddRowHistoryProject();
         }
 
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
@@ -155,12 +174,12 @@ namespace CourseWork
 
             formEdit.ShowDialog();
 
-            EditRowHistory();
+            EditRowHistoryProject();
         }
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DeleteRowProject();
         }
 
         private void dataGridViewHistory_projects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -177,7 +196,7 @@ namespace CourseWork
 
                 formEdit.ShowDialog();
 
-                EditRowHistory();
+                EditRowHistoryProject();
             }
         }
     }

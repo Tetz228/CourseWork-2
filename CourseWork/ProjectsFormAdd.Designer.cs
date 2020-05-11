@@ -40,6 +40,7 @@
             this.labelValidStart = new System.Windows.Forms.Label();
             this.labelValidCompletion = new System.Windows.Forms.Label();
             this.labelValidLeader = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -224,11 +225,22 @@
             this.labelValidLeader.Text = "Некорректные данные";
             this.labelValidLeader.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "неверно";
+            this.label1.Visible = false;
+            // 
             // ProjectsFormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 316);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelValidLeader);
             this.Controls.Add(this.labelValidCompletion);
             this.Controls.Add(this.labelValidStart);
@@ -266,5 +278,6 @@
         private System.Windows.Forms.Label labelValidStart;
         private System.Windows.Forms.Label labelValidCompletion;
         private System.Windows.Forms.Label labelValidLeader;
+        private System.Windows.Forms.Label label1;
     }
 }

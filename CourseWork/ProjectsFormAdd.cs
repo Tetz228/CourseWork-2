@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Text.RegularExpressions;
 
 namespace CourseWork
 {
@@ -63,6 +64,12 @@ namespace CourseWork
         {
             if (!CheckTextBox())
                 return;
+            else
+            if (!ValidationDate(textBoxDate_start.Text))
+            {
+                label1.Show();
+                return; 
+            }
             else
             {
                 Program.DataAddProjectName.Value = textBoxProject_name.Text.Trim();
@@ -129,6 +136,25 @@ namespace CourseWork
             }
         }
 
+        // Валидация даты
+        private bool ValidationDate(string cheak)
+        {
+            string pattern = @"[0-9]{2}[-./][0-9]{2}[-./][0-9]{4}";
+
+            Match isMatch = Regex.Match(cheak, pattern);
+            return isMatch.Success;
+            //if (regex.IsMatch(textBoxDate_start.Text))
+            //{
+                
+            //}
+
+            //string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
+
+            //Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+
+            //return isMatch.Success;
+        }
+
         // При вводе в TextBox скрывать label
         private void textBoxProject_name_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
@@ -145,6 +171,10 @@ namespace CourseWork
         private void textBoxDate_start_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             labelValidStart.Hide();
+
+            //BACKSPACE, цифры, точка, минус
+            //if (!(e.KeyChar == 8 || (e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 46 || e.KeyChar == 45))
+            //    e.Handled = true;
         }
 
         // При вводе в TextBox скрывать label
