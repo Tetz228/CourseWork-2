@@ -56,12 +56,58 @@ namespace CourseWork
             if (!CheckTextBox())
                 return;
             else
+                CheckDateNull();
+        }
+
+        // При нажатии закрыть форму
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Проверка даты на нулевое значение
+        private void CheckDateNull()
+        {
+            if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text) && !string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
             {
-                if (!(string.IsNullOrEmpty(textBoxDate_start.Text) || string.IsNullOrEmpty(textBoxDate_completion.Text)))
+                if (!(ValidationDate(textBoxDate_start.Text) && ValidationDate(textBoxDate_completion.Text)))
                 {
-                    if (!(ValidationDate(textBoxDate_start.Text) && ValidationDate(textBoxDate_completion.Text)))
+                    labelValidStart.Show();
+                    labelValidCompletion.Show();
+
+                    return;
+                }
+                else
+                {
+                    AddRowProject();
+
+                    this.Close();
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text))
+                {
+                    if (!ValidationDate(textBoxDate_start.Text))
                     {
                         labelValidStart.Show();
+
+                        return;
+                    }
+                    else
+                    {
+                        AddRowProject();
+
+                        this.Close();
+
+                        return;
+                    }
+
+                }
+                if (!string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
+                {
+                    if (!ValidationDate(textBoxDate_completion.Text))
+                    {
                         labelValidCompletion.Show();
 
                         return;
@@ -71,21 +117,16 @@ namespace CourseWork
                         AddRowProject();
 
                         this.Close();
+
+                        return;
                     }
-                }
-                else
-                {
-                    AddRowProject();
 
-                    this.Close();
                 }
+
+                AddRowProject();
+
+                this.Close();
             }
-        }
-
-        // При нажатии закрыть форму
-        private void buttonBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         // Функция добавления строки
@@ -93,7 +134,9 @@ namespace CourseWork
         {
             ConnectionDB connection = new ConnectionDB();
             SqlCommand command = new SqlCommand("AddProjects", connection.GetSqlConnect());
-
+            DateTime dateTimeStart;
+            DateTime dateTimeCompletion;
+            
             command.CommandType = CommandType.StoredProcedure;
 
             connection.OpenConnect();
@@ -106,12 +149,19 @@ namespace CourseWork
             if (string.IsNullOrEmpty(textBoxDate_start.Text))
                 command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = DBNull.Value;
             else
-                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = textBoxDate_start.Text;
+            {
+                dateTimeStart = DateTime.Parse(textBoxDate_start.Text);
+                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = dateTimeStart;
+            }
 
-            if (string.IsNullOrEmpty(textBoxDate_start.Text))
+            if (string.IsNullOrEmpty(textBoxDate_completion.Text))
                 command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = DBNull.Value;
             else
-                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = textBoxDate_completion.Text;
+            {
+                dateTimeCompletion = DateTime.Parse(textBoxDate_completion.Text);
+                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = dateTimeCompletion;
+            }
+                
 
             command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
             command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;
@@ -125,7 +175,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Валидация TextBox`а
+        // Валидация TextBox`ов
         private bool CheckTextBox()
         {
             int check = 0;
@@ -170,18 +220,22 @@ namespace CourseWork
             labelValidTarget.Hide();
         }
 
-        // При вводе в TextBox скрывать label
+        // Ввод только определенных символов и при вводе в TextBox скрывать label
         private void textBoxDate_start_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             labelValidStart.Hide();
         }
 
-        // При вводе в TextBox скрывать label
+        // Ввод только определенных символов и при вводе в TextBox скрывать label
         private void textBoxDate_completion_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
+            // цифры, слеш(/), точка, минус, BACKSPACE
+            if (!((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 47 || e.KeyChar == 46 || e.KeyChar == 45 || e.KeyChar == 8))
+                e.Handled = true;
+
             labelValidCompletion.Hide();
         }
-
+    
         // При выборе в ComboBox`е скрывать label
         private void comboBox_fk_leader_SelectedValueChanged(object sender, EventArgs e)
         {

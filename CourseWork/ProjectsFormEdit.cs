@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 
 namespace CourseWork
 {
@@ -33,11 +32,12 @@ namespace CourseWork
             textBoxDate_completion.Text = Program.DataEditProjectCompletion.Value;
             comboBox_fk_leader.SelectedValue = Convert.ToInt32(Program.DataEditProjectLeader.Value);
 
-            if(!string.IsNullOrEmpty(textBoxDate_start.Text))
+            if (!string.IsNullOrEmpty(textBoxDate_start.Text))
                 textBoxDate_start.Text = textBoxDate_start.Text.Substring(0, 10);
 
             if (!string.IsNullOrEmpty(textBoxDate_completion.Text))
                 textBoxDate_completion.Text = textBoxDate_completion.Text.Substring(0, 10);
+
         }
 
         private void SelectEmployeeComboBox()
@@ -78,7 +78,9 @@ namespace CourseWork
         {
             ConnectionDB connection = new ConnectionDB();
             SqlCommand command = new SqlCommand("EditProject", connection.GetSqlConnect());
-
+            DateTime dateTimeStart;
+            DateTime dateTimeCompletion;
+           
             command.CommandType = CommandType.StoredProcedure;
 
             connection.OpenConnect();
@@ -91,12 +93,18 @@ namespace CourseWork
             if(string.IsNullOrEmpty(textBoxDate_start.Text))
                 command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = DBNull.Value;
             else
-                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = textBoxDate_start.Text;
+            {
+                dateTimeStart = DateTime.Parse(textBoxDate_start.Text);
+                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = dateTimeStart;
+            }
 
             if (string.IsNullOrEmpty(textBoxDate_completion.Text))
                 command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = DBNull.Value;
             else
-                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = textBoxDate_completion.Text;
+            {
+                dateTimeCompletion = DateTime.Parse(textBoxDate_completion.Text);
+                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = dateTimeCompletion;
+            }
 
             command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
             command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;
@@ -112,7 +120,7 @@ namespace CourseWork
         {
             if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text) && !string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
             {
-                if (!ValidationDate(textBoxDate_start.Text) && !ValidationDate(textBoxDate_completion.Text))
+                if (!(ValidationDate(textBoxDate_start.Text) && ValidationDate(textBoxDate_completion.Text)))
                 {
                     labelValidStart.Show();
                     labelValidCompletion.Show();
