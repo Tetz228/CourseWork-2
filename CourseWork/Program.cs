@@ -83,26 +83,7 @@ namespace CourseWork
 
         ///////////////////////////////////////////////
 
-        public static class DataAddProjects_role
-        {
-            public static string Value { get; set; }
-        }
-
-        ///
-
         public static class DataEditProjects_role
-        {
-            public static string Value { get; set; }
-        }
-
-        ///
-
-        public static class DataValidAddProjects_role
-        {
-            public static string Value { get; set; }
-        }
-
-        public static class DataValidEditProjects_role
         {
             public static string Value { get; set; }
         }

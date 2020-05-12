@@ -245,7 +245,7 @@ namespace CourseWork
             insertIntoEmp.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = TextBoxEmail.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(TextBoxMname.Text))
-                insertIntoEmp.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = "Не указано";
+                insertIntoEmp.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = DBNull.Value;
             else
                 insertIntoEmp.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = TextBoxMname.Text.Trim();
 
@@ -271,8 +271,6 @@ namespace CourseWork
 
                     this.Close();
                 }
-                else
-                    MessageBox.Show("Аккаунт не был создан!");
             }
 
             connection.CloseConnect();

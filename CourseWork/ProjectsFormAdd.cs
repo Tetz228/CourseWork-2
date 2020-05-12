@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Windows.Forms;
 
 namespace CourseWork
 {
@@ -172,9 +173,18 @@ namespace CourseWork
 
             parameter.Direction = ParameterDirection.Output;
 
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Дата должна быть в диапозоне 01.01.1753 - 31.12.9999.");
+            }
+            finally
+            {
+                connection.CloseConnect();
+            }
         }
 
         // Валидация TextBox`ов

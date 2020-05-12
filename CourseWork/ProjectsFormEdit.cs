@@ -107,14 +107,23 @@ namespace CourseWork
 
                 command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = dateTimeCompletion;
             }
-
+            
             command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
             command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;
             command.Parameters.AddWithValue("@id_project", Convert.ToInt32(Program.DataEditProjectId.Value));
 
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Дата должна быть в диапозоне 01.01.1753 - 31.12.9999.");
+            }
+            finally
+            {
+                connection.CloseConnect();
+            }
         }
 
         // Проверка даты на нулевое значение и на формат даты

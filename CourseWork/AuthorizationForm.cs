@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Threading;
 
 namespace CourseWork
 {
@@ -69,10 +70,8 @@ namespace CourseWork
             if (string.IsNullOrEmpty(TextBoxLog.Text) && string.IsNullOrEmpty(TextBoxPass.Text))
             {
                 labelValidAuthLog.Show();
-                labelValidAuthLog.ForeColor = Color.Red;
 
                 labelValidAuthPass.Show();
-                labelValidAuthPass.ForeColor = Color.Red;
 
                 return false;
             }    
@@ -80,7 +79,6 @@ namespace CourseWork
             if (string.IsNullOrEmpty(TextBoxLog.Text))
             {
                 labelValidAuthLog.Show();
-                labelValidAuthLog.ForeColor = Color.Red;
 
                 return false;
             }
@@ -88,7 +86,6 @@ namespace CourseWork
                 if (string.IsNullOrEmpty(TextBoxPass.Text))
                 {               
                     labelValidAuthPass.Show();
-                    labelValidAuthPass.ForeColor = Color.Red;
 
                     return false;
                 }
@@ -128,6 +125,7 @@ namespace CourseWork
             registration.Left = this.Left;
             // Задает открываемой форме позицию сверху, равную позиции текущей формы
             registration.Top = this.Top;
+
             this.Hide();
             
             registration.Show();
