@@ -2,6 +2,8 @@
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CourseWork
 {
@@ -18,34 +20,44 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При закрытии формы передать определенный текст в класс
-        private void Status_projectsFormAdd_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Program.DataValidAddStatus_project.Value == "true")
-                return;
-            else
-                Program.DataValidAddStatus_project.Value = "false";
-        }
-
-        // При нажатии валидация и передача текста в класс
+        // При нажатии валидация, если валидация прошла успешно, то добавление в бд
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
                 return;
             else
             {
-                Program.DataAddStatus_project.Value = textBoxNameStatus.Text.Trim();
+                AddRowStatusProject();
 
                 this.Close();
             }
         }
 
-        // При нажатии передать определенный текст в класс
+        // При нажатии закрыть форму
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            Program.DataValidAddStatus_project.Value = "false";
-
             this.Close();
+        }
+
+        // Функция добавления строки
+        private void AddRowStatusProject()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("AddStatus_project", connection.GetSqlConnect());
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.OpenConnect();
+
+            command.Parameters.AddWithValue("@status_name_project", SqlDbType.NVarChar).Value = textBoxNameStatus.Text.Trim();
+
+            SqlParameter parameter = command.Parameters.AddWithValue("@id_status_project", SqlDbType.Int);
+
+            parameter.Direction = ParameterDirection.Output;
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
         }
 
         // Валидация TextBox`а
@@ -58,11 +70,7 @@ namespace CourseWork
                 return false;
             }
             else
-            {
-                Program.DataValidAddStatus_project.Value = "true";
-
                 return true;
-            }
         }
 
         // При вводе в TextBox скрывать label

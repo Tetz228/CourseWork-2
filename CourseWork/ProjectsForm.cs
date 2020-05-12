@@ -66,57 +66,6 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Функция добавления строки
-        private void AddRowProject()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("AddProjects", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            connection.OpenConnect();
-
-            command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = Program.DataAddProjectName.Value;
-            command.Parameters.AddWithValue("@project_target", SqlDbType.NVarChar).Value = Program.DataAddProjectTarget.Value;
-            command.Parameters.AddWithValue("@date_start", SqlDbType.VarChar).Value = Program.DataAddProjectStart.Value;
-            command.Parameters.AddWithValue("@date_completion", SqlDbType.VarChar).Value = Program.DataAddProjectCompletion.Value;
-            command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = Convert.ToInt32(Program.DataAddProjectLeader.Value);
-            
-            SqlParameter parameter = command.Parameters.AddWithValue("@id_project", SqlDbType.Int);
-
-            parameter.Direction = ParameterDirection.Output;
-
-            command.ExecuteNonQuery();
-
-            SelectDateProject();
-
-            connection.CloseConnect();
-        }
-
-        // Функция редактирования строки
-        private void EditRowProject()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("EditProject", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            connection.OpenConnect();
-
-            command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = Program.DataEditProjectName.Value;
-            command.Parameters.AddWithValue("@project_target", SqlDbType.NVarChar).Value = Program.DataEditProjectTarget.Value;
-            command.Parameters.AddWithValue("@date_start", SqlDbType.VarChar).Value = Program.DataEditProjectStart.Value;
-            command.Parameters.AddWithValue("@date_completion", SqlDbType.VarChar).Value = Program.DataEditProjectCompletion.Value;
-            command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = Convert.ToInt32(Program.DataEditProjectLeader.Value);
-            command.Parameters.AddWithValue("@id_project", Convert.ToInt32(dataGridViewProjects.CurrentRow.Cells["Column_id_project"].Value));
-
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
-
-            SelectDateProject();
-        }
-
         // Функция удаления строки
         private void DeleteRowProject()
         {
@@ -143,11 +92,8 @@ namespace CourseWork
 
             formAdd.ShowDialog();
 
-            if (Program.DataValidAddProject.Value == "true")
-            {
-                AddRowProject();
-                Program.DataValidAddProject.Value = "";
-            }
+            SelectDateProject();
+             
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
@@ -155,13 +101,11 @@ namespace CourseWork
         {
             ProjectsFormEdit formEdit = new ProjectsFormEdit();
 
+            Program.DataEditProjectId.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_id_project"].Value);
+
             formEdit.ShowDialog();
 
-            if (Program.DataValidEditProject.Value == "true")
-            {
-                EditRowProject();
-                Program.DataValidEditProject.Value = "";
-            }
+            SelectDateProject();
         }
 
         // Cобытие при 2-ом клике на ячейку позволяет провести редактирование
@@ -177,15 +121,13 @@ namespace CourseWork
                 Program.DataEditProjectCompletion.Value = view.Cells[4].Value.ToString();
                 Program.DataEditProjectLeader.Value = view.Cells[5].Value.ToString();
 
+                Program.DataEditProjectId.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_id_project"].Value);
+
                 ProjectsFormEdit formEdit = new ProjectsFormEdit();
 
                 formEdit.ShowDialog();
 
-                if (Program.DataValidEditProject.Value == "true")
-                {
-                    EditRowProject();
-                    Program.DataValidEditProject.Value = "";
-                }
+                SelectDateProject();
             }
         }
 

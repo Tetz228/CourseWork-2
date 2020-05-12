@@ -111,7 +111,6 @@
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменить статус";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Status_projectsFormEdit_FormClosed);
             this.Load += new System.EventHandler(this.Status_projectsFormEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

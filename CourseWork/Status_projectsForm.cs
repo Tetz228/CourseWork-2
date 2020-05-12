@@ -47,49 +47,6 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Функция добавления строки
-        private void AddRowStatusProject()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("AddStatus_project", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            connection.OpenConnect();
-
-            command.Parameters.AddWithValue("@status_name_project", SqlDbType.NVarChar).Value = Program.DataAddStatus_project.Value;
-
-            SqlParameter parameter = command.Parameters.AddWithValue("@id_status_project", SqlDbType.Int);
-
-            parameter.Direction = ParameterDirection.Output;
-
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
-
-            SelectDateStatusProject();
-        }
-
-        // Функция редактирования строки
-        private void EditRowStatusProject()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("EditStatus_project", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            connection.OpenConnect();
-
-            command.Parameters.AddWithValue("@status_name_project", SqlDbType.NVarChar).Value = Program.DataEditStatus_project.Value;
-            command.Parameters.AddWithValue("@id_status_project", Convert.ToInt32(dataGridViewStatus_projects.CurrentRow.Cells["Column_id_status_project"].Value));
-
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
-
-            SelectDateStatusProject();
-        }
-
         // Функция удаления строки
         private void DeleteRowStatusProject()
         {
@@ -116,11 +73,7 @@ namespace CourseWork
   
             formAdd.ShowDialog();
 
-            if (Program.DataValidAddStatus_project.Value == "true")
-            { 
-                AddRowStatusProject();
-                Program.DataValidAddStatus_project.Value = "";
-            }
+            SelectDateStatusProject();
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
@@ -128,17 +81,16 @@ namespace CourseWork
         {
             Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
 
+            Program.DataEditStatus_projectId.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells["Column_id_status_project"].Value);
+
+            Program.DataEditStatus_project.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells["Column_status_name_project"].Value);
+
             formEdit.ShowDialog();
 
-            if (Program.DataValidEditStatus_project.Value == "true")
-            {
-                EditRowStatusProject();
-                Program.DataValidEditStatus_project.Value = "";
-            }
-            
+            SelectDateStatusProject();
         }
 
-        // Cобытие при 2-ом клике на ячейку позволяет провести редактирование после проверки класса
+        // Cобытие при 2-ом клике на ячейку вызывает форму редактирования
         private void dataGridViewStatus_projects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Если не выбрана строка, содержащие заголовки
@@ -148,16 +100,13 @@ namespace CourseWork
 
                 Program.DataEditStatus_project.Value = view.Cells[1].Value.ToString();
 
+                Program.DataEditStatus_projectId.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells["Column_id_status_project"].Value);
+
                 Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
 
                 formEdit.ShowDialog();
 
-                if (Program.DataValidEditStatus_project.Value == "true")
-                {
-                    EditRowStatusProject();
-
-                    Program.DataValidEditStatus_project.Value = "";
-                }
+                SelectDateStatusProject();
             }
         }
 
@@ -170,7 +119,7 @@ namespace CourseWork
                 return;
         }
 
-        // При выделение строки и нажание на клавишу Delete
+        // При выделение строки и нажатие на клавишу Delete
         private void dataGridViewStatus_projects_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)

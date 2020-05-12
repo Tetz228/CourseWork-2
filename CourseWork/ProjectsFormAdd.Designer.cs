@@ -40,7 +40,6 @@
             this.labelValidStart = new System.Windows.Forms.Label();
             this.labelValidCompletion = new System.Windows.Forms.Label();
             this.labelValidLeader = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -49,7 +48,7 @@
             this.buttonAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonAdd.Depth = 0;
             this.buttonAdd.Icon = null;
-            this.buttonAdd.Location = new System.Drawing.Point(14, 265);
+            this.buttonAdd.Location = new System.Drawing.Point(15, 265);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.buttonAdd.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonAdd.Name = "buttonAdd";
@@ -159,7 +158,7 @@
             this.comboBox_fk_leader.ForeColor = System.Drawing.Color.White;
             this.comboBox_fk_leader.FormattingEnabled = true;
             this.comboBox_fk_leader.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.comboBox_fk_leader.Location = new System.Drawing.Point(14, 206);
+            this.comboBox_fk_leader.Location = new System.Drawing.Point(14, 216);
             this.comboBox_fk_leader.Name = "comboBox_fk_leader";
             this.comboBox_fk_leader.Size = new System.Drawing.Size(504, 26);
             this.comboBox_fk_leader.TabIndex = 5;
@@ -196,9 +195,9 @@
             this.labelValidStart.ForeColor = System.Drawing.Color.Red;
             this.labelValidStart.Location = new System.Drawing.Point(11, 179);
             this.labelValidStart.Name = "labelValidStart";
-            this.labelValidStart.Size = new System.Drawing.Size(141, 13);
+            this.labelValidStart.Size = new System.Drawing.Size(163, 26);
             this.labelValidStart.TabIndex = 47;
-            this.labelValidStart.Text = "Некорректные данные";
+            this.labelValidStart.Text = "Некорректные данные.\r\nФормат даты: DD.MM.YYYY";
             this.labelValidStart.Visible = false;
             // 
             // labelValidCompletion
@@ -208,9 +207,9 @@
             this.labelValidCompletion.ForeColor = System.Drawing.Color.Red;
             this.labelValidCompletion.Location = new System.Drawing.Point(285, 179);
             this.labelValidCompletion.Name = "labelValidCompletion";
-            this.labelValidCompletion.Size = new System.Drawing.Size(141, 13);
+            this.labelValidCompletion.Size = new System.Drawing.Size(163, 26);
             this.labelValidCompletion.TabIndex = 48;
-            this.labelValidCompletion.Text = "Некорректные данные";
+            this.labelValidCompletion.Text = "Некорректные данные.\r\nФормат даты: DD.MM.YYYY\r\n";
             this.labelValidCompletion.Visible = false;
             // 
             // labelValidLeader
@@ -218,29 +217,18 @@
             this.labelValidLeader.AutoSize = true;
             this.labelValidLeader.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidLeader.ForeColor = System.Drawing.Color.Red;
-            this.labelValidLeader.Location = new System.Drawing.Point(184, 235);
+            this.labelValidLeader.Location = new System.Drawing.Point(195, 245);
             this.labelValidLeader.Name = "labelValidLeader";
             this.labelValidLeader.Size = new System.Drawing.Size(141, 13);
             this.labelValidLeader.TabIndex = 49;
             this.labelValidLeader.Text = "Некорректные данные";
             this.labelValidLeader.Visible = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 137);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "неверно";
-            this.label1.Visible = false;
-            // 
             // ProjectsFormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 316);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelValidLeader);
             this.Controls.Add(this.labelValidCompletion);
             this.Controls.Add(this.labelValidStart);
@@ -258,7 +246,6 @@
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить проект";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectsFormAdd_FormClosed);
             this.Load += new System.EventHandler(this.ProjectsFormAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -278,6 +265,5 @@
         private System.Windows.Forms.Label labelValidStart;
         private System.Windows.Forms.Label labelValidCompletion;
         private System.Windows.Forms.Label labelValidLeader;
-        private System.Windows.Forms.Label label1;
     }
 }

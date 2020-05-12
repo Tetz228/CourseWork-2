@@ -20,19 +20,10 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы заполнять ComboBox
+        // При загрузки формы вызов функции заполнения ComboBox`а
         private void ProjectsFormAdd_Load(object sender, EventArgs e)
         {
             SelectEmployeeComboBox();
-        }
-
-        // При закрытии формы передать определенный текст в класс
-        private void ProjectsFormAdd_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
-        {
-            if (Program.DataValidAddProject.Value == "true")
-                return;
-            else
-                Program.DataValidAddProject.Value = "false";
         }
 
         // Заполнение ComboBox`а
@@ -59,35 +50,79 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // При нажатии валидация и передача текста в класс
+        // При нажатии валидация, если валидация прошла успешно, то добавление в бд
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
                 return;
             else
-            if (!ValidationDate(textBoxDate_start.Text))
             {
-                label1.Show();
-                return; 
-            }
-            else
-            {
-                Program.DataAddProjectName.Value = textBoxProject_name.Text.Trim();
-                Program.DataAddProjectTarget.Value = textBoxProject_target.Text.Trim();
-                Program.DataAddProjectStart.Value = textBoxDate_start.Text.Trim();
-                Program.DataAddProjectCompletion.Value = textBoxDate_completion.Text.Trim();
-                Program.DataAddProjectLeader.Value = comboBox_fk_leader.SelectedValue.ToString();
+                if (!(string.IsNullOrEmpty(textBoxDate_start.Text) || string.IsNullOrEmpty(textBoxDate_completion.Text)))
+                {
+                    if (!(ValidationDate(textBoxDate_start.Text) && ValidationDate(textBoxDate_completion.Text)))
+                    {
+                        labelValidStart.Show();
+                        labelValidCompletion.Show();
 
-                this.Close();
+                        return;
+                    }
+                    else
+                    {
+                        AddRowProject();
+
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    AddRowProject();
+
+                    this.Close();
+                }
             }
         }
 
-        // При нажатии передать определенный текст в класс
+        // При нажатии закрыть форму
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            Program.DataValidAddProject.Value = "false";
-
             this.Close();
+        }
+
+        // Функция добавления строки
+        private void AddRowProject()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("AddProjects", connection.GetSqlConnect());
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.OpenConnect();
+
+            if (string.IsNullOrWhiteSpace(textBoxProject_target.Text))
+                command.Parameters.AddWithValue("@project_target", SqlDbType.NVarChar).Value = DBNull.Value;
+            else
+                command.Parameters.AddWithValue("@project_target", SqlDbType.NVarChar).Value = textBoxProject_target.Text.Trim();
+
+            if (string.IsNullOrEmpty(textBoxDate_start.Text))
+                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = DBNull.Value;
+            else
+                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = textBoxDate_start.Text;
+
+            if (string.IsNullOrEmpty(textBoxDate_start.Text))
+                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = DBNull.Value;
+            else
+                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = textBoxDate_completion.Text;
+
+            command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
+            command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;
+
+            SqlParameter parameter = command.Parameters.AddWithValue("@id_project", SqlDbType.Int);
+
+            parameter.Direction = ParameterDirection.Output;
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
         }
 
         // Валидация TextBox`а
@@ -101,24 +136,6 @@ namespace CourseWork
 
                 check = 1;
             }
-            if (string.IsNullOrWhiteSpace(textBoxProject_target.Text))
-            {
-                labelValidTarget.Show();
-
-                check = 1;
-            }
-            if (string.IsNullOrWhiteSpace(textBoxDate_start.Text))
-            {
-                labelValidStart.Show();
-
-                check = 1;
-            }
-            if (string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
-            {
-                labelValidCompletion.Show();
-
-                check = 1;
-            }
             if (comboBox_fk_leader.Text == "Руководитель")
             {
                 labelValidLeader.Show();
@@ -129,30 +146,16 @@ namespace CourseWork
             if (check == 1)
                 return false;
             else
-            {
-                Program.DataValidAddProject.Value = "true";
-
                 return true;
-            }
         }
 
         // Валидация даты
-        private bool ValidationDate(string cheak)
+        private bool ValidationDate(string check)
         {
             string pattern = @"[0-9]{2}[-./][0-9]{2}[-./][0-9]{4}";
 
-            Match isMatch = Regex.Match(cheak, pattern);
+            Match isMatch = Regex.Match(check, pattern);
             return isMatch.Success;
-            //if (regex.IsMatch(textBoxDate_start.Text))
-            //{
-                
-            //}
-
-            //string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
-
-            //Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
-
-            //return isMatch.Success;
         }
 
         // При вводе в TextBox скрывать label
@@ -171,10 +174,6 @@ namespace CourseWork
         private void textBoxDate_start_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             labelValidStart.Hide();
-
-            //BACKSPACE, цифры, точка, минус
-            //if (!(e.KeyChar == 8 || (e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 46 || e.KeyChar == 45))
-            //    e.Handled = true;
         }
 
         // При вводе в TextBox скрывать label

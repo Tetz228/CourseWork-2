@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace CourseWork
 {
@@ -26,7 +22,7 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы передавать в TextBox`ы текст, полученный с классов
+        // При загрузки формы передавать в TextBox`ы текст, полученный с классов, и обрезать строки, если не пустые
         private void ProjectsFormEdit_Load(object sender, EventArgs e)
         {
             SelectEmployeeComboBox();
@@ -36,15 +32,12 @@ namespace CourseWork
             textBoxDate_start.Text = Program.DataEditProjectStart.Value;
             textBoxDate_completion.Text = Program.DataEditProjectCompletion.Value;
             comboBox_fk_leader.SelectedValue = Convert.ToInt32(Program.DataEditProjectLeader.Value);
-        }
 
-        // При закрытии формы передать определенный текст в класс
-        private void ProjectsFormEdit_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Program.DataValidEditProject.Value == "true")
-                return;
-            else
-                Program.DataValidEditProject.Value = "false";
+            if(!string.IsNullOrEmpty(textBoxDate_start.Text))
+                textBoxDate_start.Text = textBoxDate_start.Text.Substring(0, 10);
+
+            if (!string.IsNullOrEmpty(textBoxDate_completion.Text))
+                textBoxDate_completion.Text = textBoxDate_completion.Text.Substring(0, 10);
         }
 
         private void SelectEmployeeComboBox()
@@ -71,63 +64,133 @@ namespace CourseWork
             if (!CheckTextBox())
                 return;
             else
-            {
-                Program.DataEditProjectName.Value = textBoxProject_name.Text.Trim();
-                Program.DataEditProjectTarget.Value = textBoxProject_target.Text.Trim();
-                Program.DataEditProjectStart.Value = textBoxDate_start.Text.Trim();
-                Program.DataEditProjectCompletion.Value = textBoxDate_completion.Text.Trim();
-                Program.DataEditProjectLeader.Value = comboBox_fk_leader.SelectedValue.ToString();
-
-                this.Close();
-            }
-        }
-
-        // Валидация TextBox`а
-        private bool CheckTextBox()
-        {
-            int check = 0;
-
-            if (string.IsNullOrWhiteSpace(textBoxProject_name.Text))
-            {
-                labelValidProject.Show();
-
-                check = 1;
-            }
-            if (string.IsNullOrWhiteSpace(textBoxProject_target.Text))
-            {
-                labelValidTarget.Show();
-
-                check = 1;
-            }
-            if (string.IsNullOrWhiteSpace(textBoxDate_start.Text))
-            {
-                labelValidStart.Show();
-
-                check = 1;
-            }
-            if (string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
-            {
-                labelValidCompletion.Show();
-
-                check = 1;
-            }
-            
-            if (check == 1)
-                return false;
-            else
-            {
-                Program.DataValidEditProject.Value = "true";
-
-                return true;
-            }
+                CheckDateNull();
         }
 
         // При нажатии передать определенный текст в класс
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            Program.DataValidEditProject.Value = "false";
-
             this.Close();
+        }
+
+        // Функция редактирования строки
+        private void EditRowProject()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("EditProject", connection.GetSqlConnect());
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.OpenConnect();
+
+            if (string.IsNullOrWhiteSpace(textBoxProject_target.Text))
+                command.Parameters.AddWithValue("@project_target", SqlDbType.NVarChar).Value = DBNull.Value;
+            else
+                command.Parameters.AddWithValue("@project_target", SqlDbType.NVarChar).Value = textBoxProject_target.Text.Trim();
+
+            if(string.IsNullOrEmpty(textBoxDate_start.Text))
+                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = DBNull.Value;
+            else
+                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = textBoxDate_start.Text;
+
+            if (string.IsNullOrEmpty(textBoxDate_completion.Text))
+                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = DBNull.Value;
+            else
+                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = textBoxDate_completion.Text;
+
+            command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
+            command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;
+            command.Parameters.AddWithValue("@id_project", Convert.ToInt32(Program.DataEditProjectId.Value));
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
+        }
+
+        // Проверка даты на нулевое значение
+        private void CheckDateNull()
+        {
+            if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text) && !string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
+            {
+                if (!ValidationDate(textBoxDate_start.Text) && !ValidationDate(textBoxDate_completion.Text))
+                {
+                    labelValidStart.Show();
+                    labelValidCompletion.Show();
+
+                    return;
+                }
+                else
+                {
+                    EditRowProject();
+
+                    this.Close();
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text))
+                {
+                    if (!ValidationDate(textBoxDate_start.Text))
+                    {
+                        labelValidStart.Show();
+
+                        return;
+                    }
+                    else
+                    {
+                        EditRowProject();
+
+                        this.Close();
+
+                        return;
+                    }
+
+                }
+                if (!string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
+                {
+                    if (!ValidationDate(textBoxDate_completion.Text))
+                    {
+                        labelValidCompletion.Show();
+
+                        return;
+                    }
+                    else
+                    {
+                        EditRowProject();
+
+                        this.Close();
+
+                        return;
+                    }
+
+                }
+
+                EditRowProject();
+
+                this.Close();
+            }
+        }
+
+        // Валидация даты
+        private bool ValidationDate(string check)
+        {
+            string pattern = @"[0-9]{2}[-./][0-9]{2}[-./][0-9]{4}";
+
+            Match isMatch = Regex.Match(check, pattern);
+            return isMatch.Success;
+        }
+
+        // Валидация TextBox`а
+        private bool CheckTextBox()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxProject_name.Text))
+            {
+                labelValidProject.Show();
+
+                return false;
+            }
+           
+           return true;
         }
 
         // При вводе в TextBox скрывать label

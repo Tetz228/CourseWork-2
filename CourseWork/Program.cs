@@ -28,7 +28,7 @@ namespace CourseWork
 
         ///////////////////////////////////////////////
   
-        public static class DataAddStatus_project
+        public static class DataEditStatus_projectId
         {
             public static string Value { get; set; }
         }
@@ -40,41 +40,9 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
-        ///
-
-        public static class DataValidAddStatus_project
-        {
-            public static string Value { get; set; }
-        }
-
-        public static class DataValidEditStatus_project
-        {
-            public static string Value { get; set; }
-        }
-
         ///////////////////////////////////////////////
 
-        public static class DataAddProjectName
-        {
-            public static string Value { get; set; }
-        }
-
-        public static class DataAddProjectTarget
-        {
-            public static string Value { get; set; }
-        }
-
-        public static class DataAddProjectStart
-        {
-            public static string Value { get; set; }
-        }
-
-        public static class DataAddProjectCompletion
-        {
-            public static string Value { get; set; }
-        }
-
-        public static class DataAddProjectLeader
+        public static class DataEditProjectId
         {
             public static string Value { get; set; }
         }

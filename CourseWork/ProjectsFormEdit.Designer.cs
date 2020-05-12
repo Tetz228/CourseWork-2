@@ -35,10 +35,10 @@
             this.textBoxProject_target = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.textBoxProject_name = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.comboBox_fk_leader = new System.Windows.Forms.ComboBox();
-            this.labelValidCompletion = new System.Windows.Forms.Label();
-            this.labelValidStart = new System.Windows.Forms.Label();
             this.labelValidTarget = new System.Windows.Forms.Label();
             this.labelValidProject = new System.Windows.Forms.Label();
+            this.labelValidCompletion = new System.Windows.Forms.Label();
+            this.labelValidStart = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonBack
@@ -80,7 +80,7 @@
             this.textBoxDate_start.Depth = 0;
             this.textBoxDate_start.Hint = "Дата начала";
             this.textBoxDate_start.Location = new System.Drawing.Point(14, 153);
-            this.textBoxDate_start.MaxLength = 32767;
+            this.textBoxDate_start.MaxLength = 10;
             this.textBoxDate_start.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxDate_start.Name = "textBoxDate_start";
             this.textBoxDate_start.PasswordChar = '\0';
@@ -99,7 +99,7 @@
             this.textBoxDate_completion.Depth = 0;
             this.textBoxDate_completion.Hint = "Дата сдачи";
             this.textBoxDate_completion.Location = new System.Drawing.Point(288, 153);
-            this.textBoxDate_completion.MaxLength = 32767;
+            this.textBoxDate_completion.MaxLength = 10;
             this.textBoxDate_completion.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxDate_completion.Name = "textBoxDate_completion";
             this.textBoxDate_completion.PasswordChar = '\0';
@@ -118,7 +118,7 @@
             this.textBoxProject_target.Hint = "Цель проекта";
             this.textBoxProject_target.ImeMode = System.Windows.Forms.ImeMode.On;
             this.textBoxProject_target.Location = new System.Drawing.Point(288, 95);
-            this.textBoxProject_target.MaxLength = 32767;
+            this.textBoxProject_target.MaxLength = 200;
             this.textBoxProject_target.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxProject_target.Name = "textBoxProject_target";
             this.textBoxProject_target.PasswordChar = '\0';
@@ -136,7 +136,7 @@
             this.textBoxProject_name.Depth = 0;
             this.textBoxProject_name.Hint = "Название проекта";
             this.textBoxProject_name.Location = new System.Drawing.Point(14, 95);
-            this.textBoxProject_name.MaxLength = 32767;
+            this.textBoxProject_name.MaxLength = 100;
             this.textBoxProject_name.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxProject_name.Name = "textBoxProject_name";
             this.textBoxProject_name.PasswordChar = '\0';
@@ -157,34 +157,10 @@
             this.comboBox_fk_leader.ForeColor = System.Drawing.Color.White;
             this.comboBox_fk_leader.FormattingEnabled = true;
             this.comboBox_fk_leader.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.comboBox_fk_leader.Location = new System.Drawing.Point(14, 206);
+            this.comboBox_fk_leader.Location = new System.Drawing.Point(14, 217);
             this.comboBox_fk_leader.Name = "comboBox_fk_leader";
             this.comboBox_fk_leader.Size = new System.Drawing.Size(504, 26);
             this.comboBox_fk_leader.TabIndex = 32;
-            // 
-            // labelValidCompletion
-            // 
-            this.labelValidCompletion.AutoSize = true;
-            this.labelValidCompletion.Font = new System.Drawing.Font("Verdana", 8F);
-            this.labelValidCompletion.ForeColor = System.Drawing.Color.Red;
-            this.labelValidCompletion.Location = new System.Drawing.Point(285, 179);
-            this.labelValidCompletion.Name = "labelValidCompletion";
-            this.labelValidCompletion.Size = new System.Drawing.Size(141, 13);
-            this.labelValidCompletion.TabIndex = 53;
-            this.labelValidCompletion.Text = "Некорректные данные";
-            this.labelValidCompletion.Visible = false;
-            // 
-            // labelValidStart
-            // 
-            this.labelValidStart.AutoSize = true;
-            this.labelValidStart.Font = new System.Drawing.Font("Verdana", 8F);
-            this.labelValidStart.ForeColor = System.Drawing.Color.Red;
-            this.labelValidStart.Location = new System.Drawing.Point(11, 179);
-            this.labelValidStart.Name = "labelValidStart";
-            this.labelValidStart.Size = new System.Drawing.Size(141, 13);
-            this.labelValidStart.TabIndex = 52;
-            this.labelValidStart.Text = "Некорректные данные";
-            this.labelValidStart.Visible = false;
             // 
             // labelValidTarget
             // 
@@ -205,18 +181,42 @@
             this.labelValidProject.ForeColor = System.Drawing.Color.Red;
             this.labelValidProject.Location = new System.Drawing.Point(12, 121);
             this.labelValidProject.Name = "labelValidProject";
-            this.labelValidProject.Size = new System.Drawing.Size(141, 13);
+            this.labelValidProject.Size = new System.Drawing.Size(170, 13);
             this.labelValidProject.TabIndex = 50;
-            this.labelValidProject.Text = "Некорректные данные";
+            this.labelValidProject.Text = "Поле не может быть пустым";
             this.labelValidProject.Visible = false;
+            // 
+            // labelValidCompletion
+            // 
+            this.labelValidCompletion.AutoSize = true;
+            this.labelValidCompletion.Font = new System.Drawing.Font("Verdana", 8F);
+            this.labelValidCompletion.ForeColor = System.Drawing.Color.Red;
+            this.labelValidCompletion.Location = new System.Drawing.Point(285, 179);
+            this.labelValidCompletion.Name = "labelValidCompletion";
+            this.labelValidCompletion.Size = new System.Drawing.Size(163, 26);
+            this.labelValidCompletion.TabIndex = 53;
+            this.labelValidCompletion.Text = "Некорректные данные.\r\nФормат даты: DD.MM.YYYY\r\n";
+            this.labelValidCompletion.Visible = false;
+            // 
+            // labelValidStart
+            // 
+            this.labelValidStart.AutoSize = true;
+            this.labelValidStart.Font = new System.Drawing.Font("Verdana", 8F);
+            this.labelValidStart.ForeColor = System.Drawing.Color.Red;
+            this.labelValidStart.Location = new System.Drawing.Point(12, 179);
+            this.labelValidStart.Name = "labelValidStart";
+            this.labelValidStart.Size = new System.Drawing.Size(163, 26);
+            this.labelValidStart.TabIndex = 54;
+            this.labelValidStart.Text = "Некорректные данные.\r\nФормат даты: DD.MM.YYYY";
+            this.labelValidStart.Visible = false;
             // 
             // ProjectsFormEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 316);
-            this.Controls.Add(this.labelValidCompletion);
             this.Controls.Add(this.labelValidStart);
+            this.Controls.Add(this.labelValidCompletion);
             this.Controls.Add(this.labelValidTarget);
             this.Controls.Add(this.labelValidProject);
             this.Controls.Add(this.textBoxDate_start);
@@ -231,7 +231,6 @@
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменить проект";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectsFormEdit_FormClosed);
             this.Load += new System.EventHandler(this.ProjectsFormEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -246,9 +245,9 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxProject_target;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxProject_name;
         private System.Windows.Forms.ComboBox comboBox_fk_leader;
-        private System.Windows.Forms.Label labelValidCompletion;
-        private System.Windows.Forms.Label labelValidStart;
         private System.Windows.Forms.Label labelValidTarget;
         private System.Windows.Forms.Label labelValidProject;
+        private System.Windows.Forms.Label labelValidCompletion;
+        private System.Windows.Forms.Label labelValidStart;
     }
 }

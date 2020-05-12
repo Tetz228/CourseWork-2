@@ -38,18 +38,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewProjects = new System.Windows.Forms.DataGridView();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.menuStripProjects = new System.Windows.Forms.MenuStrip();
-            this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Column_id_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_project_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_project_target = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_date_start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_date_completion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ComboBox_fk_leader = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.menuStripProjects = new System.Windows.Forms.MenuStrip();
+            this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects)).BeginInit();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -105,6 +105,77 @@
             this.dataGridViewProjects.TabIndex = 4;
             this.dataGridViewProjects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProjects_CellDoubleClick);
             this.dataGridViewProjects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewProjects_UserDeletingRow);
+            // 
+            // Column_id_project
+            // 
+            this.Column_id_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_id_project.DataPropertyName = "id_project";
+            this.Column_id_project.HeaderText = "Id";
+            this.Column_id_project.Name = "Column_id_project";
+            this.Column_id_project.ReadOnly = true;
+            this.Column_id_project.Visible = false;
+            // 
+            // Column_project_name
+            // 
+            this.Column_project_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_project_name.DataPropertyName = "project_name";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_project_name.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column_project_name.HeaderText = "Название проекта";
+            this.Column_project_name.Name = "Column_project_name";
+            this.Column_project_name.ReadOnly = true;
+            // 
+            // Column_project_target
+            // 
+            this.Column_project_target.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_project_target.DataPropertyName = "project_target";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.NullValue = "Не указана";
+            this.Column_project_target.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column_project_target.HeaderText = "Цель проекта";
+            this.Column_project_target.Name = "Column_project_target";
+            this.Column_project_target.ReadOnly = true;
+            // 
+            // Column_date_start
+            // 
+            this.Column_date_start.DataPropertyName = "date_start";
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = "Не указана";
+            this.Column_date_start.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column_date_start.HeaderText = "Дата начала";
+            this.Column_date_start.Name = "Column_date_start";
+            this.Column_date_start.ReadOnly = true;
+            this.Column_date_start.Width = 90;
+            // 
+            // Column_date_completion
+            // 
+            this.Column_date_completion.DataPropertyName = "date_completion";
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = "Не указана";
+            this.Column_date_completion.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column_date_completion.HeaderText = "Дата завершения";
+            this.Column_date_completion.Name = "Column_date_completion";
+            this.Column_date_completion.ReadOnly = true;
+            this.Column_date_completion.Width = 105;
+            // 
+            // ComboBox_fk_leader
+            // 
+            this.ComboBox_fk_leader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_leader.DataPropertyName = "fk_leader";
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_leader.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ComboBox_fk_leader.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_leader.HeaderText = "Руководитель";
+            this.ComboBox_fk_leader.Name = "ComboBox_fk_leader";
+            this.ComboBox_fk_leader.ReadOnly = true;
+            this.ComboBox_fk_leader.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // toolStripContainer1
             // 
@@ -164,74 +235,6 @@
             this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
-            // 
-            // Column_id_project
-            // 
-            this.Column_id_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_id_project.DataPropertyName = "id_project";
-            this.Column_id_project.HeaderText = "Id";
-            this.Column_id_project.Name = "Column_id_project";
-            this.Column_id_project.ReadOnly = true;
-            this.Column_id_project.Visible = false;
-            // 
-            // Column_project_name
-            // 
-            this.Column_project_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_project_name.DataPropertyName = "project_name";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_project_name.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column_project_name.HeaderText = "Название проекта";
-            this.Column_project_name.Name = "Column_project_name";
-            this.Column_project_name.ReadOnly = true;
-            // 
-            // Column_project_target
-            // 
-            this.Column_project_target.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_project_target.DataPropertyName = "project_target";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_project_target.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column_project_target.HeaderText = "Цель проекта";
-            this.Column_project_target.Name = "Column_project_target";
-            this.Column_project_target.ReadOnly = true;
-            // 
-            // Column_date_start
-            // 
-            this.Column_date_start.DataPropertyName = "date_start";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column_date_start.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column_date_start.HeaderText = "Дата начала";
-            this.Column_date_start.Name = "Column_date_start";
-            this.Column_date_start.ReadOnly = true;
-            this.Column_date_start.Width = 90;
-            // 
-            // Column_date_completion
-            // 
-            this.Column_date_completion.DataPropertyName = "date_completion";
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.Column_date_completion.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column_date_completion.HeaderText = "Дата завершения";
-            this.Column_date_completion.Name = "Column_date_completion";
-            this.Column_date_completion.ReadOnly = true;
-            this.Column_date_completion.Width = 105;
-            // 
-            // ComboBox_fk_leader
-            // 
-            this.ComboBox_fk_leader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_leader.DataPropertyName = "fk_leader";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_leader.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ComboBox_fk_leader.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ComboBox_fk_leader.HeaderText = "Руководитель";
-            this.ComboBox_fk_leader.Name = "ComboBox_fk_leader";
-            this.ComboBox_fk_leader.ReadOnly = true;
-            this.ComboBox_fk_leader.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // ProjectsForm
             // 
