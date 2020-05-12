@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Data.SqlClient;
 
 namespace CourseWork
 {
@@ -38,11 +39,29 @@ namespace CourseWork
                 return;
             else
             {
-                Program.DataEditProjects_role.Value = textBoxEdit.Text.Trim();
-
+                EditRowProjects_role();
                 this.Close();
             }
             
+        }
+
+        // Функция редактирования строки
+        private void EditRowProjects_role()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("EditProjects_role", connection.GetSqlConnect());
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.OpenConnect();
+
+            command.Parameters.AddWithValue("@project_role_name", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
+            command.Parameters.AddWithValue("@id_project_role", Convert.ToInt32(Program.DataEditProjects_roleId.Value));
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
+
         }
 
         // Валидация TextBox`а
@@ -55,28 +74,13 @@ namespace CourseWork
                 return false;
             }
             else
-            {
-                Program.DataValidEditProjects_role.Value = "true";
-
                 return true;
-            }
         }
 
         // При нажатии передать определенный текст в класс
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            Program.DataValidEditProjects_role.Value = "false";
-
             this.Close();
-        }
-
-        // При закрытии формы передать определенный текст в класс
-        private void Projects_roleFormEdit_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Program.DataValidEditProjects_role.Value == "true")
-                return;
-            else
-                Program.DataValidEditProjects_role.Value = "false";
         }
 
         // При вводе в TextBox скрывать label

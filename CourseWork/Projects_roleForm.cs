@@ -53,49 +53,6 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Функция добавления строки
-        private void AddRowProjects_role()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("AddProjects_role", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            connection.OpenConnect();
-
-            command.Parameters.AddWithValue("@project_role_name", SqlDbType.NVarChar).Value = Program.DataAddProjects_role.Value;
-
-            SqlParameter parameter = command.Parameters.AddWithValue("@id_project_role", SqlDbType.Int);
-
-            parameter.Direction = ParameterDirection.Output;
-
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
-
-            SelectDateProjects_role();
-        }
-
-        // Функция редактирования строки
-        private void EditRowProjects_role()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("EditProjects_role", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            connection.OpenConnect();
-
-            command.Parameters.AddWithValue("@project_role_name", SqlDbType.NVarChar).Value = Program.DataEditProjects_role.Value;
-            command.Parameters.AddWithValue("@id_project_role", Convert.ToInt32(dataGridViewProjects_role.CurrentRow.Cells["Column_id_project_role"].Value));
-
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
-
-            SelectDateProjects_role();
-        }
-
         // Функция удаления строки
         private void DeleteRowProjects_role()
         {
@@ -122,11 +79,7 @@ namespace CourseWork
 
             formAdd.ShowDialog();
 
-            if (Program.DataValidAddProjects_role.Value == "true")
-            {
-                AddRowProjects_role();
-                Program.DataValidAddProjects_role.Value = "";
-            }
+            SelectDateProjects_role();
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
@@ -134,13 +87,13 @@ namespace CourseWork
         {
             Projects_roleFormEdit formEdit = new Projects_roleFormEdit();
 
+            Program.DataEditProjects_roleId.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells["Column_id_project_role"].Value);
+
+            Program.DataEditProjects_role.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells["Column_project_role_name"].Value);
+
             formEdit.ShowDialog();
 
-            if (Program.DataValidEditProjects_role.Value == "true")
-            {
-                EditRowProjects_role();
-                Program.DataValidEditProjects_role.Value = "";
-            }
+            SelectDateProjects_role();
         }
 
         // Cобытие при 2-ом клике на ячейку позволяет провести редактирование
@@ -157,11 +110,7 @@ namespace CourseWork
 
                 formEdit.ShowDialog();
 
-                if (Program.DataValidEditProjects_role.Value == "true")
-                {
-                    EditRowProjects_role();
-                    Program.DataValidEditProjects_role.Value = "";
-                }
+                SelectDateProjects_role();
             }
         }
 

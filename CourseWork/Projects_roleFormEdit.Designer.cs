@@ -110,7 +110,6 @@
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменить роль";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Projects_roleFormEdit_FormClosed);
             this.Load += new System.EventHandler(this.Projects_roleFormEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -76,12 +76,7 @@ namespace CourseWork
 
         ///
 
-        public static class DataValidAddProject
-        {
-            public static string Value { get; set; }
-        }
-
-        public static class DataValidEditProject
+        public static class DataEditProjects_roleId
         {
             public static string Value { get; set; }
         }

@@ -101,6 +101,11 @@ namespace CourseWork
             ProjectsFormEdit formEdit = new ProjectsFormEdit();
 
             Program.DataEditProjectId.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_id_project"].Value);
+            Program.DataEditProjectName.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_project_name"].Value);
+            Program.DataEditProjectTarget.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_project_target"].Value);
+            Program.DataEditProjectStart.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_date_start"].Value);
+            Program.DataEditProjectCompletion.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_date_completion"].Value);
+            Program.DataEditProjectLeader.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["ComboBox_fk_leader"].Value);
 
             formEdit.ShowDialog();
 
@@ -119,7 +124,6 @@ namespace CourseWork
                 Program.DataEditProjectStart.Value = view.Cells[3].Value.ToString();
                 Program.DataEditProjectCompletion.Value = view.Cells[4].Value.ToString();
                 Program.DataEditProjectLeader.Value = view.Cells[5].Value.ToString();
-
                 Program.DataEditProjectId.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_id_project"].Value);
 
                 ProjectsFormEdit formEdit = new ProjectsFormEdit();

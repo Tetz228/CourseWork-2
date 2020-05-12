@@ -110,7 +110,6 @@
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить роль";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Projects_roleFormAdd_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
