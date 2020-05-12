@@ -91,9 +91,9 @@
             this.labelValid.ForeColor = System.Drawing.Color.Red;
             this.labelValid.Location = new System.Drawing.Point(18, 128);
             this.labelValid.Name = "labelValid";
-            this.labelValid.Size = new System.Drawing.Size(141, 13);
+            this.labelValid.Size = new System.Drawing.Size(170, 13);
             this.labelValid.TabIndex = 45;
-            this.labelValid.Text = "Некорректные данные";
+            this.labelValid.Text = "Поле не может быть пустым";
             this.labelValid.Visible = false;
             // 
             // Projects_roleFormAdd

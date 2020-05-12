@@ -92,8 +92,7 @@ namespace CourseWork
 
             formAdd.ShowDialog();
 
-            SelectDateProject();
-             
+            SelectDateProject();   
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки

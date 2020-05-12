@@ -36,7 +36,6 @@
             this.textBoxDate_start = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.comboBox_fk_leader = new System.Windows.Forms.ComboBox();
             this.labelValidProject = new System.Windows.Forms.Label();
-            this.labelValidTarget = new System.Windows.Forms.Label();
             this.labelValidStart = new System.Windows.Forms.Label();
             this.labelValidCompletion = new System.Windows.Forms.Label();
             this.labelValidLeader = new System.Windows.Forms.Label();
@@ -111,7 +110,6 @@
             this.textBoxProject_target.TabIndex = 2;
             this.textBoxProject_target.TabStop = false;
             this.textBoxProject_target.UseSystemPasswordChar = false;
-            this.textBoxProject_target.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxProject_target_KeyPress);
             // 
             // textBoxDate_completion
             // 
@@ -171,22 +169,10 @@
             this.labelValidProject.ForeColor = System.Drawing.Color.Red;
             this.labelValidProject.Location = new System.Drawing.Point(12, 121);
             this.labelValidProject.Name = "labelValidProject";
-            this.labelValidProject.Size = new System.Drawing.Size(141, 13);
+            this.labelValidProject.Size = new System.Drawing.Size(170, 13);
             this.labelValidProject.TabIndex = 45;
-            this.labelValidProject.Text = "Некорректные данные";
+            this.labelValidProject.Text = "Поле не может быть пустым";
             this.labelValidProject.Visible = false;
-            // 
-            // labelValidTarget
-            // 
-            this.labelValidTarget.AutoSize = true;
-            this.labelValidTarget.Font = new System.Drawing.Font("Verdana", 8F);
-            this.labelValidTarget.ForeColor = System.Drawing.Color.Red;
-            this.labelValidTarget.Location = new System.Drawing.Point(285, 121);
-            this.labelValidTarget.Name = "labelValidTarget";
-            this.labelValidTarget.Size = new System.Drawing.Size(141, 13);
-            this.labelValidTarget.TabIndex = 46;
-            this.labelValidTarget.Text = "Некорректные данные";
-            this.labelValidTarget.Visible = false;
             // 
             // labelValidStart
             // 
@@ -232,7 +218,6 @@
             this.Controls.Add(this.labelValidLeader);
             this.Controls.Add(this.labelValidCompletion);
             this.Controls.Add(this.labelValidStart);
-            this.Controls.Add(this.labelValidTarget);
             this.Controls.Add(this.labelValidProject);
             this.Controls.Add(this.textBoxDate_start);
             this.Controls.Add(this.textBoxDate_completion);
@@ -261,7 +246,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxDate_start;
         private System.Windows.Forms.ComboBox comboBox_fk_leader;
         private System.Windows.Forms.Label labelValidProject;
-        private System.Windows.Forms.Label labelValidTarget;
         private System.Windows.Forms.Label labelValidStart;
         private System.Windows.Forms.Label labelValidCompletion;
         private System.Windows.Forms.Label labelValidLeader;

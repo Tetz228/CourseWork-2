@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -10,6 +9,9 @@ namespace CourseWork
 {
     public partial class ProjectsFormEdit : MaterialForm
     {
+        DateTime dateTimeStart;
+        DateTime dateTimeCompletion;
+
         public ProjectsFormEdit()
         {
             InitializeComponent();
@@ -21,7 +23,7 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы передавать в TextBox`ы текст, полученный с классов, и обрезать строки, если не пустые
+        // При загрузки формы передавать в TextBox`ы текст, полученный с классов, и обрезать строки даты из-за времени, если не пустые
         private void ProjectsFormEdit_Load(object sender, EventArgs e)
         {
             SelectEmployeeComboBox();
@@ -37,9 +39,24 @@ namespace CourseWork
 
             if (!string.IsNullOrEmpty(textBoxDate_completion.Text))
                 textBoxDate_completion.Text = textBoxDate_completion.Text.Substring(0, 10);
-
         }
 
+        // При нажатии валидация TextBox`ов
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if (!CheckTextBox())
+                return;
+            else
+                CheckDateNullAndCorrect();
+        }
+
+        // При нажатии закрывать форму
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Заполнение ComboBox`а
         private void SelectEmployeeComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
@@ -58,29 +75,12 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // При нажатии валидация и передача текста в класс
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            if (!CheckTextBox())
-                return;
-            else
-                CheckDateNull();
-        }
-
-        // При нажатии передать определенный текст в класс
-        private void buttonBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         // Функция редактирования строки
         private void EditRowProject()
         {
             ConnectionDB connection = new ConnectionDB();
             SqlCommand command = new SqlCommand("EditProject", connection.GetSqlConnect());
-            DateTime dateTimeStart;
-            DateTime dateTimeCompletion;
-           
+            
             command.CommandType = CommandType.StoredProcedure;
 
             connection.OpenConnect();
@@ -95,6 +95,7 @@ namespace CourseWork
             else
             {
                 dateTimeStart = DateTime.Parse(textBoxDate_start.Text);
+
                 command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = dateTimeStart;
             }
 
@@ -103,6 +104,7 @@ namespace CourseWork
             else
             {
                 dateTimeCompletion = DateTime.Parse(textBoxDate_completion.Text);
+
                 command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = dateTimeCompletion;
             }
 
@@ -115,12 +117,15 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Проверка даты на нулевое значение
-        private void CheckDateNull()
+        // Проверка даты на нулевое значение и на формат даты
+        private void CheckDateNullAndCorrect()
         {
+            bool start = DateTime.TryParse(textBoxDate_start.Text, out dateTimeStart);
+            bool completion = DateTime.TryParse(textBoxDate_completion.Text, out dateTimeCompletion);
+
             if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text) && !string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
             {
-                if (!(ValidationDate(textBoxDate_start.Text) && ValidationDate(textBoxDate_completion.Text)))
+                if (!(start && completion))
                 {
                     labelValidStart.Show();
                     labelValidCompletion.Show();
@@ -138,7 +143,7 @@ namespace CourseWork
             {
                 if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text))
                 {
-                    if (!ValidationDate(textBoxDate_start.Text))
+                    if (!start)
                     {
                         labelValidStart.Show();
 
@@ -152,11 +157,10 @@ namespace CourseWork
 
                         return;
                     }
-
                 }
                 if (!string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
                 {
-                    if (!ValidationDate(textBoxDate_completion.Text))
+                    if (!completion)
                     {
                         labelValidCompletion.Show();
 
@@ -170,22 +174,12 @@ namespace CourseWork
 
                         return;
                     }
-
                 }
 
                 EditRowProject();
 
                 this.Close();
             }
-        }
-
-        // Валидация даты
-        private bool ValidationDate(string check)
-        {
-            string pattern = @"[0-9]{2}[-./][0-9]{2}[-./][0-9]{4}";
-
-            Match isMatch = Regex.Match(check, pattern);
-            return isMatch.Success;
         }
 
         // Валидация TextBox`а
@@ -205,12 +199,6 @@ namespace CourseWork
         private void textBoxProject_name_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidProject.Hide();
-        }
-
-        // При вводе в TextBox скрывать label
-        private void textBoxProject_target_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            labelValidTarget.Hide();
         }
 
         // При вводе в TextBox скрывать label

@@ -20,7 +20,7 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При нажатии валидация, если валидация прошла успешно, то добавление в бд
+        // При нажатии валидация TextBox`а, если валидация прошла успешно, то добавление в бд
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())

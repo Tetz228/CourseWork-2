@@ -3,12 +3,14 @@ using System.Data;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
-using System.Text.RegularExpressions;
 
 namespace CourseWork
 {
     public partial class ProjectsFormAdd : MaterialForm
     {
+        DateTime dateTimeStart;
+        DateTime dateTimeCompletion;
+
         public ProjectsFormAdd()
         {
             InitializeComponent();
@@ -56,7 +58,7 @@ namespace CourseWork
             if (!CheckTextBox())
                 return;
             else
-                CheckDateNull();
+                CheckDateNullAndCorrect();
         }
 
         // При нажатии закрыть форму
@@ -65,12 +67,15 @@ namespace CourseWork
             this.Close();
         }
 
-        // Проверка даты на нулевое значение
-        private void CheckDateNull()
+        // Проверка даты на нулевое значение и на корректность
+        private void CheckDateNullAndCorrect()
         {
+            bool start = DateTime.TryParse(textBoxDate_start.Text, out dateTimeStart);
+            bool completion = DateTime.TryParse(textBoxDate_completion.Text, out dateTimeCompletion);
+
             if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text) && !string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
             {
-                if (!(ValidationDate(textBoxDate_start.Text) && ValidationDate(textBoxDate_completion.Text)))
+                if (!(start && completion))
                 {
                     labelValidStart.Show();
                     labelValidCompletion.Show();
@@ -88,7 +93,7 @@ namespace CourseWork
             {
                 if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text))
                 {
-                    if (!ValidationDate(textBoxDate_start.Text))
+                    if (!start)
                     {
                         labelValidStart.Show();
 
@@ -102,11 +107,10 @@ namespace CourseWork
 
                         return;
                     }
-
                 }
                 if (!string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
                 {
-                    if (!ValidationDate(textBoxDate_completion.Text))
+                    if (!completion)
                     {
                         labelValidCompletion.Show();
 
@@ -120,7 +124,6 @@ namespace CourseWork
 
                         return;
                     }
-
                 }
 
                 AddRowProject();
@@ -134,8 +137,6 @@ namespace CourseWork
         {
             ConnectionDB connection = new ConnectionDB();
             SqlCommand command = new SqlCommand("AddProjects", connection.GetSqlConnect());
-            DateTime dateTimeStart;
-            DateTime dateTimeCompletion;
             
             command.CommandType = CommandType.StoredProcedure;
 
@@ -151,6 +152,7 @@ namespace CourseWork
             else
             {
                 dateTimeStart = DateTime.Parse(textBoxDate_start.Text);
+
                 command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = dateTimeStart;
             }
 
@@ -159,9 +161,9 @@ namespace CourseWork
             else
             {
                 dateTimeCompletion = DateTime.Parse(textBoxDate_completion.Text);
+
                 command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = dateTimeCompletion;
-            }
-                
+            }  
 
             command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
             command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;
@@ -199,25 +201,10 @@ namespace CourseWork
                 return true;
         }
 
-        // Валидация даты
-        private bool ValidationDate(string check)
-        {
-            string pattern = @"[0-9]{2}[-./][0-9]{2}[-./][0-9]{4}";
-
-            Match isMatch = Regex.Match(check, pattern);
-            return isMatch.Success;
-        }
-
         // При вводе в TextBox скрывать label
         private void textBoxProject_name_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             labelValidProject.Hide();
-        }
-
-        // При вводе в TextBox скрывать label
-        private void textBoxProject_target_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            labelValidTarget.Hide();
         }
 
         // Ввод только определенных символов и при вводе в TextBox скрывать label
@@ -229,10 +216,6 @@ namespace CourseWork
         // Ввод только определенных символов и при вводе в TextBox скрывать label
         private void textBoxDate_completion_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
-            // цифры, слеш(/), точка, минус, BACKSPACE
-            if (!((e.KeyChar >= 48 && e.KeyChar <= 57) || e.KeyChar == 47 || e.KeyChar == 46 || e.KeyChar == 45 || e.KeyChar == 8))
-                e.Handled = true;
-
             labelValidCompletion.Hide();
         }
     

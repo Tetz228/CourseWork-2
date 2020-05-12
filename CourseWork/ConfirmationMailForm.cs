@@ -110,7 +110,6 @@ namespace CourseWork
             global = SendingCode(Program.DataEmailReg.Value);
         }
 
-
         private void ConfirmationMailForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Form registration = Application.OpenForms[1];

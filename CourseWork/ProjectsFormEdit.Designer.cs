@@ -35,7 +35,6 @@
             this.textBoxProject_target = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.textBoxProject_name = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.comboBox_fk_leader = new System.Windows.Forms.ComboBox();
-            this.labelValidTarget = new System.Windows.Forms.Label();
             this.labelValidProject = new System.Windows.Forms.Label();
             this.labelValidCompletion = new System.Windows.Forms.Label();
             this.labelValidStart = new System.Windows.Forms.Label();
@@ -129,7 +128,6 @@
             this.textBoxProject_target.TabIndex = 29;
             this.textBoxProject_target.TabStop = false;
             this.textBoxProject_target.UseSystemPasswordChar = false;
-            this.textBoxProject_target.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxProject_target_KeyPress);
             // 
             // textBoxProject_name
             // 
@@ -161,18 +159,6 @@
             this.comboBox_fk_leader.Name = "comboBox_fk_leader";
             this.comboBox_fk_leader.Size = new System.Drawing.Size(504, 26);
             this.comboBox_fk_leader.TabIndex = 32;
-            // 
-            // labelValidTarget
-            // 
-            this.labelValidTarget.AutoSize = true;
-            this.labelValidTarget.Font = new System.Drawing.Font("Verdana", 8F);
-            this.labelValidTarget.ForeColor = System.Drawing.Color.Red;
-            this.labelValidTarget.Location = new System.Drawing.Point(285, 121);
-            this.labelValidTarget.Name = "labelValidTarget";
-            this.labelValidTarget.Size = new System.Drawing.Size(141, 13);
-            this.labelValidTarget.TabIndex = 51;
-            this.labelValidTarget.Text = "Некорректные данные";
-            this.labelValidTarget.Visible = false;
             // 
             // labelValidProject
             // 
@@ -217,7 +203,6 @@
             this.ClientSize = new System.Drawing.Size(528, 316);
             this.Controls.Add(this.labelValidStart);
             this.Controls.Add(this.labelValidCompletion);
-            this.Controls.Add(this.labelValidTarget);
             this.Controls.Add(this.labelValidProject);
             this.Controls.Add(this.textBoxDate_start);
             this.Controls.Add(this.textBoxDate_completion);
@@ -245,7 +230,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxProject_target;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxProject_name;
         private System.Windows.Forms.ComboBox comboBox_fk_leader;
-        private System.Windows.Forms.Label labelValidTarget;
         private System.Windows.Forms.Label labelValidProject;
         private System.Windows.Forms.Label labelValidCompletion;
         private System.Windows.Forms.Label labelValidStart;
