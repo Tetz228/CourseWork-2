@@ -33,37 +33,44 @@
             this.textBox_History_date_project = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.buttonBack = new MaterialSkin.Controls.MaterialRaisedButton();
             this.buttonAdd = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.labelValidDate = new System.Windows.Forms.Label();
+            this.labelValidStatus = new System.Windows.Forms.Label();
+            this.labelValidProject = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ComboBox_fk_project
             // 
             this.ComboBox_fk_project.BackColor = System.Drawing.Color.DimGray;
+            this.ComboBox_fk_project.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox_fk_project.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ComboBox_fk_project.ForeColor = System.Drawing.Color.White;
             this.ComboBox_fk_project.FormattingEnabled = true;
             this.ComboBox_fk_project.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ComboBox_fk_project.Location = new System.Drawing.Point(12, 82);
+            this.ComboBox_fk_project.Location = new System.Drawing.Point(11, 90);
             this.ComboBox_fk_project.Name = "ComboBox_fk_project";
             this.ComboBox_fk_project.Size = new System.Drawing.Size(507, 26);
             this.ComboBox_fk_project.TabIndex = 6;
+            this.ComboBox_fk_project.SelectedValueChanged += new System.EventHandler(this.ComboBox_fk_project_SelectedValueChanged);
             // 
             // ComboBox_fk_status_project
             // 
             this.ComboBox_fk_status_project.BackColor = System.Drawing.Color.DimGray;
+            this.ComboBox_fk_status_project.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox_fk_status_project.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ComboBox_fk_status_project.ForeColor = System.Drawing.Color.White;
             this.ComboBox_fk_status_project.FormattingEnabled = true;
             this.ComboBox_fk_status_project.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ComboBox_fk_status_project.Location = new System.Drawing.Point(12, 132);
+            this.ComboBox_fk_status_project.Location = new System.Drawing.Point(12, 148);
             this.ComboBox_fk_status_project.Name = "ComboBox_fk_status_project";
             this.ComboBox_fk_status_project.Size = new System.Drawing.Size(219, 26);
             this.ComboBox_fk_status_project.TabIndex = 7;
+            this.ComboBox_fk_status_project.SelectedValueChanged += new System.EventHandler(this.ComboBox_fk_status_project_SelectedValueChanged);
             // 
             // textBox_History_date_project
             // 
             this.textBox_History_date_project.Depth = 0;
             this.textBox_History_date_project.Hint = "Дата";
-            this.textBox_History_date_project.Location = new System.Drawing.Point(12, 180);
+            this.textBox_History_date_project.Location = new System.Drawing.Point(299, 149);
             this.textBox_History_date_project.MaxLength = 32767;
             this.textBox_History_date_project.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBox_History_date_project.Name = "textBox_History_date_project";
@@ -75,6 +82,7 @@
             this.textBox_History_date_project.TabIndex = 8;
             this.textBox_History_date_project.TabStop = false;
             this.textBox_History_date_project.UseSystemPasswordChar = false;
+            this.textBox_History_date_project.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_History_date_project_KeyPress);
             // 
             // buttonBack
             // 
@@ -82,7 +90,7 @@
             this.buttonBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonBack.Depth = 0;
             this.buttonBack.Icon = null;
-            this.buttonBack.Location = new System.Drawing.Point(423, 231);
+            this.buttonBack.Location = new System.Drawing.Point(423, 227);
             this.buttonBack.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Primary = true;
@@ -90,6 +98,7 @@
             this.buttonBack.TabIndex = 18;
             this.buttonBack.Text = "Отменить";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonAdd
             // 
@@ -97,7 +106,7 @@
             this.buttonAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonAdd.Depth = 0;
             this.buttonAdd.Icon = null;
-            this.buttonAdd.Location = new System.Drawing.Point(12, 231);
+            this.buttonAdd.Location = new System.Drawing.Point(12, 227);
             this.buttonAdd.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Primary = true;
@@ -107,11 +116,50 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
+            // labelValidDate
+            // 
+            this.labelValidDate.AutoSize = true;
+            this.labelValidDate.Font = new System.Drawing.Font("Verdana", 8F);
+            this.labelValidDate.ForeColor = System.Drawing.Color.Red;
+            this.labelValidDate.Location = new System.Drawing.Point(297, 175);
+            this.labelValidDate.Name = "labelValidDate";
+            this.labelValidDate.Size = new System.Drawing.Size(163, 26);
+            this.labelValidDate.TabIndex = 49;
+            this.labelValidDate.Text = "Некорректные данные.\r\nФормат даты: DD.MM.YYYY\r\n";
+            this.labelValidDate.Visible = false;
+            // 
+            // labelValidStatus
+            // 
+            this.labelValidStatus.AutoSize = true;
+            this.labelValidStatus.Font = new System.Drawing.Font("Verdana", 8F);
+            this.labelValidStatus.ForeColor = System.Drawing.Color.Red;
+            this.labelValidStatus.Location = new System.Drawing.Point(41, 177);
+            this.labelValidStatus.Name = "labelValidStatus";
+            this.labelValidStatus.Size = new System.Drawing.Size(141, 13);
+            this.labelValidStatus.TabIndex = 50;
+            this.labelValidStatus.Text = "Некорректные данные";
+            this.labelValidStatus.Visible = false;
+            // 
+            // labelValidProject
+            // 
+            this.labelValidProject.AutoSize = true;
+            this.labelValidProject.Font = new System.Drawing.Font("Verdana", 8F);
+            this.labelValidProject.ForeColor = System.Drawing.Color.Red;
+            this.labelValidProject.Location = new System.Drawing.Point(188, 119);
+            this.labelValidProject.Name = "labelValidProject";
+            this.labelValidProject.Size = new System.Drawing.Size(141, 13);
+            this.labelValidProject.TabIndex = 51;
+            this.labelValidProject.Text = "Некорректные данные";
+            this.labelValidProject.Visible = false;
+            // 
             // History_projectsFormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 279);
+            this.ClientSize = new System.Drawing.Size(530, 275);
+            this.Controls.Add(this.labelValidProject);
+            this.Controls.Add(this.labelValidStatus);
+            this.Controls.Add(this.labelValidDate);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.textBox_History_date_project);
@@ -120,7 +168,7 @@
             this.MaximizeBox = false;
             this.Name = "History_projectsFormAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Добавить";
+            this.Text = "Добавить историю проекта";
             this.Load += new System.EventHandler(this.History_projectsFormAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -134,5 +182,8 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField textBox_History_date_project;
         private MaterialSkin.Controls.MaterialRaisedButton buttonBack;
         private MaterialSkin.Controls.MaterialRaisedButton buttonAdd;
+        private System.Windows.Forms.Label labelValidDate;
+        private System.Windows.Forms.Label labelValidStatus;
+        private System.Windows.Forms.Label labelValidProject;
     }
 }

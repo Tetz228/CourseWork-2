@@ -15,6 +15,8 @@ namespace CourseWork
 {
     public partial class History_projectsFormAdd : MaterialForm
     {
+        DateTime dateHistory_date;
+        
         public History_projectsFormAdd()
         {
             InitializeComponent();
@@ -33,27 +35,17 @@ namespace CourseWork
             SelectStatusComboBox();
         }
 
-        private void SelectProjectComboBox()
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, project_name AS Project FROM Projects", connection.GetSqlConnect());
-            DataTable HistoryTableComboBox = new DataTable();
+            if (!CheckTextBox())
+                return;
+            else
+                CheckDateNullAndCorrect();
+        }
 
-            connection.OpenConnect();
-
-            sqlDA.Fill(HistoryTableComboBox);
-
-            ComboBox_fk_project.ValueMember = "Id";
-            ComboBox_fk_project.DisplayMember = "Project";
-
-            DataRow row = HistoryTableComboBox.NewRow();
-            row[0] = 0;
-            row[1] = "Проект";
-            HistoryTableComboBox.Rows.InsertAt(row, 0);
-
-            ComboBox_fk_project.DataSource = HistoryTableComboBox;
-
-            connection.CloseConnect();
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void SelectStatusComboBox()
@@ -79,13 +71,134 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void SelectProjectComboBox()
         {
-            Program.DataAddHistoryProject.Value = ComboBox_fk_project.SelectedValue.ToString();
-            Program.DataAddHistoryStatus.Value = ComboBox_fk_status_project.SelectedValue.ToString();
-            Program.DataAddHistoryDate.Value = textBox_History_date_project.Text;
+            ConnectionDB connection = new ConnectionDB();
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, project_name AS Project FROM Projects", connection.GetSqlConnect());
+            DataTable HistoryTableComboBox = new DataTable();
 
-            this.Close();
+            connection.OpenConnect();
+
+            sqlDA.Fill(HistoryTableComboBox);
+
+            ComboBox_fk_project.ValueMember = "Id";
+            ComboBox_fk_project.DisplayMember = "Project";
+
+            DataRow row = HistoryTableComboBox.NewRow();
+            row[0] = 0;
+            row[1] = "Проект";
+            HistoryTableComboBox.Rows.InsertAt(row, 0);
+
+            ComboBox_fk_project.DataSource = HistoryTableComboBox;
+
+            connection.CloseConnect();
+        }
+
+        // Функция добавления строки
+        private void AddRowHistoryProject()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("AddHistoryProjects", connection.GetSqlConnect());
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.OpenConnect();        
+
+            if(string.IsNullOrWhiteSpace(textBox_History_date_project.Text))
+                command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = DBNull.Value;
+            else
+            {
+                dateHistory_date = DateTime.Parse(textBox_History_date_project.Text);
+
+                command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = dateHistory_date;
+            }                
+
+            command.Parameters.AddWithValue("@fk_project", SqlDbType.Int).Value = ComboBox_fk_project.SelectedValue;
+            command.Parameters.AddWithValue("@fk_status_project", SqlDbType.Int).Value = ComboBox_fk_status_project.SelectedValue;
+            
+            SqlParameter parameter = command.Parameters.AddWithValue("@id_history_project", SqlDbType.Int);
+
+            parameter.Direction = ParameterDirection.Output;
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Дата должна быть в диапозоне 01.01.1753 - 31.12.9999.");
+            }
+            finally
+            {
+                connection.CloseConnect();
+            }
+        }
+
+        // Валидация TextBox`ов
+        private bool CheckTextBox()
+        {
+            int check = 0;
+
+            if (ComboBox_fk_project.Text == "Проект")
+            {
+                labelValidProject.Show();
+
+                check = 1;
+            }
+            if (ComboBox_fk_status_project.Text == "Статус")
+            {
+                labelValidStatus.Show();
+
+                check = 1;
+            }
+
+            if (check == 1)
+                return false;
+            else
+                return true;
+        }
+
+        // Проверка даты на нулевое значение и на корректность
+        private void CheckDateNullAndCorrect()
+        {
+            bool date = DateTime.TryParse(textBox_History_date_project.Text, out dateHistory_date);
+            
+            if (!string.IsNullOrWhiteSpace(textBox_History_date_project.Text))
+            {
+                if (!date)
+                {
+                    labelValidDate.Show();
+
+                    return;
+                }
+                else
+                {
+                    AddRowHistoryProject();
+
+                    this.Close();
+                }
+            }
+            else
+            {
+                AddRowHistoryProject();
+
+                this.Close();
+            }
+        }
+
+        private void ComboBox_fk_status_project_SelectedValueChanged(object sender, EventArgs e)
+        {
+            labelValidStatus.Hide();
+        }
+
+        private void ComboBox_fk_project_SelectedValueChanged(object sender, EventArgs e)
+        {
+            labelValidProject.Hide();
+        }
+
+        private void textBox_History_date_project_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelValidDate.Hide();
         }
     }
 }

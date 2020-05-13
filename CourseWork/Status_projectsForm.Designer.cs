@@ -49,9 +49,10 @@
             this.dataGridViewStatus_projects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewStatus_projects.BackgroundColor = System.Drawing.Color.Gray;
             this.dataGridViewStatus_projects.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewStatus_projects.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
@@ -76,10 +77,11 @@
             this.dataGridViewStatus_projects.MultiSelect = false;
             this.dataGridViewStatus_projects.Name = "dataGridViewStatus_projects";
             this.dataGridViewStatus_projects.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridViewStatus_projects.Size = new System.Drawing.Size(1037, 463);
+            this.dataGridViewStatus_projects.Size = new System.Drawing.Size(1037, 507);
             this.dataGridViewStatus_projects.TabIndex = 6;
             this.dataGridViewStatus_projects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStatus_projects_CellDoubleClick);
             this.dataGridViewStatus_projects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewStatus_projects_UserDeletingRow);
+            this.dataGridViewStatus_projects.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewStatus_projects_KeyDown);
             // 
             // Column_id_status_project
             // 
@@ -148,7 +150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1037, 527);
+            this.ClientSize = new System.Drawing.Size(1037, 571);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridViewStatus_projects);
             this.Controls.Add(this.menuStripStatus_projects);

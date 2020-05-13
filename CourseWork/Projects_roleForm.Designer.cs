@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewProjects_role = new System.Windows.Forms.DataGridView();
             this.Column_id_project_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_project_role_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,19 +46,29 @@
             // dataGridViewProjects_role
             // 
             this.dataGridViewProjects_role.AllowUserToAddRows = false;
+            this.dataGridViewProjects_role.BackgroundColor = System.Drawing.Color.Gray;
+            this.dataGridViewProjects_role.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewProjects_role.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProjects_role.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewProjects_role.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProjects_role.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_project_role,
             this.Column_project_role_name});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewProjects_role.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewProjects_role.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewProjects_role.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewProjects_role.Location = new System.Drawing.Point(0, 63);
             this.dataGridViewProjects_role.Margin = new System.Windows.Forms.Padding(4);
@@ -79,8 +90,8 @@
             // 
             this.Column_project_role_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_project_role_name.DataPropertyName = "project_role_name";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_project_role_name.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_project_role_name.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column_project_role_name.HeaderText = "Название роли";
             this.Column_project_role_name.MaxInputLength = 50;
             this.Column_project_role_name.Name = "Column_project_role_name";
@@ -143,6 +154,7 @@
             this.Text = "Роли в проектах";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Projects_roleForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Projects_roleForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProjects_role)).EndInit();
             this.menuStripProjects_role.ResumeLayout(false);
             this.menuStripProjects_role.PerformLayout();

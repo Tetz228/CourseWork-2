@@ -34,23 +34,23 @@
             this.Status_projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Projects_roleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.History_projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.задачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.статусыЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типыЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.историяЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокСотрудниковToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.должностиСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокДолжностейToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокПользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.списокСотрудниковToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.должностиСотрудниковToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.списокДолжностейToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.списокПользователейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ролиПользователейToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокСотрудниковToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.должностиСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокДолжностейToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокПользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -111,22 +111,6 @@
             this.History_projectsToolStripMenuItem.Text = "История проектов";
             this.History_projectsToolStripMenuItem.Click += new System.EventHandler(this.History_projectsToolStripMenuItem_Click);
             // 
-            // toolStripContainer1
-            // 
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1041, 1);
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(1041, 25);
-            this.toolStripContainer1.TabIndex = 3;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
-            // 
             // задачиToolStripMenuItem
             // 
             this.задачиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -141,62 +125,26 @@
             // списокЗадачToolStripMenuItem
             // 
             this.списокЗадачToolStripMenuItem.Name = "списокЗадачToolStripMenuItem";
-            this.списокЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.списокЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.списокЗадачToolStripMenuItem.Text = "Список задач";
             // 
             // статусыЗадачToolStripMenuItem
             // 
             this.статусыЗадачToolStripMenuItem.Name = "статусыЗадачToolStripMenuItem";
-            this.статусыЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.статусыЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.статусыЗадачToolStripMenuItem.Text = "Статусы задач";
             // 
             // типыЗадачToolStripMenuItem
             // 
             this.типыЗадачToolStripMenuItem.Name = "типыЗадачToolStripMenuItem";
-            this.типыЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.типыЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.типыЗадачToolStripMenuItem.Text = "Типы задач";
             // 
             // историяЗадачToolStripMenuItem
             // 
             this.историяЗадачToolStripMenuItem.Name = "историяЗадачToolStripMenuItem";
-            this.историяЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.историяЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.историяЗадачToolStripMenuItem.Text = "История задач";
-            // 
-            // сотрудникиToolStripMenuItem
-            // 
-            this.сотрудникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.списокСотрудниковToolStripMenuItem1,
-            this.должностиСотрудниковToolStripMenuItem,
-            this.списокДолжностейToolStripMenuItem1,
-            this.списокПользователиToolStripMenuItem});
-            this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
-            // 
-            // списокСотрудниковToolStripMenuItem1
-            // 
-            this.списокСотрудниковToolStripMenuItem1.Name = "списокСотрудниковToolStripMenuItem1";
-            this.списокСотрудниковToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
-            this.списокСотрудниковToolStripMenuItem1.Text = "Список сотрудников";
-            // 
-            // должностиСотрудниковToolStripMenuItem
-            // 
-            this.должностиСотрудниковToolStripMenuItem.Name = "должностиСотрудниковToolStripMenuItem";
-            this.должностиСотрудниковToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.должностиСотрудниковToolStripMenuItem.Text = "Должности сотрудников";
-            // 
-            // списокДолжностейToolStripMenuItem1
-            // 
-            this.списокДолжностейToolStripMenuItem1.Name = "списокДолжностейToolStripMenuItem1";
-            this.списокДолжностейToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
-            this.списокДолжностейToolStripMenuItem1.Text = "Список должностей";
-            // 
-            // списокПользователиToolStripMenuItem
-            // 
-            this.списокПользователиToolStripMenuItem.Name = "списокПользователиToolStripMenuItem";
-            this.списокПользователиToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
-            this.списокПользователиToolStripMenuItem.Text = "Список пользователей";
-            this.списокПользователиToolStripMenuItem.Click += new System.EventHandler(this.списокПользователиToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem1
             // 
@@ -239,6 +187,58 @@
             this.ролиПользователейToolStripMenuItem1.Name = "ролиПользователейToolStripMenuItem1";
             this.ролиПользователейToolStripMenuItem1.Size = new System.Drawing.Size(232, 22);
             this.ролиПользователейToolStripMenuItem1.Text = "Роли пользователей";
+            // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1041, 1);
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(1041, 25);
+            this.toolStripContainer1.TabIndex = 3;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
+            // 
+            // сотрудникиToolStripMenuItem
+            // 
+            this.сотрудникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.списокСотрудниковToolStripMenuItem1,
+            this.должностиСотрудниковToolStripMenuItem,
+            this.списокДолжностейToolStripMenuItem1,
+            this.списокПользователиToolStripMenuItem});
+            this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
+            // 
+            // списокСотрудниковToolStripMenuItem1
+            // 
+            this.списокСотрудниковToolStripMenuItem1.Name = "списокСотрудниковToolStripMenuItem1";
+            this.списокСотрудниковToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
+            this.списокСотрудниковToolStripMenuItem1.Text = "Список сотрудников";
+            // 
+            // должностиСотрудниковToolStripMenuItem
+            // 
+            this.должностиСотрудниковToolStripMenuItem.Name = "должностиСотрудниковToolStripMenuItem";
+            this.должностиСотрудниковToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.должностиСотрудниковToolStripMenuItem.Text = "Должности сотрудников";
+            // 
+            // списокДолжностейToolStripMenuItem1
+            // 
+            this.списокДолжностейToolStripMenuItem1.Name = "списокДолжностейToolStripMenuItem1";
+            this.списокДолжностейToolStripMenuItem1.Size = new System.Drawing.Size(210, 22);
+            this.списокДолжностейToolStripMenuItem1.Text = "Список должностей";
+            // 
+            // списокПользователиToolStripMenuItem
+            // 
+            this.списокПользователиToolStripMenuItem.Name = "списокПользователиToolStripMenuItem";
+            this.списокПользователиToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.списокПользователиToolStripMenuItem.Text = "Список пользователей";
+            this.списокПользователиToolStripMenuItem.Click += new System.EventHandler(this.списокПользователиToolStripMenuItem_Click);
             // 
             // MainForm
             // 

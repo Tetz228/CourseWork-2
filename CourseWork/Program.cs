@@ -90,34 +90,22 @@ namespace CourseWork
 
         ///////////////////////////////////////////////
 
-        public static class DataAddHistoryProject
+        public static class DataEditHistoryProjectId
         {
             public static string Value { get; set; }
         }
 
-        public static class DataAddHistoryStatus
+        public static class DataEditHistoryProjectName
         {
             public static string Value { get; set; }
         }
 
-        public static class DataAddHistoryDate
+        public static class DataEditHistoryProjectStatus
         {
             public static string Value { get; set; }
         }
 
-        ///
-
-        public static class DataEditHistoryProject
-        {
-            public static string Value { get; set; }
-        }
-
-        public static class DataEditHistoryStatus
-        {
-            public static string Value { get; set; }
-        }
-
-        public static class DataEditHistoryDate
+        public static class DataEditHistoryProjectDate
         {
             public static string Value { get; set; }
         }

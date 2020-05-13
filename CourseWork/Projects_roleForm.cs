@@ -82,6 +82,19 @@ namespace CourseWork
             SelectDateProjects_role();
         }
 
+        // При нажатии на Ins(Insert) на клавиатуре появляется форма добавления
+        private void Projects_roleForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Insert)
+            {
+                Projects_roleFormAdd formAdd = new Projects_roleFormAdd();
+
+                formAdd.ShowDialog();
+
+                SelectDateProjects_role();
+            }
+        }
+
         // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -123,7 +136,7 @@ namespace CourseWork
                 return;
         }
 
-        // При выделение строки и нажание на клавишу Delete
+        // При выделение строки и нажание на клавишу Del(Delete)
         private void dataGridViewProjects_role_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)

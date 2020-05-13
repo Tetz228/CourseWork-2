@@ -148,23 +148,15 @@ namespace CourseWork
             else
                 command.Parameters.AddWithValue("@project_target", SqlDbType.NVarChar).Value = textBoxProject_target.Text.Trim();
 
-            if (string.IsNullOrEmpty(textBoxDate_start.Text))
+            if (string.IsNullOrWhiteSpace(textBoxDate_start.Text))
                 command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = DBNull.Value;
             else
-            {
-                dateTimeStart = DateTime.Parse(textBoxDate_start.Text);
+                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = dateTimeStart = DateTime.Parse(textBoxDate_start.Text);
 
-                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = dateTimeStart;
-            }
-
-            if (string.IsNullOrEmpty(textBoxDate_completion.Text))
+            if (string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
                 command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = DBNull.Value;
             else
-            {
-                dateTimeCompletion = DateTime.Parse(textBoxDate_completion.Text);
-
-                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = dateTimeCompletion;
-            }  
+                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = dateTimeCompletion = DateTime.Parse(textBoxDate_completion.Text);
 
             command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
             command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;

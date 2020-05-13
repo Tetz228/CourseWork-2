@@ -62,7 +62,7 @@
             this.dataGridViewProjects.BackgroundColor = System.Drawing.Color.Gray;
             this.dataGridViewProjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewProjects.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
@@ -101,10 +101,11 @@
             this.dataGridViewProjects.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.DimGray;
             this.dataGridViewProjects.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewProjects.Size = new System.Drawing.Size(1037, 499);
+            this.dataGridViewProjects.Size = new System.Drawing.Size(1037, 513);
             this.dataGridViewProjects.TabIndex = 4;
             this.dataGridViewProjects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProjects_CellDoubleClick);
             this.dataGridViewProjects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewProjects_UserDeletingRow);
+            this.dataGridViewProjects.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProjects_KeyDown);
             // 
             // Column_id_project
             // 
@@ -141,6 +142,7 @@
             // Column_date_start
             // 
             this.Column_date_start.DataPropertyName = "date_start";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
             dataGridViewCellStyle4.Format = "d";
@@ -154,6 +156,7 @@
             // Column_date_completion
             // 
             this.Column_date_completion.DataPropertyName = "date_completion";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9.75F);
             dataGridViewCellStyle5.Format = "d";
@@ -241,7 +244,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1037, 562);
+            this.ClientSize = new System.Drawing.Size(1037, 576);
             this.ControlBox = false;
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.dataGridViewProjects);

@@ -76,6 +76,19 @@ namespace CourseWork
             SelectDateStatusProject();
         }
 
+        // При нажатии на Ins(Insert) на клавиатуре появляется форма добавления
+        private void dataGridViewStatus_projects_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Insert)
+            {
+                Status_projectsFormAdd formAdd = new Status_projectsFormAdd();
+
+                formAdd.ShowDialog();
+
+                SelectDateStatusProject();
+            }
+        }
+
         // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -119,7 +132,7 @@ namespace CourseWork
                 return;
         }
 
-        // При выделение строки и нажатие на клавишу Delete
+        // При выделение строки и нажатие на клавишу Del(Delete)
         private void dataGridViewStatus_projects_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)

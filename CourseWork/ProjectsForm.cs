@@ -95,6 +95,19 @@ namespace CourseWork
             SelectDateProject();   
         }
 
+        // При нажатии на Ins(Insert) на клавиатуре появляется форма добавления
+        private void dataGridViewProjects_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Insert)
+            {
+                ProjectsFormAdd formAdd = new ProjectsFormAdd();
+
+                formAdd.ShowDialog();
+
+                SelectDateProject();
+            }
+        }
+
         // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -119,12 +132,12 @@ namespace CourseWork
             {
                 DataGridViewRow view = dataGridViewProjects.Rows[e.RowIndex];
 
+                Program.DataEditProjectId.Value = view.Cells[0].Value.ToString();
                 Program.DataEditProjectName.Value = view.Cells[1].Value.ToString();
                 Program.DataEditProjectTarget.Value = view.Cells[2].Value.ToString();
                 Program.DataEditProjectStart.Value = view.Cells[3].Value.ToString();
                 Program.DataEditProjectCompletion.Value = view.Cells[4].Value.ToString();
                 Program.DataEditProjectLeader.Value = view.Cells[5].Value.ToString();
-                Program.DataEditProjectId.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_id_project"].Value);
 
                 ProjectsFormEdit formEdit = new ProjectsFormEdit();
 
@@ -143,7 +156,7 @@ namespace CourseWork
                 return;
         }
 
-        // При выделение строки и нажание на клавишу Delete
+        // При выделение строки и нажание на клавишу Del(Delete)
         private void dataGridViewProjects_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
