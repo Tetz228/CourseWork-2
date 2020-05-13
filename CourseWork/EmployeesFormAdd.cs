@@ -27,26 +27,48 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // Вызов всех проверок и добавление в бд
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
                 return;
             else
-                if (!ValidationEmail(textBoxEmail.Text))
-                {
-                    labelEmail.Text = "Некорректная почта.";
-                    labelEmail.Show();
-                    return;
-                } 
+            if (!ValidationEmail(textBoxEmail.Text))
+            {
+                labelEmail.Text = "Некорректная почта.";
+                labelEmail.Show();
+                return;
+            }
             else
-                if (!MailOriginality(textBoxEmail.Text))
+            if (!MailOriginality(textBoxEmail.Text))
+            {
+                labelEmail.Text = "Пользователь с такой почтой\nуже существует.";
+                labelEmail.Show();
+                return;
+            }
+            else
+            if (!ValidationLFMname(textBoxLname.Text))
+            {
+                labelLname.Show();
+                return;
+            }
+            else
+            if (!ValidationLFMname(textBoxFname.Text))
+            {
+                labelLname.Show();
+                return;
+            }
+            else
+            if(!string.IsNullOrWhiteSpace(textBoxMname.Text))
+            {
+                if (!ValidationLFMname(textBoxMname.Text))
                 {
-                    labelEmail.Text = "Пользователь с такой почтой уже существует.";
-                    labelEmail.Show();
+                    labelMname.Show();
                     return;
                 }
-            else
-                AddRowEmployee();
+            }
+
+            AddRowEmployee();
 
             this.Close();
         }
@@ -125,6 +147,16 @@ namespace CourseWork
             return isMatch.Success;
         }
 
+        // Валидация фамилии, имени, отчества
+        public bool ValidationLFMname(string LFMname)
+        {
+            string pattern = @"[A-Za-zА-Яа-я]{1,30}";
+
+            Match isMatch = Regex.Match(LFMname, pattern);
+
+            return isMatch.Success;
+        }
+
         // Проверка на уникальность почты
         private bool MailOriginality(string email)
         {
@@ -166,6 +198,11 @@ namespace CourseWork
         private void textBoxEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelEmail.Hide();
+        }
+
+        private void textBoxMname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelMname.Hide();
         }
     }
 }
