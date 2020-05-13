@@ -74,11 +74,11 @@
             this.labelValidRegLog.AutoSize = true;
             this.labelValidRegLog.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidRegLog.ForeColor = System.Drawing.Color.Red;
-            this.labelValidRegLog.Location = new System.Drawing.Point(9, 194);
+            this.labelValidRegLog.Location = new System.Drawing.Point(9, 180);
             this.labelValidRegLog.Name = "labelValidRegLog";
-            this.labelValidRegLog.Size = new System.Drawing.Size(93, 13);
+            this.labelValidRegLog.Size = new System.Drawing.Size(177, 13);
             this.labelValidRegLog.TabIndex = 29;
-            this.labelValidRegLog.Text = "Введите логин";
+            this.labelValidRegLog.Text = "Минимальная длинна логина";
             this.labelValidRegLog.Visible = false;
             // 
             // labelValidRegPass
@@ -86,7 +86,7 @@
             this.labelValidRegPass.AutoSize = true;
             this.labelValidRegPass.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidRegPass.ForeColor = System.Drawing.Color.Red;
-            this.labelValidRegPass.Location = new System.Drawing.Point(209, 194);
+            this.labelValidRegPass.Location = new System.Drawing.Point(209, 180);
             this.labelValidRegPass.Name = "labelValidRegPass";
             this.labelValidRegPass.Size = new System.Drawing.Size(102, 13);
             this.labelValidRegPass.TabIndex = 30;
@@ -98,7 +98,7 @@
             this.labelValidEmail.AutoSize = true;
             this.labelValidEmail.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidEmail.ForeColor = System.Drawing.Color.Red;
-            this.labelValidEmail.Location = new System.Drawing.Point(403, 194);
+            this.labelValidEmail.Location = new System.Drawing.Point(9, 243);
             this.labelValidEmail.Name = "labelValidEmail";
             this.labelValidEmail.Size = new System.Drawing.Size(93, 13);
             this.labelValidEmail.TabIndex = 31;
@@ -110,7 +110,7 @@
             this.TextBoxLname.Depth = 0;
             this.TextBoxLname.Hint = "Фамилия*";
             this.TextBoxLname.Location = new System.Drawing.Point(12, 94);
-            this.TextBoxLname.MaxLength = 32767;
+            this.TextBoxLname.MaxLength = 30;
             this.TextBoxLname.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxLname.Name = "TextBoxLname";
             this.TextBoxLname.PasswordChar = '\0';
@@ -128,7 +128,7 @@
             this.TextBoxFname.Depth = 0;
             this.TextBoxFname.Hint = "Имя*";
             this.TextBoxFname.Location = new System.Drawing.Point(209, 94);
-            this.TextBoxFname.MaxLength = 32767;
+            this.TextBoxFname.MaxLength = 30;
             this.TextBoxFname.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxFname.Name = "TextBoxFname";
             this.TextBoxFname.PasswordChar = '\0';
@@ -146,7 +146,7 @@
             this.TextBoxMname.Depth = 0;
             this.TextBoxMname.Hint = "Отчество";
             this.TextBoxMname.Location = new System.Drawing.Point(406, 94);
-            this.TextBoxMname.MaxLength = 32767;
+            this.TextBoxMname.MaxLength = 30;
             this.TextBoxMname.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxMname.Name = "TextBoxMname";
             this.TextBoxMname.PasswordChar = '\0';
@@ -163,8 +163,8 @@
             // 
             this.TextBoxRegLog.Depth = 0;
             this.TextBoxRegLog.Hint = "Логин*";
-            this.TextBoxRegLog.Location = new System.Drawing.Point(12, 168);
-            this.TextBoxRegLog.MaxLength = 32767;
+            this.TextBoxRegLog.Location = new System.Drawing.Point(12, 154);
+            this.TextBoxRegLog.MaxLength = 30;
             this.TextBoxRegLog.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxRegLog.Name = "TextBoxRegLog";
             this.TextBoxRegLog.PasswordChar = '\0';
@@ -181,8 +181,8 @@
             // 
             this.TextBoxRegPass.Depth = 0;
             this.TextBoxRegPass.Hint = "Пароль*";
-            this.TextBoxRegPass.Location = new System.Drawing.Point(209, 168);
-            this.TextBoxRegPass.MaxLength = 32767;
+            this.TextBoxRegPass.Location = new System.Drawing.Point(209, 154);
+            this.TextBoxRegPass.MaxLength = 35;
             this.TextBoxRegPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxRegPass.Name = "TextBoxRegPass";
             this.TextBoxRegPass.PasswordChar = '\0';
@@ -199,8 +199,8 @@
             // 
             this.TextBoxEmail.Depth = 0;
             this.TextBoxEmail.Hint = "Email*";
-            this.TextBoxEmail.Location = new System.Drawing.Point(406, 168);
-            this.TextBoxEmail.MaxLength = 32767;
+            this.TextBoxEmail.Location = new System.Drawing.Point(12, 217);
+            this.TextBoxEmail.MaxLength = 31;
             this.TextBoxEmail.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxEmail.Name = "TextBoxEmail";
             this.TextBoxEmail.PasswordChar = '\0';
@@ -219,7 +219,7 @@
             this.buttonReg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonReg.Depth = 0;
             this.buttonReg.Icon = null;
-            this.buttonReg.Location = new System.Drawing.Point(12, 301);
+            this.buttonReg.Location = new System.Drawing.Point(7, 272);
             this.buttonReg.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonReg.Name = "buttonReg";
             this.buttonReg.Primary = true;
@@ -235,7 +235,7 @@
             this.buttonExit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonExit.Depth = 0;
             this.buttonExit.Icon = null;
-            this.buttonExit.Location = new System.Drawing.Point(518, 301);
+            this.buttonExit.Location = new System.Drawing.Point(518, 272);
             this.buttonExit.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Primary = true;
@@ -249,8 +249,8 @@
             // 
             this.TextBoxRegPassRepeat.Depth = 0;
             this.TextBoxRegPassRepeat.Hint = "Ещё раз пароль*";
-            this.TextBoxRegPassRepeat.Location = new System.Drawing.Point(209, 237);
-            this.TextBoxRegPassRepeat.MaxLength = 32767;
+            this.TextBoxRegPassRepeat.Location = new System.Drawing.Point(406, 154);
+            this.TextBoxRegPassRepeat.MaxLength = 35;
             this.TextBoxRegPassRepeat.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxRegPassRepeat.Name = "TextBoxRegPassRepeat";
             this.TextBoxRegPassRepeat.PasswordChar = '\0';
@@ -268,7 +268,7 @@
             this.labelValidRegPassRepeat.AutoSize = true;
             this.labelValidRegPassRepeat.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidRegPassRepeat.ForeColor = System.Drawing.Color.Red;
-            this.labelValidRegPassRepeat.Location = new System.Drawing.Point(209, 263);
+            this.labelValidRegPassRepeat.Location = new System.Drawing.Point(406, 180);
             this.labelValidRegPassRepeat.Name = "labelValidRegPassRepeat";
             this.labelValidRegPassRepeat.Size = new System.Drawing.Size(154, 13);
             this.labelValidRegPassRepeat.TabIndex = 44;
@@ -280,7 +280,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(593, 349);
+            this.ClientSize = new System.Drawing.Size(596, 317);
             this.Controls.Add(this.TextBoxRegPassRepeat);
             this.Controls.Add(this.labelValidRegPassRepeat);
             this.Controls.Add(this.buttonExit);
@@ -299,11 +299,11 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.MaximizeBox = false;
             this.Name = "RegistrationForm";
+            this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Регистрация нового пользователя";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrationForm_FormClosed);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RegistrationForm_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.RegistrationForm_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 

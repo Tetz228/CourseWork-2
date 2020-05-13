@@ -27,24 +27,38 @@ namespace CourseWork
         // Вызов всех проверок и переход к форме подтвержения почты 
         private void ButtonReg_Click(object sender, EventArgs e)
         {
-            if (!CheckNullAndSpace())
+            if (!CheckNullAndSpace(TextBoxLname.Text, TextBoxFname.Text, TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text, TextBoxEmail.Text))
                 return;
             else
-                if (!CheckLogAndPassLength())
+                if (!CheckLogAndPassLength(TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text))
                 return;
             else
-                if (!LoginOriginality())
+            if (!ValidationLogin(TextBoxRegLog.Text))
+            {
+                labelValidRegLog.Text = "Некорректный логин. Логин\nможет содержать только\nцифры и латинские буквы.\nЛогин не может начинаться\nс цифры.";
+                labelValidRegLog.Show();
                 return;
+            }
+            else
+                if (!LoginOriginality(TextBoxRegLog.Text))
+                return;
+            else
+            if (!ValidationPassword(TextBoxRegPass.Text))
+            {
+                labelValidRegPass.Text = "Некорректный пароль. Пароль\nдолжен быть минимум с одной\nцифрой,одной заглавной и\nодной строчной буквой.";
+                labelValidRegPass.Show();
+                return;
+            }
             else
                 if (!ValidationEmail(TextBoxEmail.Text))
-                {
-                    labelValidEmail.Text = "Некорректная почта";
-                    labelValidEmail.Show();
+            {
+                labelValidEmail.Text = "Некорректная почта";
+                labelValidEmail.Show();
 
-                    return;
-                }
+                return;
+            }
             else
-                if (!MailOriginality())
+                    if (!MailOriginality(TextBoxEmail.Text))
                 return;
             else
             {
@@ -62,46 +76,46 @@ namespace CourseWork
         }
 
         // Проверка TextBox`ов на пустоту
-        private bool CheckNullAndSpace()
+        private bool CheckNullAndSpace(string lname, string fname, string login, string password, string repeatPassword,string email)
         {
             int check = 0;
 
-            if (string.IsNullOrWhiteSpace(TextBoxLname.Text))
+            if (string.IsNullOrWhiteSpace(lname))
             {
                 labelValidLname.Text = "Введите фамилию";
                 labelValidLname.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrWhiteSpace(TextBoxFname.Text))
+            if (string.IsNullOrWhiteSpace(fname))
             {
                 labelValidFname.Text = "Введите имя";
                 labelValidFname.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrEmpty(TextBoxRegLog.Text))
+            if (string.IsNullOrEmpty(login))
             {
                 labelValidRegLog.Text = "Введите логин";
                 labelValidRegLog.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrEmpty(TextBoxRegPass.Text))
+            if (string.IsNullOrEmpty(password))
             {
                 labelValidRegPass.Text = "Введите пароль";
                 labelValidRegPass.Show();
                 
                 check = 1;
             }
-            if (string.IsNullOrEmpty(TextBoxEmail.Text))
+            if (string.IsNullOrEmpty(email))
             {
                 labelValidEmail.Text = "Введите почту";
                 labelValidEmail.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrEmpty(TextBoxRegPassRepeat.Text))
+            if (string.IsNullOrEmpty(repeatPassword))
             {
                 labelValidRegPassRepeat.Text = "Введите ещё раз пароль";
                 labelValidRegPassRepeat.Show();
@@ -116,9 +130,9 @@ namespace CourseWork
         }
 
         // Проверка логина и пароля
-        private bool CheckLogAndPassLength()
+        private bool CheckLogAndPassLength(string login, string password, string repeatPassword)
         {
-            if (TextBoxRegLog.Text.Length < 4 && TextBoxRegPass.Text.Length < 6)
+            if (login.Length < 4 && password.Length < 6)
             {
                 labelValidRegLog.Text = "Логин должен быть длиной\nот 4 до 25 символов";
                 labelValidRegLog.Show();
@@ -129,7 +143,7 @@ namespace CourseWork
                 return false;
             }
             else
-            if (TextBoxRegLog.Text.Length < 4)
+            if (login.Length < 4)
             {
                 labelValidRegLog.Text = "Логин должен быть длиной\nот 4 до 25 символов";
                 labelValidRegLog.Show();
@@ -138,7 +152,7 @@ namespace CourseWork
             }
             else
 
-            if (TextBoxRegPass.Text.Length < 6)
+            if (password.Length < 6)
             {
                 labelValidRegPass.Text = "Пароль должен быть длиной\nот 6 до 25 символов";
                 labelValidRegPass.Show();
@@ -147,7 +161,7 @@ namespace CourseWork
             }
             else
 
-            if(TextBoxRegPass.Text != TextBoxRegPassRepeat.Text)
+            if (password != repeatPassword)
             {
                 labelValidRegPassRepeat.Text = "Пароли должны совпадать";
                 labelValidRegPassRepeat.Show();
@@ -156,8 +170,18 @@ namespace CourseWork
             return true;
         }
 
+        // Валидация логина
+        public bool ValidationLogin(string login)
+        {
+            string pattern = @"^[A-Za-z][A-Za-z0-9]{5,30}$";
+
+            Match isMatch = Regex.Match(login, pattern);
+
+            return isMatch.Success;
+        }
+
         // Проверка на уникальность логина
-        private bool LoginOriginality()
+        private bool LoginOriginality(string login)
         {
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
@@ -166,7 +190,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             SqlCommand selectLog = new SqlCommand("SELECT login FROM Users WHERE login = @log", connection.GetSqlConnect());
-            selectLog.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text;
+            selectLog.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = login;
 
             adapter.SelectCommand = selectLog;
             adapter.Fill(table);
@@ -183,6 +207,17 @@ namespace CourseWork
                 return true; 
         }
 
+        // Валидация пароля
+        // От 6 до 35 символов с минимум одной цифрой, одной заглавной и одной строчной буквой
+        public bool ValidationPassword(string password)
+        {
+            string pattern = @"((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,35})";
+
+            Match isMatch = Regex.Match(password, pattern);
+
+            return isMatch.Success;
+        }
+
         // Валидация почты
         public bool ValidationEmail(string email)
         {
@@ -194,7 +229,7 @@ namespace CourseWork
         }
 
         // Проверка на уникальность почты
-        private bool MailOriginality()
+        private bool MailOriginality(string email)
         {
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
@@ -203,7 +238,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             SqlCommand selectLog = new SqlCommand("SELECT Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
-            selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = TextBoxEmail.Text;
+            selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = email;
 
             adapter.SelectCommand = selectLog;
             adapter.Fill(table);
@@ -221,7 +256,7 @@ namespace CourseWork
                 return true;
         } 
 
-        // Хеширование пароля пока без соли
+        // Хеширование пароля
         private string HashPassword(byte[] val)
         {
             using (SHA512Managed sha512 = new SHA512Managed())
@@ -255,7 +290,7 @@ namespace CourseWork
 
                 SqlCommand selectIdEmp = new SqlCommand("SELECT id_employee FROM Employees WHERE @mail = Email", connection.GetSqlConnect());
 
-                selectIdEmp.Parameters.AddWithValue("@mail", SqlDbType.NVarChar).Value = TextBoxEmail.Text.Trim();
+                selectIdEmp.Parameters.AddWithValue("@mail", SqlDbType.VarChar).Value = TextBoxEmail.Text.Trim();
               
                 SqlCommand insertIntoUser = new SqlCommand("INSERT INTO Users(login,password,fk_role_user,fk_employee) VALUES(@log, @pass, @role, @fk_employee)", connection.GetSqlConnect());
 
@@ -275,109 +310,59 @@ namespace CourseWork
 
             connection.CloseConnect();
         }
-
-        // Ввод только определенных символов
+        
         private void TextBoxLname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidLname.Hide();
 
-            //BACKSPACE, space, русс. и анг. символы, Ctrl + A, Ctrl + C, Ctrl + X, Ctrl + Z, цифры
-            if (!(e.KeyChar == 8 || e.KeyChar == 32 || e.KeyChar <= 'я' && e.KeyChar >= 'а' || e.KeyChar >= 'А' && e.KeyChar <= 'Я' 
-                || e.KeyChar <= 'z' && e.KeyChar >= 'a' || e.KeyChar >= 'A' && e.KeyChar <= 'Z' 
-                || e.KeyChar == 001 || e.KeyChar == 003 || e.KeyChar == 024 || e.KeyChar == 026
-                || (e.KeyChar >= 48 && e.KeyChar <= 57)))
-                e.Handled = true;
-
             if (e.KeyChar == 13)
                 ButtonReg_Click(sender, e);
         }
 
-        // Ввод только определенных символов
         private void TextBoxFname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidFname.Hide();
 
-            //BACKSPACE, space, русс. и анг. символы, Ctrl + A, Ctrl + C, Ctrl + X, Ctrl + Z, цифры, минус, нижнее подчеркивание
-            if (!(e.KeyChar == 8 || e.KeyChar == 32 || e.KeyChar <= 'я' && e.KeyChar >= 'а' || e.KeyChar >= 'А' && e.KeyChar <= 'Я'
-                || e.KeyChar <= 'z' && e.KeyChar >= 'a' || e.KeyChar >= 'A' && e.KeyChar <= 'Z'
-                || e.KeyChar == 001 || e.KeyChar == 003 || e.KeyChar == 024 || e.KeyChar == 026
-                || (e.KeyChar >= 48 && e.KeyChar <= 57 || e.KeyChar == 45 || e.KeyChar == 95)))
-                e.Handled = true;
-
             if (e.KeyChar == 13)
                 ButtonReg_Click(sender, e);
         }
 
-        // Ввод только определенных символов
         private void TextBoxMname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            labelValidLname.Hide();
-
-            //BACKSPACE, space, русс. и анг. символы, Ctrl + A, Ctrl + C, Ctrl + X, Ctrl + Z, цифры, минус, нижнее подчеркивание
-            if (!(e.KeyChar == 8 || e.KeyChar == 32 || e.KeyChar <= 'я' && e.KeyChar >= 'а' || e.KeyChar >= 'А' && e.KeyChar <= 'Я'
-                || e.KeyChar <= 'z' && e.KeyChar >= 'a' || e.KeyChar >= 'A' && e.KeyChar <= 'Z'
-                || e.KeyChar == 001 || e.KeyChar == 003 || e.KeyChar == 024 || e.KeyChar == 026
-                || (e.KeyChar >= 48 && e.KeyChar <= 57 || e.KeyChar == 45 || e.KeyChar == 95)))
-                e.Handled = true;
-
             if (e.KeyChar == 13)
                 ButtonReg_Click(sender, e);
         }
 
-        // Ввод только определенных символов 
         private void TextBoxRegLog_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidRegLog.Hide();
 
-            //BACKSPACE, цифры, буквы верхнего регистра, буквы нижнего регистра, точка, минус, нижнее подчеркивание, Shift
-            if (!(e.KeyChar == 8 || (e.KeyChar >= 48 && e.KeyChar <= 57) || (e.KeyChar >= 65 && e.KeyChar <= 90) ||
-                (e.KeyChar >= 97 && e.KeyChar <= 122) || e.KeyChar == 46 || e.KeyChar == 45 || e.KeyChar == 95 || e.KeyChar == 14 ||
-                // Ctrl + A, Ctrl + C, Ctrl + X, Ctrl + Z
-                e.KeyChar == 001 || e.KeyChar == 003 || e.KeyChar == 024 || e.KeyChar == 026))
-            {
-                e.Handled = true;
-            }
+            if (e.KeyChar == 13)
+                ButtonReg_Click(sender, e);
         }
 
-        // Запрет на ввод определенных символов
         private void TextBoxRegPass_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidRegPass.Hide();
 
-            //Запрет на ввод space, кириллицы, Ctrl + V
-            char key = e.KeyChar;
-
-            if (key == 32 || key <= 'я' && key >= 'а' || key >= 'А' && key <= 'Я' || key == 13 || key == 022)
-                e.Handled = true;
+            if (e.KeyChar == 13)
+                ButtonReg_Click(sender, e);
         }
 
-        // Запрет на ввод определенных символов
         private void TextBoxRegPassRepeat_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidRegPassRepeat.Hide();
 
-            //Запрет на ввод space, кириллицы, Ctrl + V
-            char key = e.KeyChar;
-
-            if (key == 32 || key <= 'я' && key >= 'а' || key >= 'А' && key <= 'Я' || key == 13 || key == 022)
-                e.Handled = true;
+            if (e.KeyChar == 13)
+                ButtonReg_Click(sender, e);
         }
 
-        // Ввод только определенных символов
         private void TextBoxEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidEmail.Hide();
 
-            char key = e.KeyChar;
-
-            //BACKSPACE, цифры, буквы нижнего регистра, точка, минус, нижнее подчеркивание, Shift, @
-            if (!(key == 8 || (key >= 48 && key <= 57) || (key >= 97 && key <= 122) ||
-                key == 46 || key == 45 || key == 95 || key == 14 || key == 64 || key <= 'я' && key >= 'а'  ||
-                // Ctrl + A, Ctrl + C, Ctrl + X, Ctrl + Z
-                key == 001 || key == 003 || key == 024 || key == 026))
-            {
-                e.Handled = true;
-            }
+            if (e.KeyChar == 13)
+                ButtonReg_Click(sender, e);
         }
 
         //Перемещение формы

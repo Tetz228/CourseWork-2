@@ -81,8 +81,6 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
-        ///////////////////////////////////////////////
-
         public static class DataEditProjects_role
         {
             public static string Value { get; set; }
@@ -106,6 +104,33 @@ namespace CourseWork
         }
 
         public static class DataEditHistoryProjectDate
+        {
+            public static string Value { get; set; }
+        }
+
+        ///////////////////////////////////////////////
+
+        public static class DataEditEmployeeId
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditEmployeeLname
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditEmployeeFname
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditEmployeeMname
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditEmployeeEmail
         {
             public static string Value { get; set; }
         }

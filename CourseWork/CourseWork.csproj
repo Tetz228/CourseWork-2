@@ -62,6 +62,18 @@
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionDB.cs" />
+    <Compile Include="EmployeesFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeesFormAdd.Designer.cs">
+      <DependentUpon>EmployeesFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeesForm.Designer.cs">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ForgotPassForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +176,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmationMailForm.resx">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeesForm.resx">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeesFormAdd.resx">
+      <DependentUpon>EmployeesFormAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgotPassForm.resx">
       <DependentUpon>ForgotPassForm.cs</DependentUpon>

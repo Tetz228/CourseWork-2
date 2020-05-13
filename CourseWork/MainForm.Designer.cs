@@ -40,7 +40,7 @@
             this.типыЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.историяЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.списокСотрудниковToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listEmployeesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.должностиСотрудниковToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.списокДолжностейToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.списокПользователейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -149,7 +149,7 @@
             // сотрудникиToolStripMenuItem1
             // 
             this.сотрудникиToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.списокСотрудниковToolStripMenuItem2,
+            this.listEmployeesToolStripMenuItem2,
             this.должностиСотрудниковToolStripMenuItem2,
             this.списокДолжностейToolStripMenuItem2,
             this.списокПользователейToolStripMenuItem,
@@ -158,11 +158,12 @@
             this.сотрудникиToolStripMenuItem1.Size = new System.Drawing.Size(97, 20);
             this.сотрудникиToolStripMenuItem1.Text = "Сотрудники";
             // 
-            // списокСотрудниковToolStripMenuItem2
+            // listEmployeesToolStripMenuItem2
             // 
-            this.списокСотрудниковToolStripMenuItem2.Name = "списокСотрудниковToolStripMenuItem2";
-            this.списокСотрудниковToolStripMenuItem2.Size = new System.Drawing.Size(232, 22);
-            this.списокСотрудниковToolStripMenuItem2.Text = "Список сотрудников";
+            this.listEmployeesToolStripMenuItem2.Name = "listEmployeesToolStripMenuItem2";
+            this.listEmployeesToolStripMenuItem2.Size = new System.Drawing.Size(232, 22);
+            this.listEmployeesToolStripMenuItem2.Text = "Список сотрудников";
+            this.listEmployeesToolStripMenuItem2.Click += new System.EventHandler(this.listEmployeesToolStripMenuItem2_Click);
             // 
             // должностиСотрудниковToolStripMenuItem2
             // 
@@ -245,7 +246,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1041, 567);
             this.Controls.Add(this.toolStripContainer1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Font = new System.Drawing.Font("Verdana", 11.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -283,7 +284,7 @@
         private System.Windows.Forms.ToolStripMenuItem типыЗадачToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem историяЗадачToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem списокСотрудниковToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem listEmployeesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem должностиСотрудниковToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem списокДолжностейToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem списокПользователейToolStripMenuItem;

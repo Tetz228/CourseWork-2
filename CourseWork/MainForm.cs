@@ -28,11 +28,11 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            History_projectsForm history_Projects = new History_projectsForm();
+            EmployeesForm employees = new EmployeesForm();
 
-            history_Projects.MdiParent = this;
-            history_Projects.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            history_Projects.Show();
+            employees.MdiParent = this;
+            employees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            employees.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -99,6 +99,20 @@ namespace CourseWork
         private void списокПользователиToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void listEmployeesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                EmployeesForm employees = new EmployeesForm();
+
+                employees.MdiParent = this;
+                employees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                employees.Show();
+            }
         }
     }
 }
