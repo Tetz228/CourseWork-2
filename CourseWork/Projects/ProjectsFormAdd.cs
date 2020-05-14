@@ -23,13 +23,13 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы вызов функции заполнения ComboBox`а
+        // При загрузки формы
         private void ProjectsFormAdd_Load(object sender, EventArgs e)
         {
             SelectEmployeeComboBox();
         }
 
-        // Заполнение ComboBox`а
+        // Заполнение ComboBox`а "Сотрудник"
         private void SelectEmployeeComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
@@ -53,7 +53,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // При нажатии валидация, если валидация прошла успешно, то добавление в бд
+        // Вызов провероки TextBox`ов и добавление в бд
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
@@ -179,7 +179,7 @@ namespace CourseWork
             }
         }
 
-        // Валидация TextBox`ов
+        // Проверки на пустоту полей
         private bool CheckTextBox()
         {
             int check = 0;
@@ -203,25 +203,22 @@ namespace CourseWork
                 return true;
         }
 
-        // При вводе в TextBox скрывать label
-        private void textBoxProject_name_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        // Скрывать Label`ы при вводе в TextBox`ы
+        private void textBoxProject_name_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidProject.Hide();
         }
 
-        // Ввод только определенных символов и при вводе в TextBox скрывать label
-        private void textBoxDate_start_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void textBoxDate_start_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidStart.Hide();
         }
 
-        // Ввод только определенных символов и при вводе в TextBox скрывать label
-        private void textBoxDate_completion_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void textBoxDate_completion_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidCompletion.Hide();
         }
-    
-        // При выборе в ComboBox`е скрывать label
+
         private void comboBox_fk_leader_SelectedValueChanged(object sender, EventArgs e)
         {
             labelValidLeader.Hide();

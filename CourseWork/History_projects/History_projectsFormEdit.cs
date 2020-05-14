@@ -28,9 +28,10 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // При загрузки формы
         private void History_projectsFormEdit_Load(object sender, EventArgs e)
         {
-            SelectProjectComboBox();
+            SelectHistoryProjectComboBox();
 
             SelectStatusComboBox();
 
@@ -42,17 +43,20 @@ namespace CourseWork
                 textBox_History_date_project.Text = textBox_History_date_project.Text.Substring(0, 10);
         }
 
+        // Вызов проверки даты и сохранение изменений
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             CheckDateNullAndCorrect();
         }
 
+        // При нажатии закрыть форму
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void SelectProjectComboBox()
+        // Заполнение ComboBox`а "Проект"
+        private void SelectHistoryProjectComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
             SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, project_name AS Project FROM Projects", connection.GetSqlConnect());
@@ -70,6 +74,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
+        // Заполнение ComboBox`а "Статус"
         private void SelectStatusComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
@@ -150,6 +155,7 @@ namespace CourseWork
             }
         }
 
+        // Скрывать Label при вводе в TextBox
         private void textBox_History_date_project_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidDate.Hide();

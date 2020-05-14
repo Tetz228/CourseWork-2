@@ -26,13 +26,13 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы передать тест из класса в TextBox
+        // При загрузки формы
         private void Projects_roleFormEdit_Load(object sender, EventArgs e)
         {
             textBoxEdit.Text = Program.DataEditProjects_role.Value;
         }
 
-        // При нажатии валидация и передача текста в класс
+        // Вызов проверки и сохранение изменений
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
@@ -64,7 +64,7 @@ namespace CourseWork
 
         }
 
-        // Валидация TextBox`а
+        // Проверка на пустоту поля
         private bool CheckTextBox()
         {
             if (string.IsNullOrWhiteSpace(textBoxEdit.Text))
@@ -77,13 +77,13 @@ namespace CourseWork
                 return true;
         }
 
-        // При нажатии передать определенный текст в класс
+        // При нажатии закрыть форму
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        // При вводе в TextBox скрывать label
+        // Скрывать Label при вводе в TextBox
         private void textBoxEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValid.Hide();

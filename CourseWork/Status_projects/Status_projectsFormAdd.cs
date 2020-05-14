@@ -21,7 +21,7 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При нажатии валидация TextBox`а, если валидация прошла успешно, то добавление в бд
+        // Вызов проверки и сохранение изменений
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBoxNull())
@@ -61,7 +61,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Валидация TextBox`а на пустоту
+        // Проверка на пустоту поля
         private bool CheckTextBoxNull()
         {
             if (string.IsNullOrWhiteSpace(textBoxNameStatus.Text))
@@ -74,7 +74,7 @@ namespace CourseWork
                 return true;
         }
 
-        // При вводе в TextBox скрывать label
+        // Скрывать Label при вводе в TextBox
         private void textBoxNameStatus_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValid.Hide();

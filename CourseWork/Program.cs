@@ -145,6 +145,7 @@ namespace CourseWork
         public static class DataEditPostsEmployeesEmp
         {
             public static string Value { get; set; }
+           
         }
 
         public static class DataEditPostsEmployeesPost

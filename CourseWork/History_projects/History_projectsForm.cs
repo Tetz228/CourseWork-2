@@ -105,17 +105,17 @@ namespace CourseWork
             SelectDateHistory_projects();
         }
 
-        // При клике на "Правка" -> "Добавить" открывается форма для добавления, после чего вызов функции добавления строки
+        // При клике на "Правка" -> "Добавить" открывается форма для добавления
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             History_projectsFormAdd formAdd = new History_projectsFormAdd();
 
             formAdd.ShowDialog();
-
+            
             SelectDateHistory_projects();
         }
 
-        // При нажатии на Ins(Insert) на клавиатуре появляется форма добавления
+        // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewHistory_projects_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Insert)
@@ -128,7 +128,7 @@ namespace CourseWork
             }
         }
 
-        // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
+        // При клике на "Правка" -> "Изменить" открывается форма для изменения
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
             History_projectsFormEdit formEdit = new History_projectsFormEdit();
@@ -143,7 +143,7 @@ namespace CourseWork
             SelectDateHistory_projects();
         }
 
-        // Cобытие при 2-ом клике на ячейку позволяет провести редактирование
+        // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewHistory_projects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -163,7 +163,7 @@ namespace CourseWork
             }
         }
 
-        // При клике на "Правка" -> "Удалить"
+        // При клике на "Правка" -> "Удалить" вызывается функция удаления
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -172,7 +172,7 @@ namespace CourseWork
                 return;
         }
 
-        // При выделение строки и нажание на клавишу Del(Delete)
+        // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewHistory_projects_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)

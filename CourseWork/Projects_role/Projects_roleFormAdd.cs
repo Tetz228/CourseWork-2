@@ -20,7 +20,7 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При нажатии валидация TextBox`а, если валидация прошла успешно, то добавление в бд
+        // Вызов проверки и добавление в бд
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
@@ -61,7 +61,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Валидация TextBox`а
+        // Проверка на пустоту поля
         private bool CheckTextBox()
         {
             if (string.IsNullOrWhiteSpace(textBoxNameRole.Text))

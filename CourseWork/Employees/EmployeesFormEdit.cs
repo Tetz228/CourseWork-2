@@ -29,6 +29,18 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // При загрузки формы
+        private void EmployeesFormEdit_Load(object sender, EventArgs e)
+        {
+            textBoxLname.Text = Program.DataEditEmployeeLname.Value;
+            textBoxFname.Text = Program.DataEditEmployeeFname.Value;
+            textBoxMname.Text = Program.DataEditEmployeeMname.Value;
+            textBoxEmail.Text = Program.DataEditEmployeeEmail.Value;
+
+            checkEmail = textBoxEmail.Text;
+        }
+
+        // Вызов всех проверок и изменение строки
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
@@ -46,45 +58,17 @@ namespace CourseWork
                 return;
             }
             else
-            if (!ValidationLFMname(textBoxLname.Text))
             {
-                labelLname.Show();
-                return;
-            }
-            else
-            if (!ValidationLFMname(textBoxFname.Text))
-            {
-                labelLname.Show();
-                return;
-            }
-            else
-            if (!string.IsNullOrWhiteSpace(textBoxMname.Text))
-            {
-                if (!ValidationLFMname(textBoxMname.Text))
-                {
-                    labelMname.Show();
-                    return;
-                }
-            }
+                EditRowEmployees();
 
-            EditRowEmployees();
-
-            this.Close();
+                this.Close();
+            }
         }
 
+        // При нажатии закрыть форму
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void EmployeesFormEdit_Load(object sender, EventArgs e)
-        {
-            textBoxLname.Text = Program.DataEditEmployeeLname.Value;
-            textBoxFname.Text = Program.DataEditEmployeeFname.Value;
-            textBoxMname.Text = Program.DataEditEmployeeMname.Value;
-            textBoxEmail.Text = Program.DataEditEmployeeEmail.Value;
-
-            checkEmail = textBoxEmail.Text;
         }
 
         // Функция редактирования строки
@@ -113,7 +97,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Валидация TextBox`а
+        // Проверки на пустоту полей
         private bool CheckTextBox()
         {
             int check = 0;
@@ -136,7 +120,7 @@ namespace CourseWork
 
                 check = 1;
             }
-            
+
             if (check == 1)
                 return false;
             else
@@ -204,6 +188,7 @@ namespace CourseWork
                 return true;
         }
 
+        // Скрывать Label`ы при вводе в TextBox`ы
         private void TextBoxLname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelLname.Hide();

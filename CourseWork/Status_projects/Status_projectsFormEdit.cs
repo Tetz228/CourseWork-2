@@ -20,7 +20,7 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы передать текст из класса в TextBox
+        // При загрузки формы
         private void Status_projectsFormEdit_Load(object sender, EventArgs e)
         {
             textBoxEdit.Text = Program.DataEditStatus_project.Value;
@@ -44,7 +44,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // При нажатии валидация, если валидация прошла успешно, то изменяет данные в бд
+        // Вызов проверки и сохранение изменений
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
@@ -63,7 +63,7 @@ namespace CourseWork
             this.Close();
         }
 
-        // Валидация TextBox`а
+        // Проверка на пустоту поля
         private bool CheckTextBox()
         {
             if (string.IsNullOrWhiteSpace(textBoxEdit.Text))
@@ -76,7 +76,7 @@ namespace CourseWork
                 return true;
         }
 
-        // При вводе в TextBox скрывать label
+        // Скрывать Label при вводе в TextBox
         private void textBoxEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValid.Hide();

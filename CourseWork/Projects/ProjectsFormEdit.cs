@@ -23,7 +23,7 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы передавать в TextBox`ы текст, полученный с классов, и обрезать строки даты из-за времени, если не пустые
+        // При загрузки формы 
         private void ProjectsFormEdit_Load(object sender, EventArgs e)
         {
             SelectEmployeeComboBox();
@@ -41,7 +41,7 @@ namespace CourseWork
                 textBoxDate_completion.Text = textBoxDate_completion.Text.Substring(0, 10);
         }
 
-        // При нажатии валидация TextBox`ов
+        // Вызов проверки и сохранение изменений
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
@@ -56,7 +56,7 @@ namespace CourseWork
             this.Close();
         }
 
-        // Заполнение ComboBox`а
+        // Заполнение ComboBox`а "Проект"
         private void SelectEmployeeComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
@@ -126,7 +126,7 @@ namespace CourseWork
             }
         }
 
-        // Проверка даты на нулевое значение и на формат даты
+        // Проверка даты на нулевое значение и на корректность даты
         private void CheckDateNullAndCorrect()
         {
             bool start = DateTime.TryParse(textBoxDate_start.Text, out dateTimeStart);
@@ -191,7 +191,7 @@ namespace CourseWork
             }
         }
 
-        // Валидация TextBox`а
+        // Проверка на пустоту поля
         private bool CheckTextBox()
         {
             if (string.IsNullOrWhiteSpace(textBoxProject_name.Text))
@@ -204,19 +204,17 @@ namespace CourseWork
            return true;
         }
 
-        // При вводе в TextBox скрывать label
+        // Скрывать Label`ы при вводе в TextBox`ы
         private void textBoxProject_name_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidProject.Hide();
         }
 
-        // При вводе в TextBox скрывать label
         private void textBoxDate_start_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidStart.Hide();
         }
 
-        // При вводе в TextBox скрывать label
         private void textBoxDate_completion_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidCompletion.Hide();

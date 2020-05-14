@@ -38,7 +38,7 @@
             // 
             this.textBoxEdit.Depth = 0;
             this.textBoxEdit.Hint = "Наименование";
-            this.textBoxEdit.Location = new System.Drawing.Point(21, 102);
+            this.textBoxEdit.Location = new System.Drawing.Point(21, 98);
             this.textBoxEdit.MaxLength = 35;
             this.textBoxEdit.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxEdit.Name = "textBoxEdit";
@@ -89,7 +89,7 @@
             this.labelValid.AutoSize = true;
             this.labelValid.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValid.ForeColor = System.Drawing.Color.Red;
-            this.labelValid.Location = new System.Drawing.Point(18, 128);
+            this.labelValid.Location = new System.Drawing.Point(18, 124);
             this.labelValid.Name = "labelValid";
             this.labelValid.Size = new System.Drawing.Size(174, 13);
             this.labelValid.TabIndex = 45;

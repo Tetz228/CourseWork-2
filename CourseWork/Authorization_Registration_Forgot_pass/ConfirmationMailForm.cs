@@ -40,11 +40,13 @@ namespace CourseWork
             }
         }
 
+        // Получение кода подтверждение
         private void ConfirmationMailForm_Load(object sender, EventArgs e)
         {
-            //global = SendingCode(Program.DataEmailReg.Value);
+            global = SendingCode(Program.DataEmailReg.Value);
         }
 
+        // Отправка кода подтверждение
         public string SendingCode(string email)
         {
             Random random = new Random();
@@ -74,6 +76,7 @@ namespace CourseWork
             }
         }
 
+        // Сравнивание введенного и полученного кода в глобальной переменной
         private void buttonConfirmationMail_Click(object sender, EventArgs e)
         {
             string returnCode = global;
@@ -88,28 +91,25 @@ namespace CourseWork
                 labelConfirmationMail.Show();
         }
 
+        // Закрытие формы
         private void buttonBackConfirmationMail_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Скрывать Label при вводе в TextBox
         private void textBoxCode_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelConfirmationMail.Hide();
-
-            //Только цифры
-            if (!(e.KeyChar >= 48 && e.KeyChar <= 57 ||
-                // Ctrl + A, Ctrl + C, Ctrl + X, Ctrl + Z, BACKSPACE
-                e.KeyChar == 001 || e.KeyChar == 003 || e.KeyChar == 024 || e.KeyChar == 026 || e.KeyChar == 8))
-
-                e.Handled = true;
         }
 
+        // Повторная отправка кода
         private void linkLabelConfirmationCode_Click(object sender, EventArgs e)
         {
             global = SendingCode(Program.DataEmailReg.Value);
         }
 
+        // При закрытии формы
         private void ConfirmationMailForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Form registration = Application.OpenForms[1];

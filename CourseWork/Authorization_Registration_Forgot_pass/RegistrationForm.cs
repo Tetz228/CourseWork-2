@@ -171,7 +171,7 @@ namespace CourseWork
         }
 
         // Валидация логина
-        public bool ValidationLogin(string login)
+        private bool ValidationLogin(string login)
         {
             string pattern = @"^[A-Za-z][A-Za-z0-9]{5,30}$";
 
@@ -209,7 +209,7 @@ namespace CourseWork
 
         // Валидация пароля
         // От 6 до 35 символов с минимум одной цифрой, одной заглавной и одной строчной буквой
-        public bool ValidationPassword(string password)
+        private bool ValidationPassword(string password)
         {
             string pattern = @"((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,35})";
 
@@ -219,7 +219,7 @@ namespace CourseWork
         }
 
         // Валидация почты
-        public bool ValidationEmail(string email)
+        private bool ValidationEmail(string email)
         {
             string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
 
@@ -310,7 +310,8 @@ namespace CourseWork
 
             connection.CloseConnect();
         }
-        
+
+        // Скрывать Label`ы при вводе в TextBox`ы
         private void TextBoxLname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidLname.Hide();

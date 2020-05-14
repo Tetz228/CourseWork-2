@@ -82,7 +82,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Валидация TextBox`а
+        // Проверки на пустоту полей
         private bool CheckTextBox()
         {
             int check = 0;
@@ -150,6 +150,7 @@ namespace CourseWork
                 return true;
         }
 
+        // Скрывать Label`ы при вводе в TextBox`ы
         private void TextBoxLname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelLname.Hide();

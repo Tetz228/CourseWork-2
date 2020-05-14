@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
-using System.Threading;
 
 namespace CourseWork
 {
@@ -31,6 +30,7 @@ namespace CourseWork
                 Authorization();
         }
 
+        // Функция авторизации
         private void Authorization()
         {
             Form main = new MainForm();
@@ -45,13 +45,10 @@ namespace CourseWork
             selectLogPass.Parameters.Add("@log", SqlDbType.VarChar).Value = loginUser;
             selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = passUser;
 
-            // Выполняем команду
             adapter.SelectCommand = selectLogPass;
 
-            // Заполняем таблицу
             adapter.Fill(table);
 
-            // Если таблица содержит хоть 1 ряд
             if (table.Rows.Count > 0)
             {
                 main.Left = this.Left;
@@ -66,11 +63,9 @@ namespace CourseWork
         // Валидация авторизации
         public bool ValidationAuth()
         {
-
             if (string.IsNullOrEmpty(TextBoxLog.Text) && string.IsNullOrEmpty(TextBoxPass.Text))
             {
                 labelValidAuthLog.Show();
-
                 labelValidAuthPass.Show();
 
                 return false;
@@ -120,15 +115,30 @@ namespace CourseWork
             labelValidAuthPass.Hide();
 
             Form registration = new RegistrationForm();
-
-            // Задает открываемой форме позицию слева, равную позиции текущей формы
+     
             registration.Left = this.Left;
-            // Задает открываемой форме позицию сверху, равную позиции текущей формы
             registration.Top = this.Top;
 
             this.Hide();
             
             registration.Show();
+        }
+
+        private void ForgotPassLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("В разработке");
+            //TextBoxLog.Text = "";
+            //TextBoxPass.Text = "";
+
+            //Form fogotPass = new ForgotPass();
+
+            //// Задает открываемой форме позицию слева, равную позиции текущей формы
+            //fogotPass.Left = this.Left;
+            //// Задает открываемой форме позицию сверху, равную позиции текущей формы
+            //fogotPass.Top = this.Top;
+            //this.Hide();
+
+            //fogotPass.Show();
         }
 
         // Скрывать Label`ы при вводе в TextBox`ы и при нажатии на Enter происходит авторизация
@@ -147,22 +157,5 @@ namespace CourseWork
             if (e.KeyChar == 13)
                 buttonLogin_Click(sender, e);
         }
-
-        private void ForgotPassLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MessageBox.Show("В разработке");
-            //TextBoxLog.Text = "";
-            //TextBoxPass.Text = "";
-
-            //Form fogotPass = new ForgotPass();
-
-            //// Задает открываемой форме позицию слева, равную позиции текущей формы
-            //fogotPass.Left = this.Left;
-            //// Задает открываемой форме позицию сверху, равную позиции текущей формы
-            //fogotPass.Top = this.Top;
-            //this.Hide();
-
-            //fogotPass.Show();
-        }   
     }
 }
