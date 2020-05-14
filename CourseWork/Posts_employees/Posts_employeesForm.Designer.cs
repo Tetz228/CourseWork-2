@@ -1,6 +1,6 @@
 ﻿namespace CourseWork
 {
-    partial class PostsEmployeesForm
+    partial class Posts_employeesForm
     {
         /// <summary>
         /// Required designer variable.

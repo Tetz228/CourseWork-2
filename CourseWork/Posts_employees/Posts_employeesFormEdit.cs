@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CourseWork
 {
-    public partial class PostsEmployeesFormAdd : Form
+    public partial class Posts_employeesFormEdit : Form
     {
-        public PostsEmployeesFormAdd()
+        public Posts_employeesFormEdit()
         {
             InitializeComponent();
         }

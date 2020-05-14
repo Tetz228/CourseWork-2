@@ -28,7 +28,7 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PostsEmployeesForm postsEmployees = new PostsEmployeesForm();
+            Posts_employeesForm postsEmployees = new Posts_employeesForm();
 
             postsEmployees.MdiParent = this;
             postsEmployees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
@@ -121,7 +121,7 @@ namespace CourseWork
             {
                 MdiChildren[0].Close();
 
-                PostsEmployeesForm postsEmployees = new PostsEmployeesForm();
+                Posts_employeesForm postsEmployees = new Posts_employeesForm();
 
                 postsEmployees.MdiParent = this;
                 postsEmployees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);

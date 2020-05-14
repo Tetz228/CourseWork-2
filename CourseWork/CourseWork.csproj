@@ -49,59 +49,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthorizationForm.cs">
+    <Compile Include="Authorization_Registration_Forgot_pass\AuthorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AuthorizationForm.Designer.cs">
+    <Compile Include="Authorization_Registration_Forgot_pass\AuthorizationForm.Designer.cs">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfirmationMailForm.cs">
+    <Compile Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfirmationMailForm.Designer.cs">
+    <Compile Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.Designer.cs">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionDB.cs" />
-    <Compile Include="EmployeesFormAdd.cs">
+    <Compile Include="Employees\EmployeesFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeesFormAdd.Designer.cs">
+    <Compile Include="Employees\EmployeesFormAdd.Designer.cs">
       <DependentUpon>EmployeesFormAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeesForm.cs">
+    <Compile Include="Employees\EmployeesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeesForm.Designer.cs">
+    <Compile Include="Employees\EmployeesForm.Designer.cs">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeesFormEdit.cs">
+    <Compile Include="Employees\EmployeesFormEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeesFormEdit.Designer.cs">
+    <Compile Include="Employees\EmployeesFormEdit.Designer.cs">
       <DependentUpon>EmployeesFormEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="ForgotPassForm.cs">
+    <Compile Include="Authorization_Registration_Forgot_pass\ForgotPassForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ForgotPassForm.Designer.cs">
+    <Compile Include="Authorization_Registration_Forgot_pass\ForgotPassForm.Designer.cs">
       <DependentUpon>ForgotPassForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="History_projectsForm.cs">
+    <Compile Include="History_projects\History_projectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="History_projectsForm.Designer.cs">
+    <Compile Include="History_projects\History_projectsForm.Designer.cs">
       <DependentUpon>History_projectsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="History_projectsFormAdd.cs">
+    <Compile Include="History_projects\History_projectsFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="History_projectsFormAdd.Designer.cs">
+    <Compile Include="History_projects\History_projectsFormAdd.Designer.cs">
       <DependentUpon>History_projectsFormAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="History_projectsFormEdit.cs">
+    <Compile Include="History_projects\History_projectsFormEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="History_projectsFormEdit.Designer.cs">
+    <Compile Include="History_projects\History_projectsFormEdit.Designer.cs">
       <DependentUpon>History_projectsFormEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -110,59 +110,59 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PostsEmployeesForm.cs">
+    <Compile Include="Posts_employees\Posts_employeesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PostsEmployeesForm.Designer.cs">
-      <DependentUpon>PostsEmployeesForm.cs</DependentUpon>
+    <Compile Include="Posts_employees\Posts_employeesForm.Designer.cs">
+      <DependentUpon>Posts_employeesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PostsEmployeesFormAdd.cs">
+    <Compile Include="Posts_employees\Posts_employeesFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PostsEmployeesFormAdd.Designer.cs">
-      <DependentUpon>PostsEmployeesFormAdd.cs</DependentUpon>
+    <Compile Include="Posts_employees\Posts_employeesFormAdd.Designer.cs">
+      <DependentUpon>Posts_employeesFormAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="PostsEmployeesFormEdit.cs">
+    <Compile Include="Posts_employees\Posts_employeesFormEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PostsEmployeesFormEdit.Designer.cs">
-      <DependentUpon>PostsEmployeesFormEdit.cs</DependentUpon>
+    <Compile Include="Posts_employees\Posts_employeesFormEdit.Designer.cs">
+      <DependentUpon>Posts_employeesFormEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectsForm.cs">
+    <Compile Include="Projects\ProjectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectsForm.Designer.cs">
+    <Compile Include="Projects\ProjectsForm.Designer.cs">
       <DependentUpon>ProjectsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectsFormAdd.cs">
+    <Compile Include="Projects\ProjectsFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectsFormAdd.Designer.cs">
+    <Compile Include="Projects\ProjectsFormAdd.Designer.cs">
       <DependentUpon>ProjectsFormAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectsFormEdit.cs">
+    <Compile Include="Projects\ProjectsFormEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectsFormEdit.Designer.cs">
+    <Compile Include="Projects\ProjectsFormEdit.Designer.cs">
       <DependentUpon>ProjectsFormEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Projects_roleForm.cs">
+    <Compile Include="Projects_role\Projects_roleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Projects_roleForm.Designer.cs">
+    <Compile Include="Projects_role\Projects_roleForm.Designer.cs">
       <DependentUpon>Projects_roleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Projects_roleFormAdd.cs">
+    <Compile Include="Projects_role\Projects_roleFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Projects_roleFormAdd.Designer.cs">
+    <Compile Include="Projects_role\Projects_roleFormAdd.Designer.cs">
       <DependentUpon>Projects_roleFormAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Projects_roleFormEdit.cs">
+    <Compile Include="Projects_role\Projects_roleFormEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Projects_roleFormEdit.Designer.cs">
+    <Compile Include="Projects_role\Projects_roleFormEdit.Designer.cs">
       <DependentUpon>Projects_roleFormEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,79 +171,79 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RegistrationForm.cs">
+    <Compile Include="Authorization_Registration_Forgot_pass\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrationForm.Designer.cs">
+    <Compile Include="Authorization_Registration_Forgot_pass\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Status_projectsForm.cs">
+    <Compile Include="Status_projects\Status_projectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Status_projectsForm.Designer.cs">
+    <Compile Include="Status_projects\Status_projectsForm.Designer.cs">
       <DependentUpon>Status_projectsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Status_projectsFormAdd.cs">
+    <Compile Include="Status_projects\Status_projectsFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Status_projectsFormAdd.Designer.cs">
+    <Compile Include="Status_projects\Status_projectsFormAdd.Designer.cs">
       <DependentUpon>Status_projectsFormAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Status_projectsFormEdit.cs">
+    <Compile Include="Status_projects\Status_projectsFormEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Status_projectsFormEdit.Designer.cs">
+    <Compile Include="Status_projects\Status_projectsFormEdit.Designer.cs">
       <DependentUpon>Status_projectsFormEdit.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AuthorizationForm.resx">
+    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConfirmationMailForm.resx">
+    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.resx">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeesForm.resx">
+    <EmbeddedResource Include="Employees\EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeesFormAdd.resx">
+    <EmbeddedResource Include="Employees\EmployeesFormAdd.resx">
       <DependentUpon>EmployeesFormAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeesFormEdit.resx">
+    <EmbeddedResource Include="Employees\EmployeesFormEdit.resx">
       <DependentUpon>EmployeesFormEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ForgotPassForm.resx">
+    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\ForgotPassForm.resx">
       <DependentUpon>ForgotPassForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="History_projectsForm.resx">
+    <EmbeddedResource Include="History_projects\History_projectsForm.resx">
       <DependentUpon>History_projectsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="History_projectsFormAdd.resx">
+    <EmbeddedResource Include="History_projects\History_projectsFormAdd.resx">
       <DependentUpon>History_projectsFormAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="History_projectsFormEdit.resx">
+    <EmbeddedResource Include="History_projects\History_projectsFormEdit.resx">
       <DependentUpon>History_projectsFormEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PostsEmployeesForm.resx">
-      <DependentUpon>PostsEmployeesForm.cs</DependentUpon>
+    <EmbeddedResource Include="Posts_employees\Posts_employeesForm.resx">
+      <DependentUpon>Posts_employeesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectsForm.resx">
+    <EmbeddedResource Include="Projects\ProjectsForm.resx">
       <DependentUpon>ProjectsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectsFormAdd.resx">
+    <EmbeddedResource Include="Projects\ProjectsFormAdd.resx">
       <DependentUpon>ProjectsFormAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectsFormEdit.resx">
+    <EmbeddedResource Include="Projects\ProjectsFormEdit.resx">
       <DependentUpon>ProjectsFormEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Projects_roleForm.resx">
+    <EmbeddedResource Include="Projects_role\Projects_roleForm.resx">
       <DependentUpon>Projects_roleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Projects_roleFormAdd.resx">
+    <EmbeddedResource Include="Projects_role\Projects_roleFormAdd.resx">
       <DependentUpon>Projects_roleFormAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Projects_roleFormEdit.resx">
+    <EmbeddedResource Include="Projects_role\Projects_roleFormEdit.resx">
       <DependentUpon>Projects_roleFormEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -251,19 +251,19 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistrationForm.resx">
+    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Status_projectsForm.resx">
+    <EmbeddedResource Include="Status_projects\Status_projectsForm.resx">
       <DependentUpon>Status_projectsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Status_projectsFormAdd.resx">
+    <EmbeddedResource Include="Status_projects\Status_projectsFormAdd.resx">
       <DependentUpon>Status_projectsFormAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Status_projectsFormEdit.resx">
+    <EmbeddedResource Include="Status_projects\Status_projectsFormEdit.resx">
       <DependentUpon>Status_projectsFormEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="Config\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -275,7 +275,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Config\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Password.png" />
@@ -289,8 +289,6 @@
   <ItemGroup>
     <None Include="Resources\RollUp.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Employees\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

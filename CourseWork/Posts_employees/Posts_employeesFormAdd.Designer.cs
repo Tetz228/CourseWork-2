@@ -1,6 +1,6 @@
 ﻿namespace CourseWork
 {
-    partial class PostsEmployeesFormEdit
+    partial class Posts_employeesFormAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "PostsEmployeesFormEdit";
+            this.Text = "PostsEmployeesFormAdd";
         }
 
         #endregion

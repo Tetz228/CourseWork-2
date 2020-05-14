@@ -13,9 +13,9 @@ using System.Data.SqlClient;
 
 namespace CourseWork
 {
-    public partial class PostsEmployeesForm : MaterialForm
+    public partial class Posts_employeesForm : MaterialForm
     {
-        public PostsEmployeesForm()
+        public Posts_employeesForm()
         {
             InitializeComponent();
 
@@ -111,7 +111,7 @@ namespace CourseWork
 
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PostsEmployeesFormAdd formAdd = new PostsEmployeesFormAdd();
+            Posts_employeesFormAdd formAdd = new Posts_employeesFormAdd();
 
             formAdd.ShowDialog();
 
@@ -123,7 +123,7 @@ namespace CourseWork
         {
             if (e.KeyCode == Keys.Insert)
             {
-                PostsEmployeesFormAdd formAdd = new PostsEmployeesFormAdd();
+                Posts_employeesFormAdd formAdd = new Posts_employeesFormAdd();
 
                 formAdd.ShowDialog();
 
@@ -134,7 +134,7 @@ namespace CourseWork
         // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PostsEmployeesFormEdit formEdit = new PostsEmployeesFormEdit();
+            Posts_employeesFormEdit formEdit = new Posts_employeesFormEdit();
 
             Program.DataEditPostsEmployeesId.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells["Column_id_post_emp"].Value);
             Program.DataEditPostsEmployeesEmp.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells["ComboBox_fk_employee"].Value);
@@ -156,7 +156,7 @@ namespace CourseWork
                 Program.DataEditPostsEmployeesEmp.Value = view.Cells[1].Value.ToString();
                 Program.DataEditPostsEmployeesPost.Value = view.Cells[2].Value.ToString();
 
-                PostsEmployeesFormEdit formEdit = new PostsEmployeesFormEdit();
+                Posts_employeesFormEdit formEdit = new Posts_employeesFormEdit();
 
                 formEdit.ShowDialog();
 
