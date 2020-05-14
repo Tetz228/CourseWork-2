@@ -199,11 +199,6 @@ namespace CourseWork
             labelFname.Hide();
         }
 
-        private void TextBoxMname_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            labelMname.Hide();
-        }
-
         private void TextBoxEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelEmail.Hide();

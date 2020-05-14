@@ -28,29 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelMname = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelFname = new System.Windows.Forms.Label();
             this.labelLname = new System.Windows.Forms.Label();
             this.buttonBack = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.buttonAdd = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.buttonEdit = new MaterialSkin.Controls.MaterialRaisedButton();
             this.textBoxFname = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.textBoxEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.textBoxMname = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.textBoxLname = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.SuspendLayout();
-            // 
-            // labelMname
-            // 
-            this.labelMname.AutoSize = true;
-            this.labelMname.Font = new System.Drawing.Font("Verdana", 8F);
-            this.labelMname.ForeColor = System.Drawing.Color.Red;
-            this.labelMname.Location = new System.Drawing.Point(9, 178);
-            this.labelMname.Name = "labelMname";
-            this.labelMname.Size = new System.Drawing.Size(145, 13);
-            this.labelMname.TabIndex = 19;
-            this.labelMname.Text = "Некорректное отчество";
-            this.labelMname.Visible = false;
             // 
             // labelEmail
             // 
@@ -104,21 +91,21 @@
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
-            // buttonAdd
+            // buttonEdit
             // 
-            this.buttonAdd.AutoSize = true;
-            this.buttonAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonAdd.Depth = 0;
-            this.buttonAdd.Icon = null;
-            this.buttonAdd.Location = new System.Drawing.Point(12, 214);
-            this.buttonAdd.MouseState = MaterialSkin.MouseState.HOVER;
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Primary = true;
-            this.buttonAdd.Size = new System.Drawing.Size(94, 36);
-            this.buttonAdd.TabIndex = 14;
-            this.buttonAdd.Text = "Добавить";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonEdit.AutoSize = true;
+            this.buttonEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonEdit.Depth = 0;
+            this.buttonEdit.Icon = null;
+            this.buttonEdit.Location = new System.Drawing.Point(12, 214);
+            this.buttonEdit.MouseState = MaterialSkin.MouseState.HOVER;
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Primary = true;
+            this.buttonEdit.Size = new System.Drawing.Size(95, 36);
+            this.buttonEdit.TabIndex = 14;
+            this.buttonEdit.Text = "Изменить";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // textBoxFname
             // 
@@ -172,7 +159,6 @@
             this.textBoxMname.TabIndex = 11;
             this.textBoxMname.TabStop = false;
             this.textBoxMname.UseSystemPasswordChar = false;
-            this.textBoxMname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxMname_KeyPress);
             // 
             // textBoxLname
             // 
@@ -197,12 +183,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 265);
-            this.Controls.Add(this.labelMname);
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.labelFname);
             this.Controls.Add(this.labelLname);
             this.Controls.Add(this.buttonBack);
-            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.textBoxFname);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxMname);
@@ -219,13 +204,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelMname;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Label labelFname;
         private System.Windows.Forms.Label labelLname;
         private MaterialSkin.Controls.MaterialRaisedButton buttonBack;
-        private MaterialSkin.Controls.MaterialRaisedButton buttonAdd;
+        private MaterialSkin.Controls.MaterialRaisedButton buttonEdit;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxFname;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxEmail;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxMname;

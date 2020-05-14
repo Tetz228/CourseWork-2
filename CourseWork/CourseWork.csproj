@@ -228,6 +228,12 @@
     <EmbeddedResource Include="Posts_employees\Posts_employeesForm.resx">
       <DependentUpon>Posts_employeesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Posts_employees\Posts_employeesFormAdd.resx">
+      <DependentUpon>Posts_employeesFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Posts_employees\Posts_employeesFormEdit.resx">
+      <DependentUpon>Posts_employeesFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Projects\ProjectsForm.resx">
       <DependentUpon>ProjectsForm.cs</DependentUpon>
     </EmbeddedResource>

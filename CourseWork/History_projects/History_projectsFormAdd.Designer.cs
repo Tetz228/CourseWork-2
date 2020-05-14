@@ -133,7 +133,7 @@
             this.labelValidStatus.AutoSize = true;
             this.labelValidStatus.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidStatus.ForeColor = System.Drawing.Color.Red;
-            this.labelValidStatus.Location = new System.Drawing.Point(41, 177);
+            this.labelValidStatus.Location = new System.Drawing.Point(49, 177);
             this.labelValidStatus.Name = "labelValidStatus";
             this.labelValidStatus.Size = new System.Drawing.Size(145, 13);
             this.labelValidStatus.TabIndex = 50;
