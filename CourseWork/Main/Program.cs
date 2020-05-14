@@ -35,7 +35,7 @@ namespace CourseWork
 
         ///
 
-        public static class DataEditStatus_project
+        public static class DataEditStatus_projectName
         {
             public static string Value { get; set; }
         }
@@ -152,5 +152,21 @@ namespace CourseWork
         {
             public static string Value { get; set; }
         }
+
+        ///////////////////////////////////////////////
+
+        public static class DataEditPostsId
+        {
+            public static string Value { get; set; }
+        }
+
+        ///
+
+        public static class DataEditPostsName
+        {
+            public static string Value { get; set; }
+        }
+
+        ///////////////////////////////////////////////
     }
 }

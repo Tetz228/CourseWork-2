@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Data;
+using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data;
 
-namespace CourseWork
+namespace CourseWork.Posts
 {
-    public partial class Status_projectsFormAdd : MaterialForm
+    public partial class PostsFormAdd : MaterialForm
     {
-        public Status_projectsFormAdd()
+        public PostsFormAdd()
         {
             InitializeComponent();
 
@@ -20,14 +20,14 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // Вызов проверки и добавление в бд
+        // Вызов проверки и сохранение изменений
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBoxNull())
                 return;
             else
             {
-                AddRowStatusProject();
+                AddRowPost();
 
                 this.Close();
             }
@@ -40,18 +40,18 @@ namespace CourseWork
         }
 
         // Функция добавления строки
-        private void AddRowStatusProject()
+        private void AddRowPost()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("AddStatus_project", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("AddPost", connection.GetSqlConnect());
 
             command.CommandType = CommandType.StoredProcedure;
 
             connection.OpenConnect();
 
-            command.Parameters.AddWithValue("@status_name_project", SqlDbType.NVarChar).Value = textBoxNameStatus.Text.Trim();
+            command.Parameters.AddWithValue("@post_name", SqlDbType.NVarChar).Value = textBoxNamePost.Text.Trim();
 
-            SqlParameter parameter = command.Parameters.AddWithValue("@id_status_project", SqlDbType.Int);
+            SqlParameter parameter = command.Parameters.AddWithValue("@id_post", SqlDbType.Int);
 
             parameter.Direction = ParameterDirection.Output;
 
@@ -63,7 +63,7 @@ namespace CourseWork
         // Проверка на пустоту поля
         private bool CheckTextBoxNull()
         {
-            if (string.IsNullOrWhiteSpace(textBoxNameStatus.Text))
+            if (string.IsNullOrWhiteSpace(textBoxNamePost.Text))
             {
                 labelValid.Show();
 
@@ -74,7 +74,7 @@ namespace CourseWork
         }
 
         // Скрывать Label при вводе в TextBox
-        private void textBoxNameStatus_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxNamePost_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValid.Hide();
         }

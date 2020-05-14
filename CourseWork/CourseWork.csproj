@@ -61,7 +61,7 @@
     <Compile Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.Designer.cs">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConnectionDB.cs" />
+    <Compile Include="Main\ConnectionDB.cs" />
     <Compile Include="Employees\EmployeesFormAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,11 +104,29 @@
     <Compile Include="History_projects\History_projectsFormEdit.Designer.cs">
       <DependentUpon>History_projectsFormEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Posts\PostsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Posts\PostsForm.Designer.cs">
+      <DependentUpon>PostsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Posts\PostsFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Posts\PostsFormAdd.Designer.cs">
+      <DependentUpon>PostsFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Posts\PostsFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Posts\PostsFormEdit.Designer.cs">
+      <DependentUpon>PostsFormEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Posts_employees\Posts_employeesForm.cs">
       <SubType>Form</SubType>
@@ -128,7 +146,7 @@
     <Compile Include="Posts_employees\Posts_employeesFormEdit.Designer.cs">
       <DependentUpon>Posts_employeesFormEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Main\Program.cs" />
     <Compile Include="Projects\ProjectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,8 +240,17 @@
     <EmbeddedResource Include="History_projects\History_projectsFormEdit.resx">
       <DependentUpon>History_projectsFormEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Posts\PostsForm.resx">
+      <DependentUpon>PostsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Posts\PostsFormAdd.resx">
+      <DependentUpon>PostsFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Posts\PostsFormEdit.resx">
+      <DependentUpon>PostsFormEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Posts_employees\Posts_employeesForm.resx">
       <DependentUpon>Posts_employeesForm.cs</DependentUpon>

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using CourseWork.Posts;
 
 namespace CourseWork
 {
@@ -28,11 +29,11 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Posts_employeesForm postsEmployees = new Posts_employeesForm();
+            PostsForm posts = new PostsForm();
 
-            postsEmployees.MdiParent = this;
-            postsEmployees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            postsEmployees.Show();
+            posts.MdiParent = this;
+            posts.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            posts.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -128,6 +129,20 @@ namespace CourseWork
                 postsEmployees.Show();
             }
             
+        }
+
+        private void ListPostsToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                PostsForm posts = new PostsForm();
+
+                posts.MdiParent = this;
+                posts.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                posts.Show();
+            }
         }
     }
 }

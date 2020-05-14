@@ -40,7 +40,8 @@
             this.buttonAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonAdd.Depth = 0;
             this.buttonAdd.Icon = null;
-            this.buttonAdd.Location = new System.Drawing.Point(12, 158);
+            this.buttonAdd.Location = new System.Drawing.Point(13, 170);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAdd.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Primary = true;
@@ -54,7 +55,8 @@
             // 
             this.textBoxNameStatus.Depth = 0;
             this.textBoxNameStatus.Hint = "Наименование";
-            this.textBoxNameStatus.Location = new System.Drawing.Point(21, 98);
+            this.textBoxNameStatus.Location = new System.Drawing.Point(13, 102);
+            this.textBoxNameStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNameStatus.MaxLength = 35;
             this.textBoxNameStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxNameStatus.Name = "textBoxNameStatus";
@@ -62,7 +64,7 @@
             this.textBoxNameStatus.SelectedText = "";
             this.textBoxNameStatus.SelectionLength = 0;
             this.textBoxNameStatus.SelectionStart = 0;
-            this.textBoxNameStatus.Size = new System.Drawing.Size(231, 23);
+            this.textBoxNameStatus.Size = new System.Drawing.Size(344, 23);
             this.textBoxNameStatus.TabIndex = 15;
             this.textBoxNameStatus.TabStop = false;
             this.textBoxNameStatus.UseSystemPasswordChar = false;
@@ -74,7 +76,8 @@
             this.buttonBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonBack.Depth = 0;
             this.buttonBack.Icon = null;
-            this.buttonBack.Location = new System.Drawing.Point(177, 158);
+            this.buttonBack.Location = new System.Drawing.Point(262, 170);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonBack.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Primary = true;
@@ -89,7 +92,8 @@
             this.labelValid.AutoSize = true;
             this.labelValid.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValid.ForeColor = System.Drawing.Color.Red;
-            this.labelValid.Location = new System.Drawing.Point(18, 124);
+            this.labelValid.Location = new System.Drawing.Point(94, 129);
+            this.labelValid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelValid.Name = "labelValid";
             this.labelValid.Size = new System.Drawing.Size(174, 13);
             this.labelValid.TabIndex = 44;
@@ -98,13 +102,15 @@
             // 
             // Status_projectsFormAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 200);
+            this.ClientSize = new System.Drawing.Size(370, 219);
             this.Controls.Add(this.labelValid);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.textBoxNameStatus);
             this.Controls.Add(this.buttonAdd);
+            this.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Status_projectsFormAdd";
             this.Sizable = false;

@@ -1,19 +1,19 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-using MaterialSkin.Controls;
+﻿using MaterialSkin.Controls;
 using MaterialSkin;
+using System;
+using System.Data;
+using System.Windows.Forms;
+using System.Data.SqlClient;
 
-namespace CourseWork
+namespace CourseWork.Posts
 {
-    public partial class Status_projectsForm : MaterialForm
+    public partial class PostsForm : MaterialForm
     {
-        public Status_projectsForm()
+        public PostsForm()
         {
             InitializeComponent();
 
-            this.dataGridViewStatus_projects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewPosts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
             var material = MaterialSkinManager.Instance;
 
@@ -22,103 +22,101 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы
-        private void Status_projects_Load(object sender, EventArgs e)
+        private void PostsForm_Load(object sender, EventArgs e)
         {
-            this.dataGridViewStatus_projects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPosts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
-            SelectDateStatusProject();
+            SelectDatePosts();
         }
 
         // Добавление данных из базы данных в dataGridView
-        private void SelectDateStatusProject()
+        private void SelectDatePosts()
         {
             ConnectionDB connection = new ConnectionDB();
-            DataTable StatusTable = new DataTable();
-            SqlCommand command = new SqlCommand("SELECT * FROM Status_projects", connection.GetSqlConnect());
+            DataTable PostsTable = new DataTable();
+            SqlCommand command = new SqlCommand("SELECT * FROM Posts", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
             connection.OpenConnect();
 
-            adapter.Fill(StatusTable);
+            adapter.Fill(PostsTable);
 
-            dataGridViewStatus_projects.DataSource = StatusTable.DefaultView;
+            dataGridViewPosts.DataSource = PostsTable.DefaultView;
 
             connection.CloseConnect();
         }
 
         // Функция удаления строки
-        private void DeleteRowStatusProject()
+        private void DeleteRowPosts()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("DeleteStatus_project", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("DeletePost", connection.GetSqlConnect());
 
             connection.OpenConnect();
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_status_project", Convert.ToInt32(dataGridViewStatus_projects.CurrentRow.Cells["Column_id_status_project"].Value));
+            command.Parameters.AddWithValue("@id_post", Convert.ToInt32(dataGridViewPosts.CurrentRow.Cells["Column_id_post"].Value));
 
             command.ExecuteNonQuery();
 
             connection.CloseConnect();
 
-            SelectDateStatusProject();
+            SelectDatePosts();
         }
 
         // При клике на "Правка" -> "Добавить" открывается форма для добавления
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Status_projectsFormAdd formAdd = new Status_projectsFormAdd();
-  
+            PostsFormAdd formAdd = new PostsFormAdd();
+
             formAdd.ShowDialog();
 
-            SelectDateStatusProject();
+            SelectDatePosts();
         }
 
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
-        private void dataGridViewStatus_projects_KeyDown(object sender, KeyEventArgs e)
+        private void dataGridViewPosts_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Insert)
             {
-                Status_projectsFormAdd formAdd = new Status_projectsFormAdd();
+                PostsFormAdd formAdd = new PostsFormAdd();
 
                 formAdd.ShowDialog();
 
-                SelectDateStatusProject();
+                SelectDatePosts();
             }
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
+            PostsFormEdit formEdit = new PostsFormEdit();
 
-            Program.DataEditStatus_projectId.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells["Column_id_status_project"].Value);
-
-            Program.DataEditStatus_projectName.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells["Column_status_name_project"].Value);
+            Program.DataEditPostsId.Value = Convert.ToString(dataGridViewPosts.CurrentRow.Cells["Column_id_post"].Value);
+            Program.DataEditPostsName.Value = Convert.ToString(dataGridViewPosts.CurrentRow.Cells["Column_post_name"].Value);
 
             formEdit.ShowDialog();
 
-            SelectDateStatusProject();
+            SelectDatePosts();
         }
 
         // При 2-ом клике на ячейку можно провести редактирование
-        private void dataGridViewStatus_projects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewPosts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Если не выбрана строка, содержащие заголовки
             if (e.RowIndex != -1)
             {
-                DataGridViewRow view = dataGridViewStatus_projects.Rows[e.RowIndex];
+                DataGridViewRow view = dataGridViewPosts.Rows[e.RowIndex];
 
-                Program.DataEditStatus_projectId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditStatus_projectName.Value = view.Cells[1].Value.ToString();
+                Program.DataEditPostsId.Value = view.Cells[0].Value.ToString();
+                Program.DataEditPostsName.Value = view.Cells[1].Value.ToString();
 
-                Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
+                PostsFormEdit formEdit = new PostsFormEdit();
 
                 formEdit.ShowDialog();
 
-                SelectDateStatusProject();
+                SelectDatePosts();
             }
         }
 
@@ -126,17 +124,17 @@ namespace CourseWork
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowStatusProject();
+                DeleteRowPosts();
             else
                 return;
         }
 
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
-        private void dataGridViewStatus_projects_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void dataGridViewPosts_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowStatusProject();
-           
+                DeleteRowPosts();
+
             e.Cancel = true;
         }
     }

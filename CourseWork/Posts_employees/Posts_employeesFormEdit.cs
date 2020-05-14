@@ -33,16 +33,16 @@ namespace CourseWork
 
             ComboBox_fk_employee.SelectedValue = Convert.ToInt32(Program.DataEditPostsEmployeesEmp.Value);     
             ComboBox_fk_post.SelectedValue = Convert.ToInt32(Program.DataEditPostsEmployeesPost.Value);
-
-           
         }
 
+        // Сохранение изменений в бд
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             EditRowPostsEmployees();
             this.Close();
         }
 
+        // При нажатии закрыть форму
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -101,6 +101,17 @@ namespace CourseWork
             command.ExecuteNonQuery();
 
             connection.CloseConnect();
+        }
+
+        // Скрывать Label`ы при выборе значения
+        private void ComboBox_fk_employee_SelectedValueChanged(object sender, EventArgs e)
+        {
+            labelEmployee.Hide();
+        }
+
+        private void ComboBox_fk_post_SelectedValueChanged(object sender, EventArgs e)
+        {
+            labelPost.Hide();
         }
     }
 }

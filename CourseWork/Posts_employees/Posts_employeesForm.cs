@@ -37,13 +37,13 @@ namespace CourseWork
         {
             ConnectionDB connection = new ConnectionDB();
             SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Posts_employees", connection.GetSqlConnect());
-            DataTable PorstEmployeesTable = new DataTable();
+            DataTable PostsEmployeesTable = new DataTable();
 
             connection.OpenConnect();
 
-            sqlDA.Fill(PorstEmployeesTable);
+            sqlDA.Fill(PostsEmployeesTable);
 
-            dataGridViewPostsEmployees.DataSource = PorstEmployeesTable.DefaultView;
+            dataGridViewPostsEmployees.DataSource = PostsEmployeesTable.DefaultView;
 
             connection.CloseConnect();
         }
@@ -115,7 +115,7 @@ namespace CourseWork
         }
 
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
-        private void dataGridViewHistory_projects_KeyDown(object sender, KeyEventArgs e)
+        private void dataGridViewPostsEmployees_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Insert)
             {

@@ -1,15 +1,14 @@
 ﻿using System;
+using System.Data;
+using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data;
-
-namespace CourseWork
+namespace CourseWork.Posts
 {
-    public partial class Status_projectsFormEdit : MaterialForm
+    public partial class PostsFormEdit : MaterialForm
     {
-        public Status_projectsFormEdit()
+        public PostsFormEdit()
         {
             InitializeComponent();
 
@@ -20,38 +19,18 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы
-        private void Status_projectsFormEdit_Load(object sender, EventArgs e)
+        private void PostsFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataEditStatus_projectName.Value;
+            textBoxEdit.Text = Program.DataEditPostsName.Value;
         }
 
-        // Функция редактирования строки
-        private void EditRowStatusProject()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("EditStatus_project", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            connection.OpenConnect();
-
-            command.Parameters.AddWithValue("@status_name_project", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_status_project", Convert.ToInt32(Program.DataEditStatus_projectId.Value));
-
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
-        }
-
-        // Вызов проверки и сохранение изменений
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
                 return;
             else
             {
-                EditRowStatusProject();
+                EditRowPosts();
 
                 this.Close();
             }
@@ -61,6 +40,25 @@ namespace CourseWork
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        // Функция редактирования строки
+        private void EditRowPosts()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("EditPost", connection.GetSqlConnect());
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.OpenConnect();
+
+            command.Parameters.AddWithValue("@post_name", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
+            command.Parameters.AddWithValue("@id_post", Convert.ToInt32(Program.DataEditPostsId.Value));
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
         }
 
         // Проверка на пустоту поля
@@ -81,5 +79,6 @@ namespace CourseWork
         {
             labelValid.Hide();
         }
+
     }
 }

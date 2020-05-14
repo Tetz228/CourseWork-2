@@ -48,6 +48,7 @@
             this.ComboBox_fk_post.Name = "ComboBox_fk_post";
             this.ComboBox_fk_post.Size = new System.Drawing.Size(427, 26);
             this.ComboBox_fk_post.TabIndex = 28;
+            this.ComboBox_fk_post.SelectedValueChanged += new System.EventHandler(this.ComboBox_fk_post_SelectedValueChanged);
             // 
             // ComboBox_fk_employee
             // 
@@ -61,6 +62,7 @@
             this.ComboBox_fk_employee.Name = "ComboBox_fk_employee";
             this.ComboBox_fk_employee.Size = new System.Drawing.Size(427, 26);
             this.ComboBox_fk_employee.TabIndex = 27;
+            this.ComboBox_fk_employee.SelectedValueChanged += new System.EventHandler(this.ComboBox_fk_employee_SelectedValueChanged);
             // 
             // buttonBack
             // 
