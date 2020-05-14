@@ -125,7 +125,7 @@
             this.labelValidDate.Name = "labelValidDate";
             this.labelValidDate.Size = new System.Drawing.Size(163, 26);
             this.labelValidDate.TabIndex = 49;
-            this.labelValidDate.Text = "Некорректные данные.\r\nФормат даты: DD.MM.YYYY\r\n";
+            this.labelValidDate.Text = "Некорректная дата.\r\nФормат даты: DD.MM.YYYY\r\n";
             this.labelValidDate.Visible = false;
             // 
             // labelValidStatus
@@ -135,9 +135,9 @@
             this.labelValidStatus.ForeColor = System.Drawing.Color.Red;
             this.labelValidStatus.Location = new System.Drawing.Point(41, 177);
             this.labelValidStatus.Name = "labelValidStatus";
-            this.labelValidStatus.Size = new System.Drawing.Size(141, 13);
+            this.labelValidStatus.Size = new System.Drawing.Size(145, 13);
             this.labelValidStatus.TabIndex = 50;
-            this.labelValidStatus.Text = "Некорректные данные";
+            this.labelValidStatus.Text = "Некорректные данные.";
             this.labelValidStatus.Visible = false;
             // 
             // labelValidProject
@@ -147,9 +147,9 @@
             this.labelValidProject.ForeColor = System.Drawing.Color.Red;
             this.labelValidProject.Location = new System.Drawing.Point(188, 119);
             this.labelValidProject.Name = "labelValidProject";
-            this.labelValidProject.Size = new System.Drawing.Size(141, 13);
+            this.labelValidProject.Size = new System.Drawing.Size(145, 13);
             this.labelValidProject.TabIndex = 51;
-            this.labelValidProject.Text = "Некорректные данные";
+            this.labelValidProject.Text = "Некорректные данные.";
             this.labelValidProject.Visible = false;
             // 
             // History_projectsFormAdd

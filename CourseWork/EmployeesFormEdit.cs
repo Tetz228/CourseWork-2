@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
-using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 
 namespace CourseWork
 {
-    public partial class EmployeesFormAdd : MaterialForm
+    public partial class EmployeesFormEdit : MaterialForm
     {
-        public EmployeesFormAdd()
+        string checkEmail;
+
+        public EmployeesFormEdit()
         {
             InitializeComponent();
 
@@ -23,42 +29,69 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // Вызов всех проверок и добавление в бд
-        private void ButtonAdd_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckTextBox())
                 return;
             else
             if (!ValidationEmail(textBoxEmail.Text))
             {
+                labelEmail.Text = "Некорректная почта.";
                 labelEmail.Show();
                 return;
             }
             else
-            if (!MailOriginality(textBoxEmail.Text))
+            if (!CheckEmailChange(textBoxEmail.Text))
             {
-                labelEmail.Show();
                 return;
             }
             else
+            if (!ValidationLFMname(textBoxLname.Text))
             {
-                AddRowEmployee();
+                labelLname.Show();
+                return;
+            }
+            else
+            if (!ValidationLFMname(textBoxFname.Text))
+            {
+                labelLname.Show();
+                return;
+            }
+            else
+            if (!string.IsNullOrWhiteSpace(textBoxMname.Text))
+            {
+                if (!ValidationLFMname(textBoxMname.Text))
+                {
+                    labelMname.Show();
+                    return;
+                }
+            }
 
-                this.Close();
-            }
+            EditRowEmployees();
+
+            this.Close();
         }
 
-        // При нажатии закрыть форму
-        private void ButtonBack_Click(object sender, EventArgs e)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        // Функция добавления строки
-        private void AddRowEmployee()
+        private void EmployeesFormEdit_Load(object sender, EventArgs e)
+        {
+            textBoxLname.Text = Program.DataEditEmployeeLname.Value;
+            textBoxFname.Text = Program.DataEditEmployeeFname.Value;
+            textBoxMname.Text = Program.DataEditEmployeeMname.Value;
+            textBoxEmail.Text = Program.DataEditEmployeeEmail.Value;
+
+            checkEmail = textBoxEmail.Text;
+        }
+
+        // Функция редактирования строки
+        private void EditRowEmployees()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("AddEmployees", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("EditEmployees", connection.GetSqlConnect());
 
             command.CommandType = CommandType.StoredProcedure;
 
@@ -73,9 +106,7 @@ namespace CourseWork
             else
                 command.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = textBoxMname.Text.Trim();
 
-            SqlParameter parameter = command.Parameters.AddWithValue("@id_employee", SqlDbType.Int);
-
-            parameter.Direction = ParameterDirection.Output;
+            command.Parameters.AddWithValue("@id_employee", Convert.ToInt32(Program.DataEditEmployeeId.Value));
 
             command.ExecuteNonQuery();
 
@@ -105,7 +136,7 @@ namespace CourseWork
 
                 check = 1;
             }
-
+            
             if (check == 1)
                 return false;
             else
@@ -118,6 +149,29 @@ namespace CourseWork
             string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
 
             Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+
+            return isMatch.Success;
+        }
+
+        public bool CheckEmailChange(string email)
+        {
+            if (email != checkEmail)
+            {
+                if (!MailOriginality(email))
+                    return false;
+                else
+                    return true;
+            }
+            else
+                return true;
+        }
+
+        // Валидация фамилии, имени, отчества
+        public bool ValidationLFMname(string LFMname)
+        {
+            string pattern = @"[A-Za-zА-Яа-я]{1,30}";
+
+            Match isMatch = Regex.Match(LFMname, pattern);
 
             return isMatch.Success;
         }
@@ -168,6 +222,6 @@ namespace CourseWork
         private void TextBoxEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelEmail.Hide();
-        }     
+        }
     }
 }

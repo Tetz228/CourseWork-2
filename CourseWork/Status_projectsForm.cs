@@ -111,9 +111,8 @@ namespace CourseWork
             {
                 DataGridViewRow view = dataGridViewStatus_projects.Rows[e.RowIndex];
 
+                Program.DataEditStatus_projectId.Value = view.Cells[0].Value.ToString();
                 Program.DataEditStatus_project.Value = view.Cells[1].Value.ToString();
-
-                Program.DataEditStatus_projectId.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells["Column_id_status_project"].Value);
 
                 Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
 
@@ -137,9 +136,7 @@ namespace CourseWork
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DeleteRowStatusProject();
-            else
-                e.Cancel = true;
-
+           
             e.Cancel = true;
         }
     }

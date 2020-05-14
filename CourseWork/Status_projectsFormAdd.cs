@@ -4,6 +4,7 @@ using MaterialSkin;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace CourseWork
 {
@@ -23,7 +24,7 @@ namespace CourseWork
         // При нажатии валидация TextBox`а, если валидация прошла успешно, то добавление в бд
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!CheckTextBox())
+            if (!CheckTextBoxNull())
                 return;
             else
             {
@@ -60,8 +61,8 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Валидация TextBox`а
-        private bool CheckTextBox()
+        // Валидация TextBox`а на пустоту
+        private bool CheckTextBoxNull()
         {
             if (string.IsNullOrWhiteSpace(textBoxNameStatus.Text))
             {

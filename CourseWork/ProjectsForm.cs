@@ -161,8 +161,6 @@ namespace CourseWork
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DeleteRowProject();
-            else
-                e.Cancel = true;
 
            e.Cancel = true;
         }

@@ -24,8 +24,11 @@ namespace CourseWork
             material.AddFormToManage(this);
             material.Theme = MaterialSkinManager.Themes.DARK;
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
+
+            this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
 
+        // При загрузки формы вызов функции заполнения dataGridView
         private void Employees_Load(object sender, EventArgs e)
         {
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -38,13 +41,13 @@ namespace CourseWork
         {
             ConnectionDB connection = new ConnectionDB();
             SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Employees", connection.GetSqlConnect());
-            DataTable ProjectTable = new DataTable();
+            DataTable EmployeesTable = new DataTable();
 
             connection.OpenConnect();
 
-            sqlDA.Fill(ProjectTable);
+            sqlDA.Fill(EmployeesTable);
 
-            dataGridViewEmployees.DataSource = ProjectTable.DefaultView;
+            dataGridViewEmployees.DataSource = EmployeesTable.DefaultView;
 
             connection.CloseConnect();
         }
@@ -83,9 +86,9 @@ namespace CourseWork
         {
             if (e.KeyCode == Keys.Insert)
             {
-                //EmployeesFormEdit formEdit = new EmployeesFormEdit();
+                EmployeesFormEdit formEdit = new EmployeesFormEdit();
 
-                //formAdd.ShowDialog();
+                formEdit.ShowDialog();
 
                 SelectDateEmployees();
             }
@@ -94,7 +97,7 @@ namespace CourseWork
         // При клике на "Правка" -> "Изменить" открывается форма для изменения, после чего проверка класса и вызов функции редактирования строки
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProjectsFormEdit formEdit = new ProjectsFormEdit();
+            EmployeesFormEdit formEdit = new EmployeesFormEdit();
 
             Program.DataEditEmployeeId.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells["Column_id_employee"].Value);
             Program.DataEditEmployeeLname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells["Column_employee_lname"].Value);
@@ -119,7 +122,7 @@ namespace CourseWork
                 Program.DataEditEmployeeMname.Value = view.Cells[3].Value.ToString();
                 Program.DataEditEmployeeEmail.Value = view.Cells[4].Value.ToString();
 
-                ProjectsFormEdit formEdit = new ProjectsFormEdit();
+                EmployeesFormEdit formEdit = new EmployeesFormEdit();
 
                 formEdit.ShowDialog();
 
@@ -141,9 +144,7 @@ namespace CourseWork
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DeleteRowEmployee();
-            else
-                e.Cancel = true;
-
+           
             e.Cancel = true;
         }
     }

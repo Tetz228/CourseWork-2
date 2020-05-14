@@ -91,9 +91,9 @@
             this.labelValid.ForeColor = System.Drawing.Color.Red;
             this.labelValid.Location = new System.Drawing.Point(18, 128);
             this.labelValid.Name = "labelValid";
-            this.labelValid.Size = new System.Drawing.Size(141, 13);
+            this.labelValid.Size = new System.Drawing.Size(174, 13);
             this.labelValid.TabIndex = 46;
-            this.labelValid.Text = "Некорректные данные";
+            this.labelValid.Text = "Поле не может быть пустым.";
             this.labelValid.Visible = false;
             // 
             // Projects_roleFormEdit
@@ -109,7 +109,7 @@
             this.Name = "Projects_roleFormEdit";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Изменить роль";
+            this.Text = "Изменить роль в проекте";
             this.Load += new System.EventHandler(this.Projects_roleFormEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

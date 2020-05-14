@@ -141,9 +141,7 @@ namespace CourseWork
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DeleteRowProjects_role();
-            else
-                e.Cancel = true;
-
+           
             e.Cancel = true;
         }
     }

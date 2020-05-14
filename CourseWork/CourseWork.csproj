@@ -74,6 +74,12 @@
     <Compile Include="EmployeesForm.Designer.cs">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeesFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeesFormEdit.Designer.cs">
+      <DependentUpon>EmployeesFormEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="ForgotPassForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,24 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PostsEmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PostsEmployeesForm.Designer.cs">
+      <DependentUpon>PostsEmployeesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PostsEmployeesFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PostsEmployeesFormAdd.Designer.cs">
+      <DependentUpon>PostsEmployeesFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PostsEmployeesFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PostsEmployeesFormEdit.Designer.cs">
+      <DependentUpon>PostsEmployeesFormEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProjectsForm.cs">
@@ -183,6 +207,9 @@
     <EmbeddedResource Include="EmployeesFormAdd.resx">
       <DependentUpon>EmployeesFormAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmployeesFormEdit.resx">
+      <DependentUpon>EmployeesFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ForgotPassForm.resx">
       <DependentUpon>ForgotPassForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostsEmployeesForm.resx">
+      <DependentUpon>PostsEmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectsForm.resx">
       <DependentUpon>ProjectsForm.cs</DependentUpon>
@@ -258,6 +288,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RollUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Employees\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

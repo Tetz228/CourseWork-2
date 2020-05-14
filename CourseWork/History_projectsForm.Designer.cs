@@ -36,15 +36,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewHistory_projects = new System.Windows.Forms.DataGridView();
-            this.Column_id_history_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBox_fk_project = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ComboBox_fk_status_project = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_history_date_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripHistory_projects = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Column_id_history_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComboBox_fk_project = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ComboBox_fk_status_project = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_history_date_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory_projects)).BeginInit();
             this.menuStripHistory_projects.SuspendLayout();
             this.SuspendLayout();
@@ -79,7 +79,7 @@
             this.dataGridViewHistory_projects.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewHistory_projects.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewHistory_projects.Location = new System.Drawing.Point(0, 63);
-            this.dataGridViewHistory_projects.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewHistory_projects.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewHistory_projects.MultiSelect = false;
             this.dataGridViewHistory_projects.Name = "dataGridViewHistory_projects";
             this.dataGridViewHistory_projects.ReadOnly = true;
@@ -98,54 +98,6 @@
             this.dataGridViewHistory_projects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHistory_projects_CellDoubleClick);
             this.dataGridViewHistory_projects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewHistory_projects_UserDeletingRow);
             this.dataGridViewHistory_projects.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewHistory_projects_KeyDown);
-            // 
-            // Column_id_history_project
-            // 
-            this.Column_id_history_project.DataPropertyName = "id_history_project";
-            this.Column_id_history_project.HeaderText = "Id";
-            this.Column_id_history_project.Name = "Column_id_history_project";
-            this.Column_id_history_project.ReadOnly = true;
-            this.Column_id_history_project.Visible = false;
-            // 
-            // ComboBox_fk_project
-            // 
-            this.ComboBox_fk_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_project.DataPropertyName = "fk_project";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_project.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ComboBox_fk_project.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ComboBox_fk_project.HeaderText = "Проект";
-            this.ComboBox_fk_project.Name = "ComboBox_fk_project";
-            this.ComboBox_fk_project.ReadOnly = true;
-            // 
-            // ComboBox_fk_status_project
-            // 
-            this.ComboBox_fk_status_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_status_project.DataPropertyName = "fk_status_project";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_status_project.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ComboBox_fk_status_project.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ComboBox_fk_status_project.HeaderText = "Статус";
-            this.ComboBox_fk_status_project.Name = "ComboBox_fk_status_project";
-            this.ComboBox_fk_status_project.ReadOnly = true;
-            // 
-            // Column_history_date_project
-            // 
-            this.Column_history_date_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_history_date_project.DataPropertyName = "history_date_project";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
-            dataGridViewCellStyle4.NullValue = "Не указана";
-            this.Column_history_date_project.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column_history_date_project.HeaderText = "Дата";
-            this.Column_history_date_project.Name = "Column_history_date_project";
-            this.Column_history_date_project.ReadOnly = true;
-            this.Column_history_date_project.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column_history_date_project.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // menuStripHistory_projects
             // 
@@ -190,6 +142,54 @@
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
+            // Column_id_history_project
+            // 
+            this.Column_id_history_project.DataPropertyName = "id_history_project";
+            this.Column_id_history_project.HeaderText = "Id";
+            this.Column_id_history_project.Name = "Column_id_history_project";
+            this.Column_id_history_project.ReadOnly = true;
+            this.Column_id_history_project.Visible = false;
+            // 
+            // ComboBox_fk_project
+            // 
+            this.ComboBox_fk_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_project.DataPropertyName = "fk_project";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_project.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ComboBox_fk_project.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_project.HeaderText = "Проект";
+            this.ComboBox_fk_project.Name = "ComboBox_fk_project";
+            this.ComboBox_fk_project.ReadOnly = true;
+            // 
+            // ComboBox_fk_status_project
+            // 
+            this.ComboBox_fk_status_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_status_project.DataPropertyName = "fk_status_project";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_status_project.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ComboBox_fk_status_project.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_status_project.HeaderText = "Статус";
+            this.ComboBox_fk_status_project.Name = "ComboBox_fk_status_project";
+            this.ComboBox_fk_status_project.ReadOnly = true;
+            // 
+            // Column_history_date_project
+            // 
+            this.Column_history_date_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_history_date_project.DataPropertyName = "history_date_project";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle4.NullValue = "Не указана";
+            this.Column_history_date_project.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column_history_date_project.HeaderText = "Дата";
+            this.Column_history_date_project.Name = "Column_history_date_project";
+            this.Column_history_date_project.ReadOnly = true;
+            this.Column_history_date_project.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_history_date_project.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // History_projectsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -199,7 +199,7 @@
             this.Controls.Add(this.menuStripHistory_projects);
             this.Controls.Add(this.dataGridViewHistory_projects);
             this.Font = new System.Drawing.Font("Verdana", 11.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "History_projectsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "История проектов";

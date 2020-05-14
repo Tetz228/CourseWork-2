@@ -91,9 +91,9 @@
             this.labelValid.ForeColor = System.Drawing.Color.Red;
             this.labelValid.Location = new System.Drawing.Point(18, 128);
             this.labelValid.Name = "labelValid";
-            this.labelValid.Size = new System.Drawing.Size(170, 13);
+            this.labelValid.Size = new System.Drawing.Size(174, 13);
             this.labelValid.TabIndex = 45;
-            this.labelValid.Text = "Поле не может быть пустым";
+            this.labelValid.Text = "Поле не может быть пустым.";
             this.labelValid.Visible = false;
             // 
             // Status_projectsFormEdit
@@ -110,7 +110,7 @@
             this.Name = "Status_projectsFormEdit";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Изменить статус";
+            this.Text = "Изменить статус проекта";
             this.Load += new System.EventHandler(this.Status_projectsFormEdit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

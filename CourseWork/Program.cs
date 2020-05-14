@@ -134,5 +134,22 @@ namespace CourseWork
         {
             public static string Value { get; set; }
         }
+
+        ///////////////////////////////////////////////
+
+        public static class DataEditPostsEmployeesId
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditPostsEmployeesEmp
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditPostsEmployeesPost
+        {
+            public static string Value { get; set; }
+        }
     }
 }

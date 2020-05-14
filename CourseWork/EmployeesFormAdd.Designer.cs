@@ -56,7 +56,7 @@
             this.textBoxLname.TabIndex = 0;
             this.textBoxLname.TabStop = false;
             this.textBoxLname.UseSystemPasswordChar = false;
-            this.textBoxLname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLname_KeyPress);
+            this.textBoxLname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxLname_KeyPress);
             // 
             // textBoxMname
             // 
@@ -74,7 +74,7 @@
             this.textBoxMname.TabIndex = 1;
             this.textBoxMname.TabStop = false;
             this.textBoxMname.UseSystemPasswordChar = false;
-            this.textBoxMname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMname_KeyPress);
+            this.textBoxMname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxMname_KeyPress);
             // 
             // textBoxEmail
             // 
@@ -92,7 +92,7 @@
             this.textBoxEmail.TabIndex = 2;
             this.textBoxEmail.TabStop = false;
             this.textBoxEmail.UseSystemPasswordChar = false;
-            this.textBoxEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxEmail_KeyPress);
+            this.textBoxEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxEmail_KeyPress);
             // 
             // textBoxFname
             // 
@@ -110,7 +110,7 @@
             this.textBoxFname.TabIndex = 3;
             this.textBoxFname.TabStop = false;
             this.textBoxFname.UseSystemPasswordChar = false;
-            this.textBoxFname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFname_KeyPress);
+            this.textBoxFname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxFname_KeyPress);
             // 
             // buttonAdd
             // 
@@ -126,7 +126,7 @@
             this.buttonAdd.TabIndex = 4;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // buttonBack
             // 
@@ -142,7 +142,7 @@
             this.buttonBack.TabIndex = 5;
             this.buttonBack.Text = "Отменить";
             this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
             // 
             // labelLname
             // 
@@ -151,9 +151,9 @@
             this.labelLname.ForeColor = System.Drawing.Color.Red;
             this.labelLname.Location = new System.Drawing.Point(9, 121);
             this.labelLname.Name = "labelLname";
-            this.labelLname.Size = new System.Drawing.Size(145, 13);
+            this.labelLname.Size = new System.Drawing.Size(149, 13);
             this.labelLname.TabIndex = 6;
-            this.labelLname.Text = "Некорректная фамилия";
+            this.labelLname.Text = "Некорректная фамилия.";
             this.labelLname.Visible = false;
             // 
             // labelFname
@@ -163,9 +163,9 @@
             this.labelFname.ForeColor = System.Drawing.Color.Red;
             this.labelFname.Location = new System.Drawing.Point(201, 121);
             this.labelFname.Name = "labelFname";
-            this.labelFname.Size = new System.Drawing.Size(115, 13);
+            this.labelFname.Size = new System.Drawing.Size(119, 13);
             this.labelFname.TabIndex = 7;
-            this.labelFname.Text = "Некорректное имя";
+            this.labelFname.Text = "Некорректное имя.";
             this.labelFname.Visible = false;
             // 
             // labelEmail
@@ -175,9 +175,9 @@
             this.labelEmail.ForeColor = System.Drawing.Color.Red;
             this.labelEmail.Location = new System.Drawing.Point(201, 181);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(127, 13);
+            this.labelEmail.Size = new System.Drawing.Size(131, 13);
             this.labelEmail.TabIndex = 8;
-            this.labelEmail.Text = "Некорректная почта";
+            this.labelEmail.Text = "Некорректная почта.";
             this.labelEmail.Visible = false;
             // 
             // labelMname
@@ -187,9 +187,9 @@
             this.labelMname.ForeColor = System.Drawing.Color.Red;
             this.labelMname.Location = new System.Drawing.Point(9, 181);
             this.labelMname.Name = "labelMname";
-            this.labelMname.Size = new System.Drawing.Size(145, 13);
+            this.labelMname.Size = new System.Drawing.Size(149, 13);
             this.labelMname.TabIndex = 9;
-            this.labelMname.Text = "Некорректное отчество";
+            this.labelMname.Text = "Некорректное отчество.";
             this.labelMname.Visible = false;
             // 
             // EmployeesFormAdd
@@ -211,7 +211,8 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "EmployeesFormAdd";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить нового сотрудника";
             this.ResumeLayout(false);
             this.PerformLayout();

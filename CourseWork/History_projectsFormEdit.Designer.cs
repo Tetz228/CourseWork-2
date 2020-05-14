@@ -72,7 +72,7 @@
             // 
             this.textBox_History_date_project.Depth = 0;
             this.textBox_History_date_project.Hint = "Дата";
-            this.textBox_History_date_project.Location = new System.Drawing.Point(281, 155);
+            this.textBox_History_date_project.Location = new System.Drawing.Point(299, 150);
             this.textBox_History_date_project.MaxLength = 10;
             this.textBox_History_date_project.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBox_History_date_project.Name = "textBox_History_date_project";
@@ -80,7 +80,7 @@
             this.textBox_History_date_project.SelectedText = "";
             this.textBox_History_date_project.SelectionLength = 0;
             this.textBox_History_date_project.SelectionStart = 0;
-            this.textBox_History_date_project.Size = new System.Drawing.Size(237, 23);
+            this.textBox_History_date_project.Size = new System.Drawing.Size(219, 23);
             this.textBox_History_date_project.TabIndex = 21;
             this.textBox_History_date_project.TabStop = false;
             this.textBox_History_date_project.UseSystemPasswordChar = false;
@@ -94,7 +94,7 @@
             this.ComboBox_fk_status_project.ForeColor = System.Drawing.Color.White;
             this.ComboBox_fk_status_project.FormattingEnabled = true;
             this.ComboBox_fk_status_project.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ComboBox_fk_status_project.Location = new System.Drawing.Point(12, 155);
+            this.ComboBox_fk_status_project.Location = new System.Drawing.Point(12, 148);
             this.ComboBox_fk_status_project.Name = "ComboBox_fk_status_project";
             this.ComboBox_fk_status_project.Size = new System.Drawing.Size(219, 26);
             this.ComboBox_fk_status_project.TabIndex = 20;
@@ -117,11 +117,11 @@
             this.labelValidDate.AutoSize = true;
             this.labelValidDate.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidDate.ForeColor = System.Drawing.Color.Red;
-            this.labelValidDate.Location = new System.Drawing.Point(311, 181);
+            this.labelValidDate.Location = new System.Drawing.Point(329, 176);
             this.labelValidDate.Name = "labelValidDate";
             this.labelValidDate.Size = new System.Drawing.Size(163, 26);
             this.labelValidDate.TabIndex = 52;
-            this.labelValidDate.Text = "Некорректные данные.\r\nФормат даты: DD.MM.YYYY\r\n";
+            this.labelValidDate.Text = "Некорректная дата.\r\nФормат даты: DD.MM.YYYY\r\n";
             this.labelValidDate.Visible = false;
             // 
             // History_projectsFormEdit

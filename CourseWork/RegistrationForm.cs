@@ -30,7 +30,7 @@ namespace CourseWork
             if (!CheckNullAndSpace(TextBoxLname.Text, TextBoxFname.Text, TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text, TextBoxEmail.Text))
                 return;
             else
-                if (!CheckLogAndPassLength(TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text))
+            if (!CheckLogAndPassLength(TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text))
                 return;
             else
             if (!ValidationLogin(TextBoxRegLog.Text))
@@ -40,7 +40,7 @@ namespace CourseWork
                 return;
             }
             else
-                if (!LoginOriginality(TextBoxRegLog.Text))
+            if (!LoginOriginality(TextBoxRegLog.Text))
                 return;
             else
             if (!ValidationPassword(TextBoxRegPass.Text))
@@ -50,7 +50,7 @@ namespace CourseWork
                 return;
             }
             else
-                if (!ValidationEmail(TextBoxEmail.Text))
+            if (!ValidationEmail(TextBoxEmail.Text))
             {
                 labelValidEmail.Text = "Некорректная почта";
                 labelValidEmail.Show();
@@ -58,7 +58,7 @@ namespace CourseWork
                 return;
             }
             else
-                    if (!MailOriginality(TextBoxEmail.Text))
+            if (!MailOriginality(TextBoxEmail.Text))
                 return;
             else
             {

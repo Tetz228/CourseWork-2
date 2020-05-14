@@ -28,11 +28,11 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            EmployeesForm employees = new EmployeesForm();
+            PostsEmployeesForm postsEmployees = new PostsEmployeesForm();
 
-            employees.MdiParent = this;
-            employees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            employees.Show();
+            postsEmployees.MdiParent = this;
+            postsEmployees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            postsEmployees.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -113,6 +113,21 @@ namespace CourseWork
                 employees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 employees.Show();
             }
+        }
+
+        private void Posts_employeesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                PostsEmployeesForm postsEmployees = new PostsEmployeesForm();
+
+                postsEmployees.MdiParent = this;
+                postsEmployees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                postsEmployees.Show();
+            }
+            
         }
     }
 }
