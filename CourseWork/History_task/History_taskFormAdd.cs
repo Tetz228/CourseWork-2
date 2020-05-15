@@ -112,18 +112,14 @@ namespace CourseWork.History_task
             connection.OpenConnect();
 
             if (string.IsNullOrWhiteSpace(textBox_History_date_project.Text))
-                command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = DBNull.Value;
+                command.Parameters.AddWithValue("@history_date_task", SqlDbType.Date).Value = DBNull.Value;
             else
-            {
-                dateHistory_date = DateTime.Parse(textBox_History_date_project.Text);
+                command.Parameters.AddWithValue("@history_date_task", SqlDbType.Date).Value = dateHistory_date = DateTime.Parse(textBox_History_date_project.Text);
 
-                command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = dateHistory_date;
-            }
+            command.Parameters.AddWithValue("@fk_project_task", SqlDbType.Int).Value = ComboBox_fk_project_task.SelectedValue;
+            command.Parameters.AddWithValue("@fk_status_task", SqlDbType.Int).Value = ComboBox_fk_status_task.SelectedValue;
 
-            command.Parameters.AddWithValue("@fk_project", SqlDbType.Int).Value = ComboBox_fk_project_task.SelectedValue;
-            command.Parameters.AddWithValue("@fk_status_project", SqlDbType.Int).Value = ComboBox_fk_status_task.SelectedValue;
-
-            SqlParameter parameter = command.Parameters.AddWithValue("@id_history_project", SqlDbType.Int);
+            SqlParameter parameter = command.Parameters.AddWithValue("@id_history_task", SqlDbType.Int);
 
             parameter.Direction = ParameterDirection.Output;
 

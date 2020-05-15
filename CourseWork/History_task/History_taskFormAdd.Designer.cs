@@ -43,7 +43,7 @@
             this.labelValidProject.AutoSize = true;
             this.labelValidProject.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidProject.ForeColor = System.Drawing.Color.Red;
-            this.labelValidProject.Location = new System.Drawing.Point(189, 127);
+            this.labelValidProject.Location = new System.Drawing.Point(316, 127);
             this.labelValidProject.Name = "labelValidProject";
             this.labelValidProject.Size = new System.Drawing.Size(145, 13);
             this.labelValidProject.TabIndex = 57;
@@ -67,7 +67,7 @@
             this.labelValidDate.AutoSize = true;
             this.labelValidDate.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidDate.ForeColor = System.Drawing.Color.Red;
-            this.labelValidDate.Location = new System.Drawing.Point(298, 183);
+            this.labelValidDate.Location = new System.Drawing.Point(485, 182);
             this.labelValidDate.Name = "labelValidDate";
             this.labelValidDate.Size = new System.Drawing.Size(163, 26);
             this.labelValidDate.TabIndex = 55;
@@ -78,7 +78,7 @@
             // 
             this.textBox_History_date_project.Depth = 0;
             this.textBox_History_date_project.Hint = "Дата";
-            this.textBox_History_date_project.Location = new System.Drawing.Point(300, 157);
+            this.textBox_History_date_project.Location = new System.Drawing.Point(487, 156);
             this.textBox_History_date_project.MaxLength = 32767;
             this.textBox_History_date_project.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBox_History_date_project.Name = "textBox_History_date_project";
@@ -116,7 +116,7 @@
             this.ComboBox_fk_project_task.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ComboBox_fk_project_task.Location = new System.Drawing.Point(12, 98);
             this.ComboBox_fk_project_task.Name = "ComboBox_fk_project_task";
-            this.ComboBox_fk_project_task.Size = new System.Drawing.Size(507, 26);
+            this.ComboBox_fk_project_task.Size = new System.Drawing.Size(694, 26);
             this.ComboBox_fk_project_task.TabIndex = 52;
             this.ComboBox_fk_project_task.SelectedValueChanged += new System.EventHandler(this.ComboBox_fk_project_task_SelectedValueChanged);
             // 
@@ -126,7 +126,7 @@
             this.buttonBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonBack.Depth = 0;
             this.buttonBack.Icon = null;
-            this.buttonBack.Location = new System.Drawing.Point(423, 227);
+            this.buttonBack.Location = new System.Drawing.Point(611, 227);
             this.buttonBack.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Primary = true;
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 275);
+            this.ClientSize = new System.Drawing.Size(718, 275);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.labelValidProject);

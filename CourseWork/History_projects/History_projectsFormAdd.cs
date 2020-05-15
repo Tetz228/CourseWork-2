@@ -112,11 +112,7 @@ namespace CourseWork
             if(string.IsNullOrWhiteSpace(textBox_History_date_project.Text))
                 command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = DBNull.Value;
             else
-            {
-                dateHistory_date = DateTime.Parse(textBox_History_date_project.Text);
-
-                command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = dateHistory_date;
-            }                
+                command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = dateHistory_date = DateTime.Parse(textBox_History_date_project.Text);              
 
             command.Parameters.AddWithValue("@fk_project", SqlDbType.Int).Value = ComboBox_fk_project.SelectedValue;
             command.Parameters.AddWithValue("@fk_status_project", SqlDbType.Int).Value = ComboBox_fk_status_project.SelectedValue;
