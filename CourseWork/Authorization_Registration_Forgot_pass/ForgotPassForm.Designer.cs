@@ -79,16 +79,6 @@
             this.buttonBackEmail.UseVisualStyleBackColor = true;
             this.buttonBackEmail.Click += new System.EventHandler(this.buttonBackEmail_Click);
             // 
-            // pictureBoxForgotRollUp
-            // 
-            this.pictureBoxForgotRollUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxForgotRollUp.Image = global::CourseWork.Properties.Resources.RollUp;
-            this.pictureBoxForgotRollUp.Location = new System.Drawing.Point(345, -2);
-            this.pictureBoxForgotRollUp.Name = "pictureBoxForgotRollUp";
-            this.pictureBoxForgotRollUp.Size = new System.Drawing.Size(30, 30);
-            this.pictureBoxForgotRollUp.TabIndex = 35;
-            this.pictureBoxForgotRollUp.TabStop = false;
-            // 
             // pictureBoxForgotExit
             // 
             this.pictureBoxForgotExit.Cursor = System.Windows.Forms.Cursors.Hand;

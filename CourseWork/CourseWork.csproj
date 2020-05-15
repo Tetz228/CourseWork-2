@@ -202,16 +202,16 @@
       <DependentUpon>Projects_roleFormEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Authorization_Registration_Forgot_pass\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Authorization_Registration_Forgot_pass\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Status_projects\Status_projectsForm.cs">
       <SubType>Form</SubType>
@@ -374,8 +374,10 @@
     <None Include="Resources\Login.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\RollUp.png" />
+    <None Include="Resources\ShowPassword.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\HidePassword.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

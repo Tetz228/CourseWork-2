@@ -73,6 +73,16 @@ namespace CourseWork.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HidePassword {
+            get {
+                object obj = ResourceManager.GetObject("HidePassword", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Login {
             get {
                 object obj = ResourceManager.GetObject("Login", resourceCulture);
@@ -113,9 +123,9 @@ namespace CourseWork.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RollUp {
+        internal static System.Drawing.Bitmap ShowPassword {
             get {
-                object obj = ResourceManager.GetObject("RollUp", resourceCulture);
+                object obj = ResourceManager.GetObject("ShowPassword", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -399,6 +399,31 @@ namespace CourseWork
             authorization.Left = this.Left;
             authorization.Top = this.Top;
             authorization.Show();
-        } 
+        }
+
+        private void pictureBoxShowHidePassword_Click(object sender, EventArgs e)
+        {
+            if (TextBoxRegPass.UseSystemPasswordChar == true)
+            {
+                TextBoxRegPass.UseSystemPasswordChar = false;
+                TextBoxRegPassRepeat.UseSystemPasswordChar = false;
+
+                pictureBoxShowHidePassword.Image = Properties.Resources.ShowPassword;
+                pictureBoxShowHidePassword1.Image = Properties.Resources.ShowPassword;
+            }
+            else
+            {
+                TextBoxRegPass.UseSystemPasswordChar = true;
+                TextBoxRegPassRepeat.UseSystemPasswordChar = true;
+
+                pictureBoxShowHidePassword.Image = Properties.Resources.HidePassword;
+                pictureBoxShowHidePassword1.Image = Properties.Resources.HidePassword;
+            }
+        }
+
+        private void pictureBoxShowHidePassword1_Click(object sender, EventArgs e)
+        {
+            pictureBoxShowHidePassword_Click(sender, e);
+        }
     }
 }

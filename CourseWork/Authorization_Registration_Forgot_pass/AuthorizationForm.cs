@@ -157,5 +157,19 @@ namespace CourseWork
             if (e.KeyChar == 13)
                 buttonLogin_Click(sender, e);
         }
+
+        private void buttonShowHidePassword_Click(object sender, EventArgs e)
+        {
+            if (TextBoxPass.UseSystemPasswordChar == true)
+            {
+                TextBoxPass.UseSystemPasswordChar = false;
+                pictureBoxShowHidePassword.Image = Properties.Resources.ShowPassword;
+            }
+            else
+            {
+                TextBoxPass.UseSystemPasswordChar = true;
+                pictureBoxShowHidePassword.Image = Properties.Resources.HidePassword;
+            } 
+        }
     }
 }

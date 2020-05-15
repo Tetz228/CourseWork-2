@@ -43,6 +43,10 @@
             this.buttonExit = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TextBoxRegPassRepeat = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.labelValidRegPassRepeat = new System.Windows.Forms.Label();
+            this.pictureBoxShowHidePassword = new System.Windows.Forms.PictureBox();
+            this.pictureBoxShowHidePassword1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowHidePassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowHidePassword1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelValidLname
@@ -62,7 +66,7 @@
             this.labelValidFname.AutoSize = true;
             this.labelValidFname.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidFname.ForeColor = System.Drawing.Color.Red;
-            this.labelValidFname.Location = new System.Drawing.Point(206, 120);
+            this.labelValidFname.Location = new System.Drawing.Point(233, 120);
             this.labelValidFname.Name = "labelValidFname";
             this.labelValidFname.Size = new System.Drawing.Size(81, 13);
             this.labelValidFname.TabIndex = 28;
@@ -86,7 +90,7 @@
             this.labelValidRegPass.AutoSize = true;
             this.labelValidRegPass.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidRegPass.ForeColor = System.Drawing.Color.Red;
-            this.labelValidRegPass.Location = new System.Drawing.Point(209, 180);
+            this.labelValidRegPass.Location = new System.Drawing.Point(236, 180);
             this.labelValidRegPass.Name = "labelValidRegPass";
             this.labelValidRegPass.Size = new System.Drawing.Size(102, 13);
             this.labelValidRegPass.TabIndex = 30;
@@ -127,7 +131,7 @@
             // 
             this.TextBoxFname.Depth = 0;
             this.TextBoxFname.Hint = "Имя*";
-            this.TextBoxFname.Location = new System.Drawing.Point(209, 94);
+            this.TextBoxFname.Location = new System.Drawing.Point(236, 94);
             this.TextBoxFname.MaxLength = 30;
             this.TextBoxFname.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxFname.Name = "TextBoxFname";
@@ -145,7 +149,7 @@
             // 
             this.TextBoxMname.Depth = 0;
             this.TextBoxMname.Hint = "Отчество";
-            this.TextBoxMname.Location = new System.Drawing.Point(406, 94);
+            this.TextBoxMname.Location = new System.Drawing.Point(465, 94);
             this.TextBoxMname.MaxLength = 30;
             this.TextBoxMname.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxMname.Name = "TextBoxMname";
@@ -181,7 +185,7 @@
             // 
             this.TextBoxRegPass.Depth = 0;
             this.TextBoxRegPass.Hint = "Пароль*";
-            this.TextBoxRegPass.Location = new System.Drawing.Point(209, 154);
+            this.TextBoxRegPass.Location = new System.Drawing.Point(236, 154);
             this.TextBoxRegPass.MaxLength = 35;
             this.TextBoxRegPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxRegPass.Name = "TextBoxRegPass";
@@ -235,7 +239,7 @@
             this.buttonExit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonExit.Depth = 0;
             this.buttonExit.Icon = null;
-            this.buttonExit.Location = new System.Drawing.Point(518, 272);
+            this.buttonExit.Location = new System.Drawing.Point(598, 272);
             this.buttonExit.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Primary = true;
@@ -249,7 +253,7 @@
             // 
             this.TextBoxRegPassRepeat.Depth = 0;
             this.TextBoxRegPassRepeat.Hint = "Ещё раз пароль*";
-            this.TextBoxRegPassRepeat.Location = new System.Drawing.Point(406, 154);
+            this.TextBoxRegPassRepeat.Location = new System.Drawing.Point(465, 154);
             this.TextBoxRegPassRepeat.MaxLength = 35;
             this.TextBoxRegPassRepeat.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxRegPassRepeat.Name = "TextBoxRegPassRepeat";
@@ -268,19 +272,43 @@
             this.labelValidRegPassRepeat.AutoSize = true;
             this.labelValidRegPassRepeat.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidRegPassRepeat.ForeColor = System.Drawing.Color.Red;
-            this.labelValidRegPassRepeat.Location = new System.Drawing.Point(406, 180);
+            this.labelValidRegPassRepeat.Location = new System.Drawing.Point(465, 180);
             this.labelValidRegPassRepeat.Name = "labelValidRegPassRepeat";
             this.labelValidRegPassRepeat.Size = new System.Drawing.Size(154, 13);
             this.labelValidRegPassRepeat.TabIndex = 44;
             this.labelValidRegPassRepeat.Text = "Введите ещё раз пароль";
             this.labelValidRegPassRepeat.Visible = false;
             // 
+            // pictureBoxShowHidePassword
+            // 
+            this.pictureBoxShowHidePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxShowHidePassword.Image = global::CourseWork.Properties.Resources.HidePassword;
+            this.pictureBoxShowHidePassword.Location = new System.Drawing.Point(422, 153);
+            this.pictureBoxShowHidePassword.Name = "pictureBoxShowHidePassword";
+            this.pictureBoxShowHidePassword.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxShowHidePassword.TabIndex = 46;
+            this.pictureBoxShowHidePassword.TabStop = false;
+            this.pictureBoxShowHidePassword.Click += new System.EventHandler(this.pictureBoxShowHidePassword_Click);
+            // 
+            // pictureBoxShowHidePassword1
+            // 
+            this.pictureBoxShowHidePassword1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxShowHidePassword1.Image = global::CourseWork.Properties.Resources.HidePassword;
+            this.pictureBoxShowHidePassword1.Location = new System.Drawing.Point(651, 153);
+            this.pictureBoxShowHidePassword1.Name = "pictureBoxShowHidePassword1";
+            this.pictureBoxShowHidePassword1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxShowHidePassword1.TabIndex = 47;
+            this.pictureBoxShowHidePassword1.TabStop = false;
+            this.pictureBoxShowHidePassword1.Click += new System.EventHandler(this.pictureBoxShowHidePassword1_Click);
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(596, 317);
+            this.ClientSize = new System.Drawing.Size(678, 317);
+            this.Controls.Add(this.pictureBoxShowHidePassword1);
+            this.Controls.Add(this.pictureBoxShowHidePassword);
             this.Controls.Add(this.TextBoxRegPassRepeat);
             this.Controls.Add(this.labelValidRegPassRepeat);
             this.Controls.Add(this.buttonExit);
@@ -304,6 +332,8 @@
             this.Text = "Регистрация нового пользователя";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrationForm_FormClosed);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RegistrationForm_MouseDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowHidePassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowHidePassword1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,5 +355,7 @@
         private MaterialSkin.Controls.MaterialRaisedButton buttonExit;
         private MaterialSkin.Controls.MaterialSingleLineTextField TextBoxRegPassRepeat;
         private System.Windows.Forms.Label labelValidRegPassRepeat;
+        private System.Windows.Forms.PictureBox pictureBoxShowHidePassword;
+        private System.Windows.Forms.PictureBox pictureBoxShowHidePassword1;
     }
 }
