@@ -12,6 +12,7 @@ using MaterialSkin.Controls;
 using MaterialSkin;
 using CourseWork.Posts;
 using CourseWork.Status_task;
+using CourseWork.History_task;
 
 namespace CourseWork
 {
@@ -30,11 +31,11 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PostsForm posts = new PostsForm();
+            History_taskForm history_task = new History_taskForm();
 
-            posts.MdiParent = this;
-            posts.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            posts.Show();
+            history_task.MdiParent = this;
+            history_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            history_task.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -90,11 +91,11 @@ namespace CourseWork
             {
                 MdiChildren[0].Close();
 
-                History_projectsForm history_Projects = new History_projectsForm();
+                History_projectsForm history_projects = new History_projectsForm();
 
-                history_Projects.MdiParent = this;
-                history_Projects.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-                history_Projects.Show();
+                history_projects.MdiParent = this;
+                history_projects.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                history_projects.Show();
             }
         }
 
@@ -152,11 +153,25 @@ namespace CourseWork
             {
                 MdiChildren[0].Close();
 
-                Status_taskForm posts = new Status_taskForm();
+                Status_taskForm task = new Status_taskForm();
 
-                posts.MdiParent = this;
-                posts.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-                posts.Show();
+                task.MdiParent = this;
+                task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                task.Show();
+            }
+        }
+
+        private void History_taskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                History_taskForm history_task = new History_taskForm();
+
+                history_task.MdiParent = this;
+                history_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                history_task.Show();
             }
         }
     }

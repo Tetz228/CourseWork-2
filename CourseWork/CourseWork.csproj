@@ -61,6 +61,24 @@
     <Compile Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.Designer.cs">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="History_task\History_taskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History_task\History_taskForm.Designer.cs">
+      <DependentUpon>History_taskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History_task\History_taskFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History_task\History_taskFormAdd.Designer.cs">
+      <DependentUpon>History_taskFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History_task\History_taskFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History_task\History_taskFormEdit.Designer.cs">
+      <DependentUpon>History_taskFormEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\ConnectionDB.cs" />
     <Compile Include="Employees\EmployeesFormAdd.cs">
       <SubType>Form</SubType>
@@ -257,6 +275,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="History_projects\History_projectsFormEdit.resx">
       <DependentUpon>History_projectsFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History_task\History_taskForm.resx">
+      <DependentUpon>History_taskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History_task\History_taskFormAdd.resx">
+      <DependentUpon>History_taskFormAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

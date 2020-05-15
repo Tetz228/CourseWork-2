@@ -32,13 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewStatus_task = new System.Windows.Forms.DataGridView();
+            this.Column_id_status_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_status_name_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripStatus_task = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column_id_status_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_status_name_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatus_task)).BeginInit();
             this.menuStripStatus_task.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +83,25 @@
             this.dataGridViewStatus_task.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewStatus_task_UserDeletingRow);
             this.dataGridViewStatus_task.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewStatus_task_KeyDown);
             // 
+            // Column_id_status_task
+            // 
+            this.Column_id_status_task.DataPropertyName = "id_status_task";
+            this.Column_id_status_task.HeaderText = "Id";
+            this.Column_id_status_task.Name = "Column_id_status_task";
+            this.Column_id_status_task.ReadOnly = true;
+            this.Column_id_status_task.Visible = false;
+            // 
+            // Column_status_name_task
+            // 
+            this.Column_status_name_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_status_name_task.DataPropertyName = "status_name_task";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_status_name_task.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column_status_name_task.HeaderText = "Название статуса";
+            this.Column_status_name_task.MaxInputLength = 35;
+            this.Column_status_name_task.Name = "Column_status_name_task";
+            this.Column_status_name_task.ReadOnly = true;
+            // 
             // menuStripStatus_task
             // 
             this.menuStripStatus_task.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -107,48 +126,30 @@
             // AddToolStripMenuItem
             // 
             this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.AddToolStripMenuItem.Text = "Добавить";
             this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.EditToolStripMenuItem.Text = "Изменить";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
-            // 
-            // Column_id_status_task
-            // 
-            this.Column_id_status_task.DataPropertyName = "id_status_task";
-            this.Column_id_status_task.HeaderText = "Id";
-            this.Column_id_status_task.Name = "Column_id_status_task";
-            this.Column_id_status_task.ReadOnly = true;
-            this.Column_id_status_task.Visible = false;
-            // 
-            // Column_status_name_task
-            // 
-            this.Column_status_name_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_status_name_task.DataPropertyName = "status_name_task";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_status_name_task.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column_status_name_task.HeaderText = "Название статуса";
-            this.Column_status_name_task.MaxInputLength = 35;
-            this.Column_status_name_task.Name = "Column_status_name_task";
-            this.Column_status_name_task.ReadOnly = true;
             // 
             // Status_taskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 571);
+            this.ControlBox = false;
             this.Controls.Add(this.dataGridViewStatus_task);
             this.Controls.Add(this.menuStripStatus_task);
             this.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

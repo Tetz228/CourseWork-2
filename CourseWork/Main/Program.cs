@@ -174,6 +174,26 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
-        ///////////////////////////////////////////////
+        //////////////////////История задач/////////////////////////
+
+        public static class DataEditHistoryTaskId
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditHistoryTaskName
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditHistoryTaskStatus
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditHistoryTaskDate
+        {
+            public static string Value { get; set; }
+        }
     }
 }

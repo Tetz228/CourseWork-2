@@ -38,7 +38,7 @@
             this.списокЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Status_taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типыЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.историяЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.History_taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listEmployeesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Posts_employeesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,7 +117,7 @@
             this.списокЗадачToolStripMenuItem,
             this.Status_taskToolStripMenuItem,
             this.типыЗадачToolStripMenuItem,
-            this.историяЗадачToolStripMenuItem});
+            this.History_taskToolStripMenuItem});
             this.задачиToolStripMenuItem.Name = "задачиToolStripMenuItem";
             this.задачиToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.задачиToolStripMenuItem.Text = "Задачи";
@@ -141,11 +141,12 @@
             this.типыЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.типыЗадачToolStripMenuItem.Text = "Типы задач";
             // 
-            // историяЗадачToolStripMenuItem
+            // History_taskToolStripMenuItem
             // 
-            this.историяЗадачToolStripMenuItem.Name = "историяЗадачToolStripMenuItem";
-            this.историяЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.историяЗадачToolStripMenuItem.Text = "История задач";
+            this.History_taskToolStripMenuItem.Name = "History_taskToolStripMenuItem";
+            this.History_taskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.History_taskToolStripMenuItem.Text = "История задач";
+            this.History_taskToolStripMenuItem.Click += new System.EventHandler(this.History_taskToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem1
             // 
@@ -285,7 +286,7 @@
         private System.Windows.Forms.ToolStripMenuItem списокЗадачToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Status_taskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem типыЗадачToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem историяЗадачToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem History_taskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem listEmployeesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem Posts_employeesToolStripMenuItem2;
