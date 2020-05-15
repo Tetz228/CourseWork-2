@@ -10,7 +10,7 @@ namespace CourseWork
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AuthorizationForm());
+            Application.Run(new MainForm());
         }
 
         /////////////////////Регистрация//////////////////////////
@@ -189,6 +189,33 @@ namespace CourseWork
         }
 
         public static class DataEditHistoryTaskDate
+        {
+            public static string Value { get; set; }
+        }
+
+        //////////////////////Список пользователей/////////////////////////
+
+        public static class DataEditUserId
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditUserLogin
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditUserPassword
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditUserRole
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditUserEmployee
         {
             public static string Value { get; set; }
         }

@@ -255,6 +255,18 @@
     <Compile Include="Users\UsersForm.Designer.cs">
       <DependentUpon>UsersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\UsersFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\UsersFormAdd.Designer.cs">
+      <DependentUpon>UsersFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UsersFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\UsersFormEdit.Designer.cs">
+      <DependentUpon>UsersFormEdit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Authorization_Registration_Forgot_pass\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -355,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Status_task\Status_taskFormEdit.resx">
       <DependentUpon>Status_taskFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Config\packages.config" />
     <None Include="Properties\Settings.settings">

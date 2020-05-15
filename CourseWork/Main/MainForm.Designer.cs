@@ -186,6 +186,7 @@
             this.ListUsersToolStripMenuItem.Name = "ListUsersToolStripMenuItem";
             this.ListUsersToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.ListUsersToolStripMenuItem.Text = "Список пользователей";
+            this.ListUsersToolStripMenuItem.Click += new System.EventHandler(this.ListUsersToolStripMenuItem_Click);
             // 
             // RoleUsersToolStripMenuItem1
             // 
@@ -243,7 +244,6 @@
             this.списокПользователиToolStripMenuItem.Name = "списокПользователиToolStripMenuItem";
             this.списокПользователиToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.списокПользователиToolStripMenuItem.Text = "Список пользователей";
-            this.списокПользователиToolStripMenuItem.Click += new System.EventHandler(this.списокПользователиToolStripMenuItem_Click);
             // 
             // MainForm
             // 

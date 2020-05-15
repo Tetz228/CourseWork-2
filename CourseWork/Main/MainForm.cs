@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using CourseWork.Posts;
 using CourseWork.Status_task;
 using CourseWork.History_task;
+using CourseWork.Users;
 
 namespace CourseWork
 {
@@ -31,11 +25,11 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            History_taskForm history_task = new History_taskForm();
+            UsersForm users = new UsersForm();
 
-            history_task.MdiParent = this;
-            history_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            history_task.Show();
+            users.MdiParent = this;
+            users.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            users.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -97,11 +91,6 @@ namespace CourseWork
                 history_projects.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 history_projects.Show();
             }
-        }
-
-        private void списокПользователиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void listEmployeesToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -172,6 +161,20 @@ namespace CourseWork
                 history_task.MdiParent = this;
                 history_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 history_task.Show();
+            }
+        }
+
+        private void ListUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                UsersForm users = new UsersForm();
+
+                users.MdiParent = this;
+                users.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                users.Show();
             }
         }
     }
