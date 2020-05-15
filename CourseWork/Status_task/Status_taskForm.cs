@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 
-namespace CourseWork
+namespace CourseWork.Status_task
 {
-    public partial class Projects_roleForm : MaterialForm
+    public partial class Status_taskForm : MaterialForm
     {
-        public Projects_roleForm()
+        public Status_taskForm()
         {
             InitializeComponent();
 
-            this.dataGridViewProjects_role.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewStatus_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
             var material = MaterialSkinManager.Instance;
 
@@ -29,101 +23,102 @@ namespace CourseWork
         }
 
         // При загрузки формы
-        private void Projects_roleForm_Load(object sender, EventArgs e)
+        private void Status_task_Load(object sender, EventArgs e)
         {
-            this.dataGridViewProjects_role.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStatus_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
-            SelectDateProjects_role();
+            SelectDateStatusTask();
         }
 
         // Добавление данных из базы данных в dataGridView
-        private void SelectDateProjects_role()
+        private void SelectDateStatusTask()
         {
             ConnectionDB connection = new ConnectionDB();
+            DataTable StatusTable = new DataTable();
+            SqlCommand command = new SqlCommand("SELECT * FROM Status_task", connection.GetSqlConnect());
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
 
             connection.OpenConnect();
 
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Projects_role", connection.GetSqlConnect());
+            adapter.Fill(StatusTable);
 
-            DataTable table = new DataTable();
-            sqlDA.Fill(table);
-
-            dataGridViewProjects_role.DataSource = table;
+            dataGridViewStatus_task.DataSource = StatusTable.DefaultView;
 
             connection.CloseConnect();
         }
 
         // Функция удаления строки
-        private void DeleteRowProjects_role()
+        private void DeleteRowStatusTask()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("DeleteProjects_role", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("DeleteStatus_task", connection.GetSqlConnect());
 
             connection.OpenConnect();
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_project_role", Convert.ToInt32(dataGridViewProjects_role.CurrentRow.Cells["Column_id_project_role"].Value));
+            command.Parameters.AddWithValue("@id_status_task", Convert.ToInt32(dataGridViewStatus_task.CurrentRow.Cells["Column_id_status_task"].Value));
 
             command.ExecuteNonQuery();
 
             connection.CloseConnect();
 
-            SelectDateProjects_role();
+            SelectDateStatusTask();
         }
 
         // При клике на "Правка" -> "Добавить" открывается форма для добавления
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Projects_roleFormAdd formAdd = new Projects_roleFormAdd();
+            Status_taskFormAdd formAdd = new Status_taskFormAdd();
 
             formAdd.ShowDialog();
 
-            SelectDateProjects_role();
+            SelectDateStatusTask();
         }
 
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
-        private void Projects_roleForm_KeyDown(object sender, KeyEventArgs e)
+        private void dataGridViewStatus_task_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Insert)
             {
-                Projects_roleFormAdd formAdd = new Projects_roleFormAdd();
+                Status_taskFormAdd formAdd = new Status_taskFormAdd();
 
                 formAdd.ShowDialog();
 
-                SelectDateProjects_role();
+                SelectDateStatusTask();
             }
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Projects_roleFormEdit formEdit = new Projects_roleFormEdit();
+            Status_taskFormEdit formEdit = new Status_taskFormEdit();
 
-            Program.DataEditProjects_roleId.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells["Column_id_project_role"].Value);
+            Program.DataEditStatus_taskId.Value = Convert.ToString(dataGridViewStatus_task.CurrentRow.Cells["Column_id_status_task"].Value);
 
-            Program.DataEditProjects_roleName.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells["Column_project_role_name"].Value);
+            Program.DataEditStatus_taskName.Value = Convert.ToString(dataGridViewStatus_task.CurrentRow.Cells["Column_status_name_task"].Value);
 
             formEdit.ShowDialog();
 
-            SelectDateProjects_role();
+            SelectDateStatusTask();
         }
 
         // При 2-ом клике на ячейку можно провести редактирование
-        private void dataGridViewProjects_role_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewStatus_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Если не выбрана строка, содержащие заголовки
             if (e.RowIndex != -1)
             {
-                DataGridViewRow view = dataGridViewProjects_role.Rows[e.RowIndex];
+                DataGridViewRow view = dataGridViewStatus_task.Rows[e.RowIndex];
 
-                Program.DataEditProjects_roleName.Value = view.Cells[1].Value.ToString();
+                Program.DataEditStatus_taskId.Value = view.Cells[0].Value.ToString();
+                Program.DataEditStatus_taskName.Value = view.Cells[1].Value.ToString();
 
-                Projects_roleFormEdit formEdit = new Projects_roleFormEdit();
+                Status_taskFormEdit formEdit = new Status_taskFormEdit();
 
                 formEdit.ShowDialog();
 
-                SelectDateProjects_role();
+                SelectDateStatusTask();
             }
         }
 
@@ -131,17 +126,17 @@ namespace CourseWork
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowProjects_role();
+                DeleteRowStatusTask();
             else
                 return;
         }
 
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
-        private void dataGridViewProjects_role_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void dataGridViewStatus_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowProjects_role();
-           
+                DeleteRowStatusTask();
+
             e.Cancel = true;
         }
     }

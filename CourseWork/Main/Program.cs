@@ -16,6 +16,8 @@ namespace CourseWork
             Application.Run(new MainForm());
         }
 
+        /////////////////////Регистрация//////////////////////////
+
         public static class DataEmailReg
         {
             public static string Value { get; set; }
@@ -26,28 +28,24 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
-        ///////////////////////////////////////////////
-  
+        /////////////////////Статусы проектов//////////////////////////
+
         public static class DataEditStatus_projectId
         {
             public static string Value { get; set; }
         }
-
-        ///
 
         public static class DataEditStatus_projectName
         {
             public static string Value { get; set; }
         }
 
-        ///////////////////////////////////////////////
+        /////////////////////Проекты//////////////////////////
 
         public static class DataEditProjectId
         {
             public static string Value { get; set; }
         }
-
-        /// 
      
         public static class DataEditProjectName
         {
@@ -74,19 +72,19 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
-        ///
+        //////////////////////Роли в проекте/////////////////////////
 
         public static class DataEditProjects_roleId
         {
             public static string Value { get; set; }
         }
 
-        public static class DataEditProjects_role
+        public static class DataEditProjects_roleName
         {
             public static string Value { get; set; }
         }
 
-        ///////////////////////////////////////////////
+        //////////////////////История проектов/////////////////////////
 
         public static class DataEditHistoryProjectId
         {
@@ -108,7 +106,7 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
-        ///////////////////////////////////////////////
+        ///////////////////////Сотрудники////////////////////////
 
         public static class DataEditEmployeeId
         {
@@ -135,7 +133,7 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
-        ///////////////////////////////////////////////
+        //////////////////////Должности сотрудников/////////////////////////
 
         public static class DataEditPostsEmployeesId
         {
@@ -145,7 +143,6 @@ namespace CourseWork
         public static class DataEditPostsEmployeesEmp
         {
             public static string Value { get; set; }
-           
         }
 
         public static class DataEditPostsEmployeesPost
@@ -153,16 +150,26 @@ namespace CourseWork
             public static string Value { get; set; }
         }
 
-        ///////////////////////////////////////////////
+        ////////////////////Должности///////////////////
 
         public static class DataEditPostsId
         {
             public static string Value { get; set; }
         }
 
-        ///
-
         public static class DataEditPostsName
+        {
+            public static string Value { get; set; }
+        }
+
+        //////////////////////Статусы задач/////////////////////////
+
+        public static class DataEditStatus_taskId
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditStatus_taskName
         {
             public static string Value { get; set; }
         }

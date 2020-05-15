@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Data;
-using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Windows.Forms;
 using System.Data.SqlClient;
-namespace CourseWork.Posts
+using System.Data;
+
+namespace CourseWork.Status_task
 {
-    public partial class PostsFormEdit : MaterialForm
+    public partial class Status_taskFormAdd : MaterialForm
     {
-        public PostsFormEdit()
+        public Status_taskFormAdd()
         {
             InitializeComponent();
 
@@ -19,20 +20,14 @@ namespace CourseWork.Posts
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // При загрузки формы
-        private void PostsFormEdit_Load(object sender, EventArgs e)
+        // Вызов проверки и добавление в бд
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataEditPostsName.Value;
-        }
-
-        // Вызов проверки и сохранения изменений
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            if (!CheckTextBox())
+            if (!CheckTextBoxNull())
                 return;
             else
             {
-                EditRowPosts();
+                AddRowStatusTask();
 
                 this.Close();
             }
@@ -44,18 +39,21 @@ namespace CourseWork.Posts
             this.Close();
         }
 
-        // Функция редактирования строки
-        private void EditRowPosts()
+        // Функция добавления строки
+        private void AddRowStatusTask()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("EditPost", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("AddStatus_task", connection.GetSqlConnect());
 
             command.CommandType = CommandType.StoredProcedure;
 
             connection.OpenConnect();
 
-            command.Parameters.AddWithValue("@post_name", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_post", Convert.ToInt32(Program.DataEditPostsId.Value));
+            command.Parameters.AddWithValue("@status_name_task", SqlDbType.NVarChar).Value = textBoxNameStatus.Text.Trim();
+
+            SqlParameter parameter = command.Parameters.AddWithValue("@id_status_task", SqlDbType.Int);
+
+            parameter.Direction = ParameterDirection.Output;
 
             command.ExecuteNonQuery();
 
@@ -63,9 +61,9 @@ namespace CourseWork.Posts
         }
 
         // Проверка на пустоту поля
-        private bool CheckTextBox()
+        private bool CheckTextBoxNull()
         {
-            if (string.IsNullOrWhiteSpace(textBoxEdit.Text))
+            if (string.IsNullOrWhiteSpace(textBoxNameStatus.Text))
             {
                 labelValid.Show();
 
@@ -76,7 +74,7 @@ namespace CourseWork.Posts
         }
 
         // Скрывать Label при вводе в TextBox
-        private void textBoxEdit_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxNameStatus_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValid.Hide();
         }

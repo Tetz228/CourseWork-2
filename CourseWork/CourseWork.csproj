@@ -213,6 +213,24 @@
     <Compile Include="Status_projects\Status_projectsFormEdit.Designer.cs">
       <DependentUpon>Status_projectsFormEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Status_task\Status_taskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Status_task\Status_taskForm.Designer.cs">
+      <DependentUpon>Status_taskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Status_task\Status_taskFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Status_task\Status_taskFormAdd.Designer.cs">
+      <DependentUpon>Status_taskFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Status_task\Status_taskFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Status_task\Status_taskFormEdit.Designer.cs">
+      <DependentUpon>Status_taskFormEdit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Authorization_Registration_Forgot_pass\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +313,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Status_projects\Status_projectsFormEdit.resx">
       <DependentUpon>Status_projectsFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Status_task\Status_taskForm.resx">
+      <DependentUpon>Status_taskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Status_task\Status_taskFormAdd.resx">
+      <DependentUpon>Status_taskFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Status_task\Status_taskFormEdit.resx">
+      <DependentUpon>Status_taskFormEdit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Config\packages.config" />
     <None Include="Properties\Settings.settings">

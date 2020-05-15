@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using CourseWork.Posts;
+using CourseWork.Status_task;
 
 namespace CourseWork
 {
@@ -138,6 +139,20 @@ namespace CourseWork
                 MdiChildren[0].Close();
 
                 PostsForm posts = new PostsForm();
+
+                posts.MdiParent = this;
+                posts.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                posts.Show();
+            }
+        }
+
+        private void Status_taskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                Status_taskForm posts = new Status_taskForm();
 
                 posts.MdiParent = this;
                 posts.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);

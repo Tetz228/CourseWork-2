@@ -39,7 +39,7 @@
             this.textBoxEdit.Depth = 0;
             this.textBoxEdit.Hint = "Наименование";
             this.textBoxEdit.Location = new System.Drawing.Point(11, 104);
-            this.textBoxEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxEdit.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxEdit.MaxLength = 35;
             this.textBoxEdit.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxEdit.Name = "textBoxEdit";
@@ -60,7 +60,7 @@
             this.buttonEdit.Depth = 0;
             this.buttonEdit.Icon = null;
             this.buttonEdit.Location = new System.Drawing.Point(13, 170);
-            this.buttonEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEdit.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEdit.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Primary = true;
@@ -77,7 +77,7 @@
             this.buttonBack.Depth = 0;
             this.buttonBack.Icon = null;
             this.buttonBack.Location = new System.Drawing.Point(262, 170);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBack.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Primary = true;
@@ -110,7 +110,7 @@
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.textBoxEdit);
             this.Font = new System.Drawing.Font("Verdana", 11.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Status_projectsFormEdit";
             this.Sizable = false;

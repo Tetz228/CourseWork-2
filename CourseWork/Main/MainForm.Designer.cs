@@ -36,7 +36,7 @@
             this.History_projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.задачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.статусыЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Status_taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типыЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.историяЗадачToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сотрудникиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +115,7 @@
             // 
             this.задачиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.списокЗадачToolStripMenuItem,
-            this.статусыЗадачToolStripMenuItem,
+            this.Status_taskToolStripMenuItem,
             this.типыЗадачToolStripMenuItem,
             this.историяЗадачToolStripMenuItem});
             this.задачиToolStripMenuItem.Name = "задачиToolStripMenuItem";
@@ -125,25 +125,26 @@
             // списокЗадачToolStripMenuItem
             // 
             this.списокЗадачToolStripMenuItem.Name = "списокЗадачToolStripMenuItem";
-            this.списокЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.списокЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.списокЗадачToolStripMenuItem.Text = "Список задач";
             // 
-            // статусыЗадачToolStripMenuItem
+            // Status_taskToolStripMenuItem
             // 
-            this.статусыЗадачToolStripMenuItem.Name = "статусыЗадачToolStripMenuItem";
-            this.статусыЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.статусыЗадачToolStripMenuItem.Text = "Статусы задач";
+            this.Status_taskToolStripMenuItem.Name = "Status_taskToolStripMenuItem";
+            this.Status_taskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Status_taskToolStripMenuItem.Text = "Статусы задач";
+            this.Status_taskToolStripMenuItem.Click += new System.EventHandler(this.Status_taskToolStripMenuItem_Click);
             // 
             // типыЗадачToolStripMenuItem
             // 
             this.типыЗадачToolStripMenuItem.Name = "типыЗадачToolStripMenuItem";
-            this.типыЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.типыЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.типыЗадачToolStripMenuItem.Text = "Типы задач";
             // 
             // историяЗадачToolStripMenuItem
             // 
             this.историяЗадачToolStripMenuItem.Name = "историяЗадачToolStripMenuItem";
-            this.историяЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.историяЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.историяЗадачToolStripMenuItem.Text = "История задач";
             // 
             // сотрудникиToolStripMenuItem1
@@ -282,7 +283,7 @@
         private System.Windows.Forms.ToolStripMenuItem History_projectsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem задачиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокЗадачToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem статусыЗадачToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Status_taskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem типыЗадачToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem историяЗадачToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem1;

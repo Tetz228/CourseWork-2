@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data;
 
-namespace CourseWork
+namespace CourseWork.Status_task
 {
-    public partial class Projects_roleFormEdit : MaterialForm
+    public partial class Status_taskFormEdit : MaterialForm
     {
-        public Projects_roleFormEdit()
+        public Status_taskFormEdit()
         {
             InitializeComponent();
 
@@ -27,9 +21,27 @@ namespace CourseWork
         }
 
         // При загрузки формы
-        private void Projects_roleFormEdit_Load(object sender, EventArgs e)
+        private void Status_taskFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataEditProjects_roleName.Value;
+            textBoxEdit.Text = Program.DataEditStatus_taskName.Value;
+        }
+
+        // Функция редактирования строки
+        private void EditRowStatusTask()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("EditStatus_task", connection.GetSqlConnect());
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            connection.OpenConnect();
+
+            command.Parameters.AddWithValue("@status_name_task", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
+            command.Parameters.AddWithValue("@id_status_task", Convert.ToInt32(Program.DataEditStatus_taskId.Value));
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
         }
 
         // Вызов проверки и сохранение изменений
@@ -39,29 +51,16 @@ namespace CourseWork
                 return;
             else
             {
-                EditRowProjects_role();
+                EditRowStatusTask();
+
                 this.Close();
             }
-            
         }
 
-        // Функция редактирования строки
-        private void EditRowProjects_role()
+        // При нажатии закрыть форму
+        private void buttonBack_Click(object sender, EventArgs e)
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("EditProjects_role", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            connection.OpenConnect();
-
-            command.Parameters.AddWithValue("@project_role_name", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_project_role", Convert.ToInt32(Program.DataEditProjects_roleId.Value));
-
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
-
+            this.Close();
         }
 
         // Проверка на пустоту поля
@@ -75,12 +74,6 @@ namespace CourseWork
             }
             else
                 return true;
-        }
-
-        // При нажатии закрыть форму
-        private void buttonBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         // Скрывать Label при вводе в TextBox
