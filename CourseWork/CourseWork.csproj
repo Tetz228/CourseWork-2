@@ -282,6 +282,9 @@
     <EmbeddedResource Include="History_task\History_taskFormAdd.resx">
       <DependentUpon>History_taskFormAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="History_task\History_taskFormEdit.resx">
+      <DependentUpon>History_taskFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

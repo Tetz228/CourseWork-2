@@ -52,16 +52,16 @@
             // dataGridViewHistory_task
             // 
             this.dataGridViewHistory_task.AllowUserToAddRows = false;
-            this.dataGridViewHistory_task.BackgroundColor = System.Drawing.Color.Gray;
+            this.dataGridViewHistory_task.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewHistory_task.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewHistory_task.CausesValidation = false;
             this.dataGridViewHistory_task.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GrayText;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewHistory_task.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewHistory_task.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewHistory_task.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -93,7 +93,7 @@
             this.dataGridViewHistory_task.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridViewHistory_task.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewHistory_task.Size = new System.Drawing.Size(1037, 501);
+            this.dataGridViewHistory_task.Size = new System.Drawing.Size(1037, 504);
             this.dataGridViewHistory_task.TabIndex = 1;
             this.dataGridViewHistory_task.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHistory_task_CellDoubleClick);
             this.dataGridViewHistory_task.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewHistory_task_UserDeletingRow);
@@ -158,6 +158,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.ComboBox_fk_project_task.DefaultCellStyle = dataGridViewCellStyle2;
             this.ComboBox_fk_project_task.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_project_task.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_fk_project_task.HeaderText = "Задача";
             this.ComboBox_fk_project_task.Name = "ComboBox_fk_project_task";
             this.ComboBox_fk_project_task.ReadOnly = true;
@@ -171,6 +172,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.ComboBox_fk_status_task.DefaultCellStyle = dataGridViewCellStyle3;
             this.ComboBox_fk_status_task.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_status_task.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComboBox_fk_status_task.HeaderText = "Статус задачи";
             this.ComboBox_fk_status_task.Name = "ComboBox_fk_status_task";
             this.ComboBox_fk_status_task.ReadOnly = true;
@@ -194,6 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1037, 565);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripHistory_projects);

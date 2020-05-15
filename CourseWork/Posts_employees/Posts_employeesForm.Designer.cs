@@ -50,7 +50,7 @@
             // dataGridViewPostsEmployees
             // 
             this.dataGridViewPostsEmployees.AllowUserToAddRows = false;
-            this.dataGridViewPostsEmployees.BackgroundColor = System.Drawing.Color.Gray;
+            this.dataGridViewPostsEmployees.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewPostsEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPostsEmployees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -176,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1037, 577);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripPosts_employees);

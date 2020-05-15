@@ -146,7 +146,7 @@
             this.buttonLogin.Depth = 0;
             this.buttonLogin.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLogin.Icon = null;
-            this.buttonLogin.Location = new System.Drawing.Point(121, 243);
+            this.buttonLogin.Location = new System.Drawing.Point(158, 242);
             this.buttonLogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Primary = true;

@@ -125,26 +125,26 @@
             // списокЗадачToolStripMenuItem
             // 
             this.списокЗадачToolStripMenuItem.Name = "списокЗадачToolStripMenuItem";
-            this.списокЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.списокЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.списокЗадачToolStripMenuItem.Text = "Список задач";
             // 
             // Status_taskToolStripMenuItem
             // 
             this.Status_taskToolStripMenuItem.Name = "Status_taskToolStripMenuItem";
-            this.Status_taskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.Status_taskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.Status_taskToolStripMenuItem.Text = "Статусы задач";
             this.Status_taskToolStripMenuItem.Click += new System.EventHandler(this.Status_taskToolStripMenuItem_Click);
             // 
             // типыЗадачToolStripMenuItem
             // 
             this.типыЗадачToolStripMenuItem.Name = "типыЗадачToolStripMenuItem";
-            this.типыЗадачToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.типыЗадачToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.типыЗадачToolStripMenuItem.Text = "Типы задач";
             // 
             // History_taskToolStripMenuItem
             // 
             this.History_taskToolStripMenuItem.Name = "History_taskToolStripMenuItem";
-            this.History_taskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.History_taskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.History_taskToolStripMenuItem.Text = "История задач";
             this.History_taskToolStripMenuItem.Click += new System.EventHandler(this.History_taskToolStripMenuItem_Click);
             // 
@@ -248,6 +248,7 @@
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1041, 567);
             this.Controls.Add(this.toolStripContainer1);
             this.Font = new System.Drawing.Font("Verdana", 11.25F);

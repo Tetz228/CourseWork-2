@@ -42,7 +42,7 @@ namespace CourseWork
                 EditRowProjects_role();
                 this.Close();
             }
-            
+
         }
 
         // Функция редактирования строки

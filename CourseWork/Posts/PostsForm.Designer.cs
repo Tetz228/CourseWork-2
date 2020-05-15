@@ -32,13 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPosts = new System.Windows.Forms.DataGridView();
+            this.Column_id_post = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_post_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripPosts = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column_id_post = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_post_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPosts)).BeginInit();
             this.menuStripPosts.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             this.dataGridViewPosts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewPosts.BackgroundColor = System.Drawing.Color.Gray;
+            this.dataGridViewPosts.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewPosts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPosts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -83,6 +83,25 @@
             this.dataGridViewPosts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPosts_CellDoubleClick);
             this.dataGridViewPosts.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewPosts_UserDeletingRow);
             this.dataGridViewPosts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewPosts_KeyDown);
+            // 
+            // Column_id_post
+            // 
+            this.Column_id_post.DataPropertyName = "id_post";
+            this.Column_id_post.HeaderText = "Id";
+            this.Column_id_post.Name = "Column_id_post";
+            this.Column_id_post.ReadOnly = true;
+            this.Column_id_post.Visible = false;
+            // 
+            // Column_post_name
+            // 
+            this.Column_post_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_post_name.DataPropertyName = "post_name";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_post_name.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column_post_name.HeaderText = "Название должности";
+            this.Column_post_name.MaxInputLength = 35;
+            this.Column_post_name.Name = "Column_post_name";
+            this.Column_post_name.ReadOnly = true;
             // 
             // menuStripPosts
             // 
@@ -127,29 +146,11 @@
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
-            // Column_id_post
-            // 
-            this.Column_id_post.DataPropertyName = "id_post";
-            this.Column_id_post.HeaderText = "Id";
-            this.Column_id_post.Name = "Column_id_post";
-            this.Column_id_post.ReadOnly = true;
-            this.Column_id_post.Visible = false;
-            // 
-            // Column_post_name
-            // 
-            this.Column_post_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_post_name.DataPropertyName = "post_name";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_post_name.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column_post_name.HeaderText = "Название должности";
-            this.Column_post_name.MaxInputLength = 35;
-            this.Column_post_name.Name = "Column_post_name";
-            this.Column_post_name.ReadOnly = true;
-            // 
             // PostsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1037, 571);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridViewPosts);

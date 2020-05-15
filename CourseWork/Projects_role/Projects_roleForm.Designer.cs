@@ -46,11 +46,11 @@
             // dataGridViewProjects_role
             // 
             this.dataGridViewProjects_role.AllowUserToAddRows = false;
-            this.dataGridViewProjects_role.BackgroundColor = System.Drawing.Color.Gray;
+            this.dataGridViewProjects_role.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewProjects_role.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewProjects_role.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GrayText;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -142,6 +142,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1041, 593);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripProjects_role);

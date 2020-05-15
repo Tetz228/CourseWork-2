@@ -32,13 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewStatus_projects = new System.Windows.Forms.DataGridView();
+            this.Column_id_status_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_status_name_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripStatus_projects = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column_id_status_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_status_name_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatus_projects)).BeginInit();
             this.menuStripStatus_projects.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             this.dataGridViewStatus_projects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewStatus_projects.BackgroundColor = System.Drawing.Color.Gray;
+            this.dataGridViewStatus_projects.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewStatus_projects.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewStatus_projects.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -82,6 +82,25 @@
             this.dataGridViewStatus_projects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStatus_projects_CellDoubleClick);
             this.dataGridViewStatus_projects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewStatus_projects_UserDeletingRow);
             this.dataGridViewStatus_projects.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewStatus_projects_KeyDown);
+            // 
+            // Column_id_status_project
+            // 
+            this.Column_id_status_project.DataPropertyName = "id_status_project";
+            this.Column_id_status_project.HeaderText = "Id";
+            this.Column_id_status_project.Name = "Column_id_status_project";
+            this.Column_id_status_project.ReadOnly = true;
+            this.Column_id_status_project.Visible = false;
+            // 
+            // Column_status_name_project
+            // 
+            this.Column_status_name_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_status_name_project.DataPropertyName = "status_name_project";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_status_name_project.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column_status_name_project.HeaderText = "Название статуса";
+            this.Column_status_name_project.MaxInputLength = 35;
+            this.Column_status_name_project.Name = "Column_status_name_project";
+            this.Column_status_name_project.ReadOnly = true;
             // 
             // menuStripStatus_projects
             // 
@@ -125,31 +144,13 @@
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
-            // Column_id_status_project
-            // 
-            this.Column_id_status_project.DataPropertyName = "id_status_project";
-            this.Column_id_status_project.HeaderText = "Id";
-            this.Column_id_status_project.Name = "Column_id_status_project";
-            this.Column_id_status_project.ReadOnly = true;
-            this.Column_id_status_project.Visible = false;
-            // 
-            // Column_status_name_project
-            // 
-            this.Column_status_name_project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_status_name_project.DataPropertyName = "status_name_project";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_status_name_project.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column_status_name_project.HeaderText = "Название статуса";
-            this.Column_status_name_project.MaxInputLength = 35;
-            this.Column_status_name_project.Name = "Column_status_name_project";
-            this.Column_status_name_project.ReadOnly = true;
-            // 
             // Status_projectsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1037, 571);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridViewStatus_projects);

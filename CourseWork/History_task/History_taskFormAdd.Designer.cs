@@ -31,7 +31,7 @@
             this.labelValidProject = new System.Windows.Forms.Label();
             this.labelValidStatus = new System.Windows.Forms.Label();
             this.labelValidDate = new System.Windows.Forms.Label();
-            this.textBox_History_date_project = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.textBox_History_date_task = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.ComboBox_fk_status_task = new System.Windows.Forms.ComboBox();
             this.ComboBox_fk_project_task = new System.Windows.Forms.ComboBox();
             this.buttonBack = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -74,23 +74,23 @@
             this.labelValidDate.Text = "Некорректная дата.\r\nФормат даты: DD.MM.YYYY\r\n";
             this.labelValidDate.Visible = false;
             // 
-            // textBox_History_date_project
+            // textBox_History_date_task
             // 
-            this.textBox_History_date_project.Depth = 0;
-            this.textBox_History_date_project.Hint = "Дата";
-            this.textBox_History_date_project.Location = new System.Drawing.Point(487, 156);
-            this.textBox_History_date_project.MaxLength = 32767;
-            this.textBox_History_date_project.MouseState = MaterialSkin.MouseState.HOVER;
-            this.textBox_History_date_project.Name = "textBox_History_date_project";
-            this.textBox_History_date_project.PasswordChar = '\0';
-            this.textBox_History_date_project.SelectedText = "";
-            this.textBox_History_date_project.SelectionLength = 0;
-            this.textBox_History_date_project.SelectionStart = 0;
-            this.textBox_History_date_project.Size = new System.Drawing.Size(219, 23);
-            this.textBox_History_date_project.TabIndex = 54;
-            this.textBox_History_date_project.TabStop = false;
-            this.textBox_History_date_project.UseSystemPasswordChar = false;
-            this.textBox_History_date_project.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_History_date_project_KeyPress);
+            this.textBox_History_date_task.Depth = 0;
+            this.textBox_History_date_task.Hint = "Дата";
+            this.textBox_History_date_task.Location = new System.Drawing.Point(487, 156);
+            this.textBox_History_date_task.MaxLength = 32767;
+            this.textBox_History_date_task.MouseState = MaterialSkin.MouseState.HOVER;
+            this.textBox_History_date_task.Name = "textBox_History_date_task";
+            this.textBox_History_date_task.PasswordChar = '\0';
+            this.textBox_History_date_task.SelectedText = "";
+            this.textBox_History_date_task.SelectionLength = 0;
+            this.textBox_History_date_task.SelectionStart = 0;
+            this.textBox_History_date_task.Size = new System.Drawing.Size(219, 23);
+            this.textBox_History_date_task.TabIndex = 54;
+            this.textBox_History_date_task.TabStop = false;
+            this.textBox_History_date_task.UseSystemPasswordChar = false;
+            this.textBox_History_date_task.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_History_date_project_KeyPress);
             // 
             // ComboBox_fk_status_task
             // 
@@ -162,11 +162,11 @@
             this.Controls.Add(this.labelValidProject);
             this.Controls.Add(this.labelValidStatus);
             this.Controls.Add(this.labelValidDate);
-            this.Controls.Add(this.textBox_History_date_project);
+            this.Controls.Add(this.textBox_History_date_task);
             this.Controls.Add(this.ComboBox_fk_status_task);
             this.Controls.Add(this.ComboBox_fk_project_task);
             this.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "History_taskFormAdd";
             this.Sizable = false;
@@ -183,7 +183,7 @@
         private System.Windows.Forms.Label labelValidProject;
         private System.Windows.Forms.Label labelValidStatus;
         private System.Windows.Forms.Label labelValidDate;
-        private MaterialSkin.Controls.MaterialSingleLineTextField textBox_History_date_project;
+        private MaterialSkin.Controls.MaterialSingleLineTextField textBox_History_date_task;
         private System.Windows.Forms.ComboBox ComboBox_fk_status_task;
         private System.Windows.Forms.ComboBox ComboBox_fk_project_task;
         private MaterialSkin.Controls.MaterialRaisedButton buttonBack;

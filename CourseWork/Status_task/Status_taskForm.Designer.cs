@@ -49,7 +49,7 @@
             this.dataGridViewStatus_task.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewStatus_task.BackgroundColor = System.Drawing.Color.Gray;
+            this.dataGridViewStatus_task.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewStatus_task.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewStatus_task.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -148,6 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1037, 571);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridViewStatus_task);
