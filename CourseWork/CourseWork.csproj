@@ -374,6 +374,9 @@
     <EmbeddedResource Include="Users\UsersFormAdd.resx">
       <DependentUpon>UsersFormAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\UsersFormEdit.resx">
+      <DependentUpon>UsersFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Config\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -27,52 +27,52 @@ namespace CourseWork
         // Вызов всех проверок и переход к форме подтвержения почты 
         private void ButtonReg_Click(object sender, EventArgs e)
         {
-            if (!CheckNullAndSpace(TextBoxLname.Text, TextBoxFname.Text, TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text, TextBoxEmail.Text))
-                return;
-            else
+            //if (!CheckNullAndSpace(TextBoxLname.Text, TextBoxFname.Text, TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text, TextBoxEmail.Text))
+            //    return;
+            //else
             if (!CheckLogAndPassLength(TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text))
                 return;
             else
             if (!ValidationLogin(TextBoxRegLog.Text))
             {
-                labelValidRegLog.Text = "Некорректный логин. Логин\nможет содержать только\nцифры и латинские буквы.\nЛогин не может начинаться\nс цифры.";
+                labelValidRegLog.Text = "Некорректный пароль. Первым\nсимволом не может быть цифра.\nПароль должен быть минимум с\nодной цифрой, одной заглавной\nи одной строчной буквой.";
                 labelValidRegLog.Show();
                 return;
             }
-            else
-            if (!LoginOriginality(TextBoxRegLog.Text))
-                return;
-            else
-            if (!ValidationPassword(TextBoxRegPass.Text))
-            {
-                labelValidRegPass.Text = "Некорректный пароль. Пароль\nдолжен быть минимум с одной\nцифрой,одной заглавной и\nодной строчной буквой.";
-                labelValidRegPass.Show();
-                return;
-            }
-            else
-            if (!ValidationEmail(TextBoxEmail.Text))
-            {
-                labelValidEmail.Text = "Некорректная почта";
-                labelValidEmail.Show();
+            //else
+            //if (!LoginOriginality(TextBoxRegLog.Text))
+            //    return;
+            //else
+            //if (!ValidationPassword(TextBoxRegPass.Text))
+            //{
+            //    labelValidRegPass.Text = "Некорректный пароль. Пароль\nдолжен быть минимум с одной\nцифрой,одной заглавной и\nодной строчной буквой.";
+            //    labelValidRegPass.Show();
+            //    return;
+            //}
+            //else
+            //if (!ValidationEmail(TextBoxEmail.Text))
+            //{
+            //    labelValidEmail.Text = "Некорректная почта";
+            //    labelValidEmail.Show();
 
-                return;
-            }
-            else
-            if (!MailOriginality(TextBoxEmail.Text))
-                return;
-            else
-            {
-                Program.DataEmailReg.Value = TextBoxEmail.Text;
+            //    return;
+            //}
+            //else
+            //if (!MailOriginality(TextBoxEmail.Text))
+            //    return;
+            //else
+            //{
+            //    Program.DataEmailReg.Value = TextBoxEmail.Text;
 
-                ConfirmationMailForm mailForm = new ConfirmationMailForm();
-                mailForm.Left = this.Left;
-                mailForm.Top = this.Top;
-                this.Hide();
-                mailForm.ShowDialog();
+            //    ConfirmationMailForm mailForm = new ConfirmationMailForm();
+            //    mailForm.Left = this.Left;
+            //    mailForm.Top = this.Top;
+            //    this.Hide();
+            //    mailForm.ShowDialog();
 
-                if (Program.DataReturnReg.Value == "Сorrect code")
-                    Registration();
-            }
+            //    if (Program.DataReturnReg.Value == "Сorrect code")
+            //        Registration();
+            //}
         }
 
         // Проверка TextBox`ов на пустоту
@@ -94,28 +94,28 @@ namespace CourseWork
 
                 check = 1;
             }
-            if (string.IsNullOrEmpty(login))
+            if (string.IsNullOrWhiteSpace(login))
             {
                 labelValidRegLog.Text = "Введите логин";
                 labelValidRegLog.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrEmpty(password))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 labelValidRegPass.Text = "Введите пароль";
                 labelValidRegPass.Show();
                 
                 check = 1;
             }
-            if (string.IsNullOrEmpty(email))
+            if (string.IsNullOrWhiteSpace(email))
             {
                 labelValidEmail.Text = "Введите почту";
                 labelValidEmail.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrEmpty(repeatPassword))
+            if (string.IsNullOrWhiteSpace(repeatPassword))
             {
                 labelValidRegPassRepeat.Text = "Введите ещё раз пароль";
                 labelValidRegPassRepeat.Show();
@@ -173,7 +173,7 @@ namespace CourseWork
         // Валидация логина
         private bool ValidationLogin(string login)
         {
-            string pattern = @"^[A-Za-z][A-Za-z0-9]{5,30}$";
+            string pattern = @"^[A-Za-z][A-Za-z0-9]{3,30}$";
 
             Match isMatch = Regex.Match(login, pattern);
 
@@ -409,21 +409,15 @@ namespace CourseWork
                 TextBoxRegPassRepeat.UseSystemPasswordChar = false;
 
                 pictureBoxShowHidePassword.Image = Properties.Resources.ShowPassword;
-                pictureBoxShowHidePassword1.Image = Properties.Resources.ShowPassword;
+                
             }
             else
             {
                 TextBoxRegPass.UseSystemPasswordChar = true;
                 TextBoxRegPassRepeat.UseSystemPasswordChar = true;
 
-                pictureBoxShowHidePassword.Image = Properties.Resources.HidePassword;
-                pictureBoxShowHidePassword1.Image = Properties.Resources.HidePassword;
+                pictureBoxShowHidePassword.Image = Properties.Resources.HidePassword; 
             }
-        }
-
-        private void pictureBoxShowHidePassword1_Click(object sender, EventArgs e)
-        {
-            pictureBoxShowHidePassword_Click(sender, e);
-        }
+        } 
     }
 }

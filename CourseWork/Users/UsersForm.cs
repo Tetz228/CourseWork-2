@@ -90,7 +90,7 @@ namespace CourseWork.Users
         private void DeleteRowUser()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("DeleteUser", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("DeleteUsers", connection.GetSqlConnect());
 
             connection.OpenConnect();
 
