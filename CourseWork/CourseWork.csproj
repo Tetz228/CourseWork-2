@@ -267,6 +267,24 @@
     <Compile Include="Users\UsersFormEdit.Designer.cs">
       <DependentUpon>UsersFormEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users_roles\Users_rolesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users_roles\Users_rolesForm.Designer.cs">
+      <DependentUpon>Users_rolesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users_roles\Users_rolesFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users_roles\Users_rolesFormAdd.Designer.cs">
+      <DependentUpon>Users_rolesFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users_roles\Users_rolesFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users_roles\Users_rolesFormEdit.Designer.cs">
+      <DependentUpon>Users_rolesFormEdit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Authorization_Registration_Forgot_pass\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -376,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\UsersFormEdit.resx">
       <DependentUpon>UsersFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users_roles\Users_rolesForm.resx">
+      <DependentUpon>Users_rolesForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Config\packages.config" />
     <None Include="Properties\Settings.settings">

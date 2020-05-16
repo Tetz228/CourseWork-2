@@ -220,5 +220,17 @@ namespace CourseWork
         {
             public static string Value { get; set; }
         }
+
+        //////////////////////Роли пользователей/////////////////////////
+        
+        public static class DataEditUsers_rolesId
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditUsers_rolesName
+        {
+            public static string Value { get; set; }
+        }
     }
 }
