@@ -66,7 +66,7 @@
             this.ComboBox_fk_employee.FormattingEnabled = true;
             this.ComboBox_fk_employee.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ComboBox_fk_employee.Location = new System.Drawing.Point(292, 191);
-            this.ComboBox_fk_employee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ComboBox_fk_employee.Margin = new System.Windows.Forms.Padding(4);
             this.ComboBox_fk_employee.Name = "ComboBox_fk_employee";
             this.ComboBox_fk_employee.Size = new System.Drawing.Size(372, 26);
             this.ComboBox_fk_employee.TabIndex = 50;
@@ -94,7 +94,7 @@
             this.ComboBox_fk_role_user.FormattingEnabled = true;
             this.ComboBox_fk_role_user.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ComboBox_fk_role_user.Location = new System.Drawing.Point(13, 191);
-            this.ComboBox_fk_role_user.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ComboBox_fk_role_user.Margin = new System.Windows.Forms.Padding(4);
             this.ComboBox_fk_role_user.Name = "ComboBox_fk_role_user";
             this.ComboBox_fk_role_user.Size = new System.Drawing.Size(222, 26);
             this.ComboBox_fk_role_user.TabIndex = 52;
@@ -105,7 +105,7 @@
             this.TextBoxPassRepeat.Depth = 0;
             this.TextBoxPassRepeat.Hint = "Ещё раз пароль*";
             this.TextBoxPassRepeat.Location = new System.Drawing.Point(484, 94);
-            this.TextBoxPassRepeat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxPassRepeat.Margin = new System.Windows.Forms.Padding(4);
             this.TextBoxPassRepeat.MaxLength = 35;
             this.TextBoxPassRepeat.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxPassRepeat.Name = "TextBoxPassRepeat";
@@ -137,7 +137,7 @@
             this.TextBoxPass.Depth = 0;
             this.TextBoxPass.Hint = "Пароль*";
             this.TextBoxPass.Location = new System.Drawing.Point(236, 95);
-            this.TextBoxPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxPass.Margin = new System.Windows.Forms.Padding(4);
             this.TextBoxPass.MaxLength = 35;
             this.TextBoxPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxPass.Name = "TextBoxPass";
@@ -156,7 +156,7 @@
             this.TextBoxLog.Depth = 0;
             this.TextBoxLog.Hint = "Логин*";
             this.TextBoxLog.Location = new System.Drawing.Point(13, 95);
-            this.TextBoxLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TextBoxLog.Margin = new System.Windows.Forms.Padding(4);
             this.TextBoxLog.MaxLength = 30;
             this.TextBoxLog.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxLog.Name = "TextBoxLog";
@@ -233,6 +233,7 @@
             // pictureBoxShowHidePassword
             // 
             this.pictureBoxShowHidePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxShowHidePassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxShowHidePassword.Image = global::CourseWork.Properties.Resources.HidePassword;
             this.pictureBoxShowHidePassword.Location = new System.Drawing.Point(424, 93);
             this.pictureBoxShowHidePassword.Margin = new System.Windows.Forms.Padding(4);
@@ -261,7 +262,7 @@
             this.Controls.Add(this.labelValidEmployee);
             this.Controls.Add(this.ComboBox_fk_employee);
             this.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "UsersFormAdd";
             this.Sizable = false;

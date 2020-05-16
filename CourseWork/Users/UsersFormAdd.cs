@@ -263,7 +263,7 @@ namespace CourseWork.Users
         {
             string pattern = @"((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,35})";
 
-            Match isMatch = Regex.Match(TextBoxPass.Text, pattern);
+            Match isMatch = Regex.Match(TextBoxPass.Text.Trim(), pattern);
 
             return isMatch.Success;
         }
@@ -286,7 +286,7 @@ namespace CourseWork.Users
 
             command.CommandType = CommandType.StoredProcedure;
 
-            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.ToString());
+            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim().ToString());
 
             connection.OpenConnect();
 

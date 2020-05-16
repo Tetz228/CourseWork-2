@@ -136,6 +136,12 @@ namespace CourseWork.Users
             Program.DataEditUserPassword.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells["Column_password"].Value);
             Program.DataEditUserRole.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells["ComboBox_fk_role_user"].Value);
             Program.DataEditUserEmployee.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells["ComboBox_fk_employee"].Value);
+
+            UsersFormEdit formEdit = new UsersFormEdit();
+
+            formEdit.ShowDialog();
+
+            SelectDateUsers();
         }
     
         // При 2-ом клике на ячейку можно провести редактирование 

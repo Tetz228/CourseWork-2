@@ -59,6 +59,7 @@
             this.buttonBack.TabIndex = 75;
             this.buttonBack.Text = "Отмена";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonEdit
             // 
@@ -75,10 +76,12 @@
             this.buttonEdit.TabIndex = 74;
             this.buttonEdit.Text = "Изменить";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // pictureBoxShowHidePassword
             // 
             this.pictureBoxShowHidePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxShowHidePassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxShowHidePassword.Image = global::CourseWork.Properties.Resources.HidePassword;
             this.pictureBoxShowHidePassword.Location = new System.Drawing.Point(424, 93);
             this.pictureBoxShowHidePassword.Margin = new System.Windows.Forms.Padding(4);
@@ -86,6 +89,7 @@
             this.pictureBoxShowHidePassword.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxShowHidePassword.TabIndex = 73;
             this.pictureBoxShowHidePassword.TabStop = false;
+            this.pictureBoxShowHidePassword.Click += new System.EventHandler(this.pictureBoxShowHidePassword_Click);
             // 
             // TextBoxPassRepeat
             // 
@@ -104,6 +108,7 @@
             this.TextBoxPassRepeat.TabIndex = 72;
             this.TextBoxPassRepeat.TabStop = false;
             this.TextBoxPassRepeat.UseSystemPasswordChar = true;
+            this.TextBoxPassRepeat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPassRepeat_KeyPress);
             // 
             // labelValidPassRepeat
             // 
@@ -135,6 +140,7 @@
             this.TextBoxPass.TabIndex = 70;
             this.TextBoxPass.TabStop = false;
             this.TextBoxPass.UseSystemPasswordChar = true;
+            this.TextBoxPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPass_KeyPress);
             // 
             // TextBoxLog
             // 
@@ -153,6 +159,7 @@
             this.TextBoxLog.TabIndex = 69;
             this.TextBoxLog.TabStop = false;
             this.TextBoxLog.UseSystemPasswordChar = false;
+            this.TextBoxLog.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxLog_KeyPress);
             // 
             // labelValidPass
             // 
@@ -206,6 +213,7 @@
             this.ComboBox_fk_role_user.Name = "ComboBox_fk_role_user";
             this.ComboBox_fk_role_user.Size = new System.Drawing.Size(222, 26);
             this.ComboBox_fk_role_user.TabIndex = 65;
+            this.ComboBox_fk_role_user.SelectedValueChanged += new System.EventHandler(this.ComboBox_fk_role_user_SelectedValueChanged);
             // 
             // labelValidEmployee
             // 
@@ -233,6 +241,7 @@
             this.ComboBox_fk_employee.Name = "ComboBox_fk_employee";
             this.ComboBox_fk_employee.Size = new System.Drawing.Size(372, 26);
             this.ComboBox_fk_employee.TabIndex = 63;
+            this.ComboBox_fk_employee.SelectedValueChanged += new System.EventHandler(this.ComboBox_fk_employee_SelectedValueChanged);
             // 
             // UsersFormEdit
             // 

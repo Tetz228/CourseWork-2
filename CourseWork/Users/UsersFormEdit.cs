@@ -12,6 +12,9 @@ namespace CourseWork.Users
 {
     public partial class UsersFormEdit : MaterialForm
     {
+        string log;
+        string pass;
+
         public UsersFormEdit()
         {
             InitializeComponent();
@@ -28,6 +31,12 @@ namespace CourseWork.Users
             SelectEmployeeComboBox();
 
             SelectRoleComboBox();
+
+            TextBoxLog.Text = log = Program.DataEditUserLogin.Value;
+            TextBoxPass.Text = pass = Program.DataEditUserPassword.Value;
+            TextBoxPassRepeat.Text = Program.DataEditUserPassword.Value;
+            ComboBox_fk_employee.SelectedValue = Convert.ToInt32(Program.DataEditUserEmployee.Value);
+            ComboBox_fk_role_user.SelectedValue = Convert.ToInt32(Program.DataEditUserRole.Value);
         }
 
         // Заполнение ComboBox`а "Сотрудник"
@@ -66,6 +75,59 @@ namespace CourseWork.Users
             connection.CloseConnect();
         }
 
+        // При нажатии вызов всех проверок и добавление в бд
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if (!CheckTextBoxs())
+                return;
+            else
+            if (!CheckLogAndPassLength())
+                return;
+            else
+            if (!ValidationLogin())
+                return;
+            else
+            if (!ValidationPassword())
+            {
+                labelValidPass.Text = "Некорректный пароль. Первым\nсимволом не может быть цифра.\nПароль должен быть минимум с\nодной цифрой, одной заглавной\nи одной строчной буквой.";
+                labelValidPass.Show();
+                return;
+            }
+            else
+            if (log != TextBoxLog.Text.Trim())
+            {
+                if (!LoginOriginality())
+                    return;
+                else
+                {
+                    if (pass != TextBoxPass.Text.Trim())
+                    {
+                        byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim().ToString());
+                        pass = HashPassword(passtohash);
+                        EditRowUser();
+                    }
+                    else
+                    {
+                        EditRowUser();
+                        this.Close();
+                    }
+                }
+            }
+            else
+            if (pass != TextBoxPass.Text.Trim())
+            {
+                byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim().ToString());
+                pass = HashPassword(passtohash);
+                EditRowUser();
+                this.Close();
+            }
+            else
+            {
+                EditRowUser();
+                this.Close();
+            }
+        }
+
         // При нажатии закрытие формы
         private void buttonBack_Click(object sender, EventArgs e)
         {
@@ -73,7 +135,7 @@ namespace CourseWork.Users
         }
 
         // Проверки TextBox`ов и ComboBox`ов
-        private bool CheckTextBoxsAndComboBoxs()
+        private bool CheckTextBoxs()
         {
             int check = 0;
 
@@ -121,7 +183,6 @@ namespace CourseWork.Users
                 TextBoxPassRepeat.UseSystemPasswordChar = true;
 
                 pictureBoxShowHidePassword.Image = Properties.Resources.HidePassword;
-
             }
         }
 
@@ -210,7 +271,7 @@ namespace CourseWork.Users
         {
             string pattern = @"((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,35})";
 
-            Match isMatch = Regex.Match(TextBoxPass.Text, pattern);
+            Match isMatch = Regex.Match(TextBoxPass.Text.Trim(), pattern);
 
             return isMatch.Success;
         }
@@ -223,6 +284,52 @@ namespace CourseWork.Users
                 var hash = sha512.ComputeHash(val);
                 return Convert.ToBase64String(hash);
             }
+        }
+
+        private void EditRowUser()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("EditUsers", connection.GetSqlConnect());
+
+            command.CommandType = CommandType.StoredProcedure;
+         
+            connection.OpenConnect();
+
+            command.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxLog.Text.Trim();
+            command.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = pass;
+            command.Parameters.AddWithValue("@fk_role", SqlDbType.Int).Value = ComboBox_fk_role_user.SelectedValue;
+            command.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = ComboBox_fk_employee.SelectedValue;
+            command.Parameters.AddWithValue("@id_user", SqlDbType.Int).Value = Convert.ToInt32(Program.DataEditUserId.Value);
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
+        }
+
+        // Скрывать Label`ы при вводе в TextBox`ы или выборе в ComboBox`сах
+        private void TextBoxLog_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelValidLog.Hide();
+        }
+
+        private void TextBoxPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelValidPass.Hide();
+        }
+
+        private void TextBoxPassRepeat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelValidPassRepeat.Hide();
+        }
+
+        private void ComboBox_fk_role_user_SelectedValueChanged(object sender, EventArgs e)
+        {
+            labelValidRole.Hide();
+        }
+
+        private void ComboBox_fk_employee_SelectedValueChanged(object sender, EventArgs e)
+        {
+            labelValidEmployee.Hide();
         }
     }
 }
