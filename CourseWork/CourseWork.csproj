@@ -249,6 +249,12 @@
     <Compile Include="Status_task\Status_taskFormEdit.Designer.cs">
       <DependentUpon>Status_taskFormEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Type_task\Type_taskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Type_task\Type_taskForm.Designer.cs">
+      <DependentUpon>Type_taskForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\UsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -397,6 +403,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users_roles\Users_rolesForm.resx">
       <DependentUpon>Users_rolesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users_roles\Users_rolesFormAdd.resx">
+      <DependentUpon>Users_rolesFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users_roles\Users_rolesFormEdit.resx">
+      <DependentUpon>Users_rolesFormEdit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Config\packages.config" />
     <None Include="Properties\Settings.settings">

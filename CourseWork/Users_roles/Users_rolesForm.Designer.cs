@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewUsers_roles = new System.Windows.Forms.DataGridView();
+            this.Column_id_user_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_user_name_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripUsers_roles = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column_id_user_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_user_name_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers_roles)).BeginInit();
             this.menuStripUsers_roles.SuspendLayout();
             this.SuspendLayout();
@@ -52,26 +52,26 @@
             this.dataGridViewUsers_roles.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewUsers_roles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUsers_roles.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewUsers_roles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUsers_roles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewUsers_roles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUsers_roles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_user_role,
             this.Column_user_name_role});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewUsers_roles.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewUsers_roles.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewUsers_roles.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewUsers_roles.Location = new System.Drawing.Point(-1, 63);
             this.dataGridViewUsers_roles.Margin = new System.Windows.Forms.Padding(4);
@@ -83,6 +83,25 @@
             this.dataGridViewUsers_roles.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_roles_CellDoubleClick);
             this.dataGridViewUsers_roles.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewUsers_roles_UserDeletingRow);
             this.dataGridViewUsers_roles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewUsers_roles_KeyDown);
+            // 
+            // Column_id_user_role
+            // 
+            this.Column_id_user_role.DataPropertyName = "id_user_role";
+            this.Column_id_user_role.HeaderText = "Id";
+            this.Column_id_user_role.Name = "Column_id_user_role";
+            this.Column_id_user_role.ReadOnly = true;
+            this.Column_id_user_role.Visible = false;
+            // 
+            // Column_user_name_role
+            // 
+            this.Column_user_name_role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_user_name_role.DataPropertyName = "user_name_role";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_user_name_role.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column_user_name_role.HeaderText = "Название роли";
+            this.Column_user_name_role.MaxInputLength = 35;
+            this.Column_user_name_role.Name = "Column_user_name_role";
+            this.Column_user_name_role.ReadOnly = true;
             // 
             // menuStripUsers_roles
             // 
@@ -109,48 +128,30 @@
             // AddToolStripMenuItem
             // 
             this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.AddToolStripMenuItem.Text = "Добавить";
             this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.EditToolStripMenuItem.Text = "Изменить";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
-            // 
-            // Column_id_user_role
-            // 
-            this.Column_id_user_role.DataPropertyName = "id_user_role";
-            this.Column_id_user_role.HeaderText = "Id";
-            this.Column_id_user_role.Name = "Column_id_user_role";
-            this.Column_id_user_role.ReadOnly = true;
-            this.Column_id_user_role.Visible = false;
-            // 
-            // Column_user_name_role
-            // 
-            this.Column_user_name_role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_user_name_role.DataPropertyName = "user_name_role";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_user_name_role.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column_user_name_role.HeaderText = "Название роли";
-            this.Column_user_name_role.MaxInputLength = 35;
-            this.Column_user_name_role.Name = "Column_user_name_role";
-            this.Column_user_name_role.ReadOnly = true;
             // 
             // Users_rolesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 571);
+            this.ControlBox = false;
             this.Controls.Add(this.menuStripUsers_roles);
             this.Controls.Add(this.dataGridViewUsers_roles);
             this.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -161,6 +162,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Роли пользователей";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Users_rolesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers_roles)).EndInit();
             this.menuStripUsers_roles.ResumeLayout(false);
             this.menuStripUsers_roles.PerformLayout();

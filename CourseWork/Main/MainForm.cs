@@ -7,6 +7,7 @@ using CourseWork.Posts;
 using CourseWork.Status_task;
 using CourseWork.History_task;
 using CourseWork.Users;
+using CourseWork.Users_roles;
 
 namespace CourseWork
 {
@@ -175,6 +176,20 @@ namespace CourseWork
                 users.MdiParent = this;
                 users.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 users.Show();
+            }
+        }
+
+        private void RoleUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                Users_rolesForm users_role = new Users_rolesForm();
+
+                users_role.MdiParent = this;
+                users_role.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                users_role.Show();
             }
         }
     }

@@ -20,6 +20,11 @@ namespace CourseWork.Users_roles
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        private void Users_rolesForm_Load(object sender, EventArgs e)
+        {
+            SelectDateUsers_roles();
+        }
+
         // Добавление данных из базы данных в dataGridView
         private void SelectDateUsers_roles()
         {
