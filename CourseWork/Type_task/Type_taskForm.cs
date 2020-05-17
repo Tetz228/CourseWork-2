@@ -15,7 +15,7 @@ namespace CourseWork.Type_task
 
             this.dataGridViewType_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-             var material = MaterialSkinManager.Instance;
+            var material = MaterialSkinManager.Instance;
 
             material.AddFormToManage(this);
             material.Theme = MaterialSkinManager.Themes.DARK;
@@ -77,7 +77,7 @@ namespace CourseWork.Type_task
         }
 
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
-        private void dataGridViewStatus_task_KeyDown(object sender, KeyEventArgs e)
+        private void dataGridViewType_task_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Insert)
             {
@@ -94,9 +94,9 @@ namespace CourseWork.Type_task
         {
             Type_taskFormEdit formEdit = new Type_taskFormEdit();
 
-            Program.DataEditType_taskId.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells["Column_id_status_task"].Value);
-
-            Program.DataEditType_taskName.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells["Column_status_name_task"].Value);
+            Program.DataEditType_taskId.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells["Column_id_type_task"].Value);
+            Program.DataEditType_taskName.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells["Column_task_name_type"].Value);
+            Program.DataEditType_taskDescription.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells["Column_task_description"].Value);
 
             formEdit.ShowDialog();
 
@@ -104,7 +104,7 @@ namespace CourseWork.Type_task
         }
 
         // При 2-ом клике на ячейку можно провести редактирование
-        private void dataGridViewStatus_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewType_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Если не выбрана строка, содержащие заголовки
             if (e.RowIndex != -1)
@@ -113,6 +113,7 @@ namespace CourseWork.Type_task
 
                 Program.DataEditType_taskId.Value = view.Cells[0].Value.ToString();
                 Program.DataEditType_taskName.Value = view.Cells[1].Value.ToString();
+                Program.DataEditType_taskDescription.Value = view.Cells[2].Value.ToString();
 
                 Type_taskFormEdit formEdit = new Type_taskFormEdit();
 
@@ -132,7 +133,7 @@ namespace CourseWork.Type_task
         }
 
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
-        private void dataGridViewStatus_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void dataGridViewType_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DeleteRowType_task();

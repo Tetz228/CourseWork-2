@@ -243,5 +243,10 @@ namespace CourseWork
         {
             public static string Value { get; set; }
         }
+
+        public static class DataEditType_taskDescription
+        {
+            public static string Value { get; set; }
+        }
     }
 }

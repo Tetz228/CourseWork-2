@@ -407,6 +407,12 @@
     <EmbeddedResource Include="Type_task\Type_taskForm.resx">
       <DependentUpon>Type_taskForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Type_task\Type_taskFormAdd.resx">
+      <DependentUpon>Type_taskFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Type_task\Type_taskFormEdit.resx">
+      <DependentUpon>Type_taskFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\UsersForm.resx">
       <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
