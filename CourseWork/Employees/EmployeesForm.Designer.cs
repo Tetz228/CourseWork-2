@@ -95,7 +95,7 @@
             this.dataGridViewEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.DimGray;
             this.dataGridViewEmployees.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewEmployees.Size = new System.Drawing.Size(1038, 513);
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewEmployees.TabIndex = 5;
             this.dataGridViewEmployees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployees_CellDoubleClick);
             this.dataGridViewEmployees.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewEmployees_UserDeletingRow);
@@ -208,7 +208,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1037, 576);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripEmployees);
             this.Controls.Add(this.dataGridViewEmployees);

@@ -36,15 +36,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewHistory_task = new System.Windows.Forms.DataGridView();
+            this.Column_id_history_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComboBox_fk_project_task = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ComboBox_fk_status_task = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_history_date_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripHistory_projects = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Column_id_history_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBox_fk_project_task = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ComboBox_fk_status_task = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_history_date_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory_task)).BeginInit();
             this.menuStripHistory_projects.SuspendLayout();
             this.SuspendLayout();
@@ -93,54 +93,11 @@
             this.dataGridViewHistory_task.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridViewHistory_task.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewHistory_task.Size = new System.Drawing.Size(1037, 504);
+            this.dataGridViewHistory_task.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewHistory_task.TabIndex = 1;
             this.dataGridViewHistory_task.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHistory_task_CellDoubleClick);
             this.dataGridViewHistory_task.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewHistory_task_UserDeletingRow);
             this.dataGridViewHistory_task.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewHistory_task_KeyDown);
-            // 
-            // menuStripHistory_projects
-            // 
-            this.menuStripHistory_projects.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MainToolStripMenuItem});
-            this.menuStripHistory_projects.Location = new System.Drawing.Point(0, 0);
-            this.menuStripHistory_projects.Name = "menuStripHistory_projects";
-            this.menuStripHistory_projects.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStripHistory_projects.Size = new System.Drawing.Size(1037, 24);
-            this.menuStripHistory_projects.TabIndex = 10;
-            this.menuStripHistory_projects.Text = "menuStrip1";
-            // 
-            // MainToolStripMenuItem
-            // 
-            this.MainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddToolStripMenuItem,
-            this.EditToolStripMenuItem,
-            this.DeleteToolStripMenuItem});
-            this.MainToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MainToolStripMenuItem.Name = "MainToolStripMenuItem";
-            this.MainToolStripMenuItem.Size = new System.Drawing.Size(66, 18);
-            this.MainToolStripMenuItem.Text = "Правка";
-            // 
-            // AddToolStripMenuItem
-            // 
-            this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.AddToolStripMenuItem.Text = "Добавить";
-            this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
-            // 
-            // EditToolStripMenuItem
-            // 
-            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.EditToolStripMenuItem.Text = "Изменить";
-            this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
-            // 
-            // DeleteToolStripMenuItem
-            // 
-            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.DeleteToolStripMenuItem.Text = "Удалить";
-            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // Column_id_history_task
             // 
@@ -192,12 +149,55 @@
             this.Column_history_date_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column_history_date_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // menuStripHistory_projects
+            // 
+            this.menuStripHistory_projects.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainToolStripMenuItem});
+            this.menuStripHistory_projects.Location = new System.Drawing.Point(0, 0);
+            this.menuStripHistory_projects.Name = "menuStripHistory_projects";
+            this.menuStripHistory_projects.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStripHistory_projects.Size = new System.Drawing.Size(1037, 24);
+            this.menuStripHistory_projects.TabIndex = 10;
+            this.menuStripHistory_projects.Text = "menuStrip1";
+            // 
+            // MainToolStripMenuItem
+            // 
+            this.MainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddToolStripMenuItem,
+            this.EditToolStripMenuItem,
+            this.DeleteToolStripMenuItem});
+            this.MainToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MainToolStripMenuItem.Name = "MainToolStripMenuItem";
+            this.MainToolStripMenuItem.Size = new System.Drawing.Size(66, 18);
+            this.MainToolStripMenuItem.Text = "Правка";
+            // 
+            // AddToolStripMenuItem
+            // 
+            this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.AddToolStripMenuItem.Text = "Добавить";
+            this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
+            // 
+            // EditToolStripMenuItem
+            // 
+            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.EditToolStripMenuItem.Text = "Изменить";
+            this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
+            // 
+            // DeleteToolStripMenuItem
+            // 
+            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.DeleteToolStripMenuItem.Text = "Удалить";
+            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
+            // 
             // History_taskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1037, 565);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripHistory_projects);
             this.Controls.Add(this.dataGridViewHistory_task);

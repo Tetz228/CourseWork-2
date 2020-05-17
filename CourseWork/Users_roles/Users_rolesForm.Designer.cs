@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewUsers_roles = new System.Windows.Forms.DataGridView();
             this.Column_id_user_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_user_name_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,33 +52,33 @@
             this.dataGridViewUsers_roles.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewUsers_roles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUsers_roles.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewUsers_roles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewUsers_roles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewUsers_roles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUsers_roles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_user_role,
             this.Column_user_name_role});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewUsers_roles.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewUsers_roles.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewUsers_roles.GridColor = System.Drawing.Color.Gray;
-            this.dataGridViewUsers_roles.Location = new System.Drawing.Point(-1, 63);
+            this.dataGridViewUsers_roles.Location = new System.Drawing.Point(-1, 62);
             this.dataGridViewUsers_roles.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewUsers_roles.MultiSelect = false;
             this.dataGridViewUsers_roles.Name = "dataGridViewUsers_roles";
             this.dataGridViewUsers_roles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridViewUsers_roles.Size = new System.Drawing.Size(1040, 515);
+            this.dataGridViewUsers_roles.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewUsers_roles.TabIndex = 9;
             this.dataGridViewUsers_roles.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_roles_CellDoubleClick);
             this.dataGridViewUsers_roles.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewUsers_roles_UserDeletingRow);
@@ -96,8 +96,8 @@
             // 
             this.Column_user_name_role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_user_name_role.DataPropertyName = "user_name_role";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_user_name_role.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_user_name_role.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column_user_name_role.HeaderText = "Название роли";
             this.Column_user_name_role.MaxInputLength = 35;
             this.Column_user_name_role.Name = "Column_user_name_role";
@@ -150,7 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 571);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripUsers_roles);
             this.Controls.Add(this.dataGridViewUsers_roles);

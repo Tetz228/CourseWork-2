@@ -123,5 +123,102 @@ namespace CourseWork.Projects_task
 
             connection.CloseConnect();
         }
+
+        // Функция удаления строки
+        private void DeleteRowProject()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("DeleteProjects_task", connection.GetSqlConnect());
+
+            connection.OpenConnect();
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@id_task", Convert.ToInt32(dataGridViewProjects_task.CurrentRow.Cells["Column_id_task"].Value));
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
+
+            SelectDateProject_task();
+        }
+
+        // При клике на "Правка" -> "Добавить" открывается форма для добавления
+        private void AddToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Projects_taskFormAdd formAdd = new Projects_taskFormAdd();
+
+            formAdd.ShowDialog();
+
+            SelectDateProject_task();
+        }
+
+        // При нажатии на клавишу Ins(Insert) открывается форма добавления
+        private void dataGridViewProjects_task_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Insert)
+            {
+                Projects_taskFormAdd formAdd = new Projects_taskFormAdd();
+
+                formAdd.ShowDialog();
+
+                SelectDateProject_task();
+            }
+        }
+
+        // При клике на "Правка" -> "Изменить" открывается форма для изменения
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.DataEditProjects_taskId.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["Column_id_task"].Value);
+            Program.DataEditProjects_taskProject.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["ComboBox_fk_project"].Value);
+            Program.DataEditProjects_taskType_task.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["ComboBox_fk_type_task"].Value);
+            Program.DataEditProjects_taskEmployee.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["ComboBox_fk_employee"].Value);
+            Program.DataEditProjects_taskProject_role.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["ComboBox_fk_project_role"].Value);
+
+            Projects_taskFormEdit formEdit = new Projects_taskFormEdit();
+
+            formEdit.ShowDialog();
+
+            SelectDateProject_task();
+        }
+
+        // При 2-ом клике на ячейку можно провести редактирование
+        private void dataGridViewProjects_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow view = dataGridViewProjects_task.Rows[e.RowIndex];
+
+                Program.DataEditProjects_taskId.Value = view.Cells[0].Value.ToString();
+                Program.DataEditProjects_taskProject.Value = view.Cells[1].Value.ToString();
+                Program.DataEditProjects_taskType_task.Value = view.Cells[2].Value.ToString();
+                Program.DataEditProjects_taskEmployee.Value = view.Cells[3].Value.ToString();
+                Program.DataEditProjects_taskProject_role.Value = view.Cells[4].Value.ToString();
+
+                Projects_taskFormEdit formEdit = new Projects_taskFormEdit();
+
+                formEdit.ShowDialog();
+
+                SelectDateProject_task();
+            }
+        }
+
+        // При клике на "Правка" -> "Удалить" вызывается функция удаления
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DeleteRowProject();
+            else
+                return;
+        }
+
+        // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
+        private void dataGridViewProjects_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DeleteRowProject();
+
+            e.Cancel = true;
+        }
     }
 }

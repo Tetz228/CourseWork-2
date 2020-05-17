@@ -70,11 +70,11 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewProjects_role.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewProjects_role.GridColor = System.Drawing.Color.Gray;
-            this.dataGridViewProjects_role.Location = new System.Drawing.Point(0, 63);
+            this.dataGridViewProjects_role.Location = new System.Drawing.Point(0, 62);
             this.dataGridViewProjects_role.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewProjects_role.MultiSelect = false;
             this.dataGridViewProjects_role.Name = "dataGridViewProjects_role";
-            this.dataGridViewProjects_role.Size = new System.Drawing.Size(1041, 530);
+            this.dataGridViewProjects_role.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewProjects_role.TabIndex = 7;
             this.dataGridViewProjects_role.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProjects_role_CellDoubleClick);
             this.dataGridViewProjects_role.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewProjects_role_UserDeletingRow);
@@ -102,7 +102,7 @@
             this.MainToolStripMenuItem});
             this.menuStripProjects_role.Location = new System.Drawing.Point(0, 0);
             this.menuStripProjects_role.Name = "menuStripProjects_role";
-            this.menuStripProjects_role.Size = new System.Drawing.Size(1041, 24);
+            this.menuStripProjects_role.Size = new System.Drawing.Size(1037, 24);
             this.menuStripProjects_role.TabIndex = 8;
             this.menuStripProjects_role.Text = "menuStrip1";
             // 
@@ -143,13 +143,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1041, 593);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripProjects_role);
             this.Controls.Add(this.dataGridViewProjects_role);
             this.Font = new System.Drawing.Font("Verdana", 11.25F);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1041, 593);
             this.Name = "Projects_roleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Роли в проектах";

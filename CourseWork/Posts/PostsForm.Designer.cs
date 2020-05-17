@@ -73,12 +73,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewPosts.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPosts.GridColor = System.Drawing.Color.Gray;
-            this.dataGridViewPosts.Location = new System.Drawing.Point(0, 61);
+            this.dataGridViewPosts.Location = new System.Drawing.Point(0, 62);
             this.dataGridViewPosts.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewPosts.MultiSelect = false;
             this.dataGridViewPosts.Name = "dataGridViewPosts";
             this.dataGridViewPosts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridViewPosts.Size = new System.Drawing.Size(1037, 511);
+            this.dataGridViewPosts.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewPosts.TabIndex = 8;
             this.dataGridViewPosts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPosts_CellDoubleClick);
             this.dataGridViewPosts.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewPosts_UserDeletingRow);
@@ -151,7 +151,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1037, 571);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridViewPosts);
             this.Controls.Add(this.menuStripPosts);

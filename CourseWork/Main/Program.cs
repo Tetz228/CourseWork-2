@@ -248,5 +248,32 @@ namespace CourseWork
         {
             public static string Value { get; set; }
         }
+
+        //////////////////////Список задач/////////////////////////
+
+        public static class DataEditProjects_taskId
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditProjects_taskProject
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditProjects_taskType_task
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditProjects_taskEmployee
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditProjects_taskProject_role
+        {
+            public static string Value { get; set; }
+        }
     }
 }

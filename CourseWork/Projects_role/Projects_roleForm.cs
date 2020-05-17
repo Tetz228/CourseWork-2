@@ -117,6 +117,7 @@ namespace CourseWork
             {
                 DataGridViewRow view = dataGridViewProjects_role.Rows[e.RowIndex];
 
+                Program.DataEditProjects_roleId.Value = view.Cells[0].Value.ToString();
                 Program.DataEditProjects_roleName.Value = view.Cells[1].Value.ToString();
 
                 Projects_roleFormEdit formEdit = new Projects_roleFormEdit();

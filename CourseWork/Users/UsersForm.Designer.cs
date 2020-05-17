@@ -37,16 +37,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.menuStripListUsers = new System.Windows.Forms.MenuStrip();
-            this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Column_id_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ComboBox_fk_role_user = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ComboBox_fk_employee = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.menuStripListUsers = new System.Windows.Forms.MenuStrip();
+            this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.menuStripListUsers.SuspendLayout();
             this.SuspendLayout();
@@ -95,53 +95,11 @@
             this.dataGridViewUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.DimGray;
             this.dataGridViewUsers.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewUsers.Size = new System.Drawing.Size(1037, 510);
+            this.dataGridViewUsers.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewUsers.TabIndex = 5;
             this.dataGridViewUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsers_CellDoubleClick);
             this.dataGridViewUsers.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewUsers_UserDeletingRow);
             this.dataGridViewUsers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewUsers_KeyDown);
-            // 
-            // menuStripListUsers
-            // 
-            this.menuStripListUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MainToolStripMenuItem});
-            this.menuStripListUsers.Location = new System.Drawing.Point(0, 0);
-            this.menuStripListUsers.Name = "menuStripListUsers";
-            this.menuStripListUsers.Size = new System.Drawing.Size(1037, 24);
-            this.menuStripListUsers.TabIndex = 10;
-            this.menuStripListUsers.Text = "menuStrip1";
-            // 
-            // MainToolStripMenuItem
-            // 
-            this.MainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddToolStripMenuItem,
-            this.EditToolStripMenuItem,
-            this.DeleteToolStripMenuItem});
-            this.MainToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MainToolStripMenuItem.Name = "MainToolStripMenuItem";
-            this.MainToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.MainToolStripMenuItem.Text = "Правка";
-            // 
-            // AddToolStripMenuItem
-            // 
-            this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.AddToolStripMenuItem.Text = "Добавить";
-            this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
-            // 
-            // EditToolStripMenuItem
-            // 
-            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.EditToolStripMenuItem.Text = "Изменить";
-            this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
-            // 
-            // DeleteToolStripMenuItem
-            // 
-            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.DeleteToolStripMenuItem.Text = "Удалить";
-            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // Column_id_user
             // 
@@ -204,17 +162,59 @@
             this.ComboBox_fk_employee.ReadOnly = true;
             this.ComboBox_fk_employee.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // menuStripListUsers
+            // 
+            this.menuStripListUsers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainToolStripMenuItem});
+            this.menuStripListUsers.Location = new System.Drawing.Point(0, 0);
+            this.menuStripListUsers.Name = "menuStripListUsers";
+            this.menuStripListUsers.Size = new System.Drawing.Size(1037, 24);
+            this.menuStripListUsers.TabIndex = 10;
+            this.menuStripListUsers.Text = "menuStrip1";
+            // 
+            // MainToolStripMenuItem
+            // 
+            this.MainToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddToolStripMenuItem,
+            this.EditToolStripMenuItem,
+            this.DeleteToolStripMenuItem});
+            this.MainToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MainToolStripMenuItem.Name = "MainToolStripMenuItem";
+            this.MainToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.MainToolStripMenuItem.Text = "Правка";
+            // 
+            // AddToolStripMenuItem
+            // 
+            this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.AddToolStripMenuItem.Text = "Добавить";
+            this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
+            // 
+            // EditToolStripMenuItem
+            // 
+            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.EditToolStripMenuItem.Text = "Изменить";
+            this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
+            // 
+            // DeleteToolStripMenuItem
+            // 
+            this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.DeleteToolStripMenuItem.Text = "Удалить";
+            this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
+            // 
             // UsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1037, 572);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripListUsers);
             this.Controls.Add(this.dataGridViewUsers);
             this.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "UsersForm";
             this.Sizable = false;

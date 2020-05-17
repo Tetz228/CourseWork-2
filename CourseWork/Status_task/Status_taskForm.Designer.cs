@@ -77,7 +77,7 @@
             this.dataGridViewStatus_task.MultiSelect = false;
             this.dataGridViewStatus_task.Name = "dataGridViewStatus_task";
             this.dataGridViewStatus_task.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridViewStatus_task.Size = new System.Drawing.Size(1037, 507);
+            this.dataGridViewStatus_task.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewStatus_task.TabIndex = 8;
             this.dataGridViewStatus_task.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStatus_task_CellDoubleClick);
             this.dataGridViewStatus_task.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewStatus_task_UserDeletingRow);
@@ -149,7 +149,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1037, 571);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridViewStatus_task);
             this.Controls.Add(this.menuStripStatus_task);

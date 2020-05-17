@@ -93,7 +93,7 @@
             this.dataGridViewHistory_projects.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridViewHistory_projects.RowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewHistory_projects.Size = new System.Drawing.Size(1037, 514);
+            this.dataGridViewHistory_projects.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewHistory_projects.TabIndex = 0;
             this.dataGridViewHistory_projects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHistory_projects_CellDoubleClick);
             this.dataGridViewHistory_projects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewHistory_projects_UserDeletingRow);
@@ -195,7 +195,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1037, 577);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripHistory_projects);
             this.Controls.Add(this.dataGridViewHistory_projects);

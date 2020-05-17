@@ -75,7 +75,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewPostsEmployees.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPostsEmployees.GridColor = System.Drawing.Color.Gray;
-            this.dataGridViewPostsEmployees.Location = new System.Drawing.Point(0, 63);
+            this.dataGridViewPostsEmployees.Location = new System.Drawing.Point(0, 62);
             this.dataGridViewPostsEmployees.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridViewPostsEmployees.MultiSelect = false;
             this.dataGridViewPostsEmployees.Name = "dataGridViewPostsEmployees";
@@ -90,7 +90,7 @@
             this.dataGridViewPostsEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dataGridViewPostsEmployees.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewPostsEmployees.Size = new System.Drawing.Size(1038, 516);
+            this.dataGridViewPostsEmployees.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewPostsEmployees.TabIndex = 1;
             this.dataGridViewPostsEmployees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPostsEmployees_CellDoubleClick);
             this.dataGridViewPostsEmployees.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewPostsEmployees_UserDeletingRow);
@@ -177,7 +177,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1037, 577);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.menuStripPosts_employees);
             this.Controls.Add(this.dataGridViewPostsEmployees);

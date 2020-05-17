@@ -399,6 +399,12 @@
     <EmbeddedResource Include="Projects_task\Projects_taskForm.resx">
       <DependentUpon>Projects_taskForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Projects_task\Projects_taskFormAdd.resx">
+      <DependentUpon>Projects_taskFormAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projects_task\Projects_taskFormEdit.resx">
+      <DependentUpon>Projects_taskFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

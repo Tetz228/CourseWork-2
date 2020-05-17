@@ -101,7 +101,7 @@
             this.dataGridViewProjects.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.DimGray;
             this.dataGridViewProjects.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewProjects.Size = new System.Drawing.Size(1037, 513);
+            this.dataGridViewProjects.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewProjects.TabIndex = 4;
             this.dataGridViewProjects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProjects_CellDoubleClick);
             this.dataGridViewProjects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewProjects_UserDeletingRow);
@@ -245,7 +245,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1037, 576);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.dataGridViewProjects);

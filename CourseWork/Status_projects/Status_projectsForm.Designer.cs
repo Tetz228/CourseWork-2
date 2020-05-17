@@ -73,11 +73,11 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewStatus_projects.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewStatus_projects.GridColor = System.Drawing.Color.Gray;
-            this.dataGridViewStatus_projects.Location = new System.Drawing.Point(0, 64);
+            this.dataGridViewStatus_projects.Location = new System.Drawing.Point(0, 62);
             this.dataGridViewStatus_projects.MultiSelect = false;
             this.dataGridViewStatus_projects.Name = "dataGridViewStatus_projects";
             this.dataGridViewStatus_projects.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridViewStatus_projects.Size = new System.Drawing.Size(1037, 507);
+            this.dataGridViewStatus_projects.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewStatus_projects.TabIndex = 6;
             this.dataGridViewStatus_projects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStatus_projects_CellDoubleClick);
             this.dataGridViewStatus_projects.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewStatus_projects_UserDeletingRow);
@@ -151,7 +151,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1037, 571);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridViewStatus_projects);
             this.Controls.Add(this.menuStripStatus_projects);

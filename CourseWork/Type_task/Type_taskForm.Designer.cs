@@ -80,7 +80,7 @@
             this.dataGridViewType_task.MultiSelect = false;
             this.dataGridViewType_task.Name = "dataGridViewType_task";
             this.dataGridViewType_task.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridViewType_task.Size = new System.Drawing.Size(1037, 507);
+            this.dataGridViewType_task.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewType_task.TabIndex = 10;
             this.dataGridViewType_task.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewType_task_CellDoubleClick);
             this.dataGridViewType_task.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewType_task_UserDeletingRow);
@@ -138,21 +138,21 @@
             // AddToolStripMenuItem
             // 
             this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.AddToolStripMenuItem.Text = "Добавить";
             this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.EditToolStripMenuItem.Text = "Изменить";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
             // DeleteToolStripMenuItem
             // 
             this.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem";
-            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DeleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
@@ -160,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1037, 571);
+            this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
             this.Controls.Add(this.dataGridViewType_task);
             this.Controls.Add(this.menuStripType_task);
