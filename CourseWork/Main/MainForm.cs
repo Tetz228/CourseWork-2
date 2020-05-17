@@ -9,6 +9,8 @@ using CourseWork.History_task;
 using CourseWork.Users;
 using CourseWork.Users_roles;
 using CourseWork.Type_task;
+using CourseWork.Projects_task;
+using System.Drawing;
 
 namespace CourseWork
 {
@@ -27,11 +29,11 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            UsersForm users = new UsersForm();
+            Projects_taskForm projects_task = new Projects_taskForm();
 
-            users.MdiParent = this;
-            users.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            users.Show();
+            projects_task.MdiParent = this;
+            projects_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            projects_task.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -205,6 +207,20 @@ namespace CourseWork
                 type_task.MdiParent = this;
                 type_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 type_task.Show();
+            }
+        }
+
+        private void ListTaskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                Projects_taskForm projects_task = new Projects_taskForm();
+
+                projects_task.MdiParent = this;
+                projects_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                projects_task.Show();
             }
         }
     }
