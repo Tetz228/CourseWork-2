@@ -8,6 +8,7 @@ using CourseWork.Status_task;
 using CourseWork.History_task;
 using CourseWork.Users;
 using CourseWork.Users_roles;
+using CourseWork.Type_task;
 
 namespace CourseWork
 {
@@ -190,6 +191,20 @@ namespace CourseWork
                 users_role.MdiParent = this;
                 users_role.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 users_role.Show();
+            }
+        }
+
+        private void TypeTaskToolStripMenuItem_Click(object sender, EventArgs e)
+        {        
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                Type_taskForm type_task = new Type_taskForm();
+
+                type_task.MdiParent = this;
+                type_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                type_task.Show();
             }
         }
     }

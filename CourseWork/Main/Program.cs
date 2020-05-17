@@ -1,5 +1,4 @@
-﻿using CourseWork.Users;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CourseWork
@@ -229,6 +228,18 @@ namespace CourseWork
         }
 
         public static class DataEditUsers_rolesName
+        {
+            public static string Value { get; set; }
+        }
+
+        //////////////////////Типы задач/////////////////////////
+
+        public static class DataEditType_taskId              
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataEditType_taskName
         {
             public static string Value { get; set; }
         }

@@ -255,6 +255,18 @@
     <Compile Include="Type_task\Type_taskForm.Designer.cs">
       <DependentUpon>Type_taskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Type_task\Type_taskFormAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Type_task\Type_taskFormAdd.Designer.cs">
+      <DependentUpon>Type_taskFormAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Type_task\Type_taskFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Type_task\Type_taskFormEdit.Designer.cs">
+      <DependentUpon>Type_taskFormEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\UsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -391,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Status_task\Status_taskFormEdit.resx">
       <DependentUpon>Status_taskFormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Type_task\Type_taskForm.resx">
+      <DependentUpon>Type_taskForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\UsersForm.resx">
       <DependentUpon>UsersForm.cs</DependentUpon>
