@@ -10,7 +10,7 @@ namespace CourseWork
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new AuthorizationForm());
         }
 
         /////////////////////Регистрация//////////////////////////
@@ -21,6 +21,13 @@ namespace CourseWork
         }
 
         public static class DataReturnReg
+        {
+            public static string Value { get; set; }
+        }
+
+        /////////////////////Забыли пароль?//////////////////////////
+
+        public static class DataEmailPass
         {
             public static string Value { get; set; }
         }

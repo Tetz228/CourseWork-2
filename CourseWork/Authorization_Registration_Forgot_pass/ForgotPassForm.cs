@@ -10,28 +10,66 @@ using System.Windows.Forms;
 using System.Net.Mail;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using MaterialSkin.Controls;
+using MaterialSkin;
+using CourseWork.Authorization_Registration_Forgot_pass;
 
 namespace CourseWork
 {
-    public partial class ForgotPassForm : Form
+    public partial class ForgotPassForm : MaterialForm
     {
-
+        
 
         public ForgotPassForm()
         {
             InitializeComponent();
+
+            var material = MaterialSkinManager.Instance;
+
+            material.AddFormToManage(this);
+            material.Theme = MaterialSkinManager.Themes.DARK;
+            material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        private void SearchUser()
+        private void ForgotPassForm_Load(object sender, EventArgs e)
+        {
+            MainLabel.Text = "Введите адрес электронной почты, который\nвы использовали для регистрации.";
+        }
+
+        private void buttonContinue_Click(object sender, EventArgs e)
+        {
+            if (!ValidationEmail(textBoxEmail.Text))
+            {
+                labelValidEmail.Text = "Некорректная почта";
+                labelValidEmail.Show();
+
+                return;
+            }
+                
+            else
+            if(!SearchEmail())
+                return;
+            else
+            {
+                ForgotPassFormCode formCode = new ForgotPassFormCode();
+
+                formCode.Left = this.Left;
+                formCode.Top = this.Top;
+
+                this.Hide();
+
+                formCode.ShowDialog();
+            }
+        }
+
+        private bool SearchEmail()
         {
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
 
-            string email = TextBoxEmail.Text;
-
             SqlCommand selectEmail = new SqlCommand("SELECT Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
-            selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = email;
+            selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = textBoxEmail.Text.Trim();
 
             // Выполняем команду
             adapter.SelectCommand = selectEmail;
@@ -42,90 +80,61 @@ namespace CourseWork
             // Если таблица содержит хоть 1 ряд
             if (table.Rows.Count > 0)
             {
-                //СonfirmationСode();
-                panelEntryСode.Show();  
-            } 
+                Program.DataEmailPass.Value = textBoxEmail.Text.Trim();
+
+                return true;
+            }
             else
+            {
+                labelValidEmail.Text = "Пользователь не найден";
                 labelValidEmail.Show();
+
+                return false;
+            } 
         }
 
         private void ChangePassword()
         {
-            ConnectionDB connection = new ConnectionDB();
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
+            //ConnectionDB connection = new ConnectionDB();
+            //DataTable table = new DataTable();
+            //SqlDataAdapter adapter = new SqlDataAdapter();
 
-            string email = TextBoxEmail.Text;
+            //string email = TextBoxEmail.Text;
 
-            SqlCommand selectEmail = new SqlCommand("SELECT password, Email " +
-                "from Users " +
-                "left join Employees ON fk_employee = id_employee " +
-                "where Email = '@email'", connection.GetSqlConnect());
-            selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = email;
+            //SqlCommand selectEmail = new SqlCommand("SELECT password, Email " +
+            //    "from Users " +
+            //    "left join Employees ON fk_employee = id_employee " +
+            //    "where Email = '@email'", connection.GetSqlConnect());
+            //selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = email;
 
-            // Выполняем команду
-            adapter.SelectCommand = selectEmail;
+            //// Выполняем команду
+            //adapter.SelectCommand = selectEmail;
 
-            // Заполняем таблицу
-            adapter.Fill(table);
+            //// Заполняем таблицу
+            //adapter.Fill(table);
 
-            // Если таблица содержит хоть 1 ряд
-            if (table.Rows.Count > 0)
-            {
-                //СonfirmationСode();
-                MessageBox.Show("Nashel");
-            }
-            else
-                labelValidEmail.Show();
+            //// Если таблица содержит хоть 1 ряд
+            //if (table.Rows.Count > 0)
+            //{
+            //    //СonfirmationСode();
+            //    MessageBox.Show("Nashel");
+            //}
+            //else
+            //    labelValidEmail.Show();
             
         }
 
-        //Получение кода подтвеждения с помощью глобальной переменной 
-        private void СonfirmationСode()
+        // Валидация почты
+        private bool ValidationEmail(string email)
         {
-            RegistrationForm registration = new RegistrationForm();
+            string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
 
-            //global = registration.SendingCode(TextBoxEmail.Text);
+            Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+
+            return isMatch.Success;
         }
 
-        private void pictureBoxForgotExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Application.Exit();
-        }
-
-        private void Further_Click(object sender, EventArgs e)
-        {
-            SearchUser();
-            //panelEntryСode.Show();
-        }
-
-        private void TextBoxEmail_Code_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            labelValidEmail.Hide();
-        }
-
-        private void panelFurther_Click(object sender, EventArgs e)
-        {
-            string kod = TextBoxCode.Text;
-
-            //if (kod == global)
-                panelNewPass.Show();
-            //else
-            //    labelCode.Show();
-        }
-
-        private void TextBoxCode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            labelCode.Hide();
-        }
-
-        private void buttonBackCode_Click(object sender, EventArgs e)
-        {
-            panelEntryСode.Hide();
-        }
-
-        private void buttonBackEmail_Click(object sender, EventArgs e)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -157,9 +166,9 @@ namespace CourseWork
             point = new Point(e.X, e.Y);
         }
 
-        private void buttonBackPass_Click(object sender, EventArgs e)
+        private void textBoxEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            panelNewPass.Hide();
+            labelValidEmail.Hide();
         }
     }
 }

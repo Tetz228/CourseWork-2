@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace CourseWork.Posts
 {
@@ -20,6 +21,7 @@ namespace CourseWork.Posts
             material.AddFormToManage(this);
             material.Theme = MaterialSkinManager.Themes.DARK;
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
+            pictureBoxSearch.BackColor = Color.FromArgb(230, 108, 0);
         }
 
         private void PostsForm_Load(object sender, EventArgs e)
@@ -136,6 +138,35 @@ namespace CourseWork.Posts
                 DeleteRowPosts();
 
             e.Cancel = true;
+        }
+
+        private void PostsSearch()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            DataTable data = new DataTable();
+            SqlDataAdapter command = new SqlDataAdapter("PostsSearch", connection.GetSqlConnect());
+
+            connection.OpenConnect();
+
+            command.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+            command.SelectCommand.Parameters.AddWithValue("@post_name", textBoxSearch.Text.Trim());
+
+            command.Fill(data);
+
+            dataGridViewPosts.DataSource = data;
+
+            connection.CloseConnect();
+        }
+
+        private void pictureBoxSearch_Click(object sender, EventArgs e)
+        {
+            PostsSearch();
+        }
+
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            PostsSearch();
         }
     }
 }

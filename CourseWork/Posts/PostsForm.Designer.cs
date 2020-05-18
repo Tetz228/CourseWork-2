@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPosts = new System.Windows.Forms.DataGridView();
             this.Column_id_post = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_post_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,8 +39,13 @@
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBoxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.pictureBoxSearch = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPosts)).BeginInit();
             this.menuStripPosts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewPosts
@@ -52,26 +57,26 @@
             this.dataGridViewPosts.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewPosts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPosts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPosts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPosts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewPosts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPosts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_post,
             this.Column_post_name});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPosts.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPosts.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewPosts.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewPosts.Location = new System.Drawing.Point(0, 62);
             this.dataGridViewPosts.Margin = new System.Windows.Forms.Padding(4);
@@ -96,8 +101,8 @@
             // 
             this.Column_post_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_post_name.DataPropertyName = "post_name";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_post_name.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_post_name.DefaultCellStyle = dataGridViewCellStyle11;
             this.Column_post_name.HeaderText = "Название должности";
             this.Column_post_name.MaxInputLength = 35;
             this.Column_post_name.Name = "Column_post_name";
@@ -146,6 +151,45 @@
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Depth = 0;
+            this.textBoxSearch.Hint = "";
+            this.textBoxSearch.Location = new System.Drawing.Point(635, 32);
+            this.textBoxSearch.MaxLength = 32767;
+            this.textBoxSearch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.PasswordChar = '\0';
+            this.textBoxSearch.SelectedText = "";
+            this.textBoxSearch.SelectionLength = 0;
+            this.textBoxSearch.SelectionStart = 0;
+            this.textBoxSearch.Size = new System.Drawing.Size(336, 23);
+            this.textBoxSearch.TabIndex = 10;
+            this.textBoxSearch.TabStop = false;
+            this.textBoxSearch.UseSystemPasswordChar = false;
+            this.textBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearch_KeyDown);
+            // 
+            // pictureBoxSearch
+            // 
+            this.pictureBoxSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxSearch.Image = global::CourseWork.Properties.Resources.Search;
+            this.pictureBoxSearch.Location = new System.Drawing.Point(977, 32);
+            this.pictureBoxSearch.Name = "pictureBoxSearch";
+            this.pictureBoxSearch.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxSearch.TabIndex = 15;
+            this.pictureBoxSearch.TabStop = false;
+            this.pictureBoxSearch.Click += new System.EventHandler(this.pictureBoxSearch_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = global::CourseWork.Properties.Resources.Filters;
+            this.pictureBox2.Location = new System.Drawing.Point(1007, 32);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
             // PostsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -153,6 +197,9 @@
             this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBoxSearch);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.dataGridViewPosts);
             this.Controls.Add(this.menuStripPosts);
             this.Font = new System.Drawing.Font("Verdana", 11.25F);
@@ -165,6 +212,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPosts)).EndInit();
             this.menuStripPosts.ResumeLayout(false);
             this.menuStripPosts.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,5 +229,8 @@
         private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_id_post;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_post_name;
+        private MaterialSkin.Controls.MaterialSingleLineTextField textBoxSearch;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBoxSearch;
     }
 }

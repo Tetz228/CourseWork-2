@@ -61,6 +61,12 @@
     <Compile Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.Designer.cs">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Authorization_Registration_Forgot_pass\ForgotPassFormCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authorization_Registration_Forgot_pass\ForgotPassFormCode.Designer.cs">
+      <DependentUpon>ForgotPassFormCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="History_task\History_taskForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -327,6 +333,9 @@
     <EmbeddedResource Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.resx">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\ForgotPassFormCode.resx">
+      <DependentUpon>ForgotPassFormCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employees\EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -486,6 +495,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\HidePassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Filters.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -126,19 +126,19 @@ namespace CourseWork
 
         private void ForgotPassLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("В разработке");
-            //TextBoxLog.Text = "";
-            //TextBoxPass.Text = "";
+            //MessageBox.Show("В разработке");
+            TextBoxLog.Text = "";
+            TextBoxPass.Text = "";
 
-            //Form fogotPass = new ForgotPass();
+            Form fogotPass = new ForgotPassForm();
 
-            //// Задает открываемой форме позицию слева, равную позиции текущей формы
-            //fogotPass.Left = this.Left;
-            //// Задает открываемой форме позицию сверху, равную позиции текущей формы
-            //fogotPass.Top = this.Top;
-            //this.Hide();
+            // Задает открываемой форме позицию слева, равную позиции текущей формы
+            fogotPass.Left = this.Left;
+            // Задает открываемой форме позицию сверху, равную позиции текущей формы
+            fogotPass.Top = this.Top;
+            this.Hide();
 
-            //fogotPass.Show();
+            fogotPass.Show();
         }
 
         // Скрывать Label`ы при вводе в TextBox`ы и при нажатии на Enter происходит авторизация
