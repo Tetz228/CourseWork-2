@@ -71,7 +71,7 @@
             // 
             this.textBoxCode.Depth = 0;
             this.textBoxCode.Hint = "";
-            this.textBoxCode.Location = new System.Drawing.Point(107, 104);
+            this.textBoxCode.Location = new System.Drawing.Point(78, 101);
             this.textBoxCode.MaxLength = 6;
             this.textBoxCode.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxCode.Name = "textBoxCode";
@@ -92,7 +92,7 @@
             this.linkLabelConfirmationCode.Font = new System.Drawing.Font("Verdana", 8F);
             this.linkLabelConfirmationCode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabelConfirmationCode.LinkColor = System.Drawing.Color.White;
-            this.linkLabelConfirmationCode.Location = new System.Drawing.Point(202, 102);
+            this.linkLabelConfirmationCode.Location = new System.Drawing.Point(173, 106);
             this.linkLabelConfirmationCode.Name = "linkLabelConfirmationCode";
             this.linkLabelConfirmationCode.Size = new System.Drawing.Size(146, 13);
             this.linkLabelConfirmationCode.TabIndex = 43;
@@ -105,7 +105,7 @@
             this.labelConfirmationMail.AutoSize = true;
             this.labelConfirmationMail.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelConfirmationMail.ForeColor = System.Drawing.Color.Red;
-            this.labelConfirmationMail.Location = new System.Drawing.Point(104, 130);
+            this.labelConfirmationMail.Location = new System.Drawing.Point(75, 127);
             this.labelConfirmationMail.Name = "labelConfirmationMail";
             this.labelConfirmationMail.Size = new System.Drawing.Size(92, 13);
             this.labelConfirmationMail.TabIndex = 44;

@@ -89,7 +89,7 @@
             this.labelValidEmail.AutoSize = true;
             this.labelValidEmail.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidEmail.ForeColor = System.Drawing.Color.Red;
-            this.labelValidEmail.Location = new System.Drawing.Point(95, 133);
+            this.labelValidEmail.Location = new System.Drawing.Point(9, 133);
             this.labelValidEmail.Name = "labelValidEmail";
             this.labelValidEmail.Size = new System.Drawing.Size(147, 14);
             this.labelValidEmail.TabIndex = 4;

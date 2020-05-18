@@ -26,7 +26,7 @@ namespace CourseWork
         // При нажатии вызов проверок и показ формы ввода кода
         private void buttonContinue_Click(object sender, EventArgs e)
         {
-            if (!ValidationEmail(textBoxEmail.Text))
+            if (!ValidationEmail())
             {
                 labelValidEmail.Text = "Некорректная почта.";
                 labelValidEmail.Show();
@@ -56,11 +56,11 @@ namespace CourseWork
         }
 
         // Валидация почты
-        private bool ValidationEmail(string email)
+        private bool ValidationEmail()
         {
             string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
 
-            Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+            Match isMatch = Regex.Match(textBoxEmail.Text, pattern, RegexOptions.IgnoreCase);
 
             return isMatch.Success;
         }
@@ -95,7 +95,7 @@ namespace CourseWork
             }
             else
             {
-                labelValidEmail.Text = "Пользователь не найден";
+                labelValidEmail.Text = "Пользователь с такой почтой не найден.";
                 labelValidEmail.Show();
 
                 connection.CloseConnect();

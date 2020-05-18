@@ -107,7 +107,6 @@
             this.pictureBoxShowHidePassword.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxShowHidePassword.TabIndex = 51;
             this.pictureBoxShowHidePassword.TabStop = false;
-            this.pictureBoxShowHidePassword.Click += new System.EventHandler(this.pictureBoxShowHidePassword_Click);
             // 
             // buttonUpdate
             // 

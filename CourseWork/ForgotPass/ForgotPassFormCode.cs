@@ -25,9 +25,7 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
 
         // При загрузки формы отправлять код
         private void ForgotPassFormCode_Load(object sender, EventArgs e)
-        {
-            linkLabelConfirmationCode.Text = "Отправить код\nещё раз";
-
+        { 
             СonfirmationСode();
         }
 
@@ -52,18 +50,19 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
             this.Close();
         }
 
+        // Повторная отправка кода
+        private void linkLabelConfirmationCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            СonfirmationСode();
+            MessageBox.Show("Код безопасности отправлен повторно!");
+        }
+
         // Получение кода подтвеждения с помощью глобальной переменной 
         private void СonfirmationСode()
         {
             ConfirmationMailForm mailForm = new ConfirmationMailForm();
             
             global = mailForm.SendingCode(Program.DataEmailForgotPass.Value, subject, body);
-        }
-
-        // Повторная отправка кода
-        private void linkLabelConfirmationCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            СonfirmationСode();
         }
 
         // При закрытии формы

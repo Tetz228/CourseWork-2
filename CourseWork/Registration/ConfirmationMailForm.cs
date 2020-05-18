@@ -25,23 +25,6 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        // Перемещение формы
-        Point point;
-
-        private void ConfirmationMailForm_MouseDown(object sender, MouseEventArgs e)
-        {
-            point = new Point(e.X, e.Y);
-        }
-
-        private void ConfirmationMailForm_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - point.X;
-                this.Top += e.Y - point.Y;
-            }
-        }
-
         // Получение кода подтверждение
         private void ConfirmationMailForm_Load(object sender, EventArgs e)
         {
@@ -102,16 +85,27 @@ namespace CourseWork
             this.Close();
         }
 
-        // Скрывать Label при вводе в TextBox
-        private void textBoxCode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            labelConfirmationMail.Hide();
-        }
-
         // Повторная отправка кода
         private void linkLabelConfirmationCode_Click(object sender, EventArgs e)
         {
             CallSendingCode();
+        }
+
+        // Перемещение формы
+        Point point;
+
+        private void ConfirmationMailForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            point = new Point(e.X, e.Y);
+        }
+
+        private void ConfirmationMailForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - point.X;
+                this.Top += e.Y - point.Y;
+            }
         }
 
         // При закрытии формы
@@ -123,6 +117,12 @@ namespace CourseWork
             registration.Left = this.Left;
             registration.Top = this.Top;
             registration.Show();
+        }
+
+        // Скрывать Label при вводе в TextBox
+        private void textBoxCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            labelConfirmationMail.Hide();
         }
     }
 }

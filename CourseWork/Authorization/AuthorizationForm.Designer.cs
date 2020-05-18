@@ -90,7 +90,7 @@
             this.TextBoxLog.Depth = 0;
             this.TextBoxLog.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextBoxLog.Hint = "Логин";
-            this.TextBoxLog.Location = new System.Drawing.Point(36, 105);
+            this.TextBoxLog.Location = new System.Drawing.Point(35, 105);
             this.TextBoxLog.MaxLength = 32767;
             this.TextBoxLog.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxLog.Name = "TextBoxLog";
@@ -110,7 +110,7 @@
             this.TextBoxPass.Depth = 0;
             this.TextBoxPass.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextBoxPass.Hint = "Пароль";
-            this.TextBoxPass.Location = new System.Drawing.Point(36, 177);
+            this.TextBoxPass.Location = new System.Drawing.Point(35, 177);
             this.TextBoxPass.MaxLength = 32767;
             this.TextBoxPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxPass.Name = "TextBoxPass";
@@ -147,11 +147,11 @@
             this.labelValidAuthPass.AutoSize = true;
             this.labelValidAuthPass.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidAuthPass.ForeColor = System.Drawing.Color.Red;
-            this.labelValidAuthPass.Location = new System.Drawing.Point(41, 204);
+            this.labelValidAuthPass.Location = new System.Drawing.Point(32, 203);
             this.labelValidAuthPass.Name = "labelValidAuthPass";
-            this.labelValidAuthPass.Size = new System.Drawing.Size(152, 14);
+            this.labelValidAuthPass.Size = new System.Drawing.Size(156, 14);
             this.labelValidAuthPass.TabIndex = 43;
-            this.labelValidAuthPass.Text = "Некорректный пароль";
+            this.labelValidAuthPass.Text = "Некорректный пароль.";
             this.labelValidAuthPass.Visible = false;
             // 
             // labelValidAuthLog
@@ -159,11 +159,11 @@
             this.labelValidAuthLog.AutoSize = true;
             this.labelValidAuthLog.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidAuthLog.ForeColor = System.Drawing.Color.Red;
-            this.labelValidAuthLog.Location = new System.Drawing.Point(41, 131);
+            this.labelValidAuthLog.Location = new System.Drawing.Point(32, 131);
             this.labelValidAuthLog.Name = "labelValidAuthLog";
-            this.labelValidAuthLog.Size = new System.Drawing.Size(143, 14);
+            this.labelValidAuthLog.Size = new System.Drawing.Size(147, 14);
             this.labelValidAuthLog.TabIndex = 42;
-            this.labelValidAuthLog.Text = "Некорректный логин";
+            this.labelValidAuthLog.Text = "Некорректный логин.";
             this.labelValidAuthLog.Visible = false;
             // 
             // pictureBoxShowHidePassword
@@ -181,7 +181,7 @@
             // 
             this.pictureBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxPassword.Image = global::CourseWork.Properties.Resources.Password1;
-            this.pictureBoxPassword.Location = new System.Drawing.Point(6, 177);
+            this.pictureBoxPassword.Location = new System.Drawing.Point(5, 176);
             this.pictureBoxPassword.Name = "pictureBoxPassword";
             this.pictureBoxPassword.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxPassword.TabIndex = 27;
@@ -191,7 +191,7 @@
             // 
             this.pictureBoxLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxLogin.Image = global::CourseWork.Properties.Resources.Login1;
-            this.pictureBoxLogin.Location = new System.Drawing.Point(6, 102);
+            this.pictureBoxLogin.Location = new System.Drawing.Point(5, 103);
             this.pictureBoxLogin.Name = "pictureBoxLogin";
             this.pictureBoxLogin.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxLogin.TabIndex = 26;

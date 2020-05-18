@@ -24,14 +24,18 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // При нажатии вызов всех проверок и обновление пароля
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            if (!CheckNullAndSpace())
+            if (!CheckTextBox())
+                return;
+            else
+            if (!CheckPass())
                 return;
             else
             if (!ValidationPassword(TextBoxNewPass.Text))
             {
-                labelValidPass.Text = "Некорректный пароль. Пароль\nдолжен быть минимум с одной\nцифрой,одной заглавной и\nодной строчной буквой.";
+                labelValidPass.Text = "Некорректный пароль. Пароль\nдолжен быть минимум с одной\nцифрой, одной заглавной и\nодной строчной буквой.";
                 labelValidPass.Show();
                 return;
             }
@@ -43,11 +47,13 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
             }
         }
 
+        // При нажатии закрывать форму
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // При закрытии формы
         private void ForgotPassFormNewPassword_FormClosed(object sender, FormClosedEventArgs e)
         {
             Form authorization = Application.OpenForms[0];
@@ -98,9 +104,12 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
 
             connection.CloseConnect();
         }
-        private bool CheckNullAndSpace()
+
+        // Проверка на нулевые значения в TextBox`сах
+        private bool CheckTextBox()
         {
             int check = 0;
+
             if (string.IsNullOrWhiteSpace(TextBoxNewPass.Text))
             {
                 labelValidPass.Text = "Введите пароль";
@@ -122,45 +131,36 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
                 return true;
         }
 
-        private bool CheckPassLength()
+        // Проверка пароля на нужную длинну и проверка на совпадение
+        private bool CheckPass()
         {
-            if (TextBoxNewPass.Leght < 6)
+            if (TextBoxNewPass.Text.Length < 6)
             {
-                labelValidRegPass.Text = "Пароль должен быть длиной\nот 6 до 25 символов";
-                labelValidRegPass.Show();
+                labelValidPass.Text = "Пароль должен быть длиной\nот 6 до 25 символов";
+                labelValidPass.Show();
 
                 return false;
             }
             else
 
-            if (password != repeatPassword)
+            if (TextBoxNewPass.Text != TextBoxNewPassRepeat.Text)
             {
-                labelValidRegPassRepeat.Text = "Пароли должны совпадать";
-                labelValidRegPassRepeat.Show();
+                labelValidPassRepeat.Text = "Пароли должны совпадать";
+                labelValidPassRepeat.Show();
+
                 return false;
             }
+
             return true;
         }
 
+        // Скрывать / показывать пароль
         private void pictureBoxShowHidePassword_Click(object sender, EventArgs e)
         {
-            if (TextBoxNewPass.UseSystemPasswordChar == true)
-            {
-                TextBoxNewPass.UseSystemPasswordChar = false;
-                TextBoxNewPassRepeat.UseSystemPasswordChar = false;
 
-                pictureBoxShowHidePassword.Image = Properties.Resources.ShowPassword;
-
-            }
-            else
-            {
-                TextBoxNewPass.UseSystemPasswordChar = true;
-                TextBoxNewPassRepeat.UseSystemPasswordChar = true;
-
-                pictureBoxShowHidePassword.Image = Properties.Resources.HidePassword;
-            }
         }
 
+        //Скрыввать label`ы при вводе в TextBox`ы
         private void TextBoxNewPass_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidPass.Hide();
@@ -170,6 +170,5 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
         {
             labelValidPassRepeat.Hide();
         }
-
     }
 }

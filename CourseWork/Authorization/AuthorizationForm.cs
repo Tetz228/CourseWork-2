@@ -43,6 +43,7 @@ namespace CourseWork
             byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.ToString());
 
             SqlCommand selectLogPass = new SqlCommand("SELECT login, password FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
+
             selectLogPass.Parameters.Add("@log", SqlDbType.VarChar).Value = TextBoxLog.Text;
             selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
 
@@ -54,14 +55,16 @@ namespace CourseWork
             {
                 main.Left = this.Left;
                 main.Top = this.Top;
+
                 this.Hide();
+
                 main.Show();
             }
             else
-                MessageBox.Show("Неверный логин или пароль");
+                MessageBox.Show("Неверный логин или пароль.");
         }
         
-        // Валидация авторизации
+        // Проверка полей на пустоту
         public bool ValidationAuth()
         {
             if (string.IsNullOrEmpty(TextBoxLog.Text) && string.IsNullOrEmpty(TextBoxPass.Text))
@@ -71,7 +74,6 @@ namespace CourseWork
 
                 return false;
             }    
-
             if (string.IsNullOrEmpty(TextBoxLog.Text))
             {
                 labelValidAuthLog.Show();
@@ -79,14 +81,14 @@ namespace CourseWork
                 return false;
             }
             else
-                if (string.IsNullOrEmpty(TextBoxPass.Text))
-                {               
-                    labelValidAuthPass.Show();
+            if (string.IsNullOrEmpty(TextBoxPass.Text))
+            {               
+                labelValidAuthPass.Show();
 
-                    return false;
-                }
-                else
-                    return true;
+                return false;
+            }
+            else
+                return true;
         }
 
         // Хеширование пароля
@@ -138,16 +140,17 @@ namespace CourseWork
         // Переход в форму восстановления пароля
         private void ForgotPassLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //MessageBox.Show("В разработке");
             TextBoxLog.Text = "";
             TextBoxPass.Text = "";
 
-            Form fogotPass = new ForgotPassForm();
+            labelValidAuthLog.Hide();
+            labelValidAuthPass.Hide();
 
-            // Задает открываемой форме позицию слева, равную позиции текущей формы
-            fogotPass.Left = this.Left;
-            // Задает открываемой форме позицию сверху, равную позиции текущей формы
+            Form fogotPass = new ForgotPassForm();
+           
+            fogotPass.Left = this.Left; 
             fogotPass.Top = this.Top;
+
             this.Hide();
 
             fogotPass.Show();
