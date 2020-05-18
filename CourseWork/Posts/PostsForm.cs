@@ -24,6 +24,7 @@ namespace CourseWork.Posts
             pictureBoxSearch.BackColor = Color.FromArgb(230, 108, 0);
         }
 
+        // При загрузки формы
         private void PostsForm_Load(object sender, EventArgs e)
         {
             this.dataGridViewPosts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -140,10 +141,12 @@ namespace CourseWork.Posts
             e.Cancel = true;
         }
 
+        DataTable data = new DataTable();
+
         private void PostsSearch()
         {
             ConnectionDB connection = new ConnectionDB();
-            DataTable data = new DataTable();
+            
             SqlDataAdapter command = new SqlDataAdapter("PostsSearch", connection.GetSqlConnect());
 
             connection.OpenConnect();
@@ -166,7 +169,14 @@ namespace CourseWork.Posts
 
         private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
         {
+            //PostsSearch();
+        }
+
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
             PostsSearch();
+            
         }
     }
 }
