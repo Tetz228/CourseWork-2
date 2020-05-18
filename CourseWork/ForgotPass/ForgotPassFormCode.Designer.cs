@@ -66,6 +66,7 @@
             this.buttonContinue.TabIndex = 3;
             this.buttonContinue.Text = "Продолжить";
             this.buttonContinue.UseVisualStyleBackColor = true;
+            this.buttonContinue.Click += new System.EventHandler(this.buttonContinue_Click);
             // 
             // textBoxCode
             // 
@@ -83,6 +84,7 @@
             this.textBoxCode.TabIndex = 45;
             this.textBoxCode.TabStop = false;
             this.textBoxCode.UseSystemPasswordChar = false;
+            this.textBoxCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCode_KeyPress);
             // 
             // linkLabelConfirmationCode
             // 

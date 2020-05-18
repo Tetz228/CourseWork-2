@@ -27,7 +27,18 @@ namespace CourseWork
 
         /////////////////////Забыли пароль?//////////////////////////
 
-        public static class DataEmailPass
+        public static class DataIdForgotPass
+        {
+            public static string Value { get; set; }
+        }
+
+
+        public static class DataEmailForgotPass
+        {
+            public static string Value { get; set; }
+        }
+
+        public static class DataCodeForgotPass
         {
             public static string Value { get; set; }
         }

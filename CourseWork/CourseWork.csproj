@@ -49,23 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authorization_Registration_Forgot_pass\AuthorizationForm.cs">
+    <Compile Include="Authorization\AuthorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authorization_Registration_Forgot_pass\AuthorizationForm.Designer.cs">
+    <Compile Include="Authorization\AuthorizationForm.Designer.cs">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.cs">
+    <Compile Include="Registration\ConfirmationMailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.Designer.cs">
+    <Compile Include="Registration\ConfirmationMailForm.Designer.cs">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Authorization_Registration_Forgot_pass\ForgotPassFormCode.cs">
+    <Compile Include="ForgotPass\ForgotPassFormCode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authorization_Registration_Forgot_pass\ForgotPassFormCode.Designer.cs">
+    <Compile Include="ForgotPass\ForgotPassFormCode.Designer.cs">
       <DependentUpon>ForgotPassFormCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPass\ForgotPassFormNewPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgotPass\ForgotPassFormNewPassword.Designer.cs">
+      <DependentUpon>ForgotPassFormNewPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="History_task\History_taskForm.cs">
       <SubType>Form</SubType>
@@ -104,11 +110,11 @@
     <Compile Include="Employees\EmployeesFormEdit.Designer.cs">
       <DependentUpon>EmployeesFormEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Authorization_Registration_Forgot_pass\ForgotPassForm.cs">
+    <Compile Include="ForgotPass\ForgotPassFormEmail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authorization_Registration_Forgot_pass\ForgotPassForm.Designer.cs">
-      <DependentUpon>ForgotPassForm.cs</DependentUpon>
+    <Compile Include="ForgotPass\ForgotPassFormEmail.Designer.cs">
+      <DependentUpon>ForgotPassFormEmail.cs</DependentUpon>
     </Compile>
     <Compile Include="History_projects\History_projectsForm.cs">
       <SubType>Form</SubType>
@@ -226,10 +232,10 @@
       <DependentUpon>Projects_taskFormEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Authorization_Registration_Forgot_pass\RegistrationForm.cs">
+    <Compile Include="Registration\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authorization_Registration_Forgot_pass\RegistrationForm.Designer.cs">
+    <Compile Include="Registration\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -327,13 +333,13 @@
     <Compile Include="Users_roles\Users_rolesFormEdit.Designer.cs">
       <DependentUpon>Users_rolesFormEdit.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\AuthorizationForm.resx">
+    <EmbeddedResource Include="Authorization\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\ConfirmationMailForm.resx">
+    <EmbeddedResource Include="Registration\ConfirmationMailForm.resx">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\ForgotPassFormCode.resx">
+    <EmbeddedResource Include="ForgotPass\ForgotPassFormCode.resx">
       <DependentUpon>ForgotPassFormCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employees\EmployeesForm.resx">
@@ -345,8 +351,8 @@
     <EmbeddedResource Include="Employees\EmployeesFormEdit.resx">
       <DependentUpon>EmployeesFormEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\ForgotPassForm.resx">
-      <DependentUpon>ForgotPassForm.cs</DependentUpon>
+    <EmbeddedResource Include="ForgotPass\ForgotPassFormEmail.resx">
+      <DependentUpon>ForgotPassFormEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History_projects\History_projectsForm.resx">
       <DependentUpon>History_projectsForm.cs</DependentUpon>
@@ -419,7 +425,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Authorization_Registration_Forgot_pass\RegistrationForm.resx">
+    <EmbeddedResource Include="Registration\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Status_projects\Status_projectsForm.resx">

@@ -40,7 +40,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             sqlDA.Fill(EmployeesTable);
-
+   
             dataGridViewEmployees.DataSource = EmployeesTable.DefaultView;
 
             connection.CloseConnect();
@@ -80,9 +80,9 @@ namespace CourseWork
         {
             if (e.KeyCode == Keys.Insert)
             {
-                EmployeesFormEdit formEdit = new EmployeesFormEdit();
+                EmployeesFormAdd formAdd = new EmployeesFormAdd();
 
-                formEdit.ShowDialog();
+                formAdd.ShowDialog();
 
                 SelectDateEmployees();
             }

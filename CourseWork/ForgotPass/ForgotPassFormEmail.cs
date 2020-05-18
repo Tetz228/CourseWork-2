@@ -45,9 +45,8 @@ namespace CourseWork
 
                 return;
             }
-                
             else
-            if(!SearchEmail())
+            if (!SearchEmail())
                 return;
             else
             {
@@ -59,7 +58,7 @@ namespace CourseWork
                 this.Hide();
 
                 formCode.ShowDialog();
-            }
+            } 
         }
 
         private bool SearchEmail()
@@ -68,7 +67,7 @@ namespace CourseWork
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
 
-            SqlCommand selectEmail = new SqlCommand("SELECT Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
+            SqlCommand selectEmail = new SqlCommand("SELECT id_employee, Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
             selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = textBoxEmail.Text.Trim();
 
             // Выполняем команду
@@ -77,10 +76,20 @@ namespace CourseWork
             // Заполняем таблицу
             adapter.Fill(table);
 
+            connection.OpenConnect();
+
             // Если таблица содержит хоть 1 ряд
             if (table.Rows.Count > 0)
             {
-                Program.DataEmailPass.Value = textBoxEmail.Text.Trim();
+                Program.DataEmailForgotPass.Value = textBoxEmail.Text.Trim();
+
+                SqlDataReader reader = selectEmail.ExecuteReader();
+
+                reader.Read();
+
+                Program.DataIdForgotPass.Value = reader.GetValue(0).ToString();
+
+                connection.CloseConnect();
 
                 return true;
             }
@@ -89,39 +98,10 @@ namespace CourseWork
                 labelValidEmail.Text = "Пользователь не найден";
                 labelValidEmail.Show();
 
+                connection.CloseConnect();
+
                 return false;
-            } 
-        }
-
-        private void ChangePassword()
-        {
-            //ConnectionDB connection = new ConnectionDB();
-            //DataTable table = new DataTable();
-            //SqlDataAdapter adapter = new SqlDataAdapter();
-
-            //string email = TextBoxEmail.Text;
-
-            //SqlCommand selectEmail = new SqlCommand("SELECT password, Email " +
-            //    "from Users " +
-            //    "left join Employees ON fk_employee = id_employee " +
-            //    "where Email = '@email'", connection.GetSqlConnect());
-            //selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = email;
-
-            //// Выполняем команду
-            //adapter.SelectCommand = selectEmail;
-
-            //// Заполняем таблицу
-            //adapter.Fill(table);
-
-            //// Если таблица содержит хоть 1 ряд
-            //if (table.Rows.Count > 0)
-            //{
-            //    //СonfirmationСode();
-            //    MessageBox.Show("Nashel");
-            //}
-            //else
-            //    labelValidEmail.Show();
-            
+            }         
         }
 
         // Валидация почты
