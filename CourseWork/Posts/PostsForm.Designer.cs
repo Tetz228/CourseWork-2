@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPosts = new System.Windows.Forms.DataGridView();
             this.Column_id_post = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_post_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,26 +57,26 @@
             this.dataGridViewPosts.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewPosts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPosts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPosts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPosts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewPosts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPosts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_post,
             this.Column_post_name});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPosts.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPosts.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewPosts.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewPosts.Location = new System.Drawing.Point(0, 62);
             this.dataGridViewPosts.Margin = new System.Windows.Forms.Padding(4);
@@ -101,8 +101,8 @@
             // 
             this.Column_post_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_post_name.DataPropertyName = "post_name";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_post_name.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_post_name.DefaultCellStyle = dataGridViewCellStyle8;
             this.Column_post_name.HeaderText = "Название должности";
             this.Column_post_name.MaxInputLength = 35;
             this.Column_post_name.Name = "Column_post_name";
@@ -154,8 +154,8 @@
             // textBoxSearch
             // 
             this.textBoxSearch.Depth = 0;
-            this.textBoxSearch.Hint = "";
-            this.textBoxSearch.Location = new System.Drawing.Point(300, 32);
+            this.textBoxSearch.Hint = "Поиск";
+            this.textBoxSearch.Location = new System.Drawing.Point(739, 32);
             this.textBoxSearch.MaxLength = 32767;
             this.textBoxSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxSearch.Name = "textBoxSearch";
@@ -163,29 +163,31 @@
             this.textBoxSearch.SelectedText = "";
             this.textBoxSearch.SelectionLength = 0;
             this.textBoxSearch.SelectionStart = 0;
-            this.textBoxSearch.Size = new System.Drawing.Size(671, 23);
+            this.textBoxSearch.Size = new System.Drawing.Size(262, 23);
             this.textBoxSearch.TabIndex = 10;
             this.textBoxSearch.TabStop = false;
             this.textBoxSearch.UseSystemPasswordChar = false;
             this.textBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearch_KeyDown);
             this.textBoxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearch_KeyPress);
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // pictureBoxSearch
             // 
             this.pictureBoxSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxSearch.Image = global::CourseWork.Properties.Resources.Search;
-            this.pictureBoxSearch.Location = new System.Drawing.Point(977, 32);
+            this.pictureBoxSearch.Location = new System.Drawing.Point(117, 31);
             this.pictureBoxSearch.Name = "pictureBoxSearch";
             this.pictureBoxSearch.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxSearch.TabIndex = 15;
             this.pictureBoxSearch.TabStop = false;
+            this.pictureBoxSearch.Visible = false;
             this.pictureBoxSearch.Click += new System.EventHandler(this.pictureBoxSearch_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::CourseWork.Properties.Resources.Filters;
-            this.pictureBox2.Location = new System.Drawing.Point(1007, 32);
+            this.pictureBox2.Location = new System.Drawing.Point(1007, 31);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 24);
             this.pictureBox2.TabIndex = 12;

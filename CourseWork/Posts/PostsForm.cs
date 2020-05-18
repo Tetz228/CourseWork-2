@@ -32,11 +32,13 @@ namespace CourseWork.Posts
             SelectDatePosts();
         }
 
+        DataTable PostsTable = new DataTable("Posts");
+
         // Добавление данных из базы данных в dataGridView
         private void SelectDatePosts()
         {
             ConnectionDB connection = new ConnectionDB();
-            DataTable PostsTable = new DataTable();
+            
             SqlCommand command = new SqlCommand("SELECT * FROM Posts", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
@@ -141,42 +143,56 @@ namespace CourseWork.Posts
             e.Cancel = true;
         }
 
-        DataTable data = new DataTable();
+        DataTable data = new DataTable("Posts");
 
-        private void PostsSearch()
-        {
-            ConnectionDB connection = new ConnectionDB();
+        //private void PostsSearch()
+        //{
+        //    ConnectionDB connection = new ConnectionDB();
             
-            SqlDataAdapter command = new SqlDataAdapter("PostsSearch", connection.GetSqlConnect());
+        //    SqlDataAdapter command = new SqlDataAdapter("select * from Posts", connection.GetSqlConnect());
 
-            connection.OpenConnect();
+        //    connection.OpenConnect();
 
-            command.SelectCommand.CommandType = CommandType.StoredProcedure;
+        //    command.SelectCommand.Parameters.AddWithValue("@post_name", textBoxSearch.Text);
 
-            command.SelectCommand.Parameters.AddWithValue("@post_name", textBoxSearch.Text.Trim());
+        //    command.Fill(data);
 
-            command.Fill(data);
+        //    //dataGridViewPosts.Rows.Clear();
 
-            dataGridViewPosts.DataSource = data;
+        //    dataGridViewPosts.DataSource = data;
 
-            connection.CloseConnect();
-        }
+        //    connection.CloseConnect();
+        //}
 
         private void pictureBoxSearch_Click(object sender, EventArgs e)
         {
-            PostsSearch();
+            DataView view = PostsTable.DefaultView;
+            view.RowFilter = string.Format("post_name like '%{0}%' ", textBoxSearch.Text);
+            dataGridViewPosts.DataSource = view.ToTable();
         }
 
         private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
         {
             //PostsSearch();
+            //e.SuppressKeyPress = true;
         }
 
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            //PostsSearch();
+            DataView view = PostsTable.DefaultView;
+            view.RowFilter = string.Format("post_name like '%{0}%' ", textBoxSearch.Text);
+            dataGridViewPosts.DataSource = view.ToTable();
+        }
+        
         private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-            PostsSearch();
-            
+            //if (e.KeyChar == 13)
+            //{
+            //    DataView view = PostsTable.DefaultView;
+            //    view.RowFilter = string.Format("post_name like '%{0}%' ", textBoxSearch.Text);
+            //    dataGridViewPosts.DataSource = view.ToTable();
+            //}
         }
     }
 }
