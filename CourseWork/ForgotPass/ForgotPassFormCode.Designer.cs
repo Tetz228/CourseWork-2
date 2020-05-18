@@ -33,7 +33,6 @@
             this.textBoxCode = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.linkLabelConfirmationCode = new System.Windows.Forms.LinkLabel();
             this.labelConfirmationMail = new System.Windows.Forms.Label();
-            this.MainLabel = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // buttonBack
@@ -42,7 +41,7 @@
             this.buttonBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonBack.Depth = 0;
             this.buttonBack.Icon = null;
-            this.buttonBack.Location = new System.Drawing.Point(241, 195);
+            this.buttonBack.Location = new System.Drawing.Point(241, 175);
             this.buttonBack.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Primary = true;
@@ -58,7 +57,7 @@
             this.buttonContinue.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonContinue.Depth = 0;
             this.buttonContinue.Icon = null;
-            this.buttonContinue.Location = new System.Drawing.Point(12, 195);
+            this.buttonContinue.Location = new System.Drawing.Point(12, 175);
             this.buttonContinue.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonContinue.Name = "buttonContinue";
             this.buttonContinue.Primary = true;
@@ -72,7 +71,7 @@
             // 
             this.textBoxCode.Depth = 0;
             this.textBoxCode.Hint = "";
-            this.textBoxCode.Location = new System.Drawing.Point(108, 129);
+            this.textBoxCode.Location = new System.Drawing.Point(107, 104);
             this.textBoxCode.MaxLength = 6;
             this.textBoxCode.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxCode.Name = "textBoxCode";
@@ -93,44 +92,31 @@
             this.linkLabelConfirmationCode.Font = new System.Drawing.Font("Verdana", 8F);
             this.linkLabelConfirmationCode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabelConfirmationCode.LinkColor = System.Drawing.Color.White;
-            this.linkLabelConfirmationCode.Location = new System.Drawing.Point(203, 127);
+            this.linkLabelConfirmationCode.Location = new System.Drawing.Point(202, 102);
             this.linkLabelConfirmationCode.Name = "linkLabelConfirmationCode";
             this.linkLabelConfirmationCode.Size = new System.Drawing.Size(146, 13);
             this.linkLabelConfirmationCode.TabIndex = 43;
             this.linkLabelConfirmationCode.TabStop = true;
             this.linkLabelConfirmationCode.Text = "Отправить код ещё раз";
+            this.linkLabelConfirmationCode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelConfirmationCode_LinkClicked);
             // 
             // labelConfirmationMail
             // 
             this.labelConfirmationMail.AutoSize = true;
             this.labelConfirmationMail.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelConfirmationMail.ForeColor = System.Drawing.Color.Red;
-            this.labelConfirmationMail.Location = new System.Drawing.Point(105, 155);
+            this.labelConfirmationMail.Location = new System.Drawing.Point(104, 130);
             this.labelConfirmationMail.Name = "labelConfirmationMail";
             this.labelConfirmationMail.Size = new System.Drawing.Size(92, 13);
             this.labelConfirmationMail.TabIndex = 44;
             this.labelConfirmationMail.Text = "Неверный код";
             this.labelConfirmationMail.Visible = false;
             // 
-            // MainLabel
-            // 
-            this.MainLabel.AutoSize = true;
-            this.MainLabel.Depth = 0;
-            this.MainLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.MainLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.MainLabel.Location = new System.Drawing.Point(12, 76);
-            this.MainLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.MainLabel.Name = "MainLabel";
-            this.MainLabel.Size = new System.Drawing.Size(312, 19);
-            this.MainLabel.TabIndex = 46;
-            this.MainLabel.Text = "Введите код, отправленный вам на почту.";
-            // 
             // ForgotPassFormCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 243);
-            this.Controls.Add(this.MainLabel);
+            this.ClientSize = new System.Drawing.Size(330, 223);
             this.Controls.Add(this.textBoxCode);
             this.Controls.Add(this.linkLabelConfirmationCode);
             this.Controls.Add(this.labelConfirmationMail);
@@ -139,7 +125,7 @@
             this.MaximizeBox = false;
             this.Name = "ForgotPassFormCode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Забыли пароль?";
+            this.Text = "Введите код безопасности";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ForgotPassFormCode_FormClosed);
             this.Load += new System.EventHandler(this.ForgotPassFormCode_Load);
             this.ResumeLayout(false);
@@ -154,6 +140,5 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxCode;
         private System.Windows.Forms.LinkLabel linkLabelConfirmationCode;
         private System.Windows.Forms.Label labelConfirmationMail;
-        private MaterialSkin.Controls.MaterialLabel MainLabel;
     }
 }

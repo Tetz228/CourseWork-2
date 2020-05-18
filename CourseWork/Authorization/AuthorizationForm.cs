@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace CourseWork
 {
@@ -38,12 +40,11 @@ namespace CourseWork
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
 
-            string loginUser = TextBoxLog.Text;
-            string passUser = TextBoxPass.Text;
+            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.ToString());
 
             SqlCommand selectLogPass = new SqlCommand("SELECT login, password FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
-            selectLogPass.Parameters.Add("@log", SqlDbType.VarChar).Value = loginUser;
-            selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = passUser;
+            selectLogPass.Parameters.Add("@log", SqlDbType.VarChar).Value = TextBoxLog.Text;
+            selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
 
             adapter.SelectCommand = selectLogPass;
 
@@ -88,6 +89,16 @@ namespace CourseWork
                     return true;
         }
 
+        // Хеширование пароля
+        private string HashPassword(byte[] val)
+        {
+            using (SHA512Managed sha512 = new SHA512Managed())
+            {
+                var hash = sha512.ComputeHash(val);
+                return Convert.ToBase64String(hash);
+            }
+        }
+
         // Перемещение формы
         Point point;
 
@@ -124,6 +135,7 @@ namespace CourseWork
             registration.Show();
         }
 
+        // Переход в форму восстановления пароля
         private void ForgotPassLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //MessageBox.Show("В разработке");
@@ -158,6 +170,7 @@ namespace CourseWork
                 buttonLogin_Click(sender, e);
         }
 
+        //  Показывать / скрывать пароль
         private void buttonShowHidePassword_Click(object sender, EventArgs e)
         {
             if (TextBoxPass.UseSystemPasswordChar == true)

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -15,7 +8,9 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
 {
     public partial class ForgotPassFormCode : MaterialForm
     {
-        string global;
+        private string global;
+        private string subject = "Код безопасности учетной записи";
+        private string body = "Ваш код безопасности для изменения пароля - ";
 
         public ForgotPassFormCode()
         {
@@ -28,13 +23,15 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // При загрузки формы отправлять код
         private void ForgotPassFormCode_Load(object sender, EventArgs e)
         {
             linkLabelConfirmationCode.Text = "Отправить код\nещё раз";
 
-            //СonfirmationСode();
+            СonfirmationСode();
         }
 
+        // Проверка отправленного и введенного кода
         private void buttonContinue_Click(object sender, EventArgs e)
         {
             if (global == textBoxCode.Text)
@@ -49,19 +46,27 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
                 labelConfirmationMail.Show();
         }
 
+        // При нажатии закрывать форму
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        //Получение кода подтвеждения с помощью глобальной переменной 
+        // Получение кода подтвеждения с помощью глобальной переменной 
         private void СonfirmationСode()
         {
             ConfirmationMailForm mailForm = new ConfirmationMailForm();
             
-            global = mailForm.SendingCode(Program.DataEmailForgotPass.Value);
+            global = mailForm.SendingCode(Program.DataEmailForgotPass.Value, subject, body);
         }
 
+        // Повторная отправка кода
+        private void linkLabelConfirmationCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            СonfirmationСode();
+        }
+
+        // При закрытии формы
         private void ForgotPassFormCode_FormClosed(object sender, FormClosedEventArgs e)
         {
             Form authorization = Application.OpenForms[0];
@@ -72,9 +77,10 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
             authorization.Show();
         }
 
+        // При вводе в TextBox скрывать Label
         private void textBoxCode_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelConfirmationMail.Hide();
-        }
+        } 
     }
 }

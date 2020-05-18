@@ -35,7 +35,7 @@ namespace CourseWork
             else
             if (!ValidationLogin(TextBoxRegLog.Text))
             {
-                labelValidRegLog.Text = "Некорректный пароль. Первым\nсимволом не может быть цифра.\nПароль должен быть минимум с\nодной цифрой, одной заглавной\nи одной строчной буквой.";
+                labelValidRegLog.Text = "Некорректный логин.";
                 labelValidRegLog.Show();
                 return;
             }

@@ -11,6 +11,8 @@ namespace CourseWork
     public partial class ConfirmationMailForm : MaterialForm
     {
         private string global;
+        private string subject = "Подтверждение почты";
+        private string body = "Ваш код подтверждения - ";
 
         public ConfirmationMailForm()
         {
@@ -43,11 +45,17 @@ namespace CourseWork
         // Получение кода подтверждение
         private void ConfirmationMailForm_Load(object sender, EventArgs e)
         {
-            global = SendingCode(Program.DataEmailReg.Value);
+            CallSendingCode();
+        }
+
+        // Вызов функции отправки кода и занесение возвращенного значения в глоб. переменную
+        private void CallSendingCode()
+        {
+            global = SendingCode(Program.DataEmailReg.Value, subject, body);
         }
 
         // Отправка кода подтверждение
-        public string SendingCode(string email)
+        public string SendingCode(string email, string subject, string body)
         {
             Random random = new Random();
 
@@ -61,8 +69,8 @@ namespace CourseWork
             {
                 code = Convert.ToString(random.Next(100000, 999999));
 
-                mailMessager.Subject = "Подтверждение почты";
-                mailMessager.Body = "Ваш код подтверждения - " + code;
+                mailMessager.Subject = subject;
+                mailMessager.Body = body + code;
 
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
@@ -79,10 +87,7 @@ namespace CourseWork
         // Сравнивание введенного и полученного кода в глобальной переменной
         private void buttonConfirmationMail_Click(object sender, EventArgs e)
         {
-            string returnCode = global;
-            string enteredCode = textBoxCode.Text;
-
-            if (returnCode == enteredCode)
+            if (global == textBoxCode.Text)
             {
                 Program.DataReturnReg.Value = "Сorrect code";
                 this.Close();
@@ -106,7 +111,7 @@ namespace CourseWork
         // Повторная отправка кода
         private void linkLabelConfirmationCode_Click(object sender, EventArgs e)
         {
-            global = SendingCode(Program.DataEmailReg.Value);
+            CallSendingCode();
         }
 
         // При закрытии формы
