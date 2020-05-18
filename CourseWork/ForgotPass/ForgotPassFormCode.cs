@@ -37,10 +37,11 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
 
         private void buttonContinue_Click(object sender, EventArgs e)
         {
-            global = "1111";
             if (global == textBoxCode.Text)
             {
                 ForgotPassFormNewPassword formNewPassword = new ForgotPassFormNewPassword();
+
+                this.Hide();
 
                 formNewPassword.ShowDialog();
             }

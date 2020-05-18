@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net.Mail;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using MaterialSkin.Controls;
@@ -18,8 +12,6 @@ namespace CourseWork
 {
     public partial class ForgotPassForm : MaterialForm
     {
-        
-
         public ForgotPassForm()
         {
             InitializeComponent();
@@ -31,16 +23,12 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        private void ForgotPassForm_Load(object sender, EventArgs e)
-        {
-            MainLabel.Text = "Введите адрес электронной почты, который\nвы использовали для регистрации.";
-        }
-
+        // При нажатии вызов проверок и показ формы ввода кода
         private void buttonContinue_Click(object sender, EventArgs e)
         {
             if (!ValidationEmail(textBoxEmail.Text))
             {
-                labelValidEmail.Text = "Некорректная почта";
+                labelValidEmail.Text = "Некорректная почта.";
                 labelValidEmail.Show();
 
                 return;
@@ -61,33 +49,45 @@ namespace CourseWork
             } 
         }
 
+        // При нажатии закрытие формы
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Валидация почты
+        private bool ValidationEmail(string email)
+        {
+            string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
+
+            Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+
+            return isMatch.Success;
+        }
+
+        // Поиск почты и id пользователя в бд 
         private bool SearchEmail()
         {
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
-
             SqlCommand selectEmail = new SqlCommand("SELECT id_employee, Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
+
             selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = textBoxEmail.Text.Trim();
-
-            // Выполняем команду
-            adapter.SelectCommand = selectEmail;
-
-            // Заполняем таблицу
-            adapter.Fill(table);
 
             connection.OpenConnect();
 
-            // Если таблица содержит хоть 1 ряд
+            adapter.SelectCommand = selectEmail;
+            adapter.Fill(table);
+  
             if (table.Rows.Count > 0)
             {
-                Program.DataEmailForgotPass.Value = textBoxEmail.Text.Trim();
-
                 SqlDataReader reader = selectEmail.ExecuteReader();
 
                 reader.Read();
 
                 Program.DataIdForgotPass.Value = reader.GetValue(0).ToString();
+                Program.DataEmailForgotPass.Value = textBoxEmail.Text.Trim();
 
                 connection.CloseConnect();
 
@@ -104,21 +104,7 @@ namespace CourseWork
             }         
         }
 
-        // Валидация почты
-        private bool ValidationEmail(string email)
-        {
-            string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
-
-            Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
-
-            return isMatch.Success;
-        }
-
-        private void buttonBack_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        // При закрытии формы
         private void ForgotPass_FormClosed(object sender, FormClosedEventArgs e)
         {
             Form authorization = Application.OpenForms[0];
@@ -146,6 +132,7 @@ namespace CourseWork
             point = new Point(e.X, e.Y);
         }
 
+        // При вводе в TextBox скрывать label
         private void textBoxEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidEmail.Hide();

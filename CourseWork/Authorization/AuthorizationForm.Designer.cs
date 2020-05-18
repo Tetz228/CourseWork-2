@@ -145,11 +145,11 @@
             // labelValidAuthPass
             // 
             this.labelValidAuthPass.AutoSize = true;
-            this.labelValidAuthPass.Font = new System.Drawing.Font("Verdana", 8F);
+            this.labelValidAuthPass.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidAuthPass.ForeColor = System.Drawing.Color.Red;
             this.labelValidAuthPass.Location = new System.Drawing.Point(41, 204);
             this.labelValidAuthPass.Name = "labelValidAuthPass";
-            this.labelValidAuthPass.Size = new System.Drawing.Size(138, 13);
+            this.labelValidAuthPass.Size = new System.Drawing.Size(152, 14);
             this.labelValidAuthPass.TabIndex = 43;
             this.labelValidAuthPass.Text = "Некорректный пароль";
             this.labelValidAuthPass.Visible = false;
@@ -157,11 +157,11 @@
             // labelValidAuthLog
             // 
             this.labelValidAuthLog.AutoSize = true;
-            this.labelValidAuthLog.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelValidAuthLog.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidAuthLog.ForeColor = System.Drawing.Color.Red;
             this.labelValidAuthLog.Location = new System.Drawing.Point(41, 131);
             this.labelValidAuthLog.Name = "labelValidAuthLog";
-            this.labelValidAuthLog.Size = new System.Drawing.Size(129, 13);
+            this.labelValidAuthLog.Size = new System.Drawing.Size(143, 14);
             this.labelValidAuthLog.TabIndex = 42;
             this.labelValidAuthLog.Text = "Некорректный логин";
             this.labelValidAuthLog.Visible = false;

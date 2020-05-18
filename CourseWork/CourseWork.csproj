@@ -336,6 +336,9 @@
     <EmbeddedResource Include="Authorization\AuthorizationForm.resx">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ForgotPass\ForgotPassFormNewPassword.resx">
+      <DependentUpon>ForgotPassFormNewPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registration\ConfirmationMailForm.resx">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>
     </EmbeddedResource>
