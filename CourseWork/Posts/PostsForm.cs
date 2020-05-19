@@ -4,7 +4,6 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Drawing;
 
 namespace CourseWork.Posts
 {
@@ -21,7 +20,6 @@ namespace CourseWork.Posts
             material.AddFormToManage(this);
             material.Theme = MaterialSkinManager.Themes.DARK;
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
-            pictureBoxSearch.BackColor = Color.FromArgb(230, 108, 0);
         }
 
         // При загрузки формы
@@ -49,6 +47,14 @@ namespace CourseWork.Posts
             dataGridViewPosts.DataSource = PostsTable.DefaultView;
 
             connection.CloseConnect();
+        }
+
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataView view = PostsTable.DefaultView;
+            view.RowFilter = string.Format("post_name like '%{0}%' ", textBoxSearch.Text);
+            dataGridViewPosts.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -106,7 +112,7 @@ namespace CourseWork.Posts
             SelectDatePosts();
         }
 
-        // При 2-ом клике на ячейку можно провести редактирование
+        // При 2-ом клике на ячейку можно провести редактирование строки
         private void dataGridViewPosts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //Если не выбрана строка, содержащие заголовки
@@ -141,58 +147,6 @@ namespace CourseWork.Posts
                 DeleteRowPosts();
 
             e.Cancel = true;
-        }
-
-        DataTable data = new DataTable("Posts");
-
-        //private void PostsSearch()
-        //{
-        //    ConnectionDB connection = new ConnectionDB();
-            
-        //    SqlDataAdapter command = new SqlDataAdapter("select * from Posts", connection.GetSqlConnect());
-
-        //    connection.OpenConnect();
-
-        //    command.SelectCommand.Parameters.AddWithValue("@post_name", textBoxSearch.Text);
-
-        //    command.Fill(data);
-
-        //    //dataGridViewPosts.Rows.Clear();
-
-        //    dataGridViewPosts.DataSource = data;
-
-        //    connection.CloseConnect();
-        //}
-
-        private void pictureBoxSearch_Click(object sender, EventArgs e)
-        {
-            DataView view = PostsTable.DefaultView;
-            view.RowFilter = string.Format("post_name like '%{0}%' ", textBoxSearch.Text);
-            dataGridViewPosts.DataSource = view.ToTable();
-        }
-
-        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            //PostsSearch();
-            //e.SuppressKeyPress = true;
-        }
-
-        private void textBoxSearch_TextChanged(object sender, EventArgs e)
-        {
-            //PostsSearch();
-            DataView view = PostsTable.DefaultView;
-            view.RowFilter = string.Format("post_name like '%{0}%' ", textBoxSearch.Text);
-            dataGridViewPosts.DataSource = view.ToTable();
-        }
-        
-        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if (e.KeyChar == 13)
-            //{
-            //    DataView view = PostsTable.DefaultView;
-            //    view.RowFilter = string.Format("post_name like '%{0}%' ", textBoxSearch.Text);
-            //    dataGridViewPosts.DataSource = view.ToTable();
-            //}
         }
     }
 }

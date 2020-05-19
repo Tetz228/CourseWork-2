@@ -35,14 +35,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPostsEmployees = new System.Windows.Forms.DataGridView();
-            this.Column_id_post_emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBox_fk_employee = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ComboBox_fk_post = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.menuStripPosts_employees = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBoxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.Column_id_post_emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComboBox_fk_employee = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ComboBox_fk_post = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPostsEmployees)).BeginInit();
             this.menuStripPosts_employees.SuspendLayout();
             this.SuspendLayout();
@@ -96,39 +97,6 @@
             this.dataGridViewPostsEmployees.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewPostsEmployees_UserDeletingRow);
             this.dataGridViewPostsEmployees.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewPostsEmployees_KeyDown);
             // 
-            // Column_id_post_emp
-            // 
-            this.Column_id_post_emp.DataPropertyName = "id_post_emp";
-            this.Column_id_post_emp.HeaderText = "Id";
-            this.Column_id_post_emp.Name = "Column_id_post_emp";
-            this.Column_id_post_emp.ReadOnly = true;
-            this.Column_id_post_emp.Visible = false;
-            // 
-            // ComboBox_fk_employee
-            // 
-            this.ComboBox_fk_employee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_employee.DataPropertyName = "fk_employee";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_employee.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ComboBox_fk_employee.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ComboBox_fk_employee.HeaderText = "Сотрудник";
-            this.ComboBox_fk_employee.Name = "ComboBox_fk_employee";
-            this.ComboBox_fk_employee.ReadOnly = true;
-            // 
-            // ComboBox_fk_post
-            // 
-            this.ComboBox_fk_post.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_post.DataPropertyName = "fk_post";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_post.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ComboBox_fk_post.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ComboBox_fk_post.HeaderText = "Должность";
-            this.ComboBox_fk_post.Name = "ComboBox_fk_post";
-            this.ComboBox_fk_post.ReadOnly = true;
-            // 
             // menuStripPosts_employees
             // 
             this.menuStripPosts_employees.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -172,6 +140,57 @@
             this.DeleteToolStripMenuItem.Text = "Удалить";
             this.DeleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Depth = 0;
+            this.textBoxSearch.Hint = "Поиск";
+            this.textBoxSearch.Location = new System.Drawing.Point(763, 30);
+            this.textBoxSearch.MaxLength = 32767;
+            this.textBoxSearch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.PasswordChar = '\0';
+            this.textBoxSearch.SelectedText = "";
+            this.textBoxSearch.SelectionLength = 0;
+            this.textBoxSearch.SelectionStart = 0;
+            this.textBoxSearch.Size = new System.Drawing.Size(262, 23);
+            this.textBoxSearch.TabIndex = 11;
+            this.textBoxSearch.TabStop = false;
+            this.textBoxSearch.UseSystemPasswordChar = false;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            // 
+            // Column_id_post_emp
+            // 
+            this.Column_id_post_emp.DataPropertyName = "id_post_emp";
+            this.Column_id_post_emp.HeaderText = "Id";
+            this.Column_id_post_emp.Name = "Column_id_post_emp";
+            this.Column_id_post_emp.ReadOnly = true;
+            this.Column_id_post_emp.Visible = false;
+            // 
+            // ComboBox_fk_employee
+            // 
+            this.ComboBox_fk_employee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_employee.DataPropertyName = "fk_employee";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_employee.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ComboBox_fk_employee.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_employee.HeaderText = "Сотрудник";
+            this.ComboBox_fk_employee.Name = "ComboBox_fk_employee";
+            this.ComboBox_fk_employee.ReadOnly = true;
+            // 
+            // ComboBox_fk_post
+            // 
+            this.ComboBox_fk_post.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_post.DataPropertyName = "fk_post";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_post.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ComboBox_fk_post.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_post.HeaderText = "Должность";
+            this.ComboBox_fk_post.Name = "ComboBox_fk_post";
+            this.ComboBox_fk_post.ReadOnly = true;
+            // 
             // Posts_employeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -179,6 +198,7 @@
             this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.menuStripPosts_employees);
             this.Controls.Add(this.dataGridViewPostsEmployees);
             this.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -199,13 +219,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewPostsEmployees;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_id_post_emp;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ComboBox_fk_employee;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ComboBox_fk_post;
         private System.Windows.Forms.MenuStrip menuStripPosts_employees;
         private System.Windows.Forms.ToolStripMenuItem MainToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AddToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteToolStripMenuItem;
+        private MaterialSkin.Controls.MaterialSingleLineTextField textBoxSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_id_post_emp;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ComboBox_fk_employee;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ComboBox_fk_post;
     }
 }
