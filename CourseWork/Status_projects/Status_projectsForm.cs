@@ -9,6 +9,8 @@ namespace CourseWork
 {
     public partial class Status_projectsForm : MaterialForm
     {
+        DataTable StatusTable = new DataTable();
+
         public Status_projectsForm()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace CourseWork
         private void SelectDateStatusProject()
         {
             ConnectionDB connection = new ConnectionDB();
-            DataTable StatusTable = new DataTable();
+            StatusTable = new DataTable();
             SqlCommand command = new SqlCommand("SELECT * FROM Status_projects", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
@@ -47,6 +49,15 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataView view = StatusTable.DefaultView;
+
+            view.RowFilter = string.Format("status_name_project like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewStatus_projects.DataSource = view.ToTable();
+        }
+
         // Функция удаления строки
         private void DeleteRowStatusProject()
         {
@@ -57,7 +68,7 @@ namespace CourseWork
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_status_project", Convert.ToInt32(dataGridViewStatus_projects.CurrentRow.Cells["Column_id_status_project"].Value));
+            command.Parameters.AddWithValue("@id_status_project", Convert.ToInt32(dataGridViewStatus_projects.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -94,9 +105,9 @@ namespace CourseWork
         {
             Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
 
-            Program.DataEditStatus_projectId.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells["Column_id_status_project"].Value);
+            Program.DataEditStatus_projectId.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells[0].Value);
 
-            Program.DataEditStatus_projectName.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells["Column_status_name_project"].Value);
+            Program.DataEditStatus_projectName.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells[1].Value);
 
             formEdit.ShowDialog();
 
