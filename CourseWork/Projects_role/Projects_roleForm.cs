@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -15,6 +9,8 @@ namespace CourseWork
 {
     public partial class Projects_roleForm : MaterialForm
     {
+        DataTable table = new DataTable();
+
         public Projects_roleForm()
         {
             InitializeComponent();
@@ -40,17 +36,26 @@ namespace CourseWork
         private void SelectDateProjects_role()
         {
             ConnectionDB connection = new ConnectionDB();
+            table = new DataTable();
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Projects_role", connection.GetSqlConnect());
 
             connection.OpenConnect();
 
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Projects_role", connection.GetSqlConnect());
-
-            DataTable table = new DataTable();
             sqlDA.Fill(table);
 
             dataGridViewProjects_role.DataSource = table;
 
             connection.CloseConnect();
+        }
+
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataView view = table.DefaultView;
+
+            view.RowFilter = string.Format("project_role_name like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewProjects_role.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -63,7 +68,7 @@ namespace CourseWork
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_project_role", Convert.ToInt32(dataGridViewProjects_role.CurrentRow.Cells["Column_id_project_role"].Value));
+            command.Parameters.AddWithValue("@id_project_role", Convert.ToInt32(dataGridViewProjects_role.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -100,9 +105,8 @@ namespace CourseWork
         {
             Projects_roleFormEdit formEdit = new Projects_roleFormEdit();
 
-            Program.DataEditProjects_roleId.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells["Column_id_project_role"].Value);
-
-            Program.DataEditProjects_roleName.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells["Column_project_role_name"].Value);
+            Program.DataEditProjects_roleId.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells[0].Value);
+            Program.DataEditProjects_roleName.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells[1].Value);
 
             formEdit.ShowDialog();
 

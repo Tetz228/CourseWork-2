@@ -27,16 +27,43 @@ namespace CourseWork
             if (!CheckTextBox())
                 return;
             else
-            if (!ValidationEmail(textBoxEmail.Text))
+            if (!ValidationEmail())
             {
                 labelEmail.Show();
                 return;
             }
             else
-            if (!MailOriginality(textBoxEmail.Text))
+            if (!MailOriginality())
             {
                 labelEmail.Show();
                 return;
+            }
+            else
+            if (!ValidationLFMname(textBoxLname.Text))
+            {
+                labelLname.Show();
+                return;
+            }
+            else
+            if (!ValidationLFMname(textBoxFname.Text))
+            {
+                labelFname.Show();
+                return;
+            }
+            else
+            if (!string.IsNullOrEmpty(textBoxMname.Text))
+            {
+                if (!ValidationLFMname(textBoxMname.Text))
+                {
+                    labelMname.Show();
+                    return;
+                }
+                else
+                {
+                    AddRowEmployee();
+
+                    this.Close();
+                }
             }
             else
             {
@@ -110,18 +137,28 @@ namespace CourseWork
                 return true;
         }
 
+        // Валидация фамилии, имени, отчества
+        public bool ValidationLFMname(string LFMname)
+        {
+            string pattern = @"[A-Za-zА-Яа-я]{1,30}";
+
+            Match isMatch = Regex.Match(LFMname, pattern);
+
+            return isMatch.Success;
+        }
+
         // Валидация почты
-        public bool ValidationEmail(string email)
+        public bool ValidationEmail()
         {
             string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
 
-            Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+            Match isMatch = Regex.Match(textBoxEmail.Text, pattern, RegexOptions.IgnoreCase);
 
             return isMatch.Success;
         }
 
         // Проверка на уникальность почты
-        private bool MailOriginality(string email)
+        private bool MailOriginality()
         {
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
@@ -130,7 +167,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             SqlCommand selectLog = new SqlCommand("SELECT Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
-            selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = email;
+            selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = textBoxEmail.Text.Trim();
 
             adapter.SelectCommand = selectLog;
             adapter.Fill(table);

@@ -37,6 +37,7 @@
             this.textBoxEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.textBoxMname = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.textBoxLname = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.labelMname = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelEmail
@@ -178,11 +179,24 @@
             this.textBoxLname.UseSystemPasswordChar = false;
             this.textBoxLname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxLname_KeyPress);
             // 
+            // labelMname
+            // 
+            this.labelMname.AutoSize = true;
+            this.labelMname.Font = new System.Drawing.Font("Verdana", 8F);
+            this.labelMname.ForeColor = System.Drawing.Color.Red;
+            this.labelMname.Location = new System.Drawing.Point(9, 178);
+            this.labelMname.Name = "labelMname";
+            this.labelMname.Size = new System.Drawing.Size(145, 13);
+            this.labelMname.TabIndex = 19;
+            this.labelMname.Text = "Некорректное отчество";
+            this.labelMname.Visible = false;
+            // 
             // EmployeesFormEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 265);
+            this.Controls.Add(this.labelMname);
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.labelFname);
             this.Controls.Add(this.labelLname);
@@ -213,5 +227,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxEmail;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxMname;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxLname;
+        private System.Windows.Forms.Label labelMname;
     }
 }

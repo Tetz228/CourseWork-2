@@ -100,7 +100,7 @@
             this.labelValidEmail.AutoSize = true;
             this.labelValidEmail.Font = new System.Drawing.Font("Verdana", 8F);
             this.labelValidEmail.ForeColor = System.Drawing.Color.Red;
-            this.labelValidEmail.Location = new System.Drawing.Point(462, 247);
+            this.labelValidEmail.Location = new System.Drawing.Point(462, 236);
             this.labelValidEmail.Name = "labelValidEmail";
             this.labelValidEmail.Size = new System.Drawing.Size(93, 13);
             this.labelValidEmail.TabIndex = 31;
@@ -201,7 +201,7 @@
             // 
             this.TextBoxEmail.Depth = 0;
             this.TextBoxEmail.Hint = "Email*";
-            this.TextBoxEmail.Location = new System.Drawing.Point(465, 221);
+            this.TextBoxEmail.Location = new System.Drawing.Point(465, 210);
             this.TextBoxEmail.MaxLength = 31;
             this.TextBoxEmail.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextBoxEmail.Name = "TextBoxEmail";

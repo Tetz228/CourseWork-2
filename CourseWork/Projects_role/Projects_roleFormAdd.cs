@@ -31,7 +31,6 @@ namespace CourseWork
 
                 this.Close();
             }
-            
         }
 
         // При нажатии закрыть форму

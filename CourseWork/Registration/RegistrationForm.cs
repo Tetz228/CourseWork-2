@@ -27,95 +27,95 @@ namespace CourseWork
         // Вызов всех проверок и переход к форме подтвержения почты 
         private void ButtonReg_Click(object sender, EventArgs e)
         {
-            //if (!CheckNullAndSpace(TextBoxLname.Text, TextBoxFname.Text, TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text, TextBoxEmail.Text))
-            //    return;
-            //else
-            if (!CheckLogAndPassLength(TextBoxRegLog.Text, TextBoxRegPass.Text, TextBoxRegPassRepeat.Text))
+            if (!CheckNullAndSpace())
                 return;
             else
-            if (!ValidationLogin(TextBoxRegLog.Text))
+            if (!CheckLogAndPassLength())
+                return;
+            else
+            if (!ValidationLogin())
             {
                 labelValidRegLog.Text = "Некорректный логин.";
                 labelValidRegLog.Show();
                 return;
             }
-            //else
-            //if (!LoginOriginality(TextBoxRegLog.Text))
-            //    return;
-            //else
-            //if (!ValidationPassword(TextBoxRegPass.Text))
-            //{
-            //    labelValidRegPass.Text = "Некорректный пароль. Пароль\nдолжен быть минимум с одной\nцифрой,одной заглавной и\nодной строчной буквой.";
-            //    labelValidRegPass.Show();
-            //    return;
-            //}
-            //else
-            //if (!ValidationEmail(TextBoxEmail.Text))
-            //{
-            //    labelValidEmail.Text = "Некорректная почта";
-            //    labelValidEmail.Show();
+            else
+            if (!LoginOriginality())
+                return;
+            else
+            if (!ValidationPassword())
+            {
+                labelValidRegPass.Text = "Некорректный пароль. Пароль\nдолжен быть минимум с одной\nцифрой,одной заглавной и\nодной строчной буквой.";
+                labelValidRegPass.Show();
+                return;
+            }
+            else
+            if (!ValidationEmail())
+            {
+                labelValidEmail.Text = "Некорректная почта";
+                labelValidEmail.Show();
 
-            //    return;
-            //}
-            //else
-            //if (!MailOriginality(TextBoxEmail.Text))
-            //    return;
-            //else
-            //{
-            //    Program.DataEmailReg.Value = TextBoxEmail.Text;
+                return;
+            }
+            else
+            if (!MailOriginality())
+                return;
+            else
+            {
+                Program.DataEmailReg.Value = TextBoxEmail.Text;
 
-            //    ConfirmationMailForm mailForm = new ConfirmationMailForm();
-            //    mailForm.Left = this.Left;
-            //    mailForm.Top = this.Top;
-            //    this.Hide();
-            //    mailForm.ShowDialog();
+                ConfirmationMailForm mailForm = new ConfirmationMailForm();
+                mailForm.Left = this.Left;
+                mailForm.Top = this.Top;
+                this.Hide();
+                mailForm.ShowDialog();
 
-            //    if (Program.DataReturnReg.Value == "Сorrect code")
-            //        Registration();
-            //}
+                if (Program.DataReturnReg.Value == "Сorrect code")
+                    Registration();
+            }
         }
 
         // Проверка TextBox`ов на пустоту
-        private bool CheckNullAndSpace(string lname, string fname, string login, string password, string repeatPassword,string email)
+        private bool CheckNullAndSpace()
         {
             int check = 0;
 
-            if (string.IsNullOrWhiteSpace(lname))
+            if (string.IsNullOrWhiteSpace(TextBoxLname.Text))
             {
                 labelValidLname.Text = "Введите фамилию";
                 labelValidLname.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrWhiteSpace(fname))
+            if (string.IsNullOrWhiteSpace(TextBoxFname.Text))
             {
                 labelValidFname.Text = "Введите имя";
                 labelValidFname.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrWhiteSpace(login))
+            if (string.IsNullOrWhiteSpace(TextBoxRegLog.Text))
             {
                 labelValidRegLog.Text = "Введите логин";
                 labelValidRegLog.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(TextBoxRegPass.Text))
             {
                 labelValidRegPass.Text = "Введите пароль";
                 labelValidRegPass.Show();
                 
                 check = 1;
             }
-            if (string.IsNullOrWhiteSpace(email))
+            if (string.IsNullOrWhiteSpace(TextBoxEmail.Text))
             {
                 labelValidEmail.Text = "Введите почту";
                 labelValidEmail.Show();
 
                 check = 1;
             }
-            if (string.IsNullOrWhiteSpace(repeatPassword))
+            if (string.IsNullOrWhiteSpace(TextBoxRegPassRepeat.Text))
             {
                 labelValidRegPassRepeat.Text = "Введите ещё раз пароль";
                 labelValidRegPassRepeat.Show();
@@ -130,9 +130,9 @@ namespace CourseWork
         }
 
         // Проверка логина и пароля
-        private bool CheckLogAndPassLength(string login, string password, string repeatPassword)
+        private bool CheckLogAndPassLength()
         {
-            if (login.Length < 4 && password.Length < 6)
+            if (TextBoxRegLog.Text.Length < 4 && TextBoxRegPass.Text.Length < 6)
             {
                 labelValidRegLog.Text = "Логин должен быть длиной\nот 4 до 25 символов";
                 labelValidRegLog.Show();
@@ -143,7 +143,7 @@ namespace CourseWork
                 return false;
             }
             else
-            if (login.Length < 4)
+            if (TextBoxRegLog.Text.Length < 4)
             {
                 labelValidRegLog.Text = "Логин должен быть длиной\nот 4 до 25 символов";
                 labelValidRegLog.Show();
@@ -152,7 +152,7 @@ namespace CourseWork
             }
             else
 
-            if (password.Length < 6)
+            if (TextBoxRegPass.Text.Length < 6)
             {
                 labelValidRegPass.Text = "Пароль должен быть длиной\nот 6 до 25 символов";
                 labelValidRegPass.Show();
@@ -161,7 +161,7 @@ namespace CourseWork
             }
             else
 
-            if (password != repeatPassword)
+            if (TextBoxRegPass.Text != TextBoxRegPassRepeat.Text)
             {
                 labelValidRegPassRepeat.Text = "Пароли должны совпадать";
                 labelValidRegPassRepeat.Show();
@@ -171,17 +171,17 @@ namespace CourseWork
         }
 
         // Валидация логина
-        private bool ValidationLogin(string login)
+        private bool ValidationLogin()
         {
             string pattern = @"^[A-Za-z][A-Za-z0-9]{3,30}$";
 
-            Match isMatch = Regex.Match(login, pattern);
+            Match isMatch = Regex.Match(TextBoxRegLog.Text, pattern);
 
             return isMatch.Success;
         }
 
         // Проверка на уникальность логина
-        private bool LoginOriginality(string login)
+        private bool LoginOriginality()
         {
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
@@ -190,7 +190,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             SqlCommand selectLog = new SqlCommand("SELECT login FROM Users WHERE login = @log", connection.GetSqlConnect());
-            selectLog.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = login;
+            selectLog.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text.Trim();
 
             adapter.SelectCommand = selectLog;
             adapter.Fill(table);
@@ -209,27 +209,27 @@ namespace CourseWork
 
         // Валидация пароля
         // От 6 до 35 символов с минимум одной цифрой, одной заглавной и одной строчной буквой
-        private bool ValidationPassword(string password)
+        private bool ValidationPassword()
         {
             string pattern = @"((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,35})";
 
-            Match isMatch = Regex.Match(password, pattern);
+            Match isMatch = Regex.Match(TextBoxRegPass.Text, pattern);
 
             return isMatch.Success;
         }
 
         // Валидация почты
-        private bool ValidationEmail(string email)
+        private bool ValidationEmail()
         {
             string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
 
-            Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+            Match isMatch = Regex.Match(TextBoxEmail.Text, pattern, RegexOptions.IgnoreCase);
 
             return isMatch.Success;
         }
 
         // Проверка на уникальность почты
-        private bool MailOriginality(string email)
+        private bool MailOriginality()
         {
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
@@ -238,7 +238,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             SqlCommand selectLog = new SqlCommand("SELECT Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
-            selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = email;
+            selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = TextBoxEmail.Text.Trim();
 
             adapter.SelectCommand = selectLog;
             adapter.Fill(table);
@@ -273,16 +273,22 @@ namespace CourseWork
 
             connection.OpenConnect();
 
-            SqlCommand insertIntoEmp = new SqlCommand("INSERT INTO Employees(employee_lname, employee_fname, employee_mname, Email) VALUES(@employee_lname, @employee_fname, @employee_mname, @Email) ", connection.GetSqlConnect());
+            SqlCommand insertIntoEmp = new SqlCommand("AddEmployees", connection.GetSqlConnect());
+
+            insertIntoEmp.CommandType = CommandType.StoredProcedure;
 
             insertIntoEmp.Parameters.AddWithValue("@employee_lname", SqlDbType.NVarChar).Value = TextBoxLname.Text.Trim();
             insertIntoEmp.Parameters.AddWithValue("@employee_fname", SqlDbType.NVarChar).Value = TextBoxFname.Text.Trim();
-            insertIntoEmp.Parameters.AddWithValue("@Email", SqlDbType.NVarChar).Value = TextBoxEmail.Text.Trim();
+            insertIntoEmp.Parameters.AddWithValue("@Email", SqlDbType.VarChar).Value = TextBoxEmail.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(TextBoxMname.Text))
                 insertIntoEmp.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = DBNull.Value;
             else
                 insertIntoEmp.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = TextBoxMname.Text.Trim();
+
+            SqlParameter parameterEmp = insertIntoEmp.Parameters.AddWithValue("@id_employee", SqlDbType.Int);
+
+            parameterEmp.Direction = ParameterDirection.Output;
 
             if (insertIntoEmp.ExecuteNonQuery() == 1)
             {
@@ -292,12 +298,18 @@ namespace CourseWork
 
                 selectIdEmp.Parameters.AddWithValue("@mail", SqlDbType.VarChar).Value = TextBoxEmail.Text.Trim();
               
-                SqlCommand insertIntoUser = new SqlCommand("INSERT INTO Users(login,password,fk_role_user,fk_employee) VALUES(@log, @pass, @role, @fk_employee)", connection.GetSqlConnect());
+                SqlCommand insertIntoUser = new SqlCommand("AddUsers", connection.GetSqlConnect());
+
+                insertIntoUser.CommandType = CommandType.StoredProcedure;
 
                 insertIntoUser.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text.Trim();
                 insertIntoUser.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
-                insertIntoUser.Parameters.AddWithValue("@role", SqlDbType.Int).Value = 2;
+                insertIntoUser.Parameters.AddWithValue("@fk_role", SqlDbType.Int).Value = 2;
                 insertIntoUser.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = selectIdEmp.ExecuteScalar();
+
+                SqlParameter parameterUser = insertIntoUser.Parameters.AddWithValue("@id_user", SqlDbType.Int);
+
+                parameterUser.Direction = ParameterDirection.Output;
 
                 //Если команда = 1, то есть она успешно выполняется, то аккаунт будет создан
                 if (insertIntoUser.ExecuteNonQuery() == 1)
@@ -311,7 +323,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Скрывать Label`ы при вводе в TextBox`ы
+        // Скрывать Label`ы при вводе в TextBox`ы и при нажатии на Enter нажимать кнопку регистрации
         private void TextBoxLname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidLname.Hide();

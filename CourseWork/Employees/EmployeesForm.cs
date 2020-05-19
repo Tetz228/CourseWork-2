@@ -9,6 +9,8 @@ namespace CourseWork
 {
     public partial class EmployeesForm : MaterialForm
     {
+        DataTable EmployeesTable = new DataTable();
+
         public EmployeesForm()
         {
             InitializeComponent();
@@ -28,6 +30,8 @@ namespace CourseWork
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
             SelectDateEmployees();
+
+            radioButtonLname.Checked = true;
         }
 
         // Добавление данных из базы данных в dataGridView
@@ -35,7 +39,7 @@ namespace CourseWork
         {
             ConnectionDB connection = new ConnectionDB();
             SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Employees", connection.GetSqlConnect());
-            DataTable EmployeesTable = new DataTable();
+            EmployeesTable = new DataTable();
 
             connection.OpenConnect();
 
@@ -44,6 +48,59 @@ namespace CourseWork
             dataGridViewEmployees.DataSource = EmployeesTable.DefaultView;
 
             connection.CloseConnect();
+        }
+
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (radioButtonLname.Checked)
+                SearchLname();
+            if (radioButtonFname.Checked)
+                SearchFname();
+            if (radioButtonMname.Checked)
+                SearchMname();
+            if (radioButtonEmail.Checked)
+                SearchEmail();
+        }
+
+        // Фильтр: Фамилия
+        private void SearchLname()
+        {
+            DataView view = EmployeesTable.DefaultView;
+
+            view.RowFilter = string.Format("employee_lname like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewEmployees.DataSource = view.ToTable();
+        }
+
+        // Фильтр: Имя
+        private void SearchFname()
+        {
+            DataView view = EmployeesTable.DefaultView;
+
+            view.RowFilter = string.Format("employee_fname like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewEmployees.DataSource = view.ToTable();
+        }
+
+        // Фильтр: Отчество
+        private void SearchMname()
+        {
+            DataView view = EmployeesTable.DefaultView;
+
+            view.RowFilter = string.Format("employee_mname like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewEmployees.DataSource = view.ToTable();
+        }
+
+        // Фильтр: Email
+        private void SearchEmail()
+        {
+            DataView view = EmployeesTable.DefaultView;
+
+            view.RowFilter = string.Format("Email like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewEmployees.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -56,7 +113,7 @@ namespace CourseWork
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_employee", Convert.ToInt32(dataGridViewEmployees.CurrentRow.Cells["Column_id_employee"].Value));
+            command.Parameters.AddWithValue("@id_employee", Convert.ToInt32(dataGridViewEmployees.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -93,11 +150,11 @@ namespace CourseWork
         {
             EmployeesFormEdit formEdit = new EmployeesFormEdit();
 
-            Program.DataEditEmployeeId.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells["Column_id_employee"].Value);
-            Program.DataEditEmployeeLname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells["Column_employee_lname"].Value);
-            Program.DataEditEmployeeFname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells["Column_employee_fname"].Value);
-            Program.DataEditEmployeeMname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells["Column_employee_mname"].Value);
-            Program.DataEditEmployeeEmail.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells["Column_Email"].Value);
+            Program.DataEditEmployeeId.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[0].Value);
+            Program.DataEditEmployeeLname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[1].Value);
+            Program.DataEditEmployeeFname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[2].Value);
+            Program.DataEditEmployeeMname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[3].Value);
+            Program.DataEditEmployeeEmail.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[4].Value);
 
             formEdit.ShowDialog();
 
@@ -140,6 +197,15 @@ namespace CourseWork
                 DeleteRowEmployee();
            
             e.Cancel = true;
+        }
+
+        // При клике на pictureBox скрывать панель
+        private void pictureBoxFilters_Click(object sender, EventArgs e)
+        {
+            if (panelFilters.Visible == false)
+                panelFilters.Visible = true;
+            else
+                panelFilters.Visible = false;
         }
     }
 }
