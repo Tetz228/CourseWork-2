@@ -93,7 +93,7 @@ namespace CourseWork
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_history_project", Convert.ToInt32(dataGridViewHistory_projects.CurrentRow.Cells["Column_id_history_project"].Value));
+            command.Parameters.AddWithValue("@id_history_project", Convert.ToInt32(dataGridViewHistory_projects.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -130,10 +130,10 @@ namespace CourseWork
         {
             History_projectsFormEdit formEdit = new History_projectsFormEdit();
 
-            Program.DataEditHistoryProjectId.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells["Column_id_history_project"].Value);
-            Program.DataEditHistoryProjectName.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells["ComboBox_fk_project"].Value);
-            Program.DataEditHistoryProjectStatus.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells["ComboBox_fk_status_project"].Value); 
-            Program.DataEditHistoryProjectDate.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells["Column_history_date_project"].Value); 
+            Program.DataEditHistoryProjectId.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[0].Value);
+            Program.DataEditHistoryProjectName.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[1].Value);
+            Program.DataEditHistoryProjectStatus.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[2].Value); 
+            Program.DataEditHistoryProjectDate.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[3].Value); 
 
             formEdit.ShowDialog();
 

@@ -28,10 +28,15 @@ namespace CourseWork.Projects_task
 
             SelectRoleComboBox();
 
-            comboBox_fk_project.SelectedValue = Program.DataEditProjects_taskProject.Value;
-            comboBox_fk_type_task.SelectedValue = Program.DataEditProjects_taskType_task.Value;
-            comboBox_fk_employee.SelectedValue = Program.DataEditProjects_taskEmployee.Value;
-            comboBox_fk_project_role.SelectedValue = Program.DataEditProjects_taskProject_role.Value;
+            int indexProj = comboBox_fk_project.FindString(Program.DataEditProjects_taskProject.Value);
+            int indexType = comboBox_fk_type_task.FindString(Program.DataEditProjects_taskType_task.Value);
+            int indexEmp = comboBox_fk_employee.FindString(Program.DataEditProjects_taskEmployee.Value);
+            int indexRole = comboBox_fk_project_role.FindString(Program.DataEditProjects_taskProject_role.Value);
+
+            comboBox_fk_project.SelectedIndex = indexProj;
+            comboBox_fk_type_task.SelectedIndex = indexType;
+            comboBox_fk_employee.SelectedIndex = indexEmp;
+            comboBox_fk_project_role.SelectedIndex = indexRole;
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -67,7 +72,9 @@ namespace CourseWork.Projects_task
         private void SelectTypeComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_type_task AS Id, task_name_type AS Type FROM Type_task", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_type_task AS Id, " +
+                "task_name_type AS Type " +
+                "FROM Type_task", connection.GetSqlConnect());
             DataTable Projects_taskTableComboBox = new DataTable();
 
             connection.OpenConnect();
@@ -85,7 +92,9 @@ namespace CourseWork.Projects_task
         private void SelectEmployeeComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee FROM Employees", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, " +
+                "CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee " +
+                "FROM Employees", connection.GetSqlConnect());
             DataTable Projects_taskTableComboBox = new DataTable();
 
             connection.OpenConnect();
@@ -103,7 +112,9 @@ namespace CourseWork.Projects_task
         private void SelectRoleComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project_role AS Id, project_role_name AS Role FROM Projects_role", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project_role AS Id, " +
+                "project_role_name AS Role " +
+                "FROM Projects_role", connection.GetSqlConnect());
             DataTable Projects_taskTableComboBox = new DataTable();
 
             connection.OpenConnect();

@@ -4,12 +4,13 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
-using System.Drawing;
 
 namespace CourseWork.Projects_task
 {
     public partial class Projects_taskForm : MaterialForm
     {
+        DataTable Projects_taskTable = new DataTable();
+
         public Projects_taskForm()
         {
             InitializeComponent();
@@ -25,14 +26,6 @@ namespace CourseWork.Projects_task
 
         private void Projects_taskForm_Load(object sender, EventArgs e)
         {
-            SelectProjectComboBox();
-
-            SelectTypeComboBox();
-
-            SelectEmployeeComboBox();
-
-            SelectRoleComboBox();
-
             SelectDateProject_task();
         }
 
@@ -40,8 +33,12 @@ namespace CourseWork.Projects_task
         private void SelectDateProject_task()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Projects_task", connection.GetSqlConnect());
-            DataTable Projects_taskTable = new DataTable();
+            SqlCommand command = new SqlCommand("SelectDateProject_task", connection.GetSqlConnect());
+            Projects_taskTable = new DataTable();
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter sqlDA = new SqlDataAdapter(command);
 
             connection.OpenConnect();
 
@@ -52,76 +49,57 @@ namespace CourseWork.Projects_task
             connection.CloseConnect();
         }
 
-        // Заполнение ComboBox`а "Проект"
-        private void SelectProjectComboBox()
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, project_name AS Project FROM Projects", connection.GetSqlConnect());
-            DataTable Projects_taskTableComboBox = new DataTable();
-
-            connection.OpenConnect();
-
-            sqlDA.Fill(Projects_taskTableComboBox);
-
-            ComboBox_fk_project.ValueMember = "Id";
-            ComboBox_fk_project.DisplayMember = "Project";
-            ComboBox_fk_project.DataSource = Projects_taskTableComboBox;
-
-            connection.CloseConnect();
+            if (radioButtonProject.Checked)
+                SearchProject();
+            if (radioButtonType.Checked)
+                SearchType();
+            if (radioButtonEmployee.Checked)
+                SearchEmployee();
+            if (radioButtonRole.Checked)
+                SearchRole();
         }
 
-        // Заполнение ComboBox`а "Тип задачи"
-        private void SelectTypeComboBox()
+        // Фильтр: Проект
+        private void SearchProject()
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_type_task AS Id, task_name_type AS Type FROM Type_task", connection.GetSqlConnect());
-            DataTable Projects_taskTableComboBox = new DataTable();
+            DataView view = Projects_taskTable.DefaultView;
 
-            connection.OpenConnect();
+            view.RowFilter = string.Format("Project like '%{0}%' ", textBoxSearch.Text);
 
-            sqlDA.Fill(Projects_taskTableComboBox);
-
-            ComboBox_fk_type_task.ValueMember = "Id";
-            ComboBox_fk_type_task.DisplayMember = "Type";
-            ComboBox_fk_type_task.DataSource = Projects_taskTableComboBox;
-
-            connection.CloseConnect();
+            dataGridViewProjects_task.DataSource = view.ToTable();
         }
 
-        // Заполнение ComboBox`а "Сотрудник"
-        private void SelectEmployeeComboBox()
+        // Фильтр: Тип задачи
+        private void SearchType()
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee FROM Employees", connection.GetSqlConnect());
-            DataTable Projects_taskTableComboBox = new DataTable();
+            DataView view = Projects_taskTable.DefaultView;
 
-            connection.OpenConnect();
+            view.RowFilter = string.Format("Type like '%{0}%' ", textBoxSearch.Text);
 
-            sqlDA.Fill(Projects_taskTableComboBox);
-
-            ComboBox_fk_employee.ValueMember = "Id";
-            ComboBox_fk_employee.DisplayMember = "Employee";
-            ComboBox_fk_employee.DataSource = Projects_taskTableComboBox;
-
-            connection.CloseConnect();
+            dataGridViewProjects_task.DataSource = view.ToTable();
         }
 
-        // Заполнение ComboBox`а "Роль в проекте"
-        private void SelectRoleComboBox()
+        // Фильтр: Сотрудник
+        private void SearchEmployee()
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project_role AS Id, project_role_name AS Role FROM Projects_role", connection.GetSqlConnect());
-            DataTable Projects_taskTableComboBox = new DataTable();
+            DataView view = Projects_taskTable.DefaultView;
 
-            connection.OpenConnect();
+            view.RowFilter = string.Format("Employee like '%{0}%' ", textBoxSearch.Text);
 
-            sqlDA.Fill(Projects_taskTableComboBox);
+            dataGridViewProjects_task.DataSource = view.ToTable();
+        }
 
-            ComboBox_fk_project_role.ValueMember = "Id";
-            ComboBox_fk_project_role.DisplayMember = "Role";
-            ComboBox_fk_project_role.DataSource = Projects_taskTableComboBox;
+        // Фильтр: Роль
+        private void SearchRole()
+        {
+            DataView view = Projects_taskTable.DefaultView;
 
-            connection.CloseConnect();
+            view.RowFilter = string.Format("Role like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewProjects_task.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -134,7 +112,7 @@ namespace CourseWork.Projects_task
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_task", Convert.ToInt32(dataGridViewProjects_task.CurrentRow.Cells["Column_id_task"].Value));
+            command.Parameters.AddWithValue("@id_task", Convert.ToInt32(dataGridViewProjects_task.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -169,11 +147,11 @@ namespace CourseWork.Projects_task
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.DataEditProjects_taskId.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["Column_id_task"].Value);
-            Program.DataEditProjects_taskProject.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["ComboBox_fk_project"].Value);
-            Program.DataEditProjects_taskType_task.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["ComboBox_fk_type_task"].Value);
-            Program.DataEditProjects_taskEmployee.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["ComboBox_fk_employee"].Value);
-            Program.DataEditProjects_taskProject_role.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells["ComboBox_fk_project_role"].Value);
+            Program.DataEditProjects_taskId.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[0].Value);
+            Program.DataEditProjects_taskProject.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[1].Value);
+            Program.DataEditProjects_taskType_task.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[2].Value);
+            Program.DataEditProjects_taskEmployee.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[3].Value);
+            Program.DataEditProjects_taskProject_role.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[4].Value);
 
             Projects_taskFormEdit formEdit = new Projects_taskFormEdit();
 
@@ -219,6 +197,36 @@ namespace CourseWork.Projects_task
                 DeleteRowProject();
 
             e.Cancel = true;
+        }
+
+        // При клике на pictureBox скрывать / показывать панель
+        private void pictureBoxFilters_Click(object sender, EventArgs e)
+        {
+            if (panelFilters.Visible == false)
+                panelFilters.Visible = true;
+            else
+                panelFilters.Visible = false;
+        }
+
+        // При клике на переключатели скрывать панель
+        private void radioButtonProject_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonType_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonEmployee_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonRole_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
         }
     }
 }

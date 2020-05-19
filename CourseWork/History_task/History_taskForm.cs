@@ -93,7 +93,7 @@ namespace CourseWork.History_task
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_history_task", Convert.ToInt32(dataGridViewHistory_task.CurrentRow.Cells["Column_id_history_task"].Value));
+            command.Parameters.AddWithValue("@id_history_task", Convert.ToInt32(dataGridViewHistory_task.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -130,10 +130,10 @@ namespace CourseWork.History_task
         {
             History_taskFormEdit formEdit = new History_taskFormEdit();
 
-            Program.DataEditHistoryTaskId.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells["Column_id_history_task"].Value);
-            Program.DataEditHistoryTaskName.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells["ComboBox_fk_project_task"].Value);
-            Program.DataEditHistoryTaskStatus.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells["ComboBox_fk_status_task"].Value);
-            Program.DataEditHistoryTaskDate.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells["Column_history_date_task"].Value);
+            Program.DataEditHistoryTaskId.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[0].Value);
+            Program.DataEditHistoryTaskName.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[1].Value);
+            Program.DataEditHistoryTaskStatus.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[2].Value);
+            Program.DataEditHistoryTaskDate.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[3].Value);
 
             formEdit.ShowDialog();
 
