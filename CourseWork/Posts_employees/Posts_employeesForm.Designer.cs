@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPostsEmployees = new System.Windows.Forms.DataGridView();
+            this.Column_id_post_emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComboBox_fk_employee = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ComboBox_fk_post = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.menuStripPosts_employees = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.Column_id_post_emp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBox_fk_employee = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ComboBox_fk_post = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPostsEmployees)).BeginInit();
             this.menuStripPosts_employees.SuspendLayout();
             this.SuspendLayout();
@@ -54,48 +54,81 @@
             this.dataGridViewPostsEmployees.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewPostsEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPostsEmployees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPostsEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPostsEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewPostsEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewPostsEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_post_emp,
             this.ComboBox_fk_employee,
             this.ComboBox_fk_post});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPostsEmployees.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPostsEmployees.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewPostsEmployees.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewPostsEmployees.Location = new System.Drawing.Point(0, 62);
             this.dataGridViewPostsEmployees.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridViewPostsEmployees.MultiSelect = false;
             this.dataGridViewPostsEmployees.Name = "dataGridViewPostsEmployees";
             this.dataGridViewPostsEmployees.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPostsEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridViewPostsEmployees.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPostsEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewPostsEmployees.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewPostsEmployees.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewPostsEmployees.TabIndex = 1;
             this.dataGridViewPostsEmployees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPostsEmployees_CellDoubleClick);
             this.dataGridViewPostsEmployees.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewPostsEmployees_UserDeletingRow);
             this.dataGridViewPostsEmployees.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewPostsEmployees_KeyDown);
+            // 
+            // Column_id_post_emp
+            // 
+            this.Column_id_post_emp.DataPropertyName = "id_post_emp";
+            this.Column_id_post_emp.HeaderText = "Id";
+            this.Column_id_post_emp.Name = "Column_id_post_emp";
+            this.Column_id_post_emp.ReadOnly = true;
+            this.Column_id_post_emp.Visible = false;
+            // 
+            // ComboBox_fk_employee
+            // 
+            this.ComboBox_fk_employee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_employee.DataPropertyName = "fk_employee";
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_employee.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ComboBox_fk_employee.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_employee.HeaderText = "Сотрудник";
+            this.ComboBox_fk_employee.Name = "ComboBox_fk_employee";
+            this.ComboBox_fk_employee.ReadOnly = true;
+            // 
+            // ComboBox_fk_post
+            // 
+            this.ComboBox_fk_post.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_post.DataPropertyName = "fk_post";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_post.DefaultCellStyle = dataGridViewCellStyle9;
+            this.ComboBox_fk_post.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.ComboBox_fk_post.HeaderText = "Должность";
+            this.ComboBox_fk_post.Name = "ComboBox_fk_post";
+            this.ComboBox_fk_post.ReadOnly = true;
             // 
             // menuStripPosts_employees
             // 
@@ -144,7 +177,7 @@
             // 
             this.textBoxSearch.Depth = 0;
             this.textBoxSearch.Hint = "Поиск";
-            this.textBoxSearch.Location = new System.Drawing.Point(763, 30);
+            this.textBoxSearch.Location = new System.Drawing.Point(677, 30);
             this.textBoxSearch.MaxLength = 32767;
             this.textBoxSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxSearch.Name = "textBoxSearch";
@@ -157,39 +190,6 @@
             this.textBoxSearch.TabStop = false;
             this.textBoxSearch.UseSystemPasswordChar = false;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
-            // 
-            // Column_id_post_emp
-            // 
-            this.Column_id_post_emp.DataPropertyName = "id_post_emp";
-            this.Column_id_post_emp.HeaderText = "Id";
-            this.Column_id_post_emp.Name = "Column_id_post_emp";
-            this.Column_id_post_emp.ReadOnly = true;
-            this.Column_id_post_emp.Visible = false;
-            // 
-            // ComboBox_fk_employee
-            // 
-            this.ComboBox_fk_employee.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_employee.DataPropertyName = "fk_employee";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_employee.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ComboBox_fk_employee.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ComboBox_fk_employee.HeaderText = "Сотрудник";
-            this.ComboBox_fk_employee.Name = "ComboBox_fk_employee";
-            this.ComboBox_fk_employee.ReadOnly = true;
-            // 
-            // ComboBox_fk_post
-            // 
-            this.ComboBox_fk_post.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_post.DataPropertyName = "fk_post";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_post.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ComboBox_fk_post.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.ComboBox_fk_post.HeaderText = "Должность";
-            this.ComboBox_fk_post.Name = "ComboBox_fk_post";
-            this.ComboBox_fk_post.ReadOnly = true;
             // 
             // Posts_employeesForm
             // 

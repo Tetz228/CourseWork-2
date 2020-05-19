@@ -32,14 +32,12 @@ namespace CourseWork
             SelectDatePostsEmployees();
         }
 
-        DataTable PostsEmployeesTable = new DataTable("Posts_employees");
-
         // Добавление данных из базы данных в dataGridView
         private void SelectDatePostsEmployees()
         {
             ConnectionDB connection = new ConnectionDB();
             SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Posts_employees", connection.GetSqlConnect());
-            
+            DataTable PostsEmployeesTable = new DataTable();
 
             connection.OpenConnect();
 
@@ -56,35 +54,33 @@ namespace CourseWork
             ConnectionDB connection = new ConnectionDB();
             SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', " +
                 "IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee FROM Employees", connection.GetSqlConnect());
-            
+            DataTable EmployeeTableComboBox = new DataTable();
 
             connection.OpenConnect();
 
-            sqlDA.Fill(PostsEmployeesTable);
+            sqlDA.Fill(EmployeeTableComboBox);
 
             ComboBox_fk_employee.ValueMember = "Id";
             ComboBox_fk_employee.DisplayMember = "Employee";
-            ComboBox_fk_employee.DataSource = PostsEmployeesTable;
+            ComboBox_fk_employee.DataSource = EmployeeTableComboBox;
 
             connection.CloseConnect();
         }
-
-        DataTable PostsTableComboBox = new DataTable("Posts");
 
         // Заполнение ComboBox`а "Должность"
         private void SelectPostsComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_post, post_name FROM Posts", connection.GetSqlConnect());
-            
-            
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_post AS Id, post_name AS Post FROM Posts", connection.GetSqlConnect());
+            DataTable PostsTableComboBox = new DataTable();
+
             connection.OpenConnect();
 
-            sqlDA.Fill(PostsEmployeesTable);
+            sqlDA.Fill(PostsTableComboBox);
 
-            ComboBox_fk_post.ValueMember = "id_post";
-            ComboBox_fk_post.DisplayMember = "post_name";
-            ComboBox_fk_post.DataSource = PostsEmployeesTable;
+            ComboBox_fk_post.ValueMember = "Id";
+            ComboBox_fk_post.DisplayMember = "Post";
+            ComboBox_fk_post.DataSource = PostsTableComboBox;
 
             connection.CloseConnect();
         }
@@ -92,9 +88,7 @@ namespace CourseWork
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            DataView view = PostsEmployeesTable.DefaultView;
-            view.RowFilter = string.Format("post_name like '%{0}%' ", textBoxSearch.Text);
-            dataGridViewPostsEmployees.DataSource = view.ToTable();
+            
         }
 
         // Функция удаления строки
