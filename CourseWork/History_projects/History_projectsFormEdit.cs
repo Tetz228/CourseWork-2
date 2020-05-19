@@ -28,10 +28,16 @@ namespace CourseWork
             SelectHistoryProjectComboBox();
 
             SelectStatusComboBox();
-
-            ComboBox_fk_project.SelectedValue = Convert.ToInt32(Program.DataEditHistoryProjectName.Value);
-            ComboBox_fk_status_project.SelectedValue = Convert.ToInt32(Program.DataEditHistoryProjectStatus.Value);
+         
             textBox_History_date_project.Text = Program.DataEditHistoryProjectDate.Value;
+
+            int indexProj = ComboBox_fk_project.FindString(Program.DataEditHistoryProjectName.Value);
+
+            int indexStat = ComboBox_fk_status_project.FindString(Program.DataEditHistoryProjectStatus.Value);
+
+            ComboBox_fk_project.SelectedIndex = indexProj;
+
+            ComboBox_fk_status_project.SelectedIndex = indexStat;
 
             if (!string.IsNullOrEmpty(textBox_History_date_project.Text))
                 textBox_History_date_project.Text = textBox_History_date_project.Text.Substring(0, 10);
@@ -53,7 +59,9 @@ namespace CourseWork
         private void SelectHistoryProjectComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, project_name AS Project FROM Projects", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, " +
+                "project_name AS Project " +
+                "FROM Projects", connection.GetSqlConnect());
             DataTable HistoryTableComboBox = new DataTable();
 
             connection.OpenConnect();
@@ -72,7 +80,9 @@ namespace CourseWork
         private void SelectStatusComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_status_project AS Id, status_name_project AS Status FROM Status_projects", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_status_project AS Id, " +
+                "status_name_project AS Status " +
+                "FROM Status_projects", connection.GetSqlConnect());
             DataTable HistoryTableComboBox = new DataTable();
 
             connection.OpenConnect();

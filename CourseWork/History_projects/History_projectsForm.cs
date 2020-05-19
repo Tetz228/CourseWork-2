@@ -9,6 +9,8 @@ namespace CourseWork
 {
     public partial class History_projectsForm : MaterialForm
     {
+        DataTable HistoryTable = new DataTable();
+
         public History_projectsForm()
         {
             InitializeComponent();
@@ -27,20 +29,22 @@ namespace CourseWork
         {
             this.dataGridViewHistory_projects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
-            SelectProjectComboBox();
-
-            SelectStatusComboBox();
-
             SelectDateHistory_projects();
+
+            radioButtonEmployee.Checked = true;
         }
 
         // Добавление данных из базы данных в dataGridView
         private void SelectDateHistory_projects()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM History_projects", connection.GetSqlConnect());
-            DataTable HistoryTable = new DataTable();
+            SqlCommand command = new SqlCommand("SelectDateHistory_projects", connection.GetSqlConnect());
+            HistoryTable = new DataTable();
 
+            command.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter sqlDA = new SqlDataAdapter(command);
+            
             connection.OpenConnect();
 
             sqlDA.Fill(HistoryTable);
@@ -50,40 +54,33 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Заполнение ComboBox`а "Проект"
-        private void SelectProjectComboBox()
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, project_name AS Project FROM Projects", connection.GetSqlConnect());
-            DataTable HistoryTableComboBox = new DataTable();
-
-            connection.OpenConnect();
-
-            sqlDA.Fill(HistoryTableComboBox);
-
-            ComboBox_fk_project.ValueMember = "Id";
-            ComboBox_fk_project.DisplayMember = "Project";
-            ComboBox_fk_project.DataSource = HistoryTableComboBox;
-
-            connection.CloseConnect();
+            if (radioButtonEmployee.Checked)
+                SearchProject();
+            if (radioButtonPost.Checked)
+                SearchStatus();
         }
 
-        // Заполнение ComboBox`а "Статус"
-        private void SelectStatusComboBox()
+        // Фильтр: Проект
+        private void SearchProject()
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_status_project AS Id, status_name_project AS Status FROM Status_projects", connection.GetSqlConnect());
-            DataTable HistoryTableComboBox = new DataTable();
+            DataView view = HistoryTable.DefaultView;
 
-            connection.OpenConnect();
+            view.RowFilter = string.Format("Project like '%{0}%' ", textBoxSearch.Text);
 
-            sqlDA.Fill(HistoryTableComboBox);
+            dataGridViewHistory_projects.DataSource = view.ToTable();
+        }
 
-            ComboBox_fk_status_project.ValueMember = "Id";
-            ComboBox_fk_status_project.DisplayMember = "Status";
-            ComboBox_fk_status_project.DataSource = HistoryTableComboBox;
+        // Фильтр: Статус
+        private void SearchStatus()
+        {
+            DataView view = HistoryTable.DefaultView;
 
-            connection.CloseConnect();
+            view.RowFilter = string.Format("Status like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewHistory_projects.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -179,6 +176,15 @@ namespace CourseWork
                 DeleteRowHistoryProject();
 
             e.Cancel = true;
+        }
+
+        // При клике на pictureBox скрывать панель
+        private void pictureBoxFilters_Click(object sender, EventArgs e)
+        {
+            if (panelFilters.Visible == false)
+                panelFilters.Visible = true;
+            else
+                panelFilters.Visible = false;
         }
     }
 }

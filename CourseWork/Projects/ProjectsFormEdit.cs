@@ -63,7 +63,9 @@ namespace CourseWork
         private void SelectEmployeeComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee FROM Employees", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, " +
+                "CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee " +
+                "FROM Employees", connection.GetSqlConnect());
             DataTable ProjectTableComboBox = new DataTable();
 
             connection.OpenConnect();
