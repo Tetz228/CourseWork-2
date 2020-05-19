@@ -29,9 +29,13 @@ namespace CourseWork.History_task
 
             SelectStatusComboBox();
 
-            ComboBox_fk_project_task.SelectedValue = Convert.ToInt32(Program.DataEditHistoryTaskName.Value);
-            ComboBox_fk_status_task.SelectedValue = Convert.ToInt32(Program.DataEditHistoryTaskStatus.Value);
             textBox_History_date_task.Text = Program.DataEditHistoryTaskDate.Value;
+
+            int indexProj = ComboBox_fk_project_task.FindString(Program.DataEditHistoryTaskName.Value);
+            int indexStat = ComboBox_fk_status_task.FindString(Program.DataEditHistoryTaskStatus.Value);
+
+            ComboBox_fk_project_task.SelectedIndex = indexProj;
+            ComboBox_fk_status_task.SelectedIndex = indexStat;
 
             if (!string.IsNullOrEmpty(textBox_History_date_task.Text))
                 textBox_History_date_task.Text = textBox_History_date_task.Text.Substring(0, 10);

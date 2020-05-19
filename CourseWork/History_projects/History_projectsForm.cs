@@ -31,7 +31,7 @@ namespace CourseWork
 
             SelectDateHistory_projects();
 
-            radioButtonEmployee.Checked = true;
+            radioButtonProject.Checked = true;
         }
 
         // Добавление данных из базы данных в dataGridView
@@ -57,9 +57,9 @@ namespace CourseWork
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            if (radioButtonEmployee.Checked)
+            if (radioButtonProject.Checked)
                 SearchProject();
-            if (radioButtonPost.Checked)
+            if (radioButtonStatus.Checked)
                 SearchStatus();
         }
 

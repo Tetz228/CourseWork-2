@@ -9,6 +9,8 @@ namespace CourseWork.History_task
 {
     public partial class History_taskForm : MaterialForm
     {
+        DataTable HistoryTable = new DataTable();
+
         public History_taskForm()
         {
             InitializeComponent();
@@ -27,9 +29,7 @@ namespace CourseWork.History_task
         {
             this.dataGridViewHistory_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
-            SelectTaskComboBox();
-
-            SelectStatusComboBox();
+            radioButtonTask.Checked = true;
 
             SelectDateHistory_task();
         }
@@ -38,8 +38,12 @@ namespace CourseWork.History_task
         private void SelectDateHistory_task()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM History_task", connection.GetSqlConnect());
-            DataTable HistoryTable = new DataTable();
+            SqlCommand command = new SqlCommand("SelectDateHistory_take", connection.GetSqlConnect());
+            HistoryTable = new DataTable();
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter sqlDA = new SqlDataAdapter(command);
 
             connection.OpenConnect();
 
@@ -50,48 +54,33 @@ namespace CourseWork.History_task
             connection.CloseConnect();
         }
 
-        // Заполнение ComboBox`а "Задача"
-        private void SelectTaskComboBox()
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("SelectHistory_taskComboBox", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            SqlDataAdapter sqlDA = new SqlDataAdapter(command);
-            DataTable HistoryTableComboBox = new DataTable();
-
-            connection.OpenConnect();
-
-            sqlDA.Fill(HistoryTableComboBox);
-
-            ComboBox_fk_project_task.ValueMember = "Id";
-            ComboBox_fk_project_task.DisplayMember = "Task";
-            ComboBox_fk_project_task.DataSource = HistoryTableComboBox;
-
-            connection.CloseConnect();
+            if (radioButtonTask.Checked)
+                SearchTask();
+            if (radioButtonStatus.Checked)
+                SearchStatus();
         }
 
-        // Заполнение ComboBox`а "Статус"
-        private void SelectStatusComboBox()
+        // Фильтр: Проект
+        private void SearchTask()
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter(
-                "SELECT id_status_task AS Id, " +
-                "status_name_task AS Status " +
-                "FROM Status_task", 
-                connection.GetSqlConnect());
-            DataTable HistoryTableComboBox = new DataTable();
+            DataView view = HistoryTable.DefaultView;
 
-            connection.OpenConnect();
+            view.RowFilter = string.Format("Task like '%{0}%' ", textBoxSearch.Text);
 
-            sqlDA.Fill(HistoryTableComboBox);
+            dataGridViewHistory_task.DataSource = view.ToTable();
+        }
 
-            ComboBox_fk_status_task.ValueMember = "Id";
-            ComboBox_fk_status_task.DisplayMember = "Status";
-            ComboBox_fk_status_task.DataSource = HistoryTableComboBox;
+        // Фильтр: Статус
+        private void SearchStatus()
+        {
+            DataView view = HistoryTable.DefaultView;
 
-            connection.CloseConnect();
+            view.RowFilter = string.Format("Status like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewHistory_task.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -187,6 +176,15 @@ namespace CourseWork.History_task
                 DeleteRowHistoryTask();
 
             e.Cancel = true;
+        }
+
+        // При клике на pictureBox скрывать панель
+        private void pictureBoxFilters_Click(object sender, EventArgs e)
+        {
+            if (panelFilters.Visible == false)
+                panelFilters.Visible = true;
+            else
+                panelFilters.Visible = false;
         }
     }
 }
