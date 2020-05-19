@@ -9,6 +9,8 @@ namespace CourseWork
 {
     public partial class ProjectsForm : MaterialForm
     {
+        DataTable ProjectTable = new DataTable();
+
         public ProjectsForm()
         {
             InitializeComponent();
@@ -27,18 +29,22 @@ namespace CourseWork
         {
             this.dataGridViewProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
-            SelectEmployeeComboBox();
-
             SelectDateProject();
+
+            radioButtonProject.Checked = true;
         }
 
         // Добавление данных из базы данных в dataGridView
         private void SelectDateProject()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Projects", connection.GetSqlConnect());
-            DataTable ProjectTable = new DataTable();
+            SqlCommand command = new SqlCommand("SelectDateProject", connection.GetSqlConnect());
+            ProjectTable = new DataTable();
 
+            command.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter sqlDA = new SqlDataAdapter(command);
+            
             connection.OpenConnect();
 
             sqlDA.Fill(ProjectTable);
@@ -48,22 +54,70 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Заполнение ComboBox`а "Руководитель"
-        private void SelectEmployeeComboBox()
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee FROM Employees", connection.GetSqlConnect());
-            DataTable ProjectTableComboBox = new DataTable();
+            if (radioButtonProject.Checked)
+                SearchProject();
+            if (radioButtonTarget.Checked)
+                SearchTarget();
+            //if (radioButtonStart.Checked)
+            //    SearchStart();
+            //if (radioButtonCompletion.Checked)
+            //    SearchCompletion();
+            if (radioButtonLeader.Checked)
+                SearchLeader();
+        }
 
-            connection.OpenConnect();
+        // Фильтр: Проект
+        private void SearchProject()
+        {
+            DataView view = ProjectTable.DefaultView;
 
-            sqlDA.Fill(ProjectTableComboBox);
+            view.RowFilter = string.Format("Name like '%{0}%' ", textBoxSearch.Text);
 
-            ComboBox_fk_leader.ValueMember = "Id";
-            ComboBox_fk_leader.DisplayMember = "Employee";
-            ComboBox_fk_leader.DataSource = ProjectTableComboBox;
+            dataGridViewProjects.DataSource = view.ToTable();
+        }
 
-            connection.CloseConnect();
+        // Фильтр: Цель
+        private void SearchTarget()
+        {
+            DataView view = ProjectTable.DefaultView;
+
+            view.RowFilter = string.Format("Target like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewProjects.DataSource = view.ToTable();
+        }
+
+        /*// Фильтр: Дата начала
+        private void SearchStart()
+        {
+            DataView view = ProjectTable.DefaultView;
+
+            view.RowFilter = string.Format("Start like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewProjects.DataSource = view.ToTable();
+        }
+
+        // Фильтр: Дата завершения
+        private void SearchCompletion()
+        {
+            DataView view = ProjectTable.DefaultView;
+
+            view.RowFilter = string.Format("Completion like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewProjects.DataSource = view.ToTable();
+        }
+        */
+
+        // Фильтр: Руководитель
+        private void SearchLeader()
+        {
+            DataView view = ProjectTable.DefaultView;
+
+            view.RowFilter = string.Format("Employee like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewProjects.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -76,7 +130,7 @@ namespace CourseWork
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_project", Convert.ToInt32(dataGridViewProjects.CurrentRow.Cells["Column_id_project"].Value));
+            command.Parameters.AddWithValue("@id_project", Convert.ToInt32(dataGridViewProjects.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -113,12 +167,12 @@ namespace CourseWork
         {
             ProjectsFormEdit formEdit = new ProjectsFormEdit();
 
-            Program.DataEditProjectId.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_id_project"].Value);
-            Program.DataEditProjectName.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_project_name"].Value);
-            Program.DataEditProjectTarget.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_project_target"].Value);
-            Program.DataEditProjectStart.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_date_start"].Value);
-            Program.DataEditProjectCompletion.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["Column_date_completion"].Value);
-            Program.DataEditProjectLeader.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells["ComboBox_fk_leader"].Value);
+            Program.DataEditProjectId.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[0].Value);
+            Program.DataEditProjectName.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[1].Value);
+            Program.DataEditProjectTarget.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[2].Value);
+            Program.DataEditProjectStart.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[3].Value);
+            Program.DataEditProjectCompletion.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[4].Value);
+            Program.DataEditProjectLeader.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[5].Value);
 
             formEdit.ShowDialog();
 
@@ -163,6 +217,31 @@ namespace CourseWork
                 DeleteRowProject();
 
            e.Cancel = true;
+        }
+
+        // При клике на pictureBox скрывать панель
+        private void pictureBoxFilters_Click(object sender, EventArgs e)
+        {
+            if (panelFilters.Visible == false)
+                panelFilters.Visible = true;
+            else
+                panelFilters.Visible = false;
+        }
+
+        // При клике на переключатели скрывать панель
+        private void radioButtonProject_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonTarget_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonLeader_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
         }
     }
 }

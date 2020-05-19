@@ -32,7 +32,10 @@ namespace CourseWork
             textBoxProject_target.Text = Program.DataEditProjectTarget.Value;
             textBoxDate_start.Text = Program.DataEditProjectStart.Value;
             textBoxDate_completion.Text = Program.DataEditProjectCompletion.Value;
-            comboBox_fk_leader.SelectedValue = Convert.ToInt32(Program.DataEditProjectLeader.Value);
+
+            int indexEmp = comboBox_fk_leader.FindString(Program.DataEditProjectLeader.Value);
+
+            comboBox_fk_leader.SelectedIndex = indexEmp;
 
             if (!string.IsNullOrEmpty(textBoxDate_start.Text))
                 textBoxDate_start.Text = textBoxDate_start.Text.Substring(0, 10);
