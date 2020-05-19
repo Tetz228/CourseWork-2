@@ -9,7 +9,7 @@ namespace CourseWork.Type_task
 {
     public partial class Type_taskForm : MaterialForm
     {
-        DataTable StatusTable = new DataTable();
+        DataTable TypeTable = new DataTable();
 
         public Type_taskForm()
         {
@@ -30,23 +30,54 @@ namespace CourseWork.Type_task
             this.dataGridViewType_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
             SelectDateType_task();
+
+            radioButtonName.Checked = true;
         }
 
         // Добавление данных из базы данных в dataGridView
         private void SelectDateType_task()
         {
             ConnectionDB connection = new ConnectionDB();
-            StatusTable = new DataTable();
+            TypeTable = new DataTable();
             SqlCommand command = new SqlCommand("SELECT * FROM Type_task", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
             connection.OpenConnect();
 
-            adapter.Fill(StatusTable);
+            adapter.Fill(TypeTable);
 
-            dataGridViewType_task.DataSource = StatusTable.DefaultView;
+            dataGridViewType_task.DataSource = TypeTable.DefaultView;
 
             connection.CloseConnect();
+        }
+
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (radioButtonName.Checked)
+                SearchNameType();
+            if (radioButtonDescription.Checked)
+                SearchDescription();
+        }
+
+        // Фильтр: Наименование
+        private void SearchNameType()
+        {
+            DataView view = TypeTable.DefaultView;
+
+            view.RowFilter = string.Format("task_name_type like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewType_task.DataSource = view.ToTable();
+        }
+
+        // Фильтр: Описание
+        private void SearchDescription()
+        {
+            DataView view = TypeTable.DefaultView;
+
+            view.RowFilter = string.Format("task_description like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewType_task.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -141,6 +172,26 @@ namespace CourseWork.Type_task
                 DeleteRowType_task();
 
             e.Cancel = true;
+        }
+
+        // При клике на pictureBox скрывать панель
+        private void pictureBoxFilters_Click(object sender, EventArgs e)
+        {
+            if (panelFilters.Visible == false)
+                panelFilters.Visible = true;
+            else
+                panelFilters.Visible = false;
+        }
+
+        // При клике на переключатели скрывать панель
+        private void radioButtonName_CheckedChanged(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonDescription_CheckedChanged(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
         }
     }
 }

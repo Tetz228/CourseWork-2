@@ -9,6 +9,8 @@ namespace CourseWork.Status_task
 {
     public partial class Status_taskForm : MaterialForm
     {
+        DataTable StatusTable = new DataTable();
+
         public Status_taskForm()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace CourseWork.Status_task
         private void SelectDateStatusTask()
         {
             ConnectionDB connection = new ConnectionDB();
-            DataTable StatusTable = new DataTable();
+            StatusTable = new DataTable();
             SqlCommand command = new SqlCommand("SELECT * FROM Status_task", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
@@ -47,6 +49,15 @@ namespace CourseWork.Status_task
             connection.CloseConnect();
         }
 
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataView view = StatusTable.DefaultView;
+
+            view.RowFilter = string.Format("status_name_task like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewStatus_task.DataSource = view.ToTable();
+        }
+
         // Функция удаления строки
         private void DeleteRowStatusTask()
         {
@@ -57,7 +68,7 @@ namespace CourseWork.Status_task
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_status_task", Convert.ToInt32(dataGridViewStatus_task.CurrentRow.Cells["Column_id_status_task"].Value));
+            command.Parameters.AddWithValue("@id_status_task", Convert.ToInt32(dataGridViewStatus_task.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -94,9 +105,9 @@ namespace CourseWork.Status_task
         {
             Status_taskFormEdit formEdit = new Status_taskFormEdit();
 
-            Program.DataEditStatus_taskId.Value = Convert.ToString(dataGridViewStatus_task.CurrentRow.Cells["Column_id_status_task"].Value);
+            Program.DataEditStatus_taskId.Value = Convert.ToString(dataGridViewStatus_task.CurrentRow.Cells[0].Value);
 
-            Program.DataEditStatus_taskName.Value = Convert.ToString(dataGridViewStatus_task.CurrentRow.Cells["Column_status_name_task"].Value);
+            Program.DataEditStatus_taskName.Value = Convert.ToString(dataGridViewStatus_task.CurrentRow.Cells[1].Value);
 
             formEdit.ShowDialog();
 
