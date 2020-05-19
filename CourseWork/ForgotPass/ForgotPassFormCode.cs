@@ -54,6 +54,7 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
         private void linkLabelConfirmationCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             СonfirmationСode();
+
             MessageBox.Show("Код безопасности отправлен повторно!");
         }
 

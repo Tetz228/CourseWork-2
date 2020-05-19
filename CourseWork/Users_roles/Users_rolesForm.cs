@@ -9,6 +9,8 @@ namespace CourseWork.Users_roles
 {
     public partial class Users_rolesForm : MaterialForm
     {
+        DataTable PostsTable = new DataTable();
+
         public Users_rolesForm()
         {
             InitializeComponent();
@@ -18,10 +20,14 @@ namespace CourseWork.Users_roles
             material.AddFormToManage(this);
             material.Theme = MaterialSkinManager.Themes.DARK;
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
+
+            this.dataGridViewUsers_roles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
 
         private void Users_rolesForm_Load(object sender, EventArgs e)
         {
+            this.dataGridViewUsers_roles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+
             SelectDateUsers_roles();
         }
 
@@ -29,7 +35,7 @@ namespace CourseWork.Users_roles
         private void SelectDateUsers_roles()
         {
             ConnectionDB connection = new ConnectionDB();
-            DataTable PostsTable = new DataTable();
+            PostsTable = new DataTable();
             SqlCommand command = new SqlCommand("SELECT * FROM Users_roles", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
@@ -42,6 +48,16 @@ namespace CourseWork.Users_roles
             connection.CloseConnect();
         }
 
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataView view = PostsTable.DefaultView;
+
+            view.RowFilter = string.Format("user_name_role like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewUsers_roles.DataSource = view.ToTable();
+        }
+
         // Функция удаления строки
         private void DeleteRowUsers_roles()
         {
@@ -52,7 +68,7 @@ namespace CourseWork.Users_roles
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_user_role", Convert.ToInt32(dataGridViewUsers_roles.CurrentRow.Cells["Column_id_user_role"].Value));
+            command.Parameters.AddWithValue("@id_user_role", Convert.ToInt32(dataGridViewUsers_roles.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -89,8 +105,8 @@ namespace CourseWork.Users_roles
         {
             Users_rolesFormEdit formEdit = new Users_rolesFormEdit();
 
-            Program.DataEditUsers_rolesId.Value = Convert.ToString(dataGridViewUsers_roles.CurrentRow.Cells["Column_id_user_role"].Value);
-            Program.DataEditUsers_rolesName.Value = Convert.ToString(dataGridViewUsers_roles.CurrentRow.Cells["Column_user_name_role"].Value);
+            Program.DataEditUsers_rolesId.Value = Convert.ToString(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
+            Program.DataEditUsers_rolesName.Value = Convert.ToString(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
 
             formEdit.ShowDialog();
 

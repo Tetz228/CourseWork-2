@@ -237,7 +237,7 @@
             this.buttonExit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonExit.Depth = 0;
             this.buttonExit.Icon = null;
-            this.buttonExit.Location = new System.Drawing.Point(598, 272);
+            this.buttonExit.Location = new System.Drawing.Point(577, 272);
             this.buttonExit.MouseState = MaterialSkin.MouseState.HOVER;
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Primary = true;
@@ -293,7 +293,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(678, 317);
+            this.ClientSize = new System.Drawing.Size(660, 317);
             this.Controls.Add(this.pictureBoxShowHidePassword);
             this.Controls.Add(this.TextBoxRegPassRepeat);
             this.Controls.Add(this.labelValidRegPassRepeat);

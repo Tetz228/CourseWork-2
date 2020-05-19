@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -169,6 +168,26 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
         private void TextBoxNewPassRepeat_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidPassRepeat.Hide();
+        }
+
+        // Скрывать / показывать пароль
+        private void pictureBoxShowHidePassword_Click_1(object sender, EventArgs e)
+        {
+            if (TextBoxNewPass.UseSystemPasswordChar == true)
+            {
+                TextBoxNewPass.UseSystemPasswordChar = false;
+                TextBoxNewPassRepeat.UseSystemPasswordChar = false;
+
+                pictureBoxShowHidePassword.Image = Properties.Resources.ShowPassword;
+
+            }
+            else
+            {
+                TextBoxNewPass.UseSystemPasswordChar = true;
+                TextBoxNewPassRepeat.UseSystemPasswordChar = true;
+
+                pictureBoxShowHidePassword.Image = Properties.Resources.HidePassword;
+            }
         }
     }
 }

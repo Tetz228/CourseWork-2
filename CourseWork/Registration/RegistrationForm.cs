@@ -401,6 +401,7 @@ namespace CourseWork
             authorization.Show();
         }
 
+        // Скрывать / показывать пароль
         private void pictureBoxShowHidePassword_Click(object sender, EventArgs e)
         {
             if (TextBoxRegPass.UseSystemPasswordChar == true)

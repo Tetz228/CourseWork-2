@@ -9,6 +9,8 @@ namespace CourseWork
 {
     public partial class Posts_employeesForm : MaterialForm
     {
+        DataTable PostsEmployeesTable = new DataTable();
+
         public Posts_employeesForm()
         {
             InitializeComponent();
@@ -25,20 +27,23 @@ namespace CourseWork
         // При загрузки формы
         private void PostsEmployeesForm_Load(object sender, EventArgs e)
         {
-            SelectEmployeeComboBox();
-
-            SelectPostsComboBox();
-
             SelectDatePostsEmployees();
+
+            radioButtonEmployee.Checked = true;
         }
 
         // Добавление данных из базы данных в dataGridView
         private void SelectDatePostsEmployees()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Posts_employees", connection.GetSqlConnect());
-            DataTable PostsEmployeesTable = new DataTable();
+            SqlCommand command = new SqlCommand("SelectDatePostsEmployees", connection.GetSqlConnect());
 
+            command.CommandType = CommandType.StoredProcedure;
+
+            PostsEmployeesTable = new DataTable();
+
+            SqlDataAdapter sqlDA = new SqlDataAdapter(command);
+            
             connection.OpenConnect();
 
             sqlDA.Fill(PostsEmployeesTable);
@@ -48,47 +53,33 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
-        // Заполнение ComboBox`а "Сотрудник"
-        private void SelectEmployeeComboBox()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', " +
-                "IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee FROM Employees", connection.GetSqlConnect());
-            DataTable EmployeeTableComboBox = new DataTable();
-
-            connection.OpenConnect();
-
-            sqlDA.Fill(EmployeeTableComboBox);
-
-            ComboBox_fk_employee.ValueMember = "Id";
-            ComboBox_fk_employee.DisplayMember = "Employee";
-            ComboBox_fk_employee.DataSource = EmployeeTableComboBox;
-
-            connection.CloseConnect();
-        }
-
-        // Заполнение ComboBox`а "Должность"
-        private void SelectPostsComboBox()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_post AS Id, post_name AS Post FROM Posts", connection.GetSqlConnect());
-            DataTable PostsTableComboBox = new DataTable();
-
-            connection.OpenConnect();
-
-            sqlDA.Fill(PostsTableComboBox);
-
-            ComboBox_fk_post.ValueMember = "Id";
-            ComboBox_fk_post.DisplayMember = "Post";
-            ComboBox_fk_post.DataSource = PostsTableComboBox;
-
-            connection.CloseConnect();
-        }
-
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            
+            if (radioButtonEmployee.Checked)
+                SearchEmployee();
+            if(radioButtonPost.Checked)
+                SearchPost();
+        }
+
+        // Фильтр: Сотрудник
+        private void SearchEmployee()
+        {
+            DataView view = PostsEmployeesTable.DefaultView;
+
+            view.RowFilter = string.Format("Employee like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewPostsEmployees.DataSource = view.ToTable();
+        }
+
+        // Фильтр: Должность
+        private void SearchPost()
+        {
+            DataView view = PostsEmployeesTable.DefaultView;
+
+            view.RowFilter = string.Format("Post like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewPostsEmployees.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -101,7 +92,7 @@ namespace CourseWork
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_post_emp", Convert.ToInt32(dataGridViewPostsEmployees.CurrentRow.Cells["Column_id_post_emp"].Value));
+            command.Parameters.AddWithValue("@id_post_emp", Convert.ToInt32(dataGridViewPostsEmployees.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -109,7 +100,6 @@ namespace CourseWork
 
             SelectDatePostsEmployees();
         }
-
 
         // При клике на "Правка" -> "Добавить" открывается форма для добавления
         private void AddToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,9 +129,9 @@ namespace CourseWork
         {
             Posts_employeesFormEdit formEdit = new Posts_employeesFormEdit();
 
-            Program.DataEditPostsEmployeesId.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells["Column_id_post_emp"].Value);
-            Program.DataEditPostsEmployeesEmp.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells["ComboBox_fk_employee"].Value);
-            Program.DataEditPostsEmployeesPost.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells["ComboBox_fk_post"].Value);
+            Program.DataEditPostsEmployeesId.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[0].Value);
+            Program.DataEditPostsEmployeesEmp.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[1].Value);
+            Program.DataEditPostsEmployeesPost.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[2].Value);
             
             formEdit.ShowDialog();
 
@@ -183,6 +173,26 @@ namespace CourseWork
                 DeleteRowPostsEmployees();
 
             e.Cancel = true;
+        }
+
+        // При клике на pictureBox скрывать панель
+        private void pictureBoxFilters_Click(object sender, EventArgs e)
+        {
+            if (panelFilters.Visible == false)
+                panelFilters.Visible = true;
+            else
+                panelFilters.Visible = false;
+        }
+
+        // При клике на переключатели скрывать панель
+        private void radioButtonEmployee_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonPost_Click(object sender, EventArgs e)
+        { 
+            panelFilters.Visible = false;
         }
     }
 }

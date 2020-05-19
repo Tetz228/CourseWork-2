@@ -9,6 +9,8 @@ namespace CourseWork.Type_task
 {
     public partial class Type_taskForm : MaterialForm
     {
+        DataTable StatusTable = new DataTable();
+
         public Type_taskForm()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace CourseWork.Type_task
         private void SelectDateType_task()
         {
             ConnectionDB connection = new ConnectionDB();
-            DataTable StatusTable = new DataTable();
+            StatusTable = new DataTable();
             SqlCommand command = new SqlCommand("SELECT * FROM Type_task", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
@@ -57,7 +59,7 @@ namespace CourseWork.Type_task
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_type_task", Convert.ToInt32(dataGridViewType_task.CurrentRow.Cells["Column_id_type_task"].Value));
+            command.Parameters.AddWithValue("@id_type_task", Convert.ToInt32(dataGridViewType_task.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -94,9 +96,9 @@ namespace CourseWork.Type_task
         {
             Type_taskFormEdit formEdit = new Type_taskFormEdit();
 
-            Program.DataEditType_taskId.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells["Column_id_type_task"].Value);
-            Program.DataEditType_taskName.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells["Column_task_name_type"].Value);
-            Program.DataEditType_taskDescription.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells["Column_task_description"].Value);
+            Program.DataEditType_taskId.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[0].Value);
+            Program.DataEditType_taskName.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[1].Value);
+            Program.DataEditType_taskDescription.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[2].Value);
 
             formEdit.ShowDialog();
 

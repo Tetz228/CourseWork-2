@@ -9,6 +9,8 @@ namespace CourseWork.Posts
 {
     public partial class PostsForm : MaterialForm
     {
+        DataTable PostsTable = new DataTable();
+
         public PostsForm()
         {
             InitializeComponent();
@@ -30,8 +32,6 @@ namespace CourseWork.Posts
             SelectDatePosts();
         }
 
-        DataTable PostsTable = new DataTable("Posts");
-
         // Добавление данных из базы данных в dataGridView
         private void SelectDatePosts()
         {
@@ -39,6 +39,7 @@ namespace CourseWork.Posts
             
             SqlCommand command = new SqlCommand("SELECT * FROM Posts", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
+            PostsTable = new DataTable();
 
             connection.OpenConnect();
 
@@ -53,7 +54,9 @@ namespace CourseWork.Posts
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
             DataView view = PostsTable.DefaultView;
+
             view.RowFilter = string.Format("post_name like '%{0}%' ", textBoxSearch.Text);
+
             dataGridViewPosts.DataSource = view.ToTable();
         }
 
@@ -67,7 +70,7 @@ namespace CourseWork.Posts
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_post", Convert.ToInt32(dataGridViewPosts.CurrentRow.Cells["Column_id_post"].Value));
+            command.Parameters.AddWithValue("@id_post", Convert.ToInt32(dataGridViewPosts.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -104,8 +107,8 @@ namespace CourseWork.Posts
         {
             PostsFormEdit formEdit = new PostsFormEdit();
 
-            Program.DataEditPostsId.Value = Convert.ToString(dataGridViewPosts.CurrentRow.Cells["Column_id_post"].Value);
-            Program.DataEditPostsName.Value = Convert.ToString(dataGridViewPosts.CurrentRow.Cells["Column_post_name"].Value);
+            Program.DataEditPostsId.Value = Convert.ToString(dataGridViewPosts.CurrentRow.Cells[0].Value);
+            Program.DataEditPostsName.Value = Convert.ToString(dataGridViewPosts.CurrentRow.Cells[1].Value);
 
             formEdit.ShowDialog();
 

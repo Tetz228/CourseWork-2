@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+
 namespace CourseWork.Posts
 {
     public partial class PostsFormEdit : MaterialForm

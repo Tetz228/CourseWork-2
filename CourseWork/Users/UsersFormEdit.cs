@@ -35,8 +35,13 @@ namespace CourseWork.Users
             TextBoxLog.Text = log = Program.DataEditUserLogin.Value;
             TextBoxPass.Text = pass = Program.DataEditUserPassword.Value;
             TextBoxPassRepeat.Text = Program.DataEditUserPassword.Value;
-            ComboBox_fk_employee.SelectedValue = Convert.ToInt32(Program.DataEditUserEmployee.Value);
-            ComboBox_fk_role_user.SelectedValue = Convert.ToInt32(Program.DataEditUserRole.Value);
+
+            int indexEmp = ComboBox_fk_employee.FindString(Program.DataEditUserEmployee.Value);
+            int indexPost = ComboBox_fk_role_user.FindString(Program.DataEditUserRole.Value);
+
+            ComboBox_fk_employee.SelectedIndex = indexEmp;
+            ComboBox_fk_role_user.SelectedIndex = indexPost;
+
         }
 
         // Заполнение ComboBox`а "Сотрудник"
@@ -85,7 +90,12 @@ namespace CourseWork.Users
                 return;
             else
             if (!ValidationLogin())
+            {
+                labelValidLog.Text = "Некорректный логин.";
+                labelValidLog.Show();
+
                 return;
+            }
             else
             if (!ValidationPassword())
             {
@@ -208,7 +218,6 @@ namespace CourseWork.Users
                 return false;
             }
             else
-
             if (TextBoxPass.Text.Length < 6)
             {
                 labelValidPass.Text = "Пароль должен быть длиной\nот 6 до 25 символов";
@@ -217,7 +226,6 @@ namespace CourseWork.Users
                 return false;
             }
             else
-
             if (TextBoxPass.Text != TextBoxPassRepeat.Text)
             {
                 labelValidPassRepeat.Text = "Пароли должны совпадать";
@@ -286,6 +294,7 @@ namespace CourseWork.Users
             }
         }
 
+        // Функция изменения пользователя
         private void EditRowUser()
         {
             ConnectionDB connection = new ConnectionDB();

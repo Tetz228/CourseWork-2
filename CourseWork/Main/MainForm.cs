@@ -28,11 +28,11 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PostsForm posts = new PostsForm();
+            Posts_employeesForm postsEmployees = new Posts_employeesForm();
 
-            posts.MdiParent = this;
-            posts.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            posts.Show();
+            postsEmployees.MdiParent = this;
+            postsEmployees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            postsEmployees.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

@@ -9,6 +9,8 @@ namespace CourseWork.Users
 {
     public partial class UsersForm : MaterialForm
     {
+        DataTable UserTable = new DataTable();
+
         public UsersForm()
         {
             InitializeComponent();
@@ -27,9 +29,7 @@ namespace CourseWork.Users
         {
             this.dataGridViewUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
-            SelectEmployeeComboBox();
-
-            SelectRoleComboBox();
+            radioButtonLogin.Checked = true;
 
             SelectDateUsers();
         }
@@ -38,52 +38,62 @@ namespace CourseWork.Users
         private void SelectDateUsers()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Users", connection.GetSqlConnect());
-            DataTable ProjectTable = new DataTable();
+            SqlCommand command = new SqlCommand("SelectDateUsers", connection.GetSqlConnect());
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            UserTable = new DataTable();
+
+            SqlDataAdapter sqlDA = new SqlDataAdapter(command);
 
             connection.OpenConnect();
 
-            sqlDA.Fill(ProjectTable);
+            sqlDA.Fill(UserTable);
 
-            dataGridViewUsers.DataSource = ProjectTable.DefaultView;
+            dataGridViewUsers.DataSource = UserTable.DefaultView;
 
             connection.CloseConnect();
         }
 
-        // Заполнение ComboBox`а "Сотрудник"
-        private void SelectEmployeeComboBox()
+        // Поиск по dataGridу
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee FROM Employees", connection.GetSqlConnect());
-            DataTable EmployeeTableComboBox = new DataTable();
-
-            connection.OpenConnect();
-
-            sqlDA.Fill(EmployeeTableComboBox);
-
-            ComboBox_fk_employee.ValueMember = "Id";
-            ComboBox_fk_employee.DisplayMember = "Employee";
-            ComboBox_fk_employee.DataSource = EmployeeTableComboBox;
-
-            connection.CloseConnect();
+            if (radioButtonEmployee.Checked)
+                SearchEmployee();
+            if (radioButtonRoleUsers.Checked)
+                SearchRoleUser();
+            if(radioButtonLogin.Checked)
+                SearchLogin();
         }
 
-        // Заполнение ComboBox`а "Роль сотрудника"
-        private void SelectRoleComboBox()
+        // Фильтр: Сотрудник
+        private void SearchEmployee()
         {
-            ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_user_role AS Id, user_name_role AS Role FROM Users_roles", connection.GetSqlConnect());
-            DataTable RoleTableComboBox = new DataTable();
+            DataView view = UserTable.DefaultView;
 
-            connection.OpenConnect();
+            view.RowFilter = string.Format("Employee like '%{0}%' ", textBoxSearch.Text);
 
-            sqlDA.Fill(RoleTableComboBox);
+            dataGridViewUsers.DataSource = view.ToTable();
+        }
 
-            ComboBox_fk_role_user.ValueMember = "Id";
-            ComboBox_fk_role_user.DisplayMember = "Role";
-            ComboBox_fk_role_user.DataSource = RoleTableComboBox;
+        // Фильтр: Роль сотрудника
+        private void SearchRoleUser()
+        {
+            DataView view = UserTable.DefaultView;
 
-            connection.CloseConnect();
+            view.RowFilter = string.Format("RoleUser like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewUsers.DataSource = view.ToTable();
+        }
+
+        // Фильтр: Логин
+        private void SearchLogin()
+        {
+            DataView view = UserTable.DefaultView;
+
+            view.RowFilter = string.Format("Login like '%{0}%' ", textBoxSearch.Text);
+
+            dataGridViewUsers.DataSource = view.ToTable();
         }
 
         // Функция удаления строки
@@ -96,7 +106,7 @@ namespace CourseWork.Users
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_user", Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells["Column_id_user"].Value));
+            command.Parameters.AddWithValue("@id_user", Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells[0].Value));
 
             command.ExecuteNonQuery();
 
@@ -131,11 +141,11 @@ namespace CourseWork.Users
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.DataEditUserId.Value  = Convert.ToString(dataGridViewUsers.CurrentRow.Cells["Column_id_user"].Value);
-            Program.DataEditUserLogin.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells["Column_login"].Value);
-            Program.DataEditUserPassword.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells["Column_password"].Value);
-            Program.DataEditUserRole.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells["ComboBox_fk_role_user"].Value);
-            Program.DataEditUserEmployee.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells["ComboBox_fk_employee"].Value);
+            Program.DataEditUserId.Value  = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[0].Value);
+            Program.DataEditUserLogin.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[1].Value);
+            Program.DataEditUserPassword.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[2].Value);
+            Program.DataEditUserRole.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[3].Value);
+            Program.DataEditUserEmployee.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[4].Value);
 
             UsersFormEdit formEdit = new UsersFormEdit();
 
@@ -181,6 +191,31 @@ namespace CourseWork.Users
                 DeleteRowUser();
 
             e.Cancel = true;
+        }
+
+        // При клике на pictureBox скрывать панель
+        private void pictureBoxFilters_Click(object sender, EventArgs e)
+        {
+            if (panelFilters.Visible == false)
+                panelFilters.Visible = true;
+            else
+                panelFilters.Visible = false;
+        }
+
+        // При клике на переключатели скрывать панель
+        private void radioButtonLogin_CheckedChanged(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonRoleUsers_CheckedChanged(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonEmployee_CheckedChanged(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
         }
     }
 }

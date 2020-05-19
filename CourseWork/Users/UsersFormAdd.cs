@@ -89,7 +89,12 @@ namespace CourseWork.Users
                 return;
             else
             if (!ValidationLogin())
+            {
+                labelValidLog.Text = "Некорректный логин.";
+                labelValidLog.Show();
+
                 return;
+            }   
             else
             if (!LoginOriginality())
                 return;
@@ -98,6 +103,7 @@ namespace CourseWork.Users
             {
                 labelValidPass.Text = "Некорректный пароль. Первым\nсимволом не может быть цифра.\nПароль должен быть минимум с\nодной цифрой, одной заглавной\nи одной строчной буквой.";
                 labelValidPass.Show();
+
                 return;
             }
             else
@@ -174,7 +180,6 @@ namespace CourseWork.Users
                 TextBoxPassRepeat.UseSystemPasswordChar = true;
 
                 pictureBoxShowHidePassword.Image = Properties.Resources.HidePassword;
-
             }
         }
 
@@ -251,6 +256,7 @@ namespace CourseWork.Users
             {
                 labelValidLog.Text = "Пользователь с таким логином\nуже существует!";
                 labelValidLog.Show();
+
                 return false;
             }
             else
@@ -274,6 +280,7 @@ namespace CourseWork.Users
             using (SHA512Managed sha512 = new SHA512Managed())
             {
                 var hash = sha512.ComputeHash(val);
+
                 return Convert.ToBase64String(hash);
             }
         }

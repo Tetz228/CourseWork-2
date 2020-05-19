@@ -20,6 +20,7 @@ namespace CourseWork.Users_roles
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // При загрузки формы
         private void Users_rolesFormEdit_Load(object sender, EventArgs e)
         {
             textBoxNameRole.Text = Program.DataEditUsers_rolesName.Value;
@@ -55,7 +56,6 @@ namespace CourseWork.Users_roles
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@user_name_role", SqlDbType.NVarChar).Value = textBoxNameRole.Text.Trim();
-
             command.Parameters.AddWithValue("@id_user_role", SqlDbType.NVarChar).Value = Program.DataEditUsers_rolesId.Value;
 
             command.ExecuteNonQuery();

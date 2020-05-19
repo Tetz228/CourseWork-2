@@ -40,10 +40,8 @@
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPosts)).BeginInit();
             this.menuStripPosts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewPosts
@@ -153,7 +151,7 @@
             // 
             this.textBoxSearch.Depth = 0;
             this.textBoxSearch.Hint = "Поиск";
-            this.textBoxSearch.Location = new System.Drawing.Point(743, 32);
+            this.textBoxSearch.Location = new System.Drawing.Point(763, 32);
             this.textBoxSearch.MaxLength = 32767;
             this.textBoxSearch.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBoxSearch.Name = "textBoxSearch";
@@ -167,16 +165,6 @@
             this.textBoxSearch.UseSystemPasswordChar = false;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::CourseWork.Properties.Resources.Filters;
-            this.pictureBox2.Location = new System.Drawing.Point(1011, 31);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
-            // 
             // PostsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -184,7 +172,6 @@
             this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1037, 562);
             this.ControlBox = false;
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.dataGridViewPosts);
             this.Controls.Add(this.menuStripPosts);
@@ -198,7 +185,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPosts)).EndInit();
             this.menuStripPosts.ResumeLayout(false);
             this.menuStripPosts.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,6 +201,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_id_post;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_post_name;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBoxSearch;
-        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
