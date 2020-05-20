@@ -42,10 +42,12 @@ namespace CourseWork
 
             byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.ToString());
 
-            SqlCommand selectLogPass = new SqlCommand("SELECT login, password FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
+            SqlCommand selectLogPass = new SqlCommand("SELECT id_user, login, password FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
 
             selectLogPass.Parameters.Add("@log", SqlDbType.VarChar).Value = TextBoxLog.Text;
             selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
+
+            connection.OpenConnect();
 
             adapter.SelectCommand = selectLogPass;
 
@@ -53,15 +55,25 @@ namespace CourseWork
 
             if (table.Rows.Count > 0)
             {
+                SqlDataReader reader = selectLogPass.ExecuteReader();
+
+                reader.Read();
+
+                Program.DataIdAuth.Value = reader.GetValue(0).ToString();
+
                 main.Left = this.Left;
                 main.Top = this.Top;
 
                 this.Hide();
 
+                connection.CloseConnect();
+
                 main.Show();
             }
             else
                 MessageBox.Show("Неверный логин или пароль.");
+
+            connection.CloseConnect();
         }
         
         // Проверка полей на пустоту

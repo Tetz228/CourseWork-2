@@ -10,7 +10,14 @@ namespace CourseWork
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AuthorizationForm());
+            Application.Run(new MainForm());
+        }
+        //Authorization
+        /////////////////////Регистрация//////////////////////////
+
+        public static class DataIdAuth
+        {
+            public static string Value { get; set; }
         }
 
         /////////////////////Регистрация//////////////////////////
