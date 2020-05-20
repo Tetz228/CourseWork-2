@@ -23,8 +23,14 @@ namespace CourseWork.History_task
 
             this.dataGridViewHistory_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
+            Program.DataAuth.Role_user = 2;
+
             if (Program.DataAuth.Role_user == 2)
-                MainToolStripMenuItem.Visible = false;
+            {
+                AddToolStripMenuItem.Visible = false;
+                DeleteToolStripMenuItem.Visible = false;
+            }
+               
         }
 
         // При загрузки формы
