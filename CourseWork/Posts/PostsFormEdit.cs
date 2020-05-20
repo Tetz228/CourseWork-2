@@ -23,7 +23,7 @@ namespace CourseWork.Posts
         // При загрузки формы
         private void PostsFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataEditPostsName.Value;
+            textBoxEdit.Text = Program.DataPosts.Name;
         }
 
         // Вызов проверки и сохранения изменений
@@ -56,7 +56,7 @@ namespace CourseWork.Posts
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@post_name", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_post", Convert.ToInt32(Program.DataEditPostsId.Value));
+            command.Parameters.AddWithValue("@id_post", Program.DataPosts.Id);
 
             command.ExecuteNonQuery();
 

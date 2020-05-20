@@ -141,11 +141,11 @@ namespace CourseWork.Users
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.DataEditUserId.Value  = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[0].Value);
-            Program.DataEditUserLogin.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[1].Value);
-            Program.DataEditUserPassword.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[2].Value);
-            Program.DataEditUserRole.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[3].Value);
-            Program.DataEditUserEmployee.Value = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[4].Value);
+            Program.DataUser.Id  = Convert.ToInt32(dataGridViewUsers.CurrentRow.Cells[0].Value);
+            Program.DataUser.Login = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[1].Value);
+            Program.DataUser.Password = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[2].Value);
+            Program.DataUser.Role = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[3].Value);
+            Program.DataUser.Employee = Convert.ToString(dataGridViewUsers.CurrentRow.Cells[4].Value);
 
             UsersFormEdit formEdit = new UsersFormEdit();
 
@@ -161,11 +161,11 @@ namespace CourseWork.Users
             {
                 DataGridViewRow view = dataGridViewUsers.Rows[e.RowIndex];
 
-                Program.DataEditUserId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditUserLogin.Value = view.Cells[1].Value.ToString();
-                Program.DataEditUserPassword.Value = view.Cells[2].Value.ToString();
-                Program.DataEditUserRole.Value = view.Cells[3].Value.ToString();
-                Program.DataEditUserEmployee.Value = view.Cells[4].Value.ToString();                
+                Program.DataUser.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataUser.Login = view.Cells[1].Value.ToString();
+                Program.DataUser.Password = view.Cells[2].Value.ToString();
+                Program.DataUser.Role = view.Cells[3].Value.ToString();
+                Program.DataUser.Employee = view.Cells[4].Value.ToString();                
 
                 UsersFormEdit formEdit = new UsersFormEdit();
 

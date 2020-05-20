@@ -105,9 +105,8 @@ namespace CourseWork
         {
             Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
 
-            Program.DataEditStatus_projectId.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells[0].Value);
-
-            Program.DataEditStatus_projectName.Value = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells[1].Value);
+            Program.DataStatus_project.Id = Convert.ToInt32(dataGridViewStatus_projects.CurrentRow.Cells[0].Value);
+            Program.DataStatus_project.Name = Convert.ToString(dataGridViewStatus_projects.CurrentRow.Cells[1].Value);
 
             formEdit.ShowDialog();
 
@@ -122,8 +121,8 @@ namespace CourseWork
             {
                 DataGridViewRow view = dataGridViewStatus_projects.Rows[e.RowIndex];
 
-                Program.DataEditStatus_projectId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditStatus_projectName.Value = view.Cells[1].Value.ToString();
+                Program.DataStatus_project.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataStatus_project.Name = view.Cells[1].Value.ToString();
 
                 Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
 

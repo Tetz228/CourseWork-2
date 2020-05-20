@@ -105,8 +105,8 @@ namespace CourseWork
         {
             Projects_roleFormEdit formEdit = new Projects_roleFormEdit();
 
-            Program.DataEditProjects_roleId.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells[0].Value);
-            Program.DataEditProjects_roleName.Value = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells[1].Value);
+            Program.DataProjects_role.Id = Convert.ToInt32(dataGridViewProjects_role.CurrentRow.Cells[0].Value);
+            Program.DataProjects_role.Name = Convert.ToString(dataGridViewProjects_role.CurrentRow.Cells[1].Value);
 
             formEdit.ShowDialog();
 
@@ -121,8 +121,8 @@ namespace CourseWork
             {
                 DataGridViewRow view = dataGridViewProjects_role.Rows[e.RowIndex];
 
-                Program.DataEditProjects_roleId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditProjects_roleName.Value = view.Cells[1].Value.ToString();
+                Program.DataProjects_role.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataProjects_role.Name = view.Cells[1].Value.ToString();
 
                 Projects_roleFormEdit formEdit = new Projects_roleFormEdit();
 

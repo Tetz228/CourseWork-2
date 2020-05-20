@@ -23,7 +23,7 @@ namespace CourseWork
         // При загрузки формы
         private void Status_projectsFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataEditStatus_projectName.Value;
+            textBoxEdit.Text = Program.DataStatus_project.Name;
         }
 
         // Функция редактирования строки
@@ -37,7 +37,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@status_name_project", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_status_project", Convert.ToInt32(Program.DataEditStatus_projectId.Value));
+            command.Parameters.AddWithValue("@id_status_project", Program.DataStatus_project.Id);
 
             command.ExecuteNonQuery();
 

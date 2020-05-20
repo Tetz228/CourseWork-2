@@ -23,7 +23,7 @@ namespace CourseWork.Users_roles
         // При загрузки формы
         private void Users_rolesFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxNameRole.Text = Program.DataEditUsers_rolesName.Value;
+            textBoxNameRole.Text = Program.DataUsers_roles.Name;
         }
 
         // Вызов проверки и сохранение изменений
@@ -56,7 +56,7 @@ namespace CourseWork.Users_roles
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@user_name_role", SqlDbType.NVarChar).Value = textBoxNameRole.Text.Trim();
-            command.Parameters.AddWithValue("@id_user_role", SqlDbType.NVarChar).Value = Program.DataEditUsers_rolesId.Value;
+            command.Parameters.AddWithValue("@id_user_role", SqlDbType.NVarChar).Value = Program.DataUsers_roles.Id;
 
             command.ExecuteNonQuery();
 

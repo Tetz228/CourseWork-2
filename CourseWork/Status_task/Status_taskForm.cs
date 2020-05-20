@@ -105,9 +105,9 @@ namespace CourseWork.Status_task
         {
             Status_taskFormEdit formEdit = new Status_taskFormEdit();
 
-            Program.DataEditStatus_taskId.Value = Convert.ToString(dataGridViewStatus_task.CurrentRow.Cells[0].Value);
+            Program.DataStatus_task.Id = Convert.ToInt32(dataGridViewStatus_task.CurrentRow.Cells[0].Value);
 
-            Program.DataEditStatus_taskName.Value = Convert.ToString(dataGridViewStatus_task.CurrentRow.Cells[1].Value);
+            Program.DataStatus_task.Name = Convert.ToString(dataGridViewStatus_task.CurrentRow.Cells[1].Value);
 
             formEdit.ShowDialog();
 
@@ -122,8 +122,8 @@ namespace CourseWork.Status_task
             {
                 DataGridViewRow view = dataGridViewStatus_task.Rows[e.RowIndex];
 
-                Program.DataEditStatus_taskId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditStatus_taskName.Value = view.Cells[1].Value.ToString();
+                Program.DataStatus_task.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataStatus_task.Name = view.Cells[1].Value.ToString();
 
                 Status_taskFormEdit formEdit = new Status_taskFormEdit();
 

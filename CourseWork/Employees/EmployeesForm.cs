@@ -151,11 +151,11 @@ namespace CourseWork
         {
             EmployeesFormEdit formEdit = new EmployeesFormEdit();
 
-            Program.DataEditEmployeeId.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[0].Value);
-            Program.DataEditEmployeeLname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[1].Value);
-            Program.DataEditEmployeeFname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[2].Value);
-            Program.DataEditEmployeeMname.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[3].Value);
-            Program.DataEditEmployeeEmail.Value = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[4].Value);
+            Program.DataEmployee.Id = Convert.ToInt32(dataGridViewEmployees.CurrentRow.Cells[0].Value);
+            Program.DataEmployee.Lname = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[1].Value);
+            Program.DataEmployee.Fname = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[2].Value);
+            Program.DataEmployee.Mname = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[3].Value);
+            Program.DataEmployee.Email = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[4].Value);
 
             formEdit.ShowDialog();
 
@@ -168,11 +168,12 @@ namespace CourseWork
             if (e.RowIndex != -1)
             {
                 DataGridViewRow view = dataGridViewEmployees.Rows[e.RowIndex];
-                Program.DataEditEmployeeId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditEmployeeLname.Value = view.Cells[1].Value.ToString();
-                Program.DataEditEmployeeFname.Value = view.Cells[2].Value.ToString();
-                Program.DataEditEmployeeMname.Value = view.Cells[3].Value.ToString();
-                Program.DataEditEmployeeEmail.Value = view.Cells[4].Value.ToString();
+
+                Program.DataEmployee.Id = Convert.ToInt32(view.Cells[0].Value.ToString());
+                Program.DataEmployee.Lname = view.Cells[1].Value.ToString();
+                Program.DataEmployee.Fname = view.Cells[2].Value.ToString();
+                Program.DataEmployee.Mname = view.Cells[3].Value.ToString();
+                Program.DataEmployee.Email = view.Cells[4].Value.ToString();
 
                 EmployeesFormEdit formEdit = new EmployeesFormEdit();
 

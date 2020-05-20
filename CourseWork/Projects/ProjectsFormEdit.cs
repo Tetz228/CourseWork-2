@@ -28,12 +28,12 @@ namespace CourseWork
         {
             SelectEmployeeComboBox();
 
-            textBoxProject_name.Text = Program.DataEditProjectName.Value;
-            textBoxProject_target.Text = Program.DataEditProjectTarget.Value;
-            textBoxDate_start.Text = Program.DataEditProjectStart.Value;
-            textBoxDate_completion.Text = Program.DataEditProjectCompletion.Value;
+            textBoxProject_name.Text = Program.DataProject.Name;
+            textBoxProject_target.Text = Program.DataProject.Target;
+            textBoxDate_start.Text = Program.DataProject.Start;
+            textBoxDate_completion.Text = Program.DataProject.Completion;
 
-            int indexEmp = comboBox_fk_leader.FindString(Program.DataEditProjectLeader.Value);
+            int indexEmp = comboBox_fk_leader.FindString(Program.DataProject.Leader);
 
             comboBox_fk_leader.SelectedIndex = indexEmp;
 
@@ -115,7 +115,7 @@ namespace CourseWork
             
             command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
             command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;
-            command.Parameters.AddWithValue("@id_project", Convert.ToInt32(Program.DataEditProjectId.Value));
+            command.Parameters.AddWithValue("@id_project", Program.DataProject.Id);
 
             try
             {

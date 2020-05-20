@@ -26,10 +26,10 @@ namespace CourseWork
         // При загрузки формы
         private void EmployeesFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxLname.Text = Program.DataEditEmployeeLname.Value;
-            textBoxFname.Text = Program.DataEditEmployeeFname.Value;
-            textBoxMname.Text = Program.DataEditEmployeeMname.Value;
-            textBoxEmail.Text = Program.DataEditEmployeeEmail.Value;
+            textBoxLname.Text = Program.DataEmployee.Lname;
+            textBoxFname.Text = Program.DataEmployee.Fname;
+            textBoxMname.Text = Program.DataEmployee.Mname;
+            textBoxEmail.Text = Program.DataEmployee.Email;
 
             checkEmail = textBoxEmail.Text;
         }
@@ -111,7 +111,7 @@ namespace CourseWork
             else
                 command.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = textBoxMname.Text.Trim();
 
-            command.Parameters.AddWithValue("@id_employee", Convert.ToInt32(Program.DataEditEmployeeId.Value));
+            command.Parameters.AddWithValue("@id_employee", Program.DataEmployee.Id);
 
             command.ExecuteNonQuery();
 

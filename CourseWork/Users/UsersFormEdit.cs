@@ -32,12 +32,12 @@ namespace CourseWork.Users
 
             SelectRoleComboBox();
 
-            TextBoxLog.Text = log = Program.DataEditUserLogin.Value;
-            TextBoxPass.Text = pass = Program.DataEditUserPassword.Value;
-            TextBoxPassRepeat.Text = Program.DataEditUserPassword.Value;
+            TextBoxLog.Text = log = Program.DataUser.Login;
+            TextBoxPass.Text = pass = Program.DataUser.Password;
+            TextBoxPassRepeat.Text = Program.DataUser.Password;
 
-            int indexEmp = ComboBox_fk_employee.FindString(Program.DataEditUserEmployee.Value);
-            int indexPost = ComboBox_fk_role_user.FindString(Program.DataEditUserRole.Value);
+            int indexEmp = ComboBox_fk_employee.FindString(Program.DataUser.Employee);
+            int indexPost = ComboBox_fk_role_user.FindString(Program.DataUser.Role);
 
             ComboBox_fk_employee.SelectedIndex = indexEmp;
             ComboBox_fk_role_user.SelectedIndex = indexPost;
@@ -308,7 +308,7 @@ namespace CourseWork.Users
             command.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = pass;
             command.Parameters.AddWithValue("@fk_role", SqlDbType.Int).Value = ComboBox_fk_role_user.SelectedValue;
             command.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = ComboBox_fk_employee.SelectedValue;
-            command.Parameters.AddWithValue("@id_user", SqlDbType.Int).Value = Convert.ToInt32(Program.DataEditUserId.Value);
+            command.Parameters.AddWithValue("@id_user", SqlDbType.Int).Value = Program.DataUser.Id;
 
             command.ExecuteNonQuery();
 

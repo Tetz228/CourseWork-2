@@ -129,9 +129,9 @@ namespace CourseWork
         {
             Posts_employeesFormEdit formEdit = new Posts_employeesFormEdit();
 
-            Program.DataEditPostsEmployeesId.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[0].Value);
-            Program.DataEditPostsEmployeesEmp.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[1].Value);
-            Program.DataEditPostsEmployeesPost.Value = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[2].Value);
+            Program.DataPostsEmployees.Id = Convert.ToInt32(dataGridViewPostsEmployees.CurrentRow.Cells[0].Value);
+            Program.DataPostsEmployees.Employees = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[1].Value);
+            Program.DataPostsEmployees.Post = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[2].Value);
             
             formEdit.ShowDialog();
 
@@ -145,9 +145,9 @@ namespace CourseWork
             {
                 DataGridViewRow view = dataGridViewPostsEmployees.Rows[e.RowIndex];
 
-                Program.DataEditPostsEmployeesId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditPostsEmployeesEmp.Value = view.Cells[1].Value.ToString();
-                Program.DataEditPostsEmployeesPost.Value = view.Cells[2].Value.ToString();
+                Program.DataPostsEmployees.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataPostsEmployees.Employees = view.Cells[1].Value.ToString();
+                Program.DataPostsEmployees.Post = view.Cells[2].Value.ToString();
 
                 Posts_employeesFormEdit formEdit = new Posts_employeesFormEdit();
 

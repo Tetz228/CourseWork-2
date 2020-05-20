@@ -23,8 +23,8 @@ namespace CourseWork.Type_task
         // При загрузки формы
         private void Type_taskFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxNameType.Text = Program.DataEditType_taskName.Value;
-            textBoxDescription.Text = Program.DataEditType_taskDescription.Value;
+            textBoxNameType.Text = Program.DataType_task.Name;
+            textBoxDescription.Text = Program.DataType_task.Description;
         }
 
         // Вызов проверки и сохранение изменений
@@ -58,7 +58,7 @@ namespace CourseWork.Type_task
 
             command.Parameters.AddWithValue("@task_name_type", SqlDbType.NVarChar).Value = textBoxNameType.Text.Trim();
             command.Parameters.AddWithValue("@task_description", SqlDbType.NVarChar).Value = textBoxDescription.Text.Trim();
-            command.Parameters.AddWithValue("@id_type_task", SqlDbType.NVarChar).Value = Program.DataEditType_taskId.Value;
+            command.Parameters.AddWithValue("@id_type_task", SqlDbType.Int).Value = Program.DataType_task.Id;
 
             command.ExecuteNonQuery();
 

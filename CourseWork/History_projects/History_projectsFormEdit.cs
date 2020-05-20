@@ -29,14 +29,12 @@ namespace CourseWork
 
             SelectStatusComboBox();
          
-            textBox_History_date_project.Text = Program.DataEditHistoryProjectDate.Value;
+            textBox_History_date_project.Text = Program.DataHistoryProject.Date;
 
-            int indexProj = ComboBox_fk_project.FindString(Program.DataEditHistoryProjectName.Value);
-
-            int indexStat = ComboBox_fk_status_project.FindString(Program.DataEditHistoryProjectStatus.Value);
+            int indexProj = ComboBox_fk_project.FindString(Program.DataHistoryProject.Name);
+            int indexStat = ComboBox_fk_status_project.FindString(Program.DataHistoryProject.Status);
 
             ComboBox_fk_project.SelectedIndex = indexProj;
-
             ComboBox_fk_status_project.SelectedIndex = indexStat;
 
             if (!string.IsNullOrEmpty(textBox_History_date_project.Text))
@@ -115,7 +113,7 @@ namespace CourseWork
             command.Parameters.AddWithValue("@fk_project", SqlDbType.Int).Value = ComboBox_fk_project.SelectedValue;
             command.Parameters.AddWithValue("@fk_status_project", SqlDbType.Int).Value = ComboBox_fk_status_project.SelectedValue;
 
-            command.Parameters.AddWithValue("@id_history_project", Convert.ToInt32(Program.DataEditHistoryProjectId.Value));
+            command.Parameters.AddWithValue("@id_history_project", Program.DataHistoryProject.Id);
 
             try
             {

@@ -147,11 +147,11 @@ namespace CourseWork.Projects_task
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.DataEditProjects_taskId.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[0].Value);
-            Program.DataEditProjects_taskProject.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[1].Value);
-            Program.DataEditProjects_taskType_task.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[2].Value);
-            Program.DataEditProjects_taskEmployee.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[3].Value);
-            Program.DataEditProjects_taskProject_role.Value = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[4].Value);
+            Program.DataProjects_task.Id = Convert.ToInt32(dataGridViewProjects_task.CurrentRow.Cells[0].Value);
+            Program.DataProjects_task.Project = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[1].Value);
+            Program.DataProjects_task.Type_task = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[2].Value);
+            Program.DataProjects_task.Employee = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[3].Value);
+            Program.DataProjects_task.Project_role = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[4].Value);
 
             Projects_taskFormEdit formEdit = new Projects_taskFormEdit();
 
@@ -167,11 +167,11 @@ namespace CourseWork.Projects_task
             {
                 DataGridViewRow view = dataGridViewProjects_task.Rows[e.RowIndex];
 
-                Program.DataEditProjects_taskId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditProjects_taskProject.Value = view.Cells[1].Value.ToString();
-                Program.DataEditProjects_taskType_task.Value = view.Cells[2].Value.ToString();
-                Program.DataEditProjects_taskEmployee.Value = view.Cells[3].Value.ToString();
-                Program.DataEditProjects_taskProject_role.Value = view.Cells[4].Value.ToString();
+                Program.DataProjects_task.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataProjects_task.Project = view.Cells[1].Value.ToString();
+                Program.DataProjects_task.Type_task = view.Cells[2].Value.ToString();
+                Program.DataProjects_task.Employee = view.Cells[3].Value.ToString();
+                Program.DataProjects_task.Project_role = view.Cells[4].Value.ToString();
 
                 Projects_taskFormEdit formEdit = new Projects_taskFormEdit();
 

@@ -130,10 +130,10 @@ namespace CourseWork.History_task
         {
             History_taskFormEdit formEdit = new History_taskFormEdit();
 
-            Program.DataEditHistoryTaskId.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[0].Value);
-            Program.DataEditHistoryTaskName.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[1].Value);
-            Program.DataEditHistoryTaskStatus.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[2].Value);
-            Program.DataEditHistoryTaskDate.Value = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[3].Value);
+            Program.DataHistoryTask.Id = Convert.ToInt32(dataGridViewHistory_task.CurrentRow.Cells[0].Value);
+            Program.DataHistoryTask.Name = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[1].Value);
+            Program.DataHistoryTask.Status = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[2].Value);
+            Program.DataHistoryTask.Date = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[3].Value);
 
             formEdit.ShowDialog();
 
@@ -147,10 +147,10 @@ namespace CourseWork.History_task
             {
                 DataGridViewRow view = dataGridViewHistory_task.Rows[e.RowIndex];
 
-                Program.DataEditHistoryTaskId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditHistoryTaskName.Value = view.Cells[1].Value.ToString();
-                Program.DataEditHistoryTaskStatus.Value = view.Cells[2].Value.ToString();
-                Program.DataEditHistoryTaskDate.Value = view.Cells[3].Value.ToString();
+                Program.DataHistoryTask.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataHistoryTask.Name = view.Cells[1].Value.ToString();
+                Program.DataHistoryTask.Status = view.Cells[2].Value.ToString();
+                Program.DataHistoryTask.Date = view.Cells[3].Value.ToString();
 
                 History_taskFormEdit formEdit = new History_taskFormEdit();
 

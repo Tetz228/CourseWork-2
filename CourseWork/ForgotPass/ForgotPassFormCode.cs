@@ -63,7 +63,7 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
         {
             ConfirmationMailForm mailForm = new ConfirmationMailForm();
             
-            global = mailForm.SendingCode(Program.DataEmailForgotPass.Value, subject, body);
+            global = mailForm.SendingCode(Program.DataForgotPass.Email, subject, body);
         }
 
         // При закрытии формы

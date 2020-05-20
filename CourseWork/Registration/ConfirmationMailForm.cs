@@ -34,7 +34,7 @@ namespace CourseWork
         // Вызов функции отправки кода и занесение возвращенного значения в глоб. переменную
         private void CallSendingCode()
         {
-            global = SendingCode(Program.DataEmailReg.Value, subject, body);
+            global = SendingCode(Program.DataRegist.Email, subject, body);
         }
 
         // Отправка кода подтверждение
@@ -72,7 +72,7 @@ namespace CourseWork
         {
             if (global == textBoxCode.Text)
             {
-                Program.DataReturnReg.Value = "Сorrect code";
+                Program.DataRegist.СorrectCode = "Сorrect code";
                 this.Close();
             }
             else

@@ -105,8 +105,8 @@ namespace CourseWork.Users_roles
         {
             Users_rolesFormEdit formEdit = new Users_rolesFormEdit();
 
-            Program.DataEditUsers_rolesId.Value = Convert.ToString(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
-            Program.DataEditUsers_rolesName.Value = Convert.ToString(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
+            Program.DataUsers_roles.Id = Convert.ToInt32(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
+            Program.DataUsers_roles.Name = Convert.ToString(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
 
             formEdit.ShowDialog();
 
@@ -120,8 +120,8 @@ namespace CourseWork.Users_roles
             {
                 DataGridViewRow view = dataGridViewUsers_roles.Rows[e.RowIndex];
 
-                Program.DataEditUsers_rolesId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditUsers_rolesName.Value = view.Cells[1].Value.ToString();
+                Program.DataUsers_roles.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataUsers_roles.Name = view.Cells[1].Value.ToString();
 
                 Users_rolesFormEdit formEdit = new Users_rolesFormEdit();
 

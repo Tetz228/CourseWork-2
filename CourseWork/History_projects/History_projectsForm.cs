@@ -130,10 +130,10 @@ namespace CourseWork
         {
             History_projectsFormEdit formEdit = new History_projectsFormEdit();
 
-            Program.DataEditHistoryProjectId.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[0].Value);
-            Program.DataEditHistoryProjectName.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[1].Value);
-            Program.DataEditHistoryProjectStatus.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[2].Value); 
-            Program.DataEditHistoryProjectDate.Value = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[3].Value); 
+            Program.DataHistoryProject.Id = Convert.ToInt32(dataGridViewHistory_projects.CurrentRow.Cells[0].Value);
+            Program.DataHistoryProject.Name = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[1].Value);
+            Program.DataHistoryProject.Status = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[2].Value); 
+            Program.DataHistoryProject.Date = Convert.ToString(dataGridViewHistory_projects.CurrentRow.Cells[3].Value); 
 
             formEdit.ShowDialog();
 
@@ -147,10 +147,10 @@ namespace CourseWork
             {
                 DataGridViewRow view = dataGridViewHistory_projects.Rows[e.RowIndex];
 
-                Program.DataEditHistoryProjectId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditHistoryProjectName.Value = view.Cells[1].Value.ToString();
-                Program.DataEditHistoryProjectStatus.Value = view.Cells[2].Value.ToString();
-                Program.DataEditHistoryProjectDate.Value = view.Cells[3].Value.ToString();
+                Program.DataHistoryProject.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataHistoryProject.Name = view.Cells[1].Value.ToString();
+                Program.DataHistoryProject.Status = view.Cells[2].Value.ToString();
+                Program.DataHistoryProject.Date = view.Cells[3].Value.ToString();
 
                 History_projectsFormEdit formEdit = new History_projectsFormEdit();
 

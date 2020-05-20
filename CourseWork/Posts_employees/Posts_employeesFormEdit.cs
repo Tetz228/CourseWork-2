@@ -26,8 +26,8 @@ namespace CourseWork
 
             SelectPostsComboBox();
 
-            int indexEmp = ComboBox_fk_employee.FindString(Program.DataEditPostsEmployeesEmp.Value);
-            int indexPost = ComboBox_fk_post.FindString(Program.DataEditPostsEmployeesPost.Value);
+            int indexEmp = ComboBox_fk_employee.FindString(Program.DataPostsEmployees.Employees);
+            int indexPost = ComboBox_fk_post.FindString(Program.DataPostsEmployees.Post);
 
             ComboBox_fk_employee.SelectedIndex = indexEmp;
             ComboBox_fk_post.SelectedIndex = indexPost;
@@ -99,7 +99,7 @@ namespace CourseWork
 
             command.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = ComboBox_fk_employee.SelectedValue;
             command.Parameters.AddWithValue("@fk_post", SqlDbType.Int).Value = ComboBox_fk_post.SelectedValue;
-            command.Parameters.AddWithValue("@id_post_emp", Convert.ToInt32(Program.DataEditPostsEmployeesId.Value));
+            command.Parameters.AddWithValue("@id_post_emp", Program.DataPostsEmployees.Id);
 
             command.ExecuteNonQuery();
 

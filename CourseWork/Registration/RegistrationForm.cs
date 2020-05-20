@@ -62,7 +62,7 @@ namespace CourseWork
                 return;
             else
             {
-                Program.DataEmailReg.Value = TextBoxEmail.Text;
+                Program.DataRegist.Email = TextBoxEmail.Text;
 
                 ConfirmationMailForm mailForm = new ConfirmationMailForm();
                 mailForm.Left = this.Left;
@@ -70,7 +70,7 @@ namespace CourseWork
                 this.Hide();
                 mailForm.ShowDialog();
 
-                if (Program.DataReturnReg.Value == "Сorrect code")
+                if (Program.DataRegist.СorrectCode == "Сorrect code")
                     Registration();
             }
         }

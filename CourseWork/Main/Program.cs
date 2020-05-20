@@ -15,284 +15,183 @@ namespace CourseWork
         //Authorization
         /////////////////////Регистрация//////////////////////////
 
-        public static class DataIdAuth
+        public static class DataAuth
         {
-            public static string Value { get; set; }
+            public static int IdUser { get; set; }
         }
 
         /////////////////////Регистрация//////////////////////////
 
-        public static class DataEmailReg
-        {
-            public static string Value { get; set; }
-        }
+        public static class DataRegist
+        { 
+            public static string СorrectCode { get; set; }
 
-        public static class DataReturnReg
-        {
-            public static string Value { get; set; }
+            public static string Email { get; set; }
+            
         }
 
         /////////////////////Забыли пароль?//////////////////////////
 
-        public static class DataIdForgotPass
+        public static class DataForgotPass
         {
-            public static string Value { get; set; }
-        }
+            public static int IdUser { get; set; }
 
-        public static class DataEmailForgotPass
-        {
-            public static string Value { get; set; }
+            public static string Email { get; set; }
         }
 
         /////////////////////Статусы проектов//////////////////////////
 
-        public static class DataEditStatus_projectId
+        public static class DataStatus_project
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditStatus_projectName
-        {
-            public static string Value { get; set; }
+            public static string Name { get; set; }
         }
 
         /////////////////////Проекты//////////////////////////
 
-        public static class DataEditProjectId
+        public static class DataProject
         {
-            public static string Value { get; set; }
-        }
-     
-        public static class DataEditProjectName
-        {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditProjectTarget
-        {
-            public static string Value { get; set; }
-        }
+            public static string Name { get; set; }
 
-        public static class DataEditProjectStart
-        {
-            public static string Value { get; set; }
-        }
+            public static string Target { get; set; }
 
-        public static class DataEditProjectCompletion
-        {
-            public static string Value { get; set; }
-        }
+            public static string Start { get; set; }
+            
+            public static string Completion { get; set; }
 
-        public static class DataEditProjectLeader
-        {
-            public static string Value { get; set; }
+            public static string Leader { get; set; }
         }
 
         //////////////////////Роли в проекте/////////////////////////
 
-        public static class DataEditProjects_roleId
+        public static class DataProjects_role
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditProjects_roleName
-        {
-            public static string Value { get; set; }
+            public static string Name { get; set; }
         }
 
         //////////////////////История проектов/////////////////////////
 
-        public static class DataEditHistoryProjectId
+        public static class DataHistoryProject
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditHistoryProjectName
-        {
-            public static string Value { get; set; }
-        }
+            public static string Name { get; set; }
 
-        public static class DataEditHistoryProjectStatus
-        {
-            public static string Value { get; set; }
-        }
+            public static string Status { get; set; }
 
-        public static class DataEditHistoryProjectDate
-        {
-            public static string Value { get; set; }
+            public static string Date { get; set; }
         }
 
         ///////////////////////Сотрудники////////////////////////
 
-        public static class DataEditEmployeeId
+        public static class DataEmployee
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditEmployeeLname
-        {
-            public static string Value { get; set; }
-        }
+            public static string Lname { get; set; }
 
-        public static class DataEditEmployeeFname
-        {
-            public static string Value { get; set; }
-        }
+            public static string Fname { get; set; }
 
-        public static class DataEditEmployeeMname
-        {
-            public static string Value { get; set; }
-        }
+            public static string Mname { get; set; }
 
-        public static class DataEditEmployeeEmail
-        {
-            public static string Value { get; set; }
+            public static string Email { get; set; }
         }
 
         //////////////////////Должности сотрудников/////////////////////////
 
-        public static class DataEditPostsEmployeesId
+        public static class DataPostsEmployees
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditPostsEmployeesEmp
-        {
-            public static string Value { get; set; }
-        }
+            public static string Employees { get; set; }
 
-        public static class DataEditPostsEmployeesPost
-        {
-            public static string Value { get; set; }
+            public static string Post { get; set; }
         }
 
         ////////////////////Должности///////////////////
 
-        public static class DataEditPostsId
+        public static class DataPosts
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditPostsName
-        {
-            public static string Value { get; set; }
+            public static string Name { get; set; }
         }
 
         //////////////////////Статусы задач/////////////////////////
 
-        public static class DataEditStatus_taskId
+        public static class DataStatus_task
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditStatus_taskName
-        {
-            public static string Value { get; set; }
+            public static string Name { get; set; }
         }
 
         //////////////////////История задач/////////////////////////
 
-        public static class DataEditHistoryTaskId
+        public static class DataHistoryTask
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditHistoryTaskName
-        {
-            public static string Value { get; set; }
-        }
+            public static string Name { get; set; }
 
-        public static class DataEditHistoryTaskStatus
-        {
-            public static string Value { get; set; }
-        }
+            public static string Status { get; set; }
 
-        public static class DataEditHistoryTaskDate
-        {
-            public static string Value { get; set; }
+            public static string Date { get; set; }
         }
 
         //////////////////////Список пользователей/////////////////////////
 
-        public static class DataEditUserId
+        public static class DataUser
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditUserLogin
-        {
-            public static string Value { get; set; }
-        }
+            public static string Login { get; set; }
 
-        public static class DataEditUserPassword
-        {
-            public static string Value { get; set; }
-        }
+            public static string Password { get; set; }
 
-        public static class DataEditUserRole
-        {
-            public static string Value { get; set; }
-        }
+            public static string Role { get; set; }
 
-        public static class DataEditUserEmployee
-        {
-            public static string Value { get; set; }
+            public static string Employee { get; set; }
         }
 
         //////////////////////Роли пользователей/////////////////////////
-        
-        public static class DataEditUsers_rolesId
-        {
-            public static string Value { get; set; }
-        }
 
-        public static class DataEditUsers_rolesName
+        public static class DataUsers_roles
         {
-            public static string Value { get; set; }
+            public static int Id { get; set; }
+
+            public static string Name { get; set; }
         }
 
         //////////////////////Типы задач/////////////////////////
 
-        public static class DataEditType_taskId              
+        public static class DataType_task          
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditType_taskName
-        {
-            public static string Value { get; set; }
-        }
+            public static string Name { get; set; }
 
-        public static class DataEditType_taskDescription
-        {
-            public static string Value { get; set; }
+            public static string Description { get; set; }
         }
 
         //////////////////////Список задач/////////////////////////
 
-        public static class DataEditProjects_taskId
+        public static class DataProjects_task
         {
-            public static string Value { get; set; }
-        }
+            public static int Id { get; set; }
 
-        public static class DataEditProjects_taskProject
-        {
-            public static string Value { get; set; }
-        }
+            public static string Project { get; set; }
 
-        public static class DataEditProjects_taskType_task
-        {
-            public static string Value { get; set; }
-        }
+            public static string Type_task { get; set; }
 
-        public static class DataEditProjects_taskEmployee
-        {
-            public static string Value { get; set; }
-        }
+            public static string Employee { get; set; }
 
-        public static class DataEditProjects_taskProject_role
-        {
-            public static string Value { get; set; }
+            public static string Project_role { get; set; }
         }
     }
 }

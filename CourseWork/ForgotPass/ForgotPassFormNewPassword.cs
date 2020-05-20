@@ -97,7 +97,7 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
             updatePasswordUser.CommandType = CommandType.StoredProcedure;
 
             updatePasswordUser.Parameters.AddWithValue("@password", SqlDbType.VarChar).Value = HashPassword(passtohash);
-            updatePasswordUser.Parameters.AddWithValue("@id_user", SqlDbType.Int).Value = Convert.ToInt32(Program.DataIdForgotPass.Value);
+            updatePasswordUser.Parameters.AddWithValue("@id_user", SqlDbType.Int).Value = Program.DataForgotPass.IdUser;
 
             updatePasswordUser.ExecuteNonQuery();
 

@@ -59,7 +59,7 @@ namespace CourseWork
 
                 reader.Read();
 
-                Program.DataIdAuth.Value = reader.GetValue(0).ToString();
+                Program.DataAuth.IdUser = Convert.ToInt32(reader.GetValue(0));
 
                 main.Left = this.Left;
                 main.Top = this.Top;

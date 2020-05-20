@@ -29,10 +29,10 @@ namespace CourseWork.History_task
 
             SelectStatusComboBox();
 
-            textBox_History_date_task.Text = Program.DataEditHistoryTaskDate.Value;
+            textBox_History_date_task.Text = Program.DataHistoryTask.Date;
 
-            int indexProj = ComboBox_fk_project_task.FindString(Program.DataEditHistoryTaskName.Value);
-            int indexStat = ComboBox_fk_status_task.FindString(Program.DataEditHistoryTaskStatus.Value);
+            int indexProj = ComboBox_fk_project_task.FindString(Program.DataHistoryTask.Name);
+            int indexStat = ComboBox_fk_status_task.FindString(Program.DataHistoryTask.Status);
 
             ComboBox_fk_project_task.SelectedIndex = indexProj;
             ComboBox_fk_status_task.SelectedIndex = indexStat;
@@ -115,7 +115,7 @@ namespace CourseWork.History_task
             command.Parameters.AddWithValue("@fk_project_task", SqlDbType.Int).Value = ComboBox_fk_project_task.SelectedValue;
             command.Parameters.AddWithValue("@fk_status_task", SqlDbType.Int).Value = ComboBox_fk_status_task.SelectedValue;
 
-            command.Parameters.AddWithValue("@id_history_task", Convert.ToInt32(Program.DataEditHistoryTaskId.Value));
+            command.Parameters.AddWithValue("@id_history_task", Program.DataHistoryTask.Id);
 
             try
             {

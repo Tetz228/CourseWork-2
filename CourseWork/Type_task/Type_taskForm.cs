@@ -127,9 +127,9 @@ namespace CourseWork.Type_task
         {
             Type_taskFormEdit formEdit = new Type_taskFormEdit();
 
-            Program.DataEditType_taskId.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[0].Value);
-            Program.DataEditType_taskName.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[1].Value);
-            Program.DataEditType_taskDescription.Value = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[2].Value);
+            Program.DataType_task.Id = Convert.ToInt32(dataGridViewType_task.CurrentRow.Cells[0].Value);
+            Program.DataType_task.Name = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[1].Value);
+            Program.DataType_task.Description = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[2].Value);
 
             formEdit.ShowDialog();
 
@@ -144,9 +144,9 @@ namespace CourseWork.Type_task
             {
                 DataGridViewRow view = dataGridViewType_task.Rows[e.RowIndex];
 
-                Program.DataEditType_taskId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditType_taskName.Value = view.Cells[1].Value.ToString();
-                Program.DataEditType_taskDescription.Value = view.Cells[2].Value.ToString();
+                Program.DataType_task.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataType_task.Name = view.Cells[1].Value.ToString();
+                Program.DataType_task.Description = view.Cells[2].Value.ToString();
 
                 Type_taskFormEdit formEdit = new Type_taskFormEdit();
 

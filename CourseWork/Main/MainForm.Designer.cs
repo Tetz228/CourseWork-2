@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ProjectsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListProjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Status_projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Projects_roleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +39,7 @@
             this.Status_taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TypeTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.History_taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сотрудникиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmployeeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.listEmployeesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.Posts_employeesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ListPostsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,12 +60,13 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.DarkOrange;
+            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ProjectsToolStripMenuItem1,
+            this.ProjectsToolStripMenuItem,
             this.TaskToolStripMenuItem,
-            this.сотрудникиToolStripMenuItem1,
+            this.EmployeeToolStripMenuItem1,
             this.toolStripTextBox1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -74,16 +75,16 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // ProjectsToolStripMenuItem1
+            // ProjectsToolStripMenuItem
             // 
-            this.ProjectsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ProjectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ListProjectsToolStripMenuItem,
             this.Status_projectsToolStripMenuItem,
             this.Projects_roleToolStripMenuItem,
             this.History_projectsToolStripMenuItem});
-            this.ProjectsToolStripMenuItem1.Name = "ProjectsToolStripMenuItem1";
-            this.ProjectsToolStripMenuItem1.Size = new System.Drawing.Size(75, 22);
-            this.ProjectsToolStripMenuItem1.Text = "Проекты";
+            this.ProjectsToolStripMenuItem.Name = "ProjectsToolStripMenuItem";
+            this.ProjectsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.ProjectsToolStripMenuItem.Text = "Проекты";
             // 
             // ListProjectsToolStripMenuItem
             // 
@@ -121,48 +122,48 @@
             this.TypeTaskToolStripMenuItem,
             this.History_taskToolStripMenuItem});
             this.TaskToolStripMenuItem.Name = "TaskToolStripMenuItem";
-            this.TaskToolStripMenuItem.Size = new System.Drawing.Size(66, 22);
+            this.TaskToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.TaskToolStripMenuItem.Text = "Задачи";
             // 
             // ListTaskToolStripMenuItem
             // 
             this.ListTaskToolStripMenuItem.Name = "ListTaskToolStripMenuItem";
-            this.ListTaskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.ListTaskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ListTaskToolStripMenuItem.Text = "Список задач";
             this.ListTaskToolStripMenuItem.Click += new System.EventHandler(this.ListTaskToolStripMenuItem_Click);
             // 
             // Status_taskToolStripMenuItem
             // 
             this.Status_taskToolStripMenuItem.Name = "Status_taskToolStripMenuItem";
-            this.Status_taskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.Status_taskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.Status_taskToolStripMenuItem.Text = "Статусы задач";
             this.Status_taskToolStripMenuItem.Click += new System.EventHandler(this.Status_taskToolStripMenuItem_Click);
             // 
             // TypeTaskToolStripMenuItem
             // 
             this.TypeTaskToolStripMenuItem.Name = "TypeTaskToolStripMenuItem";
-            this.TypeTaskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.TypeTaskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.TypeTaskToolStripMenuItem.Text = "Типы задач";
             this.TypeTaskToolStripMenuItem.Click += new System.EventHandler(this.TypeTaskToolStripMenuItem_Click);
             // 
             // History_taskToolStripMenuItem
             // 
             this.History_taskToolStripMenuItem.Name = "History_taskToolStripMenuItem";
-            this.History_taskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.History_taskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.History_taskToolStripMenuItem.Text = "История задач";
             this.History_taskToolStripMenuItem.Click += new System.EventHandler(this.History_taskToolStripMenuItem_Click);
             // 
-            // сотрудникиToolStripMenuItem1
+            // EmployeeToolStripMenuItem1
             // 
-            this.сотрудникиToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EmployeeToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listEmployeesToolStripMenuItem2,
             this.Posts_employeesToolStripMenuItem2,
             this.ListPostsToolStripMenuItem2,
             this.ListUsersToolStripMenuItem,
             this.RoleUsersToolStripMenuItem});
-            this.сотрудникиToolStripMenuItem1.Name = "сотрудникиToolStripMenuItem1";
-            this.сотрудникиToolStripMenuItem1.Size = new System.Drawing.Size(97, 22);
-            this.сотрудникиToolStripMenuItem1.Text = "Сотрудники";
+            this.EmployeeToolStripMenuItem1.Name = "EmployeeToolStripMenuItem1";
+            this.EmployeeToolStripMenuItem1.Size = new System.Drawing.Size(97, 20);
+            this.EmployeeToolStripMenuItem1.Text = "Сотрудники";
             // 
             // listEmployeesToolStripMenuItem2
             // 
@@ -204,7 +205,7 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1041, 1);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1041, 0);
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(1041, 25);
@@ -293,7 +294,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.ToolStripMenuItem ProjectsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ProjectsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ListProjectsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Status_projectsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Projects_roleToolStripMenuItem;
@@ -303,7 +304,7 @@
         private System.Windows.Forms.ToolStripMenuItem Status_taskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TypeTaskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem History_taskToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem EmployeeToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem listEmployeesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem Posts_employeesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem ListPostsToolStripMenuItem2;

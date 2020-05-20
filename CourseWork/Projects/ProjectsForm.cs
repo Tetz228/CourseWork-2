@@ -167,12 +167,12 @@ namespace CourseWork
         {
             ProjectsFormEdit formEdit = new ProjectsFormEdit();
 
-            Program.DataEditProjectId.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[0].Value);
-            Program.DataEditProjectName.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[1].Value);
-            Program.DataEditProjectTarget.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[2].Value);
-            Program.DataEditProjectStart.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[3].Value);
-            Program.DataEditProjectCompletion.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[4].Value);
-            Program.DataEditProjectLeader.Value = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[5].Value);
+            Program.DataProject.Id = Convert.ToInt32(dataGridViewProjects.CurrentRow.Cells[0].Value);
+            Program.DataProject.Name = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[1].Value);
+            Program.DataProject.Target = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[2].Value);
+            Program.DataProject.Start = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[3].Value);
+            Program.DataProject.Completion = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[4].Value);
+            Program.DataProject.Leader = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[5].Value);
 
             formEdit.ShowDialog();
 
@@ -186,12 +186,12 @@ namespace CourseWork
             {
                 DataGridViewRow view = dataGridViewProjects.Rows[e.RowIndex];
 
-                Program.DataEditProjectId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditProjectName.Value = view.Cells[1].Value.ToString();
-                Program.DataEditProjectTarget.Value = view.Cells[2].Value.ToString();
-                Program.DataEditProjectStart.Value = view.Cells[3].Value.ToString();
-                Program.DataEditProjectCompletion.Value = view.Cells[4].Value.ToString();
-                Program.DataEditProjectLeader.Value = view.Cells[5].Value.ToString();
+                Program.DataProject.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataProject.Name = view.Cells[1].Value.ToString();
+                Program.DataProject.Target = view.Cells[2].Value.ToString();
+                Program.DataProject.Start = view.Cells[3].Value.ToString();
+                Program.DataProject.Completion = view.Cells[4].Value.ToString();
+                Program.DataProject.Leader = view.Cells[5].Value.ToString();
 
                 ProjectsFormEdit formEdit = new ProjectsFormEdit();
 

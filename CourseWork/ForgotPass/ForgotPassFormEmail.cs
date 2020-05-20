@@ -88,8 +88,8 @@ namespace CourseWork
 
                 reader.Read();
 
-                Program.DataIdForgotPass.Value = reader.GetValue(0).ToString();
-                Program.DataEmailForgotPass.Value = textBoxEmail.Text.Trim();
+                Program.DataForgotPass.IdUser = Convert.ToInt32(reader.GetValue(0));
+                Program.DataForgotPass.Email = textBoxEmail.Text.Trim();
 
                 connection.CloseConnect();
 

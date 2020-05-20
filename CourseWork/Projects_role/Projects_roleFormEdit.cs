@@ -23,7 +23,7 @@ namespace CourseWork
         // При загрузки формы
         private void Projects_roleFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataEditProjects_roleName.Value;
+            textBoxEdit.Text = Program.DataProjects_role.Name;
         }
 
         // Вызов проверки и сохранение изменений
@@ -49,7 +49,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@project_role_name", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_project_role", Convert.ToInt32(Program.DataEditProjects_roleId.Value));
+            command.Parameters.AddWithValue("@id_project_role", Program.DataProjects_role.Id);
 
             command.ExecuteNonQuery();
 

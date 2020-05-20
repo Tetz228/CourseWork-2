@@ -107,8 +107,8 @@ namespace CourseWork.Posts
         {
             PostsFormEdit formEdit = new PostsFormEdit();
 
-            Program.DataEditPostsId.Value = Convert.ToString(dataGridViewPosts.CurrentRow.Cells[0].Value);
-            Program.DataEditPostsName.Value = Convert.ToString(dataGridViewPosts.CurrentRow.Cells[1].Value);
+            Program.DataPosts.Id = Convert.ToInt32(dataGridViewPosts.CurrentRow.Cells[0].Value);
+            Program.DataPosts.Name = Convert.ToString(dataGridViewPosts.CurrentRow.Cells[1].Value);
 
             formEdit.ShowDialog();
 
@@ -123,8 +123,8 @@ namespace CourseWork.Posts
             {
                 DataGridViewRow view = dataGridViewPosts.Rows[e.RowIndex];
 
-                Program.DataEditPostsId.Value = view.Cells[0].Value.ToString();
-                Program.DataEditPostsName.Value = view.Cells[1].Value.ToString();
+                Program.DataPosts.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataPosts.Name = view.Cells[1].Value.ToString();
 
                 PostsFormEdit formEdit = new PostsFormEdit();
 

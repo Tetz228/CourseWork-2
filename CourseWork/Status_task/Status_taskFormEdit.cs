@@ -23,7 +23,7 @@ namespace CourseWork.Status_task
         // При загрузки формы
         private void Status_taskFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataEditStatus_taskName.Value;
+            textBoxEdit.Text = Program.DataStatus_task.Name;
         }
 
         // Функция редактирования строки
@@ -37,7 +37,7 @@ namespace CourseWork.Status_task
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@status_name_task", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_status_task", Convert.ToInt32(Program.DataEditStatus_taskId.Value));
+            command.Parameters.AddWithValue("@id_status_task", Program.DataStatus_task.Id);
 
             command.ExecuteNonQuery();
 

@@ -28,10 +28,10 @@ namespace CourseWork.Projects_task
 
             SelectRoleComboBox();
 
-            int indexProj = comboBox_fk_project.FindString(Program.DataEditProjects_taskProject.Value);
-            int indexType = comboBox_fk_type_task.FindString(Program.DataEditProjects_taskType_task.Value);
-            int indexEmp = comboBox_fk_employee.FindString(Program.DataEditProjects_taskEmployee.Value);
-            int indexRole = comboBox_fk_project_role.FindString(Program.DataEditProjects_taskProject_role.Value);
+            int indexProj = comboBox_fk_project.FindString(Program.DataProjects_task.Project);
+            int indexType = comboBox_fk_type_task.FindString(Program.DataProjects_task.Type_task);
+            int indexEmp = comboBox_fk_employee.FindString(Program.DataProjects_task.Employee);
+            int indexRole = comboBox_fk_project_role.FindString(Program.DataProjects_task.Project_role);
 
             comboBox_fk_project.SelectedIndex = indexProj;
             comboBox_fk_type_task.SelectedIndex = indexType;
@@ -140,11 +140,11 @@ namespace CourseWork.Projects_task
 
             connection.OpenConnect();
 
-            command.Parameters.AddWithValue("@fk_project", SqlDbType.NVarChar).Value = comboBox_fk_project.SelectedValue;
-            command.Parameters.AddWithValue("@fk_type_task", SqlDbType.Date).Value = comboBox_fk_type_task.SelectedValue;
-            command.Parameters.AddWithValue("@fk_employee", SqlDbType.Date).Value = comboBox_fk_employee.SelectedValue;
-            command.Parameters.AddWithValue("@fk_project_role", SqlDbType.NVarChar).Value = comboBox_fk_project_role.SelectedValue;
-            command.Parameters.AddWithValue("@id_task", SqlDbType.NVarChar).Value = Convert.ToInt32(Program.DataEditProjects_taskId.Value);
+            command.Parameters.AddWithValue("@fk_project", SqlDbType.Int).Value = comboBox_fk_project.SelectedValue;
+            command.Parameters.AddWithValue("@fk_type_task", SqlDbType.Int).Value = comboBox_fk_type_task.SelectedValue;
+            command.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = comboBox_fk_employee.SelectedValue;
+            command.Parameters.AddWithValue("@fk_project_role", SqlDbType.Int).Value = comboBox_fk_project_role.SelectedValue;
+            command.Parameters.AddWithValue("@id_task", SqlDbType.Int).Value = Program.DataProjects_task.Id;
 
             command.ExecuteNonQuery();
 
