@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewProjects = new System.Windows.Forms.DataGridView();
             this.Column_id_project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_project_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,14 +70,14 @@
             this.dataGridViewProjects.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewProjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewProjects.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProjects.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProjects.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_project,
@@ -86,29 +86,29 @@
             this.Column_date_start,
             this.Column_date_completion,
             this.ComboBox_fk_leader});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewProjects.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewProjects.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewProjects.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewProjects.Location = new System.Drawing.Point(0, 63);
             this.dataGridViewProjects.MultiSelect = false;
             this.dataGridViewProjects.Name = "dataGridViewProjects";
             this.dataGridViewProjects.ReadOnly = true;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProjects.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.DimGray;
-            this.dataGridViewProjects.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProjects.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DimGray;
+            this.dataGridViewProjects.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewProjects.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewProjects.TabIndex = 4;
             this.dataGridViewProjects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProjects_CellDoubleClick);
@@ -128,9 +128,9 @@
             // 
             this.Column_project_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_project_name.DataPropertyName = "Name";
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_project_name.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_project_name.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column_project_name.HeaderText = "Название проекта";
             this.Column_project_name.Name = "Column_project_name";
             this.Column_project_name.ReadOnly = true;
@@ -139,10 +139,10 @@
             // 
             this.Column_project_target.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_project_target.DataPropertyName = "Target";
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.NullValue = "Не указана";
-            this.Column_project_target.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.NullValue = "Не указана";
+            this.Column_project_target.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column_project_target.HeaderText = "Цель проекта";
             this.Column_project_target.Name = "Column_project_target";
             this.Column_project_target.ReadOnly = true;
@@ -150,12 +150,12 @@
             // Column_date_start
             // 
             this.Column_date_start.DataPropertyName = "Start";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Verdana", 9.75F);
-            dataGridViewCellStyle13.Format = "d";
-            dataGridViewCellStyle13.NullValue = "Не указана";
-            this.Column_date_start.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = "Не указана";
+            this.Column_date_start.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column_date_start.HeaderText = "Дата начала";
             this.Column_date_start.Name = "Column_date_start";
             this.Column_date_start.ReadOnly = true;
@@ -164,12 +164,12 @@
             // Column_date_completion
             // 
             this.Column_date_completion.DataPropertyName = "Completion";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Verdana", 9.75F);
-            dataGridViewCellStyle14.Format = "d";
-            dataGridViewCellStyle14.NullValue = "Не указана";
-            this.Column_date_completion.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = "Не указана";
+            this.Column_date_completion.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column_date_completion.HeaderText = "Дата завершения";
             this.Column_date_completion.Name = "Column_date_completion";
             this.Column_date_completion.ReadOnly = true;
@@ -179,9 +179,9 @@
             // 
             this.ComboBox_fk_leader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ComboBox_fk_leader.DataPropertyName = "Employee";
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_leader.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_leader.DefaultCellStyle = dataGridViewCellStyle6;
             this.ComboBox_fk_leader.HeaderText = "Руководитель";
             this.ComboBox_fk_leader.Name = "ComboBox_fk_leader";
             this.ComboBox_fk_leader.ReadOnly = true;

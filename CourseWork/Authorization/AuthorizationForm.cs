@@ -7,6 +7,7 @@ using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Security.Cryptography;
 using System.Text;
+using CourseWork.Posts;
 
 namespace CourseWork
 {
@@ -42,7 +43,7 @@ namespace CourseWork
 
             byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.ToString());
 
-            SqlCommand selectLogPass = new SqlCommand("SELECT id_user, " +
+            SqlCommand selectLogPass = new SqlCommand("SELECT id_user, fk_role_user " +
                 "login, " +
                 "password " +
                 "FROM Users " +
@@ -64,6 +65,7 @@ namespace CourseWork
                 reader.Read();
 
                 Program.DataAuth.IdUser = Convert.ToInt32(reader.GetValue(0));
+                Program.DataAuth.Role_user = Convert.ToInt32(reader.GetValue(1));
 
                 main.Left = this.Left;
                 main.Top = this.Top;

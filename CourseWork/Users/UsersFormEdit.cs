@@ -41,7 +41,6 @@ namespace CourseWork.Users
 
             ComboBox_fk_employee.SelectedIndex = indexEmp;
             ComboBox_fk_role_user.SelectedIndex = indexPost;
-
         }
 
         // Заполнение ComboBox`а "Сотрудник"

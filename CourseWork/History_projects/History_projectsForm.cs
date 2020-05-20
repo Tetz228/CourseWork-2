@@ -22,6 +22,9 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
 
             this.dataGridViewHistory_projects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            if (Program.DataAuth.Role_user == 2)
+                MainToolStripMenuItem.Visible = false;
         }
 
         // При загрузки формы
@@ -115,14 +118,18 @@ namespace CourseWork
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewHistory_projects_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Insert)
+            if (Program.DataAuth.Role_user != 2)
             {
-                History_projectsFormAdd formAdd = new History_projectsFormAdd();
+                if (e.KeyCode == Keys.Insert)
+                {
+                    History_projectsFormAdd formAdd = new History_projectsFormAdd();
 
-                formAdd.ShowDialog();
+                    formAdd.ShowDialog();
 
-                SelectDateHistory_projects();
+                    SelectDateHistory_projects();
+                }
             }
+            
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -143,20 +150,23 @@ namespace CourseWork
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewHistory_projects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
+            if (Program.DataAuth.Role_user != 2)
             {
-                DataGridViewRow view = dataGridViewHistory_projects.Rows[e.RowIndex];
+                if (e.RowIndex != -1)
+                {
+                    DataGridViewRow view = dataGridViewHistory_projects.Rows[e.RowIndex];
 
-                Program.DataHistoryProject.Id = Convert.ToInt32(view.Cells[0].Value);
-                Program.DataHistoryProject.Name = view.Cells[1].Value.ToString();
-                Program.DataHistoryProject.Status = view.Cells[2].Value.ToString();
-                Program.DataHistoryProject.Date = view.Cells[3].Value.ToString();
+                    Program.DataHistoryProject.Id = Convert.ToInt32(view.Cells[0].Value);
+                    Program.DataHistoryProject.Name = view.Cells[1].Value.ToString();
+                    Program.DataHistoryProject.Status = view.Cells[2].Value.ToString();
+                    Program.DataHistoryProject.Date = view.Cells[3].Value.ToString();
 
-                History_projectsFormEdit formEdit = new History_projectsFormEdit();
+                    History_projectsFormEdit formEdit = new History_projectsFormEdit();
 
-                formEdit.ShowDialog();
+                    formEdit.ShowDialog();
 
-                SelectDateHistory_projects();
+                    SelectDateHistory_projects();
+                }
             }
         }
 
@@ -172,10 +182,15 @@ namespace CourseWork
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewHistory_projects_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (Program.DataAuth.Role_user != 2)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DeleteRowHistoryProject();
 
-            e.Cancel = true;
+               e.Cancel = true;
+            }
+            else
+                e.Cancel = true;
         }
 
         // При клике на pictureBox скрывать панель

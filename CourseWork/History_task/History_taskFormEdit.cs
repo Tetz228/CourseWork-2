@@ -121,9 +121,9 @@ namespace CourseWork.History_task
             {
                 command.ExecuteNonQuery();
             }
-            catch
+            catch (Exception e)
             {
-                MessageBox.Show("Дата должна быть в диапозоне 01.01.1753 - 31.12.9999.");
+                MessageBox.Show(e.Message);
             }
             finally
             {

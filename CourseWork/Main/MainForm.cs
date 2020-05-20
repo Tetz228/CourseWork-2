@@ -28,11 +28,17 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Posts_employeesForm postsEmployees = new Posts_employeesForm();
+            if (Program.DataAuth.Role_user == 2)
+            {
+                ListUsersToolStripMenuItem.Visible = false;
+                RoleUsersToolStripMenuItem.Visible = false;
+            }
 
-            postsEmployees.MdiParent = this;
-            postsEmployees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            postsEmployees.Show();
+            History_taskForm history_task = new History_taskForm();
+
+            history_task.MdiParent = this;
+            history_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            history_task.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

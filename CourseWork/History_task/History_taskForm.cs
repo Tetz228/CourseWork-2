@@ -22,6 +22,9 @@ namespace CourseWork.History_task
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
 
             this.dataGridViewHistory_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            if (Program.DataAuth.Role_user == 2)
+                MainToolStripMenuItem.Visible = false;
         }
 
         // При загрузки формы
@@ -115,14 +118,17 @@ namespace CourseWork.History_task
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewHistory_task_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Insert)
+            if (Program.DataAuth.Role_user != 2)
             {
-                History_taskFormAdd formAdd = new History_taskFormAdd();
+                if (e.KeyCode == Keys.Insert)
+                {
+                    History_taskFormAdd formAdd = new History_taskFormAdd();
 
-                formAdd.ShowDialog();
+                    formAdd.ShowDialog();
 
-                SelectDateHistory_task();
-            }
+                    SelectDateHistory_task();
+                }
+            }  
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -143,21 +149,24 @@ namespace CourseWork.History_task
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewHistory_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
+            if (Program.DataAuth.Role_user != 2)
             {
-                DataGridViewRow view = dataGridViewHistory_task.Rows[e.RowIndex];
+                if (e.RowIndex != -1)
+                {
+                    DataGridViewRow view = dataGridViewHistory_task.Rows[e.RowIndex];
 
-                Program.DataHistoryTask.Id = Convert.ToInt32(view.Cells[0].Value);
-                Program.DataHistoryTask.Name = view.Cells[1].Value.ToString();
-                Program.DataHistoryTask.Status = view.Cells[2].Value.ToString();
-                Program.DataHistoryTask.Date = view.Cells[3].Value.ToString();
+                    Program.DataHistoryTask.Id = Convert.ToInt32(view.Cells[0].Value);
+                    Program.DataHistoryTask.Name = view.Cells[1].Value.ToString();
+                    Program.DataHistoryTask.Status = view.Cells[2].Value.ToString();
+                    Program.DataHistoryTask.Date = view.Cells[3].Value.ToString();
 
-                History_taskFormEdit formEdit = new History_taskFormEdit();
+                    History_taskFormEdit formEdit = new History_taskFormEdit();
 
-                formEdit.ShowDialog();
+                    formEdit.ShowDialog();
 
-                SelectDateHistory_task();
-            }
+                    SelectDateHistory_task();
+                }
+            }  
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления
@@ -172,10 +181,15 @@ namespace CourseWork.History_task
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewHistory_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowHistoryTask();
+            if (Program.DataAuth.Role_user != 2)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    DeleteRowHistoryTask();
 
-            e.Cancel = true;
+                e.Cancel = true;
+            }
+            else
+                e.Cancel = true;
         }
 
         // При клике на pictureBox скрывать панель
