@@ -48,7 +48,9 @@ namespace CourseWork.Users
         private void SelectEmployeeComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee FROM Employees", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, " +
+                "CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee " +
+                "FROM Employees", connection.GetSqlConnect());
             DataTable EmployeeTableComboBox = new DataTable();
 
             connection.OpenConnect();
@@ -66,7 +68,9 @@ namespace CourseWork.Users
         private void SelectRoleComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_user_role AS Id, user_name_role AS Role FROM Users_roles", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_user_role AS Id, " +
+                "user_name_role AS Role " +
+                "FROM Users_roles", connection.GetSqlConnect());
             DataTable RoleTableComboBox = new DataTable();
 
             connection.OpenConnect();
@@ -101,6 +105,7 @@ namespace CourseWork.Users
             {
                 labelValidPass.Text = "Некорректный пароль. Первым\nсимволом не может быть цифра.\nПароль должен быть минимум с\nодной цифрой, одной заглавной\nи одной строчной буквой.";
                 labelValidPass.Show();
+
                 return;
             }
             else
@@ -113,12 +118,15 @@ namespace CourseWork.Users
                     if (pass != TextBoxPass.Text.Trim())
                     {
                         byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim().ToString());
+
                         pass = HashPassword(passtohash);
+
                         EditRowUser();
                     }
                     else
                     {
                         EditRowUser();
+
                         this.Close();
                     }
                 }
@@ -127,13 +135,17 @@ namespace CourseWork.Users
             if (pass != TextBoxPass.Text.Trim())
             {
                 byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim().ToString());
+
                 pass = HashPassword(passtohash);
+
                 EditRowUser();
+
                 this.Close();
             }
             else
             {
                 EditRowUser();
+
                 this.Close();
             }
         }
@@ -255,7 +267,9 @@ namespace CourseWork.Users
 
             connection.OpenConnect();
 
-            SqlCommand selectLog = new SqlCommand("SELECT login FROM Users WHERE login = @log", connection.GetSqlConnect());
+            SqlCommand selectLog = new SqlCommand("SELECT login " +
+                "FROM Users " +
+                "WHERE login = @log", connection.GetSqlConnect());
             selectLog.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxLog.Text;
 
             adapter.SelectCommand = selectLog;

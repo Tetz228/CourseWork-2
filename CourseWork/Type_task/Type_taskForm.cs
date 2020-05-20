@@ -39,7 +39,8 @@ namespace CourseWork.Type_task
         {
             ConnectionDB connection = new ConnectionDB();
             TypeTable = new DataTable();
-            SqlCommand command = new SqlCommand("SELECT * FROM Type_task", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("SELECT * " +
+                "FROM Type_task", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
             connection.OpenConnect();

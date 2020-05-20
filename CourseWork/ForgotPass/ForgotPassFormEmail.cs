@@ -75,7 +75,7 @@ namespace CourseWork
                 "Email FROM Employees " +
                 "WHERE Email = @email", connection.GetSqlConnect());
 
-            selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = textBoxEmail.Text.Trim();
+            selectEmail.Parameters.Add("@email", SqlDbType.VarChar).Value = textBoxEmail.Text.Trim();
 
             connection.OpenConnect();
 

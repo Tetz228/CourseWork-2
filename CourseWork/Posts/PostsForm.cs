@@ -37,7 +37,8 @@ namespace CourseWork.Posts
         {
             ConnectionDB connection = new ConnectionDB();
             
-            SqlCommand command = new SqlCommand("SELECT * FROM Posts", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("SELECT * " +
+                "FROM Posts", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             PostsTable = new DataTable();
 

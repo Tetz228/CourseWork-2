@@ -37,7 +37,8 @@ namespace CourseWork
         {
             ConnectionDB connection = new ConnectionDB();
             StatusTable = new DataTable();
-            SqlCommand command = new SqlCommand("SELECT * FROM Status_projects", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("SELECT * " +
+                "FROM Status_projects", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
             connection.OpenConnect();

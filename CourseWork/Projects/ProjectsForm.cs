@@ -61,10 +61,6 @@ namespace CourseWork
                 SearchProject();
             if (radioButtonTarget.Checked)
                 SearchTarget();
-            //if (radioButtonStart.Checked)
-            //    SearchStart();
-            //if (radioButtonCompletion.Checked)
-            //    SearchCompletion();
             if (radioButtonLeader.Checked)
                 SearchLeader();
         }
@@ -88,27 +84,6 @@ namespace CourseWork
 
             dataGridViewProjects.DataSource = view.ToTable();
         }
-
-        /*// Фильтр: Дата начала
-        private void SearchStart()
-        {
-            DataView view = ProjectTable.DefaultView;
-
-            view.RowFilter = string.Format("Start like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewProjects.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Дата завершения
-        private void SearchCompletion()
-        {
-            DataView view = ProjectTable.DefaultView;
-
-            view.RowFilter = string.Format("Completion like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewProjects.DataSource = view.ToTable();
-        }
-        */
 
         // Фильтр: Руководитель
         private void SearchLeader()

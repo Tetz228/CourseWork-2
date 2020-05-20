@@ -49,7 +49,9 @@ namespace CourseWork
         private void SelectEmployeeComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee FROM Employees", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_employee AS Id, " +
+                "CONCAT(employee_lname, ' ', LEFT(employee_fname,1), '. ', IIF(employee_mname != 'Не указано', LEFT(employee_mname,1) + '. ', '- '), ' ', Email) AS Employee " +
+                "FROM Employees", connection.GetSqlConnect());
             DataTable EmployeeTableComboBox = new DataTable();
 
             connection.OpenConnect();
@@ -58,7 +60,6 @@ namespace CourseWork
 
             ComboBox_fk_employee.ValueMember = "Id";
             ComboBox_fk_employee.DisplayMember = "Employee";
-
 
             DataRow row = EmployeeTableComboBox.NewRow();
             row[0] = 0;
@@ -74,7 +75,9 @@ namespace CourseWork
         private void SelectPostsComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_post AS Id, post_name AS Post FROM Posts", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_post AS Id, " +
+                "post_name AS Post " +
+                "FROM Posts", connection.GetSqlConnect());
             DataTable PostsTableComboBox = new DataTable();
 
             connection.OpenConnect();

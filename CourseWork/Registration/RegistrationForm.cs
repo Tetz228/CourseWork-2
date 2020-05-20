@@ -65,9 +65,12 @@ namespace CourseWork
                 Program.DataRegist.Email = TextBoxEmail.Text;
 
                 ConfirmationMailForm mailForm = new ConfirmationMailForm();
+
                 mailForm.Left = this.Left;
                 mailForm.Top = this.Top;
+
                 this.Hide();
+
                 mailForm.ShowDialog();
 
                 if (Program.DataRegist.СorrectCode == "Сorrect code")
@@ -189,7 +192,9 @@ namespace CourseWork
 
             connection.OpenConnect();
 
-            SqlCommand selectLog = new SqlCommand("SELECT login FROM Users WHERE login = @log", connection.GetSqlConnect());
+            SqlCommand selectLog = new SqlCommand("SELECT login " +
+                "FROM Users " +
+                "WHERE login = @log", connection.GetSqlConnect());
             selectLog.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text.Trim();
 
             adapter.SelectCommand = selectLog;
@@ -237,7 +242,9 @@ namespace CourseWork
 
             connection.OpenConnect();
 
-            SqlCommand selectLog = new SqlCommand("SELECT Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
+            SqlCommand selectLog = new SqlCommand("SELECT Email " +
+                "FROM Employees " +
+                "WHERE Email = @email", connection.GetSqlConnect());
             selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = TextBoxEmail.Text.Trim();
 
             adapter.SelectCommand = selectLog;
@@ -294,7 +301,9 @@ namespace CourseWork
             {
                 byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxRegPass.Text.ToString());
 
-                SqlCommand selectIdEmp = new SqlCommand("SELECT id_employee FROM Employees WHERE @mail = Email", connection.GetSqlConnect());
+                SqlCommand selectIdEmp = new SqlCommand("SELECT id_employee " +
+                    "FROM Employees " +
+                    "WHERE @mail = Email", connection.GetSqlConnect());
 
                 selectIdEmp.Parameters.AddWithValue("@mail", SqlDbType.VarChar).Value = TextBoxEmail.Text.Trim();
               

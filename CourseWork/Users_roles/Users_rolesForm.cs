@@ -36,7 +36,8 @@ namespace CourseWork.Users_roles
         {
             ConnectionDB connection = new ConnectionDB();
             PostsTable = new DataTable();
-            SqlCommand command = new SqlCommand("SELECT * FROM Users_roles", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("SELECT * " +
+                "FROM Users_roles", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
             connection.OpenConnect();

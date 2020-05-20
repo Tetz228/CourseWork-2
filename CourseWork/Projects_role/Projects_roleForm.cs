@@ -37,7 +37,8 @@ namespace CourseWork
         {
             ConnectionDB connection = new ConnectionDB();
             table = new DataTable();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Projects_role", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * " +
+                "FROM Projects_role", connection.GetSqlConnect());
 
             connection.OpenConnect();
 

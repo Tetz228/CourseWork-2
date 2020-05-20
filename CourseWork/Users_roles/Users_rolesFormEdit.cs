@@ -56,7 +56,7 @@ namespace CourseWork.Users_roles
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@user_name_role", SqlDbType.NVarChar).Value = textBoxNameRole.Text.Trim();
-            command.Parameters.AddWithValue("@id_user_role", SqlDbType.NVarChar).Value = Program.DataUsers_roles.Id;
+            command.Parameters.AddWithValue("@id_user_role", SqlDbType.Int).Value = Program.DataUsers_roles.Id;
 
             command.ExecuteNonQuery();
 

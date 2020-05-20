@@ -42,7 +42,11 @@ namespace CourseWork
 
             byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.ToString());
 
-            SqlCommand selectLogPass = new SqlCommand("SELECT id_user, login, password FROM Users WHERE login = @log AND password = @pass", connection.GetSqlConnect());
+            SqlCommand selectLogPass = new SqlCommand("SELECT id_user, " +
+                "login, " +
+                "password " +
+                "FROM Users " +
+                "WHERE login = @log AND password = @pass", connection.GetSqlConnect());
 
             selectLogPass.Parameters.Add("@log", SqlDbType.VarChar).Value = TextBoxLog.Text;
             selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);

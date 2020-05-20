@@ -37,7 +37,8 @@ namespace CourseWork.Status_task
         {
             ConnectionDB connection = new ConnectionDB();
             StatusTable = new DataTable();
-            SqlCommand command = new SqlCommand("SELECT * FROM Status_task", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("SELECT * " +
+                "FROM Status_task", connection.GetSqlConnect());
             SqlDataAdapter adapter = new SqlDataAdapter(command);
 
             connection.OpenConnect();
