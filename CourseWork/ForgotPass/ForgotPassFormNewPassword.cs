@@ -153,12 +153,6 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
             return true;
         }
 
-        // Скрывать / показывать пароль
-        private void pictureBoxShowHidePassword_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //Скрыввать label`ы при вводе в TextBox`ы
         private void TextBoxNewPass_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -171,7 +165,7 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
         }
 
         // Скрывать / показывать пароль
-        private void pictureBoxShowHidePassword_Click_1(object sender, EventArgs e)
+        private void pictureBoxShowHidePassword_Click(object sender, EventArgs e)
         {
             if (TextBoxNewPass.UseSystemPasswordChar == true)
             {

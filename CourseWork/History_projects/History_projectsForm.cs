@@ -186,5 +186,16 @@ namespace CourseWork
             else
                 panelFilters.Visible = false;
         }
+
+        // При клике на переключатели скрывать панель
+        private void radioButtonProject_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonStatus_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
     }
 }

@@ -38,7 +38,8 @@ namespace CourseWork
         private void SelectDateEmployees()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * FROM Employees", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * " +
+                "FROM Employees", connection.GetSqlConnect());
             EmployeesTable = new DataTable();
 
             connection.OpenConnect();
@@ -206,6 +207,27 @@ namespace CourseWork
                 panelFilters.Visible = true;
             else
                 panelFilters.Visible = false;
+        }
+
+        // При клике на переключатели скрывать панель
+        private void radioButtonLname_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonFname_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonMname_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonEmail_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
         }
     }
 }

@@ -54,7 +54,9 @@ namespace CourseWork.Projects_task
         private void SelectProjectComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, project_name AS Project FROM Projects", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, " +
+                "project_name AS Project " +
+                "FROM Projects", connection.GetSqlConnect());
             DataTable Projects_taskTableComboBox = new DataTable();
 
             connection.OpenConnect();

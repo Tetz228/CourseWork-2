@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewEmployees = new System.Windows.Forms.DataGridView();
             this.Column_id_employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_employee_lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,12 +48,12 @@
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelFilters = new System.Windows.Forms.Panel();
+            this.radioButtonEmail = new MaterialSkin.Controls.MaterialRadioButton();
+            this.radioButtonMname = new MaterialSkin.Controls.MaterialRadioButton();
             this.radioButtonFname = new MaterialSkin.Controls.MaterialRadioButton();
             this.radioButtonLname = new MaterialSkin.Controls.MaterialRadioButton();
             this.pictureBoxFilters = new System.Windows.Forms.PictureBox();
             this.textBoxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.radioButtonMname = new MaterialSkin.Controls.MaterialRadioButton();
-            this.radioButtonEmail = new MaterialSkin.Controls.MaterialRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
             this.menuStripEmployees.SuspendLayout();
             this.panelFilters.SuspendLayout();
@@ -66,14 +66,14 @@
             this.dataGridViewEmployees.BackgroundColor = System.Drawing.SystemColors.GrayText;
             this.dataGridViewEmployees.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewEmployees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_employee,
@@ -81,29 +81,29 @@
             this.Column_employee_fname,
             this.Column_employee_mname,
             this.Column_Email});
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewEmployees.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewEmployees.DefaultCellStyle = dataGridViewCellStyle30;
             this.dataGridViewEmployees.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewEmployees.Location = new System.Drawing.Point(0, 63);
             this.dataGridViewEmployees.MultiSelect = false;
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.DimGray;
-            this.dataGridViewEmployees.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployees.RowHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.DimGray;
+            this.dataGridViewEmployees.RowsDefaultCellStyle = dataGridViewCellStyle32;
             this.dataGridViewEmployees.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewEmployees.TabIndex = 5;
             this.dataGridViewEmployees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployees_CellDoubleClick);
@@ -123,10 +123,10 @@
             // 
             this.Column_employee_lname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_employee_lname.DataPropertyName = "employee_lname";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_employee_lname.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_employee_lname.DefaultCellStyle = dataGridViewCellStyle26;
             this.Column_employee_lname.HeaderText = "Фамилия";
             this.Column_employee_lname.Name = "Column_employee_lname";
             this.Column_employee_lname.ReadOnly = true;
@@ -135,10 +135,10 @@
             // 
             this.Column_employee_fname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_employee_fname.DataPropertyName = "employee_fname";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Column_employee_fname.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Column_employee_fname.DefaultCellStyle = dataGridViewCellStyle27;
             this.Column_employee_fname.HeaderText = "Имя";
             this.Column_employee_fname.Name = "Column_employee_fname";
             this.Column_employee_fname.ReadOnly = true;
@@ -147,12 +147,12 @@
             // 
             this.Column_employee_mname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_employee_mname.DataPropertyName = "employee_mname";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Verdana", 9.75F);
-            dataGridViewCellStyle20.Format = "d";
-            dataGridViewCellStyle20.NullValue = "Не указано";
-            this.Column_employee_mname.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle28.Format = "d";
+            dataGridViewCellStyle28.NullValue = "Не указано";
+            this.Column_employee_mname.DefaultCellStyle = dataGridViewCellStyle28;
             this.Column_employee_mname.HeaderText = "Отчество";
             this.Column_employee_mname.Name = "Column_employee_mname";
             this.Column_employee_mname.ReadOnly = true;
@@ -161,11 +161,11 @@
             // 
             this.Column_Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_Email.DataPropertyName = "Email";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Verdana", 9.75F);
-            dataGridViewCellStyle21.Format = "d";
-            this.Column_Email.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle29.Format = "d";
+            this.Column_Email.DefaultCellStyle = dataGridViewCellStyle29;
             this.Column_Email.HeaderText = "Email";
             this.Column_Email.Name = "Column_Email";
             this.Column_Email.ReadOnly = true;
@@ -224,6 +224,42 @@
             this.panelFilters.TabIndex = 19;
             this.panelFilters.Visible = false;
             // 
+            // radioButtonEmail
+            // 
+            this.radioButtonEmail.AutoSize = true;
+            this.radioButtonEmail.Depth = 0;
+            this.radioButtonEmail.Font = new System.Drawing.Font("Roboto", 10F);
+            this.radioButtonEmail.Location = new System.Drawing.Point(0, 91);
+            this.radioButtonEmail.Margin = new System.Windows.Forms.Padding(0);
+            this.radioButtonEmail.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.radioButtonEmail.MouseState = MaterialSkin.MouseState.HOVER;
+            this.radioButtonEmail.Name = "radioButtonEmail";
+            this.radioButtonEmail.Ripple = true;
+            this.radioButtonEmail.Size = new System.Drawing.Size(63, 30);
+            this.radioButtonEmail.TabIndex = 20;
+            this.radioButtonEmail.TabStop = true;
+            this.radioButtonEmail.Text = "Email";
+            this.radioButtonEmail.UseVisualStyleBackColor = true;
+            this.radioButtonEmail.Click += new System.EventHandler(this.radioButtonEmail_Click);
+            // 
+            // radioButtonMname
+            // 
+            this.radioButtonMname.AutoSize = true;
+            this.radioButtonMname.Depth = 0;
+            this.radioButtonMname.Font = new System.Drawing.Font("Roboto", 10F);
+            this.radioButtonMname.Location = new System.Drawing.Point(0, 60);
+            this.radioButtonMname.Margin = new System.Windows.Forms.Padding(0);
+            this.radioButtonMname.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.radioButtonMname.MouseState = MaterialSkin.MouseState.HOVER;
+            this.radioButtonMname.Name = "radioButtonMname";
+            this.radioButtonMname.Ripple = true;
+            this.radioButtonMname.Size = new System.Drawing.Size(90, 30);
+            this.radioButtonMname.TabIndex = 19;
+            this.radioButtonMname.TabStop = true;
+            this.radioButtonMname.Text = "Отчество";
+            this.radioButtonMname.UseVisualStyleBackColor = true;
+            this.radioButtonMname.Click += new System.EventHandler(this.radioButtonMname_Click);
+            // 
             // radioButtonFname
             // 
             this.radioButtonFname.AutoSize = true;
@@ -240,6 +276,7 @@
             this.radioButtonFname.TabStop = true;
             this.radioButtonFname.Text = "Имя";
             this.radioButtonFname.UseVisualStyleBackColor = true;
+            this.radioButtonFname.Click += new System.EventHandler(this.radioButtonFname_Click);
             // 
             // radioButtonLname
             // 
@@ -257,6 +294,7 @@
             this.radioButtonLname.TabStop = true;
             this.radioButtonLname.Text = "Фамилия";
             this.radioButtonLname.UseVisualStyleBackColor = true;
+            this.radioButtonLname.Click += new System.EventHandler(this.radioButtonLname_Click);
             // 
             // pictureBoxFilters
             // 
@@ -286,40 +324,6 @@
             this.textBoxSearch.TabStop = false;
             this.textBoxSearch.UseSystemPasswordChar = false;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
-            // 
-            // radioButtonMname
-            // 
-            this.radioButtonMname.AutoSize = true;
-            this.radioButtonMname.Depth = 0;
-            this.radioButtonMname.Font = new System.Drawing.Font("Roboto", 10F);
-            this.radioButtonMname.Location = new System.Drawing.Point(0, 60);
-            this.radioButtonMname.Margin = new System.Windows.Forms.Padding(0);
-            this.radioButtonMname.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.radioButtonMname.MouseState = MaterialSkin.MouseState.HOVER;
-            this.radioButtonMname.Name = "radioButtonMname";
-            this.radioButtonMname.Ripple = true;
-            this.radioButtonMname.Size = new System.Drawing.Size(90, 30);
-            this.radioButtonMname.TabIndex = 19;
-            this.radioButtonMname.TabStop = true;
-            this.radioButtonMname.Text = "Отчество";
-            this.radioButtonMname.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonEmail
-            // 
-            this.radioButtonEmail.AutoSize = true;
-            this.radioButtonEmail.Depth = 0;
-            this.radioButtonEmail.Font = new System.Drawing.Font("Roboto", 10F);
-            this.radioButtonEmail.Location = new System.Drawing.Point(0, 91);
-            this.radioButtonEmail.Margin = new System.Windows.Forms.Padding(0);
-            this.radioButtonEmail.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.radioButtonEmail.MouseState = MaterialSkin.MouseState.HOVER;
-            this.radioButtonEmail.Name = "radioButtonEmail";
-            this.radioButtonEmail.Ripple = true;
-            this.radioButtonEmail.Size = new System.Drawing.Size(63, 30);
-            this.radioButtonEmail.TabIndex = 20;
-            this.radioButtonEmail.TabStop = true;
-            this.radioButtonEmail.Text = "Email";
-            this.radioButtonEmail.UseVisualStyleBackColor = true;
             // 
             // EmployeesForm
             // 

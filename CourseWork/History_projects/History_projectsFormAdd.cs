@@ -49,7 +49,9 @@ namespace CourseWork
         private void SelectStatusComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_status_project AS Id, status_name_project AS Status FROM Status_projects", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_status_project AS Id," +
+                "status_name_project AS Status " +
+                "FROM Status_projects", connection.GetSqlConnect());
             DataTable HistoryTableComboBox = new DataTable();
 
             connection.OpenConnect();
@@ -73,7 +75,9 @@ namespace CourseWork
         private void SelectProjectComboBox()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id, project_name AS Project FROM Projects", connection.GetSqlConnect());
+            SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT id_project AS Id," +
+                "project_name AS Project " +
+                "FROM Projects", connection.GetSqlConnect());
             DataTable HistoryTableComboBox = new DataTable();
 
             connection.OpenConnect();

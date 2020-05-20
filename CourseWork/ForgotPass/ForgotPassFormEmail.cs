@@ -71,7 +71,9 @@ namespace CourseWork
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
-            SqlCommand selectEmail = new SqlCommand("SELECT id_employee, Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
+            SqlCommand selectEmail = new SqlCommand("SELECT id_employee, " +
+                "Email FROM Employees " +
+                "WHERE Email = @email", connection.GetSqlConnect());
 
             selectEmail.Parameters.Add("@email", SqlDbType.NVarChar).Value = textBoxEmail.Text.Trim();
 

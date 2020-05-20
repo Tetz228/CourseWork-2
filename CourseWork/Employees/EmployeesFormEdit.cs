@@ -190,7 +190,9 @@ namespace CourseWork
 
             connection.OpenConnect();
 
-            SqlCommand selectLog = new SqlCommand("SELECT Email FROM Employees WHERE Email = @email", connection.GetSqlConnect());
+            SqlCommand selectLog = new SqlCommand("SELECT Email " +
+                "FROM Employees " +
+                "WHERE Email = @email", connection.GetSqlConnect());
             selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = textBoxEmail.Text.Trim();
 
             adapter.SelectCommand = selectLog;
