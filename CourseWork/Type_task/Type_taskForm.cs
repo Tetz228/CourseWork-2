@@ -22,6 +22,9 @@ namespace CourseWork.Type_task
             material.AddFormToManage(this);
             material.Theme = MaterialSkinManager.Themes.DARK;
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
+
+            if (Program.DataAuth.Role_user == 2)
+                MainToolStripMenuItem.Visible = false;
         }
 
         // При загрузки формы
@@ -113,14 +116,17 @@ namespace CourseWork.Type_task
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewType_task_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Insert)
+            if (Program.DataAuth.Role_user != 2)
             {
-                Type_taskFormAdd formAdd = new Type_taskFormAdd();
+                if (e.KeyCode == Keys.Insert)
+                {
+                    Type_taskFormAdd formAdd = new Type_taskFormAdd();
 
-                formAdd.ShowDialog();
+                    formAdd.ShowDialog();
 
-                SelectDateType_task();
-            }
+                    SelectDateType_task();
+                }
+            } 
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -140,21 +146,24 @@ namespace CourseWork.Type_task
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewType_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Если не выбрана строка, содержащие заголовки
-            if (e.RowIndex != -1)
+            if (Program.DataAuth.Role_user != 2)
             {
-                DataGridViewRow view = dataGridViewType_task.Rows[e.RowIndex];
+                //Если не выбрана строка, содержащие заголовки
+                if (e.RowIndex != -1)
+                {
+                    DataGridViewRow view = dataGridViewType_task.Rows[e.RowIndex];
 
-                Program.DataType_task.Id = Convert.ToInt32(view.Cells[0].Value);
-                Program.DataType_task.Name = view.Cells[1].Value.ToString();
-                Program.DataType_task.Description = view.Cells[2].Value.ToString();
+                    Program.DataType_task.Id = Convert.ToInt32(view.Cells[0].Value);
+                    Program.DataType_task.Name = view.Cells[1].Value.ToString();
+                    Program.DataType_task.Description = view.Cells[2].Value.ToString();
 
-                Type_taskFormEdit formEdit = new Type_taskFormEdit();
+                    Type_taskFormEdit formEdit = new Type_taskFormEdit();
 
-                formEdit.ShowDialog();
+                    formEdit.ShowDialog();
 
-                SelectDateType_task();
-            }
+                    SelectDateType_task();
+                }
+            }            
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления
@@ -169,10 +178,14 @@ namespace CourseWork.Type_task
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewType_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowType_task();
-
-            e.Cancel = true;
+            if (Program.DataAuth.Role_user != 2)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    DeleteRowType_task();
+                e.Cancel = true;
+            }
+            else
+                e.Cancel = true;
         }
 
         // При клике на pictureBox скрывать панель

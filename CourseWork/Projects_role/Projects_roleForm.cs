@@ -22,6 +22,9 @@ namespace CourseWork
             material.AddFormToManage(this);
             material.Theme = MaterialSkinManager.Themes.DARK;
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
+
+            if (Program.DataAuth.Role_user == 2)
+                MainToolStripMenuItem.Visible = false;
         }
 
         // При загрузки формы
@@ -91,14 +94,17 @@ namespace CourseWork
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void Projects_roleForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Insert)
+            if (Program.DataAuth.Role_user != 2)
             {
-                Projects_roleFormAdd formAdd = new Projects_roleFormAdd();
+                if (e.KeyCode == Keys.Insert)
+                {
+                    Projects_roleFormAdd formAdd = new Projects_roleFormAdd();
 
-                formAdd.ShowDialog();
+                    formAdd.ShowDialog();
 
-                SelectDateProjects_role();
-            }
+                    SelectDateProjects_role();
+                }
+            }           
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -117,20 +123,23 @@ namespace CourseWork
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewProjects_role_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Если не выбрана строка, содержащие заголовки
-            if (e.RowIndex != -1)
+            if (Program.DataAuth.Role_user != 2)
             {
-                DataGridViewRow view = dataGridViewProjects_role.Rows[e.RowIndex];
+                //Если не выбрана строка, содержащие заголовки
+                if (e.RowIndex != -1)
+                {
+                    DataGridViewRow view = dataGridViewProjects_role.Rows[e.RowIndex];
 
-                Program.DataProjects_role.Id = Convert.ToInt32(view.Cells[0].Value);
-                Program.DataProjects_role.Name = view.Cells[1].Value.ToString();
+                    Program.DataProjects_role.Id = Convert.ToInt32(view.Cells[0].Value);
+                    Program.DataProjects_role.Name = view.Cells[1].Value.ToString();
 
-                Projects_roleFormEdit formEdit = new Projects_roleFormEdit();
+                    Projects_roleFormEdit formEdit = new Projects_roleFormEdit();
 
-                formEdit.ShowDialog();
+                    formEdit.ShowDialog();
 
-                SelectDateProjects_role();
-            }
+                    SelectDateProjects_role();
+                }
+            }     
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления
@@ -145,10 +154,15 @@ namespace CourseWork
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewProjects_role_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowProjects_role();
+            if (Program.DataAuth.Role_user != 2)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    DeleteRowProjects_role();
            
-            e.Cancel = true;
+                e.Cancel = true;
+            }
+            else
+                e.Cancel = true;
         }
     }
 }

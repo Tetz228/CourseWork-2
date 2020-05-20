@@ -22,6 +22,9 @@ namespace CourseWork
             material.AddFormToManage(this);
             material.Theme = MaterialSkinManager.Themes.DARK;
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
+
+            if (Program.DataAuth.Role_user == 2)
+                MainToolStripMenuItem.Visible = false;
         }
 
         // При загрузки формы
@@ -91,14 +94,17 @@ namespace CourseWork
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewStatus_projects_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Insert)
+            if (Program.DataAuth.Role_user != 2)
             {
-                Status_projectsFormAdd formAdd = new Status_projectsFormAdd();
+                if (e.KeyCode == Keys.Insert)
+                {
+                    Status_projectsFormAdd formAdd = new Status_projectsFormAdd();
 
-                formAdd.ShowDialog();
+                    formAdd.ShowDialog();
 
-                SelectDateStatusProject();
-            }
+                    SelectDateStatusProject();
+                }
+            }          
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -117,20 +123,23 @@ namespace CourseWork
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewStatus_projects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Если не выбрана строка, содержащие заголовки
-            if (e.RowIndex != -1)
+            if (Program.DataAuth.Role_user != 2)
             {
-                DataGridViewRow view = dataGridViewStatus_projects.Rows[e.RowIndex];
+                //Если не выбрана строка, содержащие заголовки
+                if (e.RowIndex != -1)
+                {
+                    DataGridViewRow view = dataGridViewStatus_projects.Rows[e.RowIndex];
 
-                Program.DataStatus_project.Id = Convert.ToInt32(view.Cells[0].Value);
-                Program.DataStatus_project.Name = view.Cells[1].Value.ToString();
+                    Program.DataStatus_project.Id = Convert.ToInt32(view.Cells[0].Value);
+                    Program.DataStatus_project.Name = view.Cells[1].Value.ToString();
 
-                Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
+                    Status_projectsFormEdit formEdit = new Status_projectsFormEdit();
 
-                formEdit.ShowDialog();
+                    formEdit.ShowDialog();
 
-                SelectDateStatusProject();
-            }
+                    SelectDateStatusProject();
+                }
+            }        
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления
@@ -145,10 +154,15 @@ namespace CourseWork
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewStatus_projects_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowStatusProject();
+            if (Program.DataAuth.Role_user != 2)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    DeleteRowStatusProject();
            
-            e.Cancel = true;
+                e.Cancel = true;
+            }
+            else
+                e.Cancel = true;
         }
     }
 }

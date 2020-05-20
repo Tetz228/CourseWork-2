@@ -22,6 +22,9 @@ namespace CourseWork.Projects_task
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
 
             this.dataGridViewProjects_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            if (Program.DataAuth.Role_user == 2)
+                MainToolStripMenuItem.Visible = false;
         }
 
         private void Projects_taskForm_Load(object sender, EventArgs e)
@@ -134,13 +137,16 @@ namespace CourseWork.Projects_task
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewProjects_task_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Insert)
+            if (Program.DataAuth.Role_user != 2)
             {
-                Projects_taskFormAdd formAdd = new Projects_taskFormAdd();
+                if (e.KeyCode == Keys.Insert)
+                {
+                    Projects_taskFormAdd formAdd = new Projects_taskFormAdd();
 
-                formAdd.ShowDialog();
+                    formAdd.ShowDialog();
 
-                SelectDateProject_task();
+                    SelectDateProject_task();
+                }
             }
         }
 
@@ -163,24 +169,27 @@ namespace CourseWork.Projects_task
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewProjects_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
+            if (Program.DataAuth.Role_user != 2)
             {
-                DataGridViewRow view = dataGridViewProjects_task.Rows[e.RowIndex];
+                if (e.RowIndex != -1)
+                {
+                    DataGridViewRow view = dataGridViewProjects_task.Rows[e.RowIndex];
 
-                Program.DataProjects_task.Id = Convert.ToInt32(view.Cells[0].Value);
-                Program.DataProjects_task.Project = view.Cells[1].Value.ToString();
-                Program.DataProjects_task.Type_task = view.Cells[2].Value.ToString();
-                Program.DataProjects_task.Employee = view.Cells[3].Value.ToString();
-                Program.DataProjects_task.Project_role = view.Cells[4].Value.ToString();
+                    Program.DataProjects_task.Id = Convert.ToInt32(view.Cells[0].Value);
+                    Program.DataProjects_task.Project = view.Cells[1].Value.ToString();
+                    Program.DataProjects_task.Type_task = view.Cells[2].Value.ToString();
+                    Program.DataProjects_task.Employee = view.Cells[3].Value.ToString();
+                    Program.DataProjects_task.Project_role = view.Cells[4].Value.ToString();
 
-                Projects_taskFormEdit formEdit = new Projects_taskFormEdit();
+                    Projects_taskFormEdit formEdit = new Projects_taskFormEdit();
 
-                formEdit.ShowDialog();
+                    formEdit.ShowDialog();
 
-                SelectDateProject_task();
+                    SelectDateProject_task();
+                }
             }
         }
-
+            
         // При клике на "Правка" -> "Удалить" вызывается функция удаления
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -193,10 +202,15 @@ namespace CourseWork.Projects_task
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewProjects_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowProject();
+            if (Program.DataAuth.Role_user != 2)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    DeleteRowProject();
 
-            e.Cancel = true;
+                e.Cancel = true;
+            }
+            else 
+                e.Cancel = true;
         }
 
         // При клике на pictureBox скрывать / показывать панель

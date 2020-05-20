@@ -22,6 +22,9 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
 
             this.dataGridViewProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            if (Program.DataAuth.Role_user == 2)
+                MainToolStripMenuItem.Visible = false;
         }
 
         // При загрузки формы
@@ -127,14 +130,18 @@ namespace CourseWork
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewProjects_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Insert)
+            if (Program.DataAuth.Role_user != 2)
             {
-                ProjectsFormAdd formAdd = new ProjectsFormAdd();
+                if (e.KeyCode == Keys.Insert)
+                {
+                    ProjectsFormAdd formAdd = new ProjectsFormAdd();
 
-                formAdd.ShowDialog();
+                    formAdd.ShowDialog();
 
-                SelectDateProject();
+                    SelectDateProject();
+                }
             }
+            
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -157,23 +164,27 @@ namespace CourseWork
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewProjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
+            if (Program.DataAuth.Role_user != 2)
             {
-                DataGridViewRow view = dataGridViewProjects.Rows[e.RowIndex];
+                if (e.RowIndex != -1)
+                {
+                    DataGridViewRow view = dataGridViewProjects.Rows[e.RowIndex];
 
-                Program.DataProject.Id = Convert.ToInt32(view.Cells[0].Value);
-                Program.DataProject.Name = view.Cells[1].Value.ToString();
-                Program.DataProject.Target = view.Cells[2].Value.ToString();
-                Program.DataProject.Start = view.Cells[3].Value.ToString();
-                Program.DataProject.Completion = view.Cells[4].Value.ToString();
-                Program.DataProject.Leader = view.Cells[5].Value.ToString();
+                    Program.DataProject.Id = Convert.ToInt32(view.Cells[0].Value);
+                    Program.DataProject.Name = view.Cells[1].Value.ToString();
+                    Program.DataProject.Target = view.Cells[2].Value.ToString();
+                    Program.DataProject.Start = view.Cells[3].Value.ToString();
+                    Program.DataProject.Completion = view.Cells[4].Value.ToString();
+                    Program.DataProject.Leader = view.Cells[5].Value.ToString();
 
-                ProjectsFormEdit formEdit = new ProjectsFormEdit();
+                    ProjectsFormEdit formEdit = new ProjectsFormEdit();
 
-                formEdit.ShowDialog();
+                    formEdit.ShowDialog();
 
-                SelectDateProject();
+                    SelectDateProject();
+                }
             }
+            
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления
@@ -188,10 +199,15 @@ namespace CourseWork
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewProjects_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                DeleteRowProject();
+            if (Program.DataAuth.Role_user != 2)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    DeleteRowProject();
 
-           e.Cancel = true;
+                e.Cancel = true;
+            }
+            else
+                e.Cancel = true;
         }
 
         // При клике на pictureBox скрывать панель
