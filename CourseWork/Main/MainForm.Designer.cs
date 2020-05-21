@@ -52,6 +52,7 @@
             this.должностиСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокДолжностейToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.списокПользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MyTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -117,6 +118,7 @@
             // TaskToolStripMenuItem
             // 
             this.TaskToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MyTaskToolStripMenuItem,
             this.ListTaskToolStripMenuItem,
             this.Status_taskToolStripMenuItem,
             this.TypeTaskToolStripMenuItem,
@@ -128,28 +130,28 @@
             // ListTaskToolStripMenuItem
             // 
             this.ListTaskToolStripMenuItem.Name = "ListTaskToolStripMenuItem";
-            this.ListTaskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.ListTaskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ListTaskToolStripMenuItem.Text = "Список задач";
             this.ListTaskToolStripMenuItem.Click += new System.EventHandler(this.ListTaskToolStripMenuItem_Click);
             // 
             // Status_taskToolStripMenuItem
             // 
             this.Status_taskToolStripMenuItem.Name = "Status_taskToolStripMenuItem";
-            this.Status_taskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.Status_taskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.Status_taskToolStripMenuItem.Text = "Статусы задач";
             this.Status_taskToolStripMenuItem.Click += new System.EventHandler(this.Status_taskToolStripMenuItem_Click);
             // 
             // TypeTaskToolStripMenuItem
             // 
             this.TypeTaskToolStripMenuItem.Name = "TypeTaskToolStripMenuItem";
-            this.TypeTaskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.TypeTaskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.TypeTaskToolStripMenuItem.Text = "Типы задач";
             this.TypeTaskToolStripMenuItem.Click += new System.EventHandler(this.TypeTaskToolStripMenuItem_Click);
             // 
             // History_taskToolStripMenuItem
             // 
             this.History_taskToolStripMenuItem.Name = "History_taskToolStripMenuItem";
-            this.History_taskToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.History_taskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.History_taskToolStripMenuItem.Text = "История задач";
             this.History_taskToolStripMenuItem.Click += new System.EventHandler(this.History_taskToolStripMenuItem_Click);
             // 
@@ -262,6 +264,13 @@
             this.списокПользователиToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.списокПользователиToolStripMenuItem.Text = "Список пользователей";
             // 
+            // MyTaskToolStripMenuItem
+            // 
+            this.MyTaskToolStripMenuItem.Name = "MyTaskToolStripMenuItem";
+            this.MyTaskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.MyTaskToolStripMenuItem.Text = "Мои задачи";
+            this.MyTaskToolStripMenuItem.Click += new System.EventHandler(this.MyTaskToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -317,6 +326,7 @@
         private System.Windows.Forms.ToolStripMenuItem списокПользователиToolStripMenuItem;
         private MaterialSkin.Controls.MaterialToolStripMenuItem toolStripTextBox1;
         public System.Windows.Forms.ToolStripMenuItem ListUsersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MyTaskToolStripMenuItem;
     }
 }
 

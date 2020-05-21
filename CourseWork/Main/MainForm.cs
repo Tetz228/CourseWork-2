@@ -10,6 +10,7 @@ using CourseWork.Users;
 using CourseWork.Users_roles;
 using CourseWork.Type_task;
 using CourseWork.Projects_task;
+using CourseWork.MyTask;
 
 namespace CourseWork
 {
@@ -226,6 +227,20 @@ namespace CourseWork
                 projects_task.MdiParent = this;
                 projects_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 projects_task.Show();
+            }
+        }
+
+        private void MyTaskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MdiChildren.Count() > 0)
+            {
+                MdiChildren[0].Close();
+
+                MyTaskForm my_task = new MyTaskForm();
+
+                my_task.MdiParent = this;
+                my_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+                my_task.Show();
             }
         }
     }
