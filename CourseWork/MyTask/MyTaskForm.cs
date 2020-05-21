@@ -27,6 +27,8 @@ namespace CourseWork.MyTask
             this.dataGridViewMy_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
             SelectDateHistory_task();
+
+            radioButtonTask.Checked = true;
         }
 
         // Добавление данных из базы данных в dataGridView
@@ -55,10 +57,13 @@ namespace CourseWork.MyTask
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
             string task = "Task like '%{0}%' ";
+            string project = "Project like '%{0}%' ";
             string status = "Status like '%{0}%' ";
 
             if (radioButtonTask.Checked)
                 Search(task);
+            if (radioButtonProject.Checked)
+                Search(project);
             if (radioButtonStatus.Checked)
                 Search(status);
         }

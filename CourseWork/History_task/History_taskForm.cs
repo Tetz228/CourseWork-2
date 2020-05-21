@@ -64,10 +64,13 @@ namespace CourseWork.History_task
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
             string task = "Task like '%{0}%' ";
+            string project = "Project like '%{0}%' ";
             string status = "Status like '%{0}%' ";
 
             if (radioButtonTask.Checked)
                 Search(task);
+            if (radioButtonProject.Checked)
+                Search(project);
             if (radioButtonStatus.Checked)
                 Search(status);
         }
@@ -134,8 +137,8 @@ namespace CourseWork.History_task
 
             Program.DataHistoryTask.Id = Convert.ToInt32(dataGridViewHistory_task.CurrentRow.Cells[0].Value);
             Program.DataHistoryTask.Name = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[1].Value);
-            Program.DataHistoryTask.Status = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[2].Value);
-            Program.DataHistoryTask.Date = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[3].Value);
+            Program.DataHistoryTask.Status = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[3].Value);
+            Program.DataHistoryTask.Date = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[4].Value);
 
             formEdit.ShowDialog();
 
@@ -153,8 +156,8 @@ namespace CourseWork.History_task
 
                     Program.DataHistoryTask.Id = Convert.ToInt32(view.Cells[0].Value);
                     Program.DataHistoryTask.Name = view.Cells[1].Value.ToString();
-                    Program.DataHistoryTask.Status = view.Cells[2].Value.ToString();
-                    Program.DataHistoryTask.Date = view.Cells[3].Value.ToString();
+                    Program.DataHistoryTask.Status = view.Cells[3].Value.ToString();
+                    Program.DataHistoryTask.Date = view.Cells[4].Value.ToString();
 
                     History_taskFormEdit formEdit = new History_taskFormEdit();
 

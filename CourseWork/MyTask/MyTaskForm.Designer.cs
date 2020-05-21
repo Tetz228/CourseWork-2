@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewMy_task = new System.Windows.Forms.DataGridView();
             this.panelFilters = new System.Windows.Forms.Panel();
             this.radioButtonStatus = new MaterialSkin.Controls.MaterialRadioButton();
@@ -49,6 +49,7 @@
             this.ColumnProject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ComboBox_fk_status_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_history_date_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radioButtonProject = new MaterialSkin.Controls.MaterialRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMy_task)).BeginInit();
             this.panelFilters.SuspendLayout();
             this.menuStripHistory_projects.SuspendLayout();
@@ -62,13 +63,13 @@
             this.dataGridViewMy_task.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewMy_task.CausesValidation = false;
             this.dataGridViewMy_task.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridViewMy_task.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridViewMy_task.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewMy_task.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewMy_task.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_history_task,
@@ -76,41 +77,42 @@
             this.ColumnProject,
             this.ComboBox_fk_status_task,
             this.Column_history_date_task});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMy_task.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewMy_task.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewMy_task.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewMy_task.Location = new System.Drawing.Point(0, 62);
             this.dataGridViewMy_task.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewMy_task.MultiSelect = false;
             this.dataGridViewMy_task.Name = "dataGridViewMy_task";
             this.dataGridViewMy_task.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMy_task.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridViewMy_task.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMy_task.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewMy_task.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewMy_task.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewMy_task.TabIndex = 2;
             this.dataGridViewMy_task.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHistory_task_CellDoubleClick);
             // 
             // panelFilters
             // 
+            this.panelFilters.Controls.Add(this.radioButtonProject);
             this.panelFilters.Controls.Add(this.radioButtonStatus);
             this.panelFilters.Controls.Add(this.radioButtonTask);
-            this.panelFilters.Location = new System.Drawing.Point(911, 61);
+            this.panelFilters.Location = new System.Drawing.Point(943, 61);
             this.panelFilters.Name = "panelFilters";
-            this.panelFilters.Size = new System.Drawing.Size(126, 62);
+            this.panelFilters.Size = new System.Drawing.Size(94, 97);
             this.panelFilters.TabIndex = 26;
             this.panelFilters.Visible = false;
             // 
@@ -119,7 +121,7 @@
             this.radioButtonStatus.AutoSize = true;
             this.radioButtonStatus.Depth = 0;
             this.radioButtonStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.radioButtonStatus.Location = new System.Drawing.Point(0, 30);
+            this.radioButtonStatus.Location = new System.Drawing.Point(0, 60);
             this.radioButtonStatus.Margin = new System.Windows.Forms.Padding(0);
             this.radioButtonStatus.MouseLocation = new System.Drawing.Point(-1, -1);
             this.radioButtonStatus.MouseState = MaterialSkin.MouseState.HOVER;
@@ -218,9 +220,9 @@
             // 
             this.ComboBox_fk_project_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ComboBox_fk_project_task.DataPropertyName = "Task";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_project_task.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_project_task.DefaultCellStyle = dataGridViewCellStyle9;
             this.ComboBox_fk_project_task.HeaderText = "Задача";
             this.ComboBox_fk_project_task.Name = "ComboBox_fk_project_task";
             this.ComboBox_fk_project_task.ReadOnly = true;
@@ -239,10 +241,10 @@
             // 
             this.ComboBox_fk_status_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ComboBox_fk_status_task.DataPropertyName = "Status";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_status_task.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_status_task.DefaultCellStyle = dataGridViewCellStyle10;
             this.ComboBox_fk_status_task.HeaderText = "Статус задачи";
             this.ComboBox_fk_status_task.Name = "ComboBox_fk_status_task";
             this.ComboBox_fk_status_task.ReadOnly = true;
@@ -253,16 +255,33 @@
             // 
             this.Column_history_date_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_history_date_task.DataPropertyName = "Date";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
-            dataGridViewCellStyle4.NullValue = "Не указана";
-            this.Column_history_date_task.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle11.NullValue = "Не указана";
+            this.Column_history_date_task.DefaultCellStyle = dataGridViewCellStyle11;
             this.Column_history_date_task.HeaderText = "Дата";
             this.Column_history_date_task.Name = "Column_history_date_task";
             this.Column_history_date_task.ReadOnly = true;
             this.Column_history_date_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column_history_date_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // radioButtonProject
+            // 
+            this.radioButtonProject.AutoSize = true;
+            this.radioButtonProject.Depth = 0;
+            this.radioButtonProject.Font = new System.Drawing.Font("Roboto", 10F);
+            this.radioButtonProject.Location = new System.Drawing.Point(0, 30);
+            this.radioButtonProject.Margin = new System.Windows.Forms.Padding(0);
+            this.radioButtonProject.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.radioButtonProject.MouseState = MaterialSkin.MouseState.HOVER;
+            this.radioButtonProject.Name = "radioButtonProject";
+            this.radioButtonProject.Ripple = true;
+            this.radioButtonProject.Size = new System.Drawing.Size(76, 30);
+            this.radioButtonProject.TabIndex = 19;
+            this.radioButtonProject.TabStop = true;
+            this.radioButtonProject.Text = "Проект";
+            this.radioButtonProject.UseVisualStyleBackColor = true;
             // 
             // MyTaskForm
             // 
@@ -311,5 +330,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProject;
         private System.Windows.Forms.DataGridViewTextBoxColumn ComboBox_fk_status_task;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_history_date_task;
+        private MaterialSkin.Controls.MaterialRadioButton radioButtonProject;
     }
 }
