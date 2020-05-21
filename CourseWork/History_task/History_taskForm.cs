@@ -60,31 +60,24 @@ namespace CourseWork.History_task
             connection.CloseConnect();
         }
 
-        // Поиск по dataGridу
+        // При вводе в текстовое поле
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            string task = "Task like '%{0}%' ";
+            string status = "Status like '%{0}%' ";
+
             if (radioButtonTask.Checked)
-                SearchTask();
+                Search(task);
             if (radioButtonStatus.Checked)
-                SearchStatus();
+                Search(status);
         }
 
-        // Фильтр: Проект
-        private void SearchTask()
+        // Функция по поиску
+        private void Search(string format)
         {
             DataView view = HistoryTable.DefaultView;
 
-            view.RowFilter = string.Format("Task like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewHistory_task.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Статус
-        private void SearchStatus()
-        {
-            DataView view = HistoryTable.DefaultView;
-
-            view.RowFilter = string.Format("Status like '%{0}%' ", textBoxSearch.Text);
+            view.RowFilter = string.Format(format, textBoxSearch.Text);
 
             dataGridViewHistory_task.DataSource = view.ToTable();
         }

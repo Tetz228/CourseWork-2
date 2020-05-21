@@ -61,6 +61,12 @@
     <Compile Include="MyTask\MyTaskForm.Designer.cs">
       <DependentUpon>MyTaskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyTask\MyTaskFormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyTask\MyTaskFormEdit.Designer.cs">
+      <DependentUpon>MyTaskFormEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registration\ConfirmationMailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyTask\MyTaskForm.resx">
       <DependentUpon>MyTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyTask\MyTaskFormEdit.resx">
+      <DependentUpon>MyTaskFormEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registration\ConfirmationMailForm.resx">
       <DependentUpon>ConfirmationMailForm.cs</DependentUpon>

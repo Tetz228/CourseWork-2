@@ -146,6 +146,19 @@ namespace CourseWork
             public static string Date { get; set; }
         }
 
+        //////////////////////Мои задачи/////////////////////////
+
+        public static class DataMyTask
+        {
+            public static int Id { get; set; }
+
+            public static string Name { get; set; }
+
+            public static string Status { get; set; }
+
+            public static string Date { get; set; }
+        }
+
         //////////////////////Список пользователей/////////////////////////
 
         public static class DataUser

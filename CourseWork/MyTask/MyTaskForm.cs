@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -30,7 +24,7 @@ namespace CourseWork.MyTask
 
         private void MyTaskForm_Load(object sender, EventArgs e)
         {
-            this.dataGridViewHistory_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMy_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
             SelectDateHistory_task();
         }
@@ -39,7 +33,7 @@ namespace CourseWork.MyTask
         private void SelectDateHistory_task()
         {
             ConnectionDB connection = new ConnectionDB();
-            SqlCommand command = new SqlCommand("SelectDateMyHistory_take", connection.GetSqlConnect());
+            SqlCommand command = new SqlCommand("SelectDateMy_take", connection.GetSqlConnect());
             HistoryTable = new DataTable();
 
             command.CommandType = CommandType.StoredProcedure;
@@ -52,9 +46,82 @@ namespace CourseWork.MyTask
 
             sqlDA.Fill(HistoryTable);
 
-            dataGridViewHistory_task.DataSource = HistoryTable.DefaultView;
+            dataGridViewMy_task.DataSource = HistoryTable.DefaultView;
 
             connection.CloseConnect();
+        }
+
+        // При вводе в текстовое поле
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            string task = "Task like '%{0}%' ";
+            string status = "Status like '%{0}%' ";
+
+            if (radioButtonTask.Checked)
+                Search(task);
+            if (radioButtonStatus.Checked)
+                Search(status);
+        }
+
+        // Функция по поиску
+        private void Search(string format)
+        {
+            DataView view = HistoryTable.DefaultView;
+
+            view.RowFilter = string.Format(format, textBoxSearch.Text);
+
+            dataGridViewMy_task.DataSource = view.ToTable();
+        }
+
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.DataMyTask.Id = Convert.ToInt32(dataGridViewMy_task.CurrentRow.Cells[0].Value);
+            Program.DataMyTask.Name = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[1].Value);
+            Program.DataMyTask.Status = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[2].Value);
+            Program.DataMyTask.Date = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[3].Value);
+
+            MyTaskFormEdit formEdit = new MyTaskFormEdit();
+
+            formEdit.ShowDialog();
+
+            SelectDateHistory_task(); 
+        }
+
+        private void dataGridViewHistory_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow view = dataGridViewMy_task.Rows[e.RowIndex];
+
+                Program.DataMyTask.Id = Convert.ToInt32(view.Cells[0].Value);
+                Program.DataMyTask.Name = view.Cells[1].Value.ToString();
+                Program.DataMyTask.Status = view.Cells[2].Value.ToString();
+                Program.DataMyTask.Date = view.Cells[3].Value.ToString();
+
+                MyTaskFormEdit formEdit = new MyTaskFormEdit();
+
+                formEdit.ShowDialog();
+
+                SelectDateHistory_task();
+            }
+        }
+
+        private void pictureBoxFilters_Click(object sender, EventArgs e)
+        {
+            if (panelFilters.Visible == false)
+                panelFilters.Visible = true;
+            else
+                panelFilters.Visible = false;
+        }
+
+        private void radioButtonTask_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
+        }
+
+        private void radioButtonStatus_Click(object sender, EventArgs e)
+        {
+            panelFilters.Visible = false;
         }
     }
 }

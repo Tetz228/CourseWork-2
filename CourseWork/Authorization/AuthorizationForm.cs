@@ -7,12 +7,12 @@ using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Security.Cryptography;
 using System.Text;
-using CourseWork.Posts;
 
 namespace CourseWork
 {
     public partial class AuthorizationForm : MaterialForm
     {
+        // vorobv.bm | z4HfUh
         public AuthorizationForm()
         {
             InitializeComponent();
