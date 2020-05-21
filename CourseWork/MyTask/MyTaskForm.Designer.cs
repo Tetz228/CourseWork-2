@@ -36,22 +36,23 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewMy_task = new System.Windows.Forms.DataGridView();
-            this.Column_id_history_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBox_fk_project_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBox_fk_status_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_history_date_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelFilters = new System.Windows.Forms.Panel();
             this.radioButtonStatus = new MaterialSkin.Controls.MaterialRadioButton();
             this.radioButtonTask = new MaterialSkin.Controls.MaterialRadioButton();
-            this.pictureBoxFilters = new System.Windows.Forms.PictureBox();
             this.textBoxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.menuStripHistory_projects = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxFilters = new System.Windows.Forms.PictureBox();
+            this.Column_id_history_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComboBox_fk_project_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnProject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComboBox_fk_status_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_history_date_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMy_task)).BeginInit();
             this.panelFilters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFilters)).BeginInit();
             this.menuStripHistory_projects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFilters)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewMy_task
@@ -72,6 +73,7 @@
             this.dataGridViewMy_task.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_history_task,
             this.ComboBox_fk_project_task,
+            this.ColumnProject,
             this.ComboBox_fk_status_task,
             this.Column_history_date_task});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -102,56 +104,6 @@
             this.dataGridViewMy_task.TabIndex = 2;
             this.dataGridViewMy_task.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHistory_task_CellDoubleClick);
             // 
-            // Column_id_history_task
-            // 
-            this.Column_id_history_task.DataPropertyName = "Id";
-            this.Column_id_history_task.HeaderText = "Id";
-            this.Column_id_history_task.Name = "Column_id_history_task";
-            this.Column_id_history_task.ReadOnly = true;
-            this.Column_id_history_task.Visible = false;
-            // 
-            // ComboBox_fk_project_task
-            // 
-            this.ComboBox_fk_project_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_project_task.DataPropertyName = "Task";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_project_task.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ComboBox_fk_project_task.HeaderText = "Задача";
-            this.ComboBox_fk_project_task.Name = "ComboBox_fk_project_task";
-            this.ComboBox_fk_project_task.ReadOnly = true;
-            this.ComboBox_fk_project_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ComboBox_fk_project_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ComboBox_fk_status_task
-            // 
-            this.ComboBox_fk_status_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_status_task.DataPropertyName = "Status";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_status_task.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ComboBox_fk_status_task.HeaderText = "Статус задачи";
-            this.ComboBox_fk_status_task.Name = "ComboBox_fk_status_task";
-            this.ComboBox_fk_status_task.ReadOnly = true;
-            this.ComboBox_fk_status_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ComboBox_fk_status_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column_history_date_task
-            // 
-            this.Column_history_date_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_history_date_task.DataPropertyName = "Date";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
-            dataGridViewCellStyle4.NullValue = "Не указана";
-            this.Column_history_date_task.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column_history_date_task.HeaderText = "Дата";
-            this.Column_history_date_task.Name = "Column_history_date_task";
-            this.Column_history_date_task.ReadOnly = true;
-            this.Column_history_date_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column_history_date_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // panelFilters
             // 
             this.panelFilters.Controls.Add(this.radioButtonStatus);
@@ -166,7 +118,7 @@
             // 
             this.radioButtonStatus.AutoSize = true;
             this.radioButtonStatus.Depth = 0;
-            this.radioButtonStatus.Font = new System.Drawing.Font("Roboto", 10F);
+            this.radioButtonStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.radioButtonStatus.Location = new System.Drawing.Point(0, 30);
             this.radioButtonStatus.Margin = new System.Windows.Forms.Padding(0);
             this.radioButtonStatus.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -184,7 +136,7 @@
             // 
             this.radioButtonTask.AutoSize = true;
             this.radioButtonTask.Depth = 0;
-            this.radioButtonTask.Font = new System.Drawing.Font("Roboto", 10F);
+            this.radioButtonTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.radioButtonTask.Location = new System.Drawing.Point(0, 0);
             this.radioButtonTask.Margin = new System.Windows.Forms.Padding(0);
             this.radioButtonTask.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -197,17 +149,6 @@
             this.radioButtonTask.Text = "Задача";
             this.radioButtonTask.UseVisualStyleBackColor = true;
             this.radioButtonTask.Click += new System.EventHandler(this.radioButtonTask_Click);
-            // 
-            // pictureBoxFilters
-            // 
-            this.pictureBoxFilters.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxFilters.Image = global::CourseWork.Properties.Resources.Filters;
-            this.pictureBoxFilters.Location = new System.Drawing.Point(1006, 29);
-            this.pictureBoxFilters.Name = "pictureBoxFilters";
-            this.pictureBoxFilters.Size = new System.Drawing.Size(24, 24);
-            this.pictureBoxFilters.TabIndex = 25;
-            this.pictureBoxFilters.TabStop = false;
-            this.pictureBoxFilters.Click += new System.EventHandler(this.pictureBoxFilters_Click);
             // 
             // textBoxSearch
             // 
@@ -250,9 +191,78 @@
             // EditToolStripMenuItem
             // 
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            this.EditToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.EditToolStripMenuItem.Text = "Изменить";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
+            // 
+            // pictureBoxFilters
+            // 
+            this.pictureBoxFilters.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxFilters.Image = global::CourseWork.Properties.Resources.Filters;
+            this.pictureBoxFilters.Location = new System.Drawing.Point(1006, 29);
+            this.pictureBoxFilters.Name = "pictureBoxFilters";
+            this.pictureBoxFilters.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxFilters.TabIndex = 25;
+            this.pictureBoxFilters.TabStop = false;
+            this.pictureBoxFilters.Click += new System.EventHandler(this.pictureBoxFilters_Click);
+            // 
+            // Column_id_history_task
+            // 
+            this.Column_id_history_task.DataPropertyName = "Id";
+            this.Column_id_history_task.HeaderText = "Id";
+            this.Column_id_history_task.Name = "Column_id_history_task";
+            this.Column_id_history_task.ReadOnly = true;
+            this.Column_id_history_task.Visible = false;
+            // 
+            // ComboBox_fk_project_task
+            // 
+            this.ComboBox_fk_project_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_project_task.DataPropertyName = "Task";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_project_task.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ComboBox_fk_project_task.HeaderText = "Задача";
+            this.ComboBox_fk_project_task.Name = "ComboBox_fk_project_task";
+            this.ComboBox_fk_project_task.ReadOnly = true;
+            this.ComboBox_fk_project_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ComboBox_fk_project_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnProject
+            // 
+            this.ColumnProject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnProject.DataPropertyName = "Project";
+            this.ColumnProject.HeaderText = "Проект";
+            this.ColumnProject.Name = "ColumnProject";
+            this.ColumnProject.ReadOnly = true;
+            // 
+            // ComboBox_fk_status_task
+            // 
+            this.ComboBox_fk_status_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_status_task.DataPropertyName = "Status";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_status_task.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ComboBox_fk_status_task.HeaderText = "Статус задачи";
+            this.ComboBox_fk_status_task.Name = "ComboBox_fk_status_task";
+            this.ComboBox_fk_status_task.ReadOnly = true;
+            this.ComboBox_fk_status_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ComboBox_fk_status_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column_history_date_task
+            // 
+            this.Column_history_date_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_history_date_task.DataPropertyName = "Date";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle4.NullValue = "Не указана";
+            this.Column_history_date_task.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column_history_date_task.HeaderText = "Дата";
+            this.Column_history_date_task.Name = "Column_history_date_task";
+            this.Column_history_date_task.ReadOnly = true;
+            this.Column_history_date_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_history_date_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // MyTaskForm
             // 
@@ -277,9 +287,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMy_task)).EndInit();
             this.panelFilters.ResumeLayout(false);
             this.panelFilters.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFilters)).EndInit();
             this.menuStripHistory_projects.ResumeLayout(false);
             this.menuStripHistory_projects.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFilters)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,10 +298,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewMy_task;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_id_history_task;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ComboBox_fk_project_task;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ComboBox_fk_status_task;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_history_date_task;
         private System.Windows.Forms.Panel panelFilters;
         private MaterialSkin.Controls.MaterialRadioButton radioButtonStatus;
         private MaterialSkin.Controls.MaterialRadioButton radioButtonTask;
@@ -300,5 +306,10 @@
         private System.Windows.Forms.MenuStrip menuStripHistory_projects;
         private System.Windows.Forms.ToolStripMenuItem MainToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_id_history_task;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ComboBox_fk_project_task;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ComboBox_fk_status_task;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_history_date_task;
     }
 }

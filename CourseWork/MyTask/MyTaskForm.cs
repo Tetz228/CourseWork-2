@@ -77,8 +77,8 @@ namespace CourseWork.MyTask
         {
             Program.DataMyTask.Id = Convert.ToInt32(dataGridViewMy_task.CurrentRow.Cells[0].Value);
             Program.DataMyTask.Name = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[1].Value);
-            Program.DataMyTask.Status = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[2].Value);
-            Program.DataMyTask.Date = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[3].Value);
+            Program.DataMyTask.Status = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[3].Value);
+            Program.DataMyTask.Date = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[4].Value);
 
             MyTaskFormEdit formEdit = new MyTaskFormEdit();
 
@@ -95,8 +95,8 @@ namespace CourseWork.MyTask
 
                 Program.DataMyTask.Id = Convert.ToInt32(view.Cells[0].Value);
                 Program.DataMyTask.Name = view.Cells[1].Value.ToString();
-                Program.DataMyTask.Status = view.Cells[2].Value.ToString();
-                Program.DataMyTask.Date = view.Cells[3].Value.ToString();
+                Program.DataMyTask.Status = view.Cells[3].Value.ToString();
+                Program.DataMyTask.Date = view.Cells[4].Value.ToString();
 
                 MyTaskFormEdit formEdit = new MyTaskFormEdit();
 
