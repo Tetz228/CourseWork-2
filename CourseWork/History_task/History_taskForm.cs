@@ -156,6 +156,7 @@ namespace CourseWork.History_task
 
                     Program.DataHistoryTask.Id = Convert.ToInt32(view.Cells[0].Value);
                     Program.DataHistoryTask.Name = view.Cells[1].Value.ToString();
+                    Program.DataHistoryTask.Project = view.Cells[2].Value.ToString();
                     Program.DataHistoryTask.Status = view.Cells[3].Value.ToString();
                     Program.DataHistoryTask.Date = view.Cells[4].Value.ToString();
 

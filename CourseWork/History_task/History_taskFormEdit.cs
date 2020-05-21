@@ -31,7 +31,9 @@ namespace CourseWork.History_task
 
             textBox_History_date_task.Text = Program.DataHistoryTask.Date;
 
-            int indexProj = ComboBox_fk_project_task.FindString(Program.DataHistoryTask.Name);
+            string s = Program.DataHistoryTask.Name + "; " + Program.DataHistoryTask.Project;
+
+            int indexProj = ComboBox_fk_project_task.FindString(s);
             int indexStat = ComboBox_fk_status_task.FindString(Program.DataHistoryTask.Status);
 
             ComboBox_fk_project_task.SelectedIndex = indexProj;

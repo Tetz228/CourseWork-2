@@ -141,6 +141,8 @@ namespace CourseWork
 
             public static string Name { get; set; }
 
+            public static string Project { get; set; }
+
             public static string Status { get; set; }
 
             public static string Date { get; set; }
