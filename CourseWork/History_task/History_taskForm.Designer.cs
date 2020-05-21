@@ -28,18 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewHistory_task = new System.Windows.Forms.DataGridView();
-            this.Column_id_history_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBox_fk_project_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBox_fk_status_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_history_date_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripHistory_projects = new System.Windows.Forms.MenuStrip();
             this.MainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +46,10 @@
             this.radioButtonTask = new MaterialSkin.Controls.MaterialRadioButton();
             this.pictureBoxFilters = new System.Windows.Forms.PictureBox();
             this.textBoxSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.Column_id_history_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComboBox_fk_project_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ComboBox_fk_status_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_history_date_task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistory_task)).BeginInit();
             this.menuStripHistory_projects.SuspendLayout();
             this.panelFilters.SuspendLayout();
@@ -63,98 +63,48 @@
             this.dataGridViewHistory_task.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewHistory_task.CausesValidation = false;
             this.dataGridViewHistory_task.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridViewHistory_task.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridViewHistory_task.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewHistory_task.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewHistory_task.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_id_history_task,
             this.ComboBox_fk_project_task,
             this.ComboBox_fk_status_task,
             this.Column_history_date_task});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewHistory_task.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewHistory_task.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewHistory_task.GridColor = System.Drawing.Color.Gray;
             this.dataGridViewHistory_task.Location = new System.Drawing.Point(0, 63);
             this.dataGridViewHistory_task.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewHistory_task.MultiSelect = false;
             this.dataGridViewHistory_task.Name = "dataGridViewHistory_task";
             this.dataGridViewHistory_task.ReadOnly = true;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Verdana", 11.25F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewHistory_task.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridViewHistory_task.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 11.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewHistory_task.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridViewHistory_task.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewHistory_task.Size = new System.Drawing.Size(1037, 500);
             this.dataGridViewHistory_task.TabIndex = 1;
             this.dataGridViewHistory_task.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewHistory_task_CellDoubleClick);
             this.dataGridViewHistory_task.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewHistory_task_UserDeletingRow);
             this.dataGridViewHistory_task.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewHistory_task_KeyDown);
-            // 
-            // Column_id_history_task
-            // 
-            this.Column_id_history_task.DataPropertyName = "Id";
-            this.Column_id_history_task.HeaderText = "Id";
-            this.Column_id_history_task.Name = "Column_id_history_task";
-            this.Column_id_history_task.ReadOnly = true;
-            this.Column_id_history_task.Visible = false;
-            // 
-            // ComboBox_fk_project_task
-            // 
-            this.ComboBox_fk_project_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_project_task.DataPropertyName = "Task";
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_project_task.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ComboBox_fk_project_task.HeaderText = "Задача";
-            this.ComboBox_fk_project_task.Name = "ComboBox_fk_project_task";
-            this.ComboBox_fk_project_task.ReadOnly = true;
-            this.ComboBox_fk_project_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ComboBox_fk_project_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ComboBox_fk_status_task
-            // 
-            this.ComboBox_fk_status_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ComboBox_fk_status_task.DataPropertyName = "Status";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.ComboBox_fk_status_task.DefaultCellStyle = dataGridViewCellStyle10;
-            this.ComboBox_fk_status_task.HeaderText = "Статус задачи";
-            this.ComboBox_fk_status_task.Name = "ComboBox_fk_status_task";
-            this.ComboBox_fk_status_task.ReadOnly = true;
-            this.ComboBox_fk_status_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ComboBox_fk_status_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column_history_date_task
-            // 
-            this.Column_history_date_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column_history_date_task.DataPropertyName = "Date";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Verdana", 9.75F);
-            dataGridViewCellStyle11.NullValue = "Не указана";
-            this.Column_history_date_task.DefaultCellStyle = dataGridViewCellStyle11;
-            this.Column_history_date_task.HeaderText = "Дата";
-            this.Column_history_date_task.Name = "Column_history_date_task";
-            this.Column_history_date_task.ReadOnly = true;
-            this.Column_history_date_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column_history_date_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // menuStripHistory_projects
             // 
@@ -273,6 +223,56 @@
             this.textBoxSearch.TabStop = false;
             this.textBoxSearch.UseSystemPasswordChar = false;
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            // 
+            // Column_id_history_task
+            // 
+            this.Column_id_history_task.DataPropertyName = "Id";
+            this.Column_id_history_task.HeaderText = "Id";
+            this.Column_id_history_task.Name = "Column_id_history_task";
+            this.Column_id_history_task.ReadOnly = true;
+            this.Column_id_history_task.Visible = false;
+            // 
+            // ComboBox_fk_project_task
+            // 
+            this.ComboBox_fk_project_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_project_task.DataPropertyName = "Task";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_project_task.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ComboBox_fk_project_task.HeaderText = "Задача";
+            this.ComboBox_fk_project_task.Name = "ComboBox_fk_project_task";
+            this.ComboBox_fk_project_task.ReadOnly = true;
+            this.ComboBox_fk_project_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ComboBox_fk_project_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ComboBox_fk_status_task
+            // 
+            this.ComboBox_fk_status_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ComboBox_fk_status_task.DataPropertyName = "Status";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.ComboBox_fk_status_task.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ComboBox_fk_status_task.HeaderText = "Статус задачи";
+            this.ComboBox_fk_status_task.Name = "ComboBox_fk_status_task";
+            this.ComboBox_fk_status_task.ReadOnly = true;
+            this.ComboBox_fk_status_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ComboBox_fk_status_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column_history_date_task
+            // 
+            this.Column_history_date_task.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_history_date_task.DataPropertyName = "Date";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9.75F);
+            dataGridViewCellStyle4.NullValue = "Не указана";
+            this.Column_history_date_task.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column_history_date_task.HeaderText = "Дата";
+            this.Column_history_date_task.Name = "Column_history_date_task";
+            this.Column_history_date_task.ReadOnly = true;
+            this.Column_history_date_task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_history_date_task.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // History_taskForm
             // 
