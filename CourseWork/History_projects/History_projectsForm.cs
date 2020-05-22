@@ -60,28 +60,21 @@ namespace CourseWork
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            string project = "Project like '%{0}%' ";
+            string status = "Status like '%{0}%' ";
+
             if (radioButtonProject.Checked)
-                SearchProject();
+                Search(project);
             if (radioButtonStatus.Checked)
-                SearchStatus();
+                Search(status);
         }
 
-        // Фильтр: Проект
-        private void SearchProject()
+        // Функция по поиску
+        private void Search(string f)
         {
             DataView view = HistoryTable.DefaultView;
 
-            view.RowFilter = string.Format("Project like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewHistory_projects.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Статус
-        private void SearchStatus()
-        {
-            DataView view = HistoryTable.DefaultView;
-
-            view.RowFilter = string.Format("Status like '%{0}%' ", textBoxSearch.Text);
+            view.RowFilter = string.Format(f, textBoxSearch.Text);
 
             dataGridViewHistory_projects.DataSource = view.ToTable();
         }
@@ -119,7 +112,6 @@ namespace CourseWork
         private void dataGridViewHistory_projects_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     History_projectsFormAdd formAdd = new History_projectsFormAdd();
@@ -127,9 +119,7 @@ namespace CourseWork
                     formAdd.ShowDialog();
 
                     SelectDateHistory_projects();
-                }
-            }
-            
+                }       
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -151,7 +141,6 @@ namespace CourseWork
         private void dataGridViewHistory_projects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewHistory_projects.Rows[e.RowIndex];
@@ -167,7 +156,6 @@ namespace CourseWork
 
                     SelectDateHistory_projects();
                 }
-            }
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления

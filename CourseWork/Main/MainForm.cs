@@ -128,8 +128,7 @@ namespace CourseWork
                 postsEmployees.MdiParent = this;
                 postsEmployees.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
                 postsEmployees.Show();
-            }
-            
+            }         
         }
 
         private void ListPostsToolStripMenuItem2_Click(object sender, EventArgs e)

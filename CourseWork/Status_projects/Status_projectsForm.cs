@@ -95,7 +95,6 @@ namespace CourseWork
         private void dataGridViewStatus_projects_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     Status_projectsFormAdd formAdd = new Status_projectsFormAdd();
@@ -103,8 +102,7 @@ namespace CourseWork
                     formAdd.ShowDialog();
 
                     SelectDateStatusProject();
-                }
-            }          
+                }         
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -124,8 +122,6 @@ namespace CourseWork
         private void dataGridViewStatus_projects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
-                //Если не выбрана строка, содержащие заголовки
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewStatus_projects.Rows[e.RowIndex];
@@ -138,8 +134,7 @@ namespace CourseWork
                     formEdit.ShowDialog();
 
                     SelectDateStatusProject();
-                }
-            }        
+                }      
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления

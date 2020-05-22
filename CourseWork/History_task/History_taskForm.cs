@@ -24,10 +24,7 @@ namespace CourseWork.History_task
             this.dataGridViewHistory_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
             if (Program.DataAuth.Role_user == 2)
-            {
-                AddToolStripMenuItem.Visible = false;
-                DeleteToolStripMenuItem.Visible = false;
-            }
+                MainToolStripMenuItem.Visible = false;
         }
 
         // При загрузки формы
@@ -76,11 +73,11 @@ namespace CourseWork.History_task
         }
 
         // Функция по поиску
-        private void Search(string format)
+        private void Search(string f)
         {
             DataView view = HistoryTable.DefaultView;
 
-            view.RowFilter = string.Format(format, textBoxSearch.Text);
+            view.RowFilter = string.Format(f, textBoxSearch.Text);
 
             dataGridViewHistory_task.DataSource = view.ToTable();
         }
@@ -192,7 +189,7 @@ namespace CourseWork.History_task
                 e.Cancel = true;
         }
 
-        // При клике на pictureBox скрывать панель
+        // При клике на pictureBox скрывать / показывать панель
         private void pictureBoxFilters_Click(object sender, EventArgs e)
         {
             if (panelFilters.Visible == false)

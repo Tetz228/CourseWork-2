@@ -58,40 +58,24 @@ namespace CourseWork.Users
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            string emp = "Employee like '%{0}%' ";
+            string role = "RoleUser like '%{0}%' ";
+            string log = "Login like '%{0}%' ";
+
             if (radioButtonEmployee.Checked)
-                SearchEmployee();
+                Search(emp);
             if (radioButtonRoleUsers.Checked)
-                SearchRoleUser();
+                Search(role);
             if(radioButtonLogin.Checked)
-                SearchLogin();
+                Search(log);
         }
 
-        // Фильтр: Сотрудник
-        private void SearchEmployee()
+        // Функция поиска
+        private void Search(string f)
         {
             DataView view = UserTable.DefaultView;
 
-            view.RowFilter = string.Format("Employee like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewUsers.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Роль сотрудника
-        private void SearchRoleUser()
-        {
-            DataView view = UserTable.DefaultView;
-
-            view.RowFilter = string.Format("RoleUser like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewUsers.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Логин
-        private void SearchLogin()
-        {
-            DataView view = UserTable.DefaultView;
-
-            view.RowFilter = string.Format("Login like '%{0}%' ", textBoxSearch.Text);
+            view.RowFilter = string.Format(f, textBoxSearch.Text);
 
             dataGridViewUsers.DataSource = view.ToTable();
         }

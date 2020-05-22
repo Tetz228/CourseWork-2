@@ -39,9 +39,9 @@ namespace CourseWork
         private void SelectDateProjects_role()
         {
             ConnectionDB connection = new ConnectionDB();
-            table = new DataTable();
             SqlDataAdapter sqlDA = new SqlDataAdapter("SELECT * " +
                 "FROM Projects_role", connection.GetSqlConnect());
+            table = new DataTable();
 
             connection.OpenConnect();
 
@@ -95,7 +95,6 @@ namespace CourseWork
         private void Projects_roleForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     Projects_roleFormAdd formAdd = new Projects_roleFormAdd();
@@ -103,8 +102,7 @@ namespace CourseWork
                     formAdd.ShowDialog();
 
                     SelectDateProjects_role();
-                }
-            }           
+                }          
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -124,8 +122,6 @@ namespace CourseWork
         private void dataGridViewProjects_role_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
-                //Если не выбрана строка, содержащие заголовки
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewProjects_role.Rows[e.RowIndex];
@@ -138,8 +134,7 @@ namespace CourseWork
                     formEdit.ShowDialog();
 
                     SelectDateProjects_role();
-                }
-            }     
+                }    
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления

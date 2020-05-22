@@ -55,52 +55,27 @@ namespace CourseWork.Projects_task
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            string project = "Project like '%{0}%' ";
+            string type = "Type like '%{0}%' ";
+            string emp = "Employee like '%{0}%' ";
+            string role = "Role like '%{0}%' ";
+
             if (radioButtonProject.Checked)
-                SearchProject();
+                Search(project);
             if (radioButtonType.Checked)
-                SearchType();
+                Search(type);
             if (radioButtonEmployee.Checked)
-                SearchEmployee();
+                Search(emp);
             if (radioButtonRole.Checked)
-                SearchRole();
+                Search(role);
         }
 
-        // Фильтр: Проект
-        private void SearchProject()
+        // Функция поиска
+        private void Search(string f)
         {
             DataView view = Projects_taskTable.DefaultView;
 
-            view.RowFilter = string.Format("Project like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewProjects_task.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Тип задачи
-        private void SearchType()
-        {
-            DataView view = Projects_taskTable.DefaultView;
-
-            view.RowFilter = string.Format("Type like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewProjects_task.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Сотрудник
-        private void SearchEmployee()
-        {
-            DataView view = Projects_taskTable.DefaultView;
-
-            view.RowFilter = string.Format("Employee like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewProjects_task.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Роль
-        private void SearchRole()
-        {
-            DataView view = Projects_taskTable.DefaultView;
-
-            view.RowFilter = string.Format("Role like '%{0}%' ", textBoxSearch.Text);
+            view.RowFilter = string.Format(f, textBoxSearch.Text);
 
             dataGridViewProjects_task.DataSource = view.ToTable();
         }
@@ -138,7 +113,6 @@ namespace CourseWork.Projects_task
         private void dataGridViewProjects_task_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     Projects_taskFormAdd formAdd = new Projects_taskFormAdd();
@@ -147,7 +121,6 @@ namespace CourseWork.Projects_task
 
                     SelectDateProject_task();
                 }
-            }
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -170,7 +143,6 @@ namespace CourseWork.Projects_task
         private void dataGridViewProjects_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewProjects_task.Rows[e.RowIndex];
@@ -187,7 +159,6 @@ namespace CourseWork.Projects_task
 
                     SelectDateProject_task();
                 }
-            }
         }
             
         // При клике на "Правка" -> "Удалить" вызывается функция удаления

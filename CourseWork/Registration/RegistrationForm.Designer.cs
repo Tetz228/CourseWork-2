@@ -159,7 +159,6 @@
             this.TextBoxMname.TabIndex = 38;
             this.TextBoxMname.TabStop = false;
             this.TextBoxMname.UseSystemPasswordChar = false;
-            this.TextBoxMname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxMname_KeyPress);
             // 
             // TextBoxRegLog
             // 

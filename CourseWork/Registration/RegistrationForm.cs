@@ -276,6 +276,13 @@ namespace CourseWork
         // Регистрация пользователя в базу данных
         private void Registration()
         {
+            AddEmp();
+            AddUser();
+        }
+
+        // Добавлять ФИО и Email в базу данных
+        private void AddEmp()
+        {
             ConnectionDB connection = new ConnectionDB();
 
             connection.OpenConnect();
@@ -297,94 +304,77 @@ namespace CourseWork
 
             parameterEmp.Direction = ParameterDirection.Output;
 
-            if (insertIntoEmp.ExecuteNonQuery() == 1)
-            {
-                byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxRegPass.Text.ToString());
-
-                SqlCommand selectIdEmp = new SqlCommand("SELECT id_employee " +
-                    "FROM Employees " +
-                    "WHERE @mail = Email", connection.GetSqlConnect());
-
-                selectIdEmp.Parameters.AddWithValue("@mail", SqlDbType.VarChar).Value = TextBoxEmail.Text.Trim();
-              
-                SqlCommand insertIntoUser = new SqlCommand("AddUsers", connection.GetSqlConnect());
-
-                insertIntoUser.CommandType = CommandType.StoredProcedure;
-
-                insertIntoUser.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text.Trim();
-                insertIntoUser.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
-                insertIntoUser.Parameters.AddWithValue("@fk_role", SqlDbType.Int).Value = 2;
-                insertIntoUser.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = selectIdEmp.ExecuteScalar();
-
-                SqlParameter parameterUser = insertIntoUser.Parameters.AddWithValue("@id_user", SqlDbType.Int);
-
-                parameterUser.Direction = ParameterDirection.Output;
-
-                //Если команда = 1, то есть она успешно выполняется, то аккаунт будет создан
-                if (insertIntoUser.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("Аккаунт успешно создан!");
-
-                    this.Close();
-                }
-            }
+            insertIntoEmp.ExecuteNonQuery();
 
             connection.CloseConnect();
         }
 
-        // Скрывать Label`ы при вводе в TextBox`ы и при нажатии на Enter нажимать кнопку регистрации
+        // Добавлять пользователя в базу данных
+        private void AddUser()
+        {
+            ConnectionDB connection = new ConnectionDB();
+
+            connection.OpenConnect();
+
+            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxRegPass.Text);
+
+            SqlCommand selectIdEmp = new SqlCommand("SELECT id_employee " +
+                "FROM Employees " +
+                "WHERE @mail = Email", connection.GetSqlConnect());
+
+            selectIdEmp.Parameters.AddWithValue("@mail", SqlDbType.VarChar).Value = TextBoxEmail.Text.Trim();
+
+            SqlCommand insertIntoUser = new SqlCommand("AddUsers", connection.GetSqlConnect());
+
+            insertIntoUser.CommandType = CommandType.StoredProcedure;
+
+            insertIntoUser.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxRegLog.Text.Trim();
+            insertIntoUser.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
+            insertIntoUser.Parameters.AddWithValue("@fk_role", SqlDbType.Int).Value = 2;
+            insertIntoUser.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = selectIdEmp.ExecuteScalar();
+
+            SqlParameter parameterUser = insertIntoUser.Parameters.AddWithValue("@id_user", SqlDbType.Int);
+
+            parameterUser.Direction = ParameterDirection.Output;
+
+            insertIntoUser.ExecuteNonQuery();
+
+            MessageBox.Show("Аккаунт успешно создан!");
+
+            this.Close();
+
+            connection.CloseConnect();
+        }
+
+        // Скрывать Label`ы при вводе в TextBox`ы
         private void TextBoxLname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidLname.Hide();
-
-            if (e.KeyChar == 13)
-                ButtonReg_Click(sender, e);
         }
 
         private void TextBoxFname_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidFname.Hide();
-
-            if (e.KeyChar == 13)
-                ButtonReg_Click(sender, e);
-        }
-
-        private void TextBoxMname_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-                ButtonReg_Click(sender, e);
         }
 
         private void TextBoxRegLog_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidRegLog.Hide();
-
-            if (e.KeyChar == 13)
-                ButtonReg_Click(sender, e);
         }
 
         private void TextBoxRegPass_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidRegPass.Hide();
-
-            if (e.KeyChar == 13)
-                ButtonReg_Click(sender, e);
         }
 
         private void TextBoxRegPassRepeat_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidRegPassRepeat.Hide();
-
-            if (e.KeyChar == 13)
-                ButtonReg_Click(sender, e);
         }
 
         private void TextBoxEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             labelValidEmail.Hide();
-
-            if (e.KeyChar == 13)
-                ButtonReg_Click(sender, e);
         }
 
         //Перемещение формы
@@ -431,7 +421,6 @@ namespace CourseWork
                 TextBoxRegPassRepeat.UseSystemPasswordChar = false;
 
                 pictureBoxShowHidePassword.Image = Properties.Resources.ShowPassword;
-                
             }
             else
             {

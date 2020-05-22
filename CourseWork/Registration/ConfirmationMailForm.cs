@@ -116,6 +116,7 @@ namespace CourseWork
             registration.StartPosition = FormStartPosition.Manual;
             registration.Left = this.Left;
             registration.Top = this.Top;
+
             registration.Show();
         }
 

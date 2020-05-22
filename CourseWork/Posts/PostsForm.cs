@@ -97,7 +97,6 @@ namespace CourseWork.Posts
         private void dataGridViewPosts_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     PostsFormAdd formAdd = new PostsFormAdd();
@@ -106,7 +105,6 @@ namespace CourseWork.Posts
 
                     SelectDatePosts();
                 }
-            }
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -126,8 +124,6 @@ namespace CourseWork.Posts
         private void dataGridViewPosts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
-                //Если не выбрана строка, содержащие заголовки
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewPosts.Rows[e.RowIndex];
@@ -141,7 +137,6 @@ namespace CourseWork.Posts
 
                     SelectDatePosts();
                 }
-            }
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления

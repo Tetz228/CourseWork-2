@@ -111,6 +111,7 @@ namespace CourseWork.MyTask
             }
         }
 
+        // При клике на pictureBox скрывать / показывать панель
         private void pictureBoxFilters_Click(object sender, EventArgs e)
         {
             if (panelFilters.Visible == false)
@@ -119,6 +120,7 @@ namespace CourseWork.MyTask
                 panelFilters.Visible = false;
         }
 
+        // При клике на переключатели скрывать панель
         private void radioButtonTask_Click(object sender, EventArgs e)
         {
             panelFilters.Visible = false;

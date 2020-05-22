@@ -60,40 +60,24 @@ namespace CourseWork
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            string project = "Name like '%{0}%' ";
+            string target = "Target like '%{0}%' ";
+            string emp = "Employee like '%{0}%' ";
+
             if (radioButtonProject.Checked)
-                SearchProject();
+                Search(project);
             if (radioButtonTarget.Checked)
-                SearchTarget();
+                Search(target);
             if (radioButtonLeader.Checked)
-                SearchLeader();
+                Search(emp);
         }
 
-        // Фильтр: Проект
-        private void SearchProject()
+        // Функция поиска
+        private void Search(string f)
         {
             DataView view = ProjectTable.DefaultView;
 
-            view.RowFilter = string.Format("Name like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewProjects.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Цель
-        private void SearchTarget()
-        {
-            DataView view = ProjectTable.DefaultView;
-
-            view.RowFilter = string.Format("Target like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewProjects.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Руководитель
-        private void SearchLeader()
-        {
-            DataView view = ProjectTable.DefaultView;
-
-            view.RowFilter = string.Format("Employee like '%{0}%' ", textBoxSearch.Text);
+            view.RowFilter = string.Format(f, textBoxSearch.Text);
 
             dataGridViewProjects.DataSource = view.ToTable();
         }
@@ -131,7 +115,6 @@ namespace CourseWork
         private void dataGridViewProjects_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     ProjectsFormAdd formAdd = new ProjectsFormAdd();
@@ -139,9 +122,7 @@ namespace CourseWork
                     formAdd.ShowDialog();
 
                     SelectDateProject();
-                }
-            }
-            
+                }  
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -165,7 +146,6 @@ namespace CourseWork
         private void dataGridViewProjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewProjects.Rows[e.RowIndex];
@@ -183,8 +163,6 @@ namespace CourseWork
 
                     SelectDateProject();
                 }
-            }
-            
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления

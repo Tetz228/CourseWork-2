@@ -58,28 +58,21 @@ namespace CourseWork.Type_task
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            string name = "task_name_type like '%{0}%' ";
+            string descr = "task_description like '%{0}%' ";
+
             if (radioButtonName.Checked)
-                SearchNameType();
+                Search(name);
             if (radioButtonDescription.Checked)
-                SearchDescription();
+                Search(descr);
         }
 
-        // Фильтр: Наименование
-        private void SearchNameType()
+        // Функция поиска
+        private void Search(string f)
         {
             DataView view = TypeTable.DefaultView;
 
-            view.RowFilter = string.Format("task_name_type like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewType_task.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Описание
-        private void SearchDescription()
-        {
-            DataView view = TypeTable.DefaultView;
-
-            view.RowFilter = string.Format("task_description like '%{0}%' ", textBoxSearch.Text);
+            view.RowFilter = string.Format(f, textBoxSearch.Text);
 
             dataGridViewType_task.DataSource = view.ToTable();
         }
@@ -117,7 +110,6 @@ namespace CourseWork.Type_task
         private void dataGridViewType_task_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     Type_taskFormAdd formAdd = new Type_taskFormAdd();
@@ -126,7 +118,6 @@ namespace CourseWork.Type_task
 
                     SelectDateType_task();
                 }
-            } 
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -147,8 +138,6 @@ namespace CourseWork.Type_task
         private void dataGridViewType_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
-                //Если не выбрана строка, содержащие заголовки
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewType_task.Rows[e.RowIndex];
@@ -162,8 +151,7 @@ namespace CourseWork.Type_task
                     formEdit.ShowDialog();
 
                     SelectDateType_task();
-                }
-            }            
+                }           
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления

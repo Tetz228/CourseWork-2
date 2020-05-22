@@ -59,28 +59,21 @@ namespace CourseWork
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            string emp = "Employee like '%{0}%' ";
+            string post = "Post like '%{0}%' ";
+
             if (radioButtonEmployee.Checked)
-                SearchEmployee();
+                Search(emp);
             if(radioButtonPost.Checked)
-                SearchPost();
+                Search(post);
         }
 
-        // Фильтр: Сотрудник
-        private void SearchEmployee()
+        // Функция поиска
+        private void Search(string f)
         {
             DataView view = PostsEmployeesTable.DefaultView;
 
-            view.RowFilter = string.Format("Employee like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewPostsEmployees.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Должность
-        private void SearchPost()
-        {
-            DataView view = PostsEmployeesTable.DefaultView;
-
-            view.RowFilter = string.Format("Post like '%{0}%' ", textBoxSearch.Text);
+            view.RowFilter = string.Format(f, textBoxSearch.Text);
 
             dataGridViewPostsEmployees.DataSource = view.ToTable();
         }
@@ -118,7 +111,6 @@ namespace CourseWork
         private void dataGridViewPostsEmployees_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     Posts_employeesFormAdd formAdd = new Posts_employeesFormAdd();
@@ -127,7 +119,6 @@ namespace CourseWork
 
                     SelectDatePostsEmployees();
                 }
-            }
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -148,7 +139,6 @@ namespace CourseWork
         private void dataGridViewPostsEmployees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewPostsEmployees.Rows[e.RowIndex];
@@ -162,8 +152,7 @@ namespace CourseWork
                     formEdit.ShowDialog();
 
                     SelectDatePostsEmployees();
-                }
-            }   
+                }  
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления

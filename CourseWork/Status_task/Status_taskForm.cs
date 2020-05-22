@@ -95,7 +95,6 @@ namespace CourseWork.Status_task
         private void dataGridViewStatus_task_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     Status_taskFormAdd formAdd = new Status_taskFormAdd();
@@ -103,8 +102,7 @@ namespace CourseWork.Status_task
                     formAdd.ShowDialog();
 
                     SelectDateStatusTask();
-                }
-            } 
+                } 
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -125,8 +123,6 @@ namespace CourseWork.Status_task
         private void dataGridViewStatus_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
-                //Если не выбрана строка, содержащие заголовки
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewStatus_task.Rows[e.RowIndex];
@@ -139,8 +135,7 @@ namespace CourseWork.Status_task
                     formEdit.ShowDialog();
 
                     SelectDateStatusTask();
-                }
-            }   
+                }   
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления

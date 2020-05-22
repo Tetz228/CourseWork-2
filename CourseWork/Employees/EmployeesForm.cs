@@ -57,52 +57,27 @@ namespace CourseWork
         // Поиск по dataGridу
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            string lname = "employee_lname like '%{0}%' ";
+            string fname = "employee_fname like '%{0}%' ";
+            string mname = "employee_mname like '%{0}%' ";
+            string email = "Email like '%{0}%' ";
+
             if (radioButtonLname.Checked)
-                SearchLname();
+                Search(lname);
             if (radioButtonFname.Checked)
-                SearchFname();
+                Search(fname);
             if (radioButtonMname.Checked)
-                SearchMname();
+                Search(mname);
             if (radioButtonEmail.Checked)
-                SearchEmail();
+                Search(email);
         }
 
-        // Фильтр: Фамилия
-        private void SearchLname()
+        // Функция по поиску
+        private void Search(string f)
         {
             DataView view = EmployeesTable.DefaultView;
 
-            view.RowFilter = string.Format("employee_lname like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewEmployees.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Имя
-        private void SearchFname()
-        {
-            DataView view = EmployeesTable.DefaultView;
-
-            view.RowFilter = string.Format("employee_fname like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewEmployees.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Отчество
-        private void SearchMname()
-        {
-            DataView view = EmployeesTable.DefaultView;
-
-            view.RowFilter = string.Format("employee_mname like '%{0}%' ", textBoxSearch.Text);
-
-            dataGridViewEmployees.DataSource = view.ToTable();
-        }
-
-        // Фильтр: Email
-        private void SearchEmail()
-        {
-            DataView view = EmployeesTable.DefaultView;
-
-            view.RowFilter = string.Format("Email like '%{0}%' ", textBoxSearch.Text);
+            view.RowFilter = string.Format(f, textBoxSearch.Text);
 
             dataGridViewEmployees.DataSource = view.ToTable();
         }
@@ -140,7 +115,6 @@ namespace CourseWork
         private void dataGridViewEmployees_KeyDown(object sender, KeyEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.KeyCode == Keys.Insert)
                 {
                     EmployeesFormAdd formAdd = new EmployeesFormAdd();
@@ -149,7 +123,6 @@ namespace CourseWork
 
                     SelectDateEmployees();
                 }
-            }
         }
 
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
@@ -172,7 +145,6 @@ namespace CourseWork
         private void dataGridViewEmployees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.DataAuth.Role_user != 2)
-            {
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewEmployees.Rows[e.RowIndex];
@@ -189,8 +161,6 @@ namespace CourseWork
 
                     SelectDateEmployees();
                 }
-            }
-            
         }
 
         // При клике на "Правка" -> "Удалить" вызывается функция удаления
