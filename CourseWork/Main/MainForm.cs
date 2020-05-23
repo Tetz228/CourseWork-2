@@ -35,11 +35,11 @@ namespace CourseWork
                 RoleUsersToolStripMenuItem.Visible = false;
             }
 
-            History_taskForm history_task = new History_taskForm();
+            MyTaskForm my_task = new MyTaskForm();
 
-            history_task.MdiParent = this;
-            history_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            history_task.Show();
+            my_task.MdiParent = this;
+            my_task.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+            my_task.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

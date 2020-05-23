@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizationForm));
             this.registrationLabelLink = new System.Windows.Forms.LinkLabel();
             this.ForgotPassLabelLink = new System.Windows.Forms.LinkLabel();
             this.TextBoxLog = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -230,7 +229,6 @@
             this.Controls.Add(this.registrationLabelLink);
             this.Controls.Add(this.pictureBoxPassword);
             this.Controls.Add(this.pictureBoxLogin);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(387, 290);
             this.Name = "AuthorizationForm";
