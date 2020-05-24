@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using CourseWork.Authorization_Registration_ForgotPass.ForgotPass;
+using CourseWork.Main;
 
 namespace CourseWork.Authorization_Registration_Forgot_pass
 {
@@ -63,7 +64,7 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
         {
             ConfirmationMailForm mailForm = new ConfirmationMailForm();
             
-            global = mailForm.SendingCode(Program.DataForgotPass.Email, subject, body);
+            global = mailForm.SendingCode(Values.ForgotEmail, subject, body);
         }
 
         // При закрытии формы

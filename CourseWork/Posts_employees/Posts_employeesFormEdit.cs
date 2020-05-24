@@ -3,6 +3,7 @@ using System.Data;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -26,8 +27,8 @@ namespace CourseWork
 
             SelectPostsComboBox();
 
-            int indexEmp = ComboBox_fk_employee.FindString(Program.DataPostsEmployees.Employees);
-            int indexPost = ComboBox_fk_post.FindString(Program.DataPostsEmployees.Post);
+            int indexEmp = ComboBox_fk_employee.FindString(Values.PostsEmployeesEmployees);
+            int indexPost = ComboBox_fk_post.FindString(Values.PostsEmployeesPost);
 
             ComboBox_fk_employee.SelectedIndex = indexEmp;
             ComboBox_fk_post.SelectedIndex = indexPost;
@@ -99,7 +100,7 @@ namespace CourseWork
 
             command.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = ComboBox_fk_employee.SelectedValue;
             command.Parameters.AddWithValue("@fk_post", SqlDbType.Int).Value = ComboBox_fk_post.SelectedValue;
-            command.Parameters.AddWithValue("@id_post_emp", Program.DataPostsEmployees.Id);
+            command.Parameters.AddWithValue("@id_post_emp", Values.PostsEmployeesId);
 
             command.ExecuteNonQuery();
 

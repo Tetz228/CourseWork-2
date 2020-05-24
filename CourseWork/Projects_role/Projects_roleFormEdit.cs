@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -23,7 +24,7 @@ namespace CourseWork
         // При загрузки формы
         private void Projects_roleFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataProjects_role.Name;
+            textBoxEdit.Text = Values.Projects_roleName;
         }
 
         // Вызов проверки и сохранение изменений
@@ -49,7 +50,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@project_role_name", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_project_role", Program.DataProjects_role.Id);
+            command.Parameters.AddWithValue("@id_project_role", Values.Projects_roleId);
 
             command.ExecuteNonQuery();
 

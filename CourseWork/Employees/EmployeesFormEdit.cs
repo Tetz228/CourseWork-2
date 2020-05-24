@@ -5,6 +5,7 @@ using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -26,10 +27,10 @@ namespace CourseWork
         // При загрузки формы
         private void EmployeesFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxLname.Text = Program.DataEmployee.Lname;
-            textBoxFname.Text = Program.DataEmployee.Fname;
-            textBoxMname.Text = Program.DataEmployee.Mname;
-            textBoxEmail.Text = Program.DataEmployee.Email;
+            textBoxLname.Text = Values.EmployeeLname;
+            textBoxFname.Text = Values.EmployeeFname;
+            textBoxMname.Text = Values.EmployeeMname;
+            textBoxEmail.Text = Values.EmployeeEmail;
 
             checkEmail = textBoxEmail.Text;
         }
@@ -111,7 +112,7 @@ namespace CourseWork
             else
                 command.Parameters.AddWithValue("@employee_mname", SqlDbType.NVarChar).Value = textBoxMname.Text.Trim();
 
-            command.Parameters.AddWithValue("@id_employee", Program.DataEmployee.Id);
+            command.Parameters.AddWithValue("@id_employee", Values.EmployeeId);
 
             command.ExecuteNonQuery();
 

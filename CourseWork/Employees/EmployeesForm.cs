@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -23,7 +24,7 @@ namespace CourseWork
 
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-            if (Program.DataAuth.Role_user == 2)
+            if (Values.AuthRole_user == 2)
                 MainToolStripMenuItem.Visible = false;
         }
 
@@ -114,7 +115,7 @@ namespace CourseWork
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewEmployees_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.KeyCode == Keys.Insert)
                 {
                     EmployeesFormAdd formAdd = new EmployeesFormAdd();
@@ -130,11 +131,11 @@ namespace CourseWork
         {
             EmployeesFormEdit formEdit = new EmployeesFormEdit();
 
-            Program.DataEmployee.Id = Convert.ToInt32(dataGridViewEmployees.CurrentRow.Cells[0].Value);
-            Program.DataEmployee.Lname = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[1].Value);
-            Program.DataEmployee.Fname = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[2].Value);
-            Program.DataEmployee.Mname = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[3].Value);
-            Program.DataEmployee.Email = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[4].Value);
+            Values.EmployeeId = Convert.ToInt32(dataGridViewEmployees.CurrentRow.Cells[0].Value);
+            Values.EmployeeLname = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[1].Value);
+            Values.EmployeeFname = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[2].Value);
+            Values.EmployeeMname = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[3].Value);
+            Values.EmployeeEmail = Convert.ToString(dataGridViewEmployees.CurrentRow.Cells[4].Value);
 
             formEdit.ShowDialog();
 
@@ -144,16 +145,16 @@ namespace CourseWork
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewEmployees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewEmployees.Rows[e.RowIndex];
 
-                    Program.DataEmployee.Id = Convert.ToInt32(view.Cells[0].Value.ToString());
-                    Program.DataEmployee.Lname = view.Cells[1].Value.ToString();
-                    Program.DataEmployee.Fname = view.Cells[2].Value.ToString();
-                    Program.DataEmployee.Mname = view.Cells[3].Value.ToString();
-                    Program.DataEmployee.Email = view.Cells[4].Value.ToString();
+                    Values.EmployeeId = Convert.ToInt32(view.Cells[0].Value.ToString());
+                    Values.EmployeeLname = view.Cells[1].Value.ToString();
+                    Values.EmployeeFname = view.Cells[2].Value.ToString();
+                    Values.EmployeeMname = view.Cells[3].Value.ToString();
+                    Values.EmployeeEmail = view.Cells[4].Value.ToString();
 
                     EmployeesFormEdit formEdit = new EmployeesFormEdit();
 
@@ -175,7 +176,7 @@ namespace CourseWork
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewEmployees_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     DeleteRowEmployee();

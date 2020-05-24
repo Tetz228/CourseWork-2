@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using CourseWork.Main;
 
 namespace CourseWork.Type_task
 {
@@ -23,7 +24,7 @@ namespace CourseWork.Type_task
             material.Theme = MaterialSkinManager.Themes.DARK;
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
 
-            if (Program.DataAuth.Role_user == 2)
+            if (Values.AuthRole_user == 2)
                 MainToolStripMenuItem.Visible = false;
         }
 
@@ -109,7 +110,7 @@ namespace CourseWork.Type_task
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewType_task_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.KeyCode == Keys.Insert)
                 {
                     Type_taskFormAdd formAdd = new Type_taskFormAdd();
@@ -125,9 +126,9 @@ namespace CourseWork.Type_task
         {
             Type_taskFormEdit formEdit = new Type_taskFormEdit();
 
-            Program.DataType_task.Id = Convert.ToInt32(dataGridViewType_task.CurrentRow.Cells[0].Value);
-            Program.DataType_task.Name = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[1].Value);
-            Program.DataType_task.Description = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[2].Value);
+            Values.TypeTaskId = Convert.ToInt32(dataGridViewType_task.CurrentRow.Cells[0].Value);
+            Values.TypeTaskName = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[1].Value);
+            Values.TypeTaskDescription = Convert.ToString(dataGridViewType_task.CurrentRow.Cells[2].Value);
 
             formEdit.ShowDialog();
 
@@ -137,14 +138,14 @@ namespace CourseWork.Type_task
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewType_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewType_task.Rows[e.RowIndex];
 
-                    Program.DataType_task.Id = Convert.ToInt32(view.Cells[0].Value);
-                    Program.DataType_task.Name = view.Cells[1].Value.ToString();
-                    Program.DataType_task.Description = view.Cells[2].Value.ToString();
+                    Values.TypeTaskId = Convert.ToInt32(view.Cells[0].Value);
+                    Values.TypeTaskName = view.Cells[1].Value.ToString();
+                    Values.TypeTaskDescription = view.Cells[2].Value.ToString();
 
                     Type_taskFormEdit formEdit = new Type_taskFormEdit();
 
@@ -166,7 +167,7 @@ namespace CourseWork.Type_task
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewType_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     DeleteRowType_task();

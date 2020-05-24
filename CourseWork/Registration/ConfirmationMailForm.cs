@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -34,7 +35,7 @@ namespace CourseWork
         // Вызов функции отправки кода и занесение возвращенного значения в глоб. переменную
         private void CallSendingCode()
         {
-            global = SendingCode(Program.DataRegist.Email, subject, body);
+            global = SendingCode(Values.RegEmail, subject, body);
         }
 
         // Отправка кода подтверждение
@@ -72,7 +73,7 @@ namespace CourseWork
         {
             if (global == textBoxCode.Text)
             {
-                Program.DataRegist.СorrectCode = "Сorrect code";
+                Values.СorrectCode = "Сorrect code";
                 this.Close();
             }
             else

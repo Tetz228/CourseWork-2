@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork.MyTask
 {
@@ -40,7 +41,7 @@ namespace CourseWork.MyTask
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@id_emp", Program.DataAuth.IdUser);
+            command.Parameters.AddWithValue("@id_emp", Values.AuthIdUser);
 
             SqlDataAdapter sqlDA = new SqlDataAdapter(command);
 
@@ -80,10 +81,10 @@ namespace CourseWork.MyTask
 
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.DataMyTask.Id = Convert.ToInt32(dataGridViewMy_task.CurrentRow.Cells[0].Value);
-            Program.DataMyTask.Name = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[1].Value);
-            Program.DataMyTask.Status = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[3].Value);
-            Program.DataMyTask.Date = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[4].Value);
+            Values.MyTaskId = Convert.ToInt32(dataGridViewMy_task.CurrentRow.Cells[0].Value);
+            Values.MyTaskName = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[1].Value);
+            Values.MyTaskStatus = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[3].Value);
+            Values.MyTaskDate = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[4].Value);
 
             MyTaskFormEdit formEdit = new MyTaskFormEdit();
 
@@ -98,10 +99,10 @@ namespace CourseWork.MyTask
             {
                 DataGridViewRow view = dataGridViewMy_task.Rows[e.RowIndex];
 
-                Program.DataMyTask.Id = Convert.ToInt32(view.Cells[0].Value);
-                Program.DataMyTask.Name = view.Cells[1].Value.ToString();
-                Program.DataMyTask.Status = view.Cells[3].Value.ToString();
-                Program.DataMyTask.Date = view.Cells[4].Value.ToString();
+                Values.MyTaskId = Convert.ToInt32(view.Cells[0].Value);
+                Values.MyTaskName = view.Cells[1].Value.ToString();
+                Values.MyTaskStatus = view.Cells[3].Value.ToString();
+                Values.MyTaskDate = view.Cells[4].Value.ToString();
 
                 MyTaskFormEdit formEdit = new MyTaskFormEdit();
 

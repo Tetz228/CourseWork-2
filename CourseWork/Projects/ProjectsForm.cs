@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -23,7 +24,7 @@ namespace CourseWork
 
             this.dataGridViewProjects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-            if (Program.DataAuth.Role_user == 2)
+            if (Values.AuthRole_user == 2)
                 MainToolStripMenuItem.Visible = false;
         }
 
@@ -114,7 +115,7 @@ namespace CourseWork
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewProjects_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.KeyCode == Keys.Insert)
                 {
                     ProjectsFormAdd formAdd = new ProjectsFormAdd();
@@ -130,12 +131,12 @@ namespace CourseWork
         {
             ProjectsFormEdit formEdit = new ProjectsFormEdit();
 
-            Program.DataProject.Id = Convert.ToInt32(dataGridViewProjects.CurrentRow.Cells[0].Value);
-            Program.DataProject.Name = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[1].Value);
-            Program.DataProject.Target = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[2].Value);
-            Program.DataProject.Start = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[3].Value);
-            Program.DataProject.Completion = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[4].Value);
-            Program.DataProject.Leader = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[5].Value);
+            Values.ProjectId = Convert.ToInt32(dataGridViewProjects.CurrentRow.Cells[0].Value);
+            Values.ProjectName = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[1].Value);
+            Values.ProjectTarget = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[2].Value);
+            Values.ProjectStart = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[3].Value);
+            Values.ProjectCompletion = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[4].Value);
+            Values.ProjectLeader = Convert.ToString(dataGridViewProjects.CurrentRow.Cells[5].Value);
 
             formEdit.ShowDialog();
 
@@ -145,17 +146,17 @@ namespace CourseWork
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewProjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewProjects.Rows[e.RowIndex];
 
-                    Program.DataProject.Id = Convert.ToInt32(view.Cells[0].Value);
-                    Program.DataProject.Name = view.Cells[1].Value.ToString();
-                    Program.DataProject.Target = view.Cells[2].Value.ToString();
-                    Program.DataProject.Start = view.Cells[3].Value.ToString();
-                    Program.DataProject.Completion = view.Cells[4].Value.ToString();
-                    Program.DataProject.Leader = view.Cells[5].Value.ToString();
+                    Values.ProjectId = Convert.ToInt32(view.Cells[0].Value);
+                    Values.ProjectName = view.Cells[1].Value.ToString();
+                    Values.ProjectTarget = view.Cells[2].Value.ToString();
+                    Values.ProjectStart = view.Cells[3].Value.ToString();
+                    Values.ProjectCompletion = view.Cells[4].Value.ToString();
+                    Values.ProjectLeader = view.Cells[5].Value.ToString();
 
                     ProjectsFormEdit formEdit = new ProjectsFormEdit();
 
@@ -177,7 +178,7 @@ namespace CourseWork
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewProjects_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     DeleteRowProject();

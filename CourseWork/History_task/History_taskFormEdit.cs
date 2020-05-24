@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork.History_task
 {
@@ -29,12 +30,12 @@ namespace CourseWork.History_task
 
             SelectStatusComboBox();
 
-            textBox_History_date_task.Text = Program.DataHistoryTask.Date;
+            textBox_History_date_task.Text = Values.HistoryTaskDate;
 
-            string s = Program.DataHistoryTask.Name + "; " + Program.DataHistoryTask.Project;
+            string s = Values.HistoryTaskName + "; " + Values.HistoryTaskProject;
 
             int indexProj = ComboBox_fk_project_task.FindString(s);
-            int indexStat = ComboBox_fk_status_task.FindString(Program.DataHistoryTask.Status);
+            int indexStat = ComboBox_fk_status_task.FindString(Values.HistoryTaskStatus);
 
             ComboBox_fk_project_task.SelectedIndex = indexProj;
             ComboBox_fk_status_task.SelectedIndex = indexStat;
@@ -117,7 +118,7 @@ namespace CourseWork.History_task
             command.Parameters.AddWithValue("@fk_project_task", SqlDbType.Int).Value = ComboBox_fk_project_task.SelectedValue;
             command.Parameters.AddWithValue("@fk_status_task", SqlDbType.Int).Value = ComboBox_fk_status_task.SelectedValue;
 
-            command.Parameters.AddWithValue("@id_history_task", Program.DataHistoryTask.Id);
+            command.Parameters.AddWithValue("@id_history_task", Values.HistoryTaskId);
 
             try
             {

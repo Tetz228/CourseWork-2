@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -62,7 +63,7 @@ namespace CourseWork
                 return;
             else
             {
-                Program.DataRegist.Email = TextBoxEmail.Text;
+                Values.RegEmail = TextBoxEmail.Text;
 
                 ConfirmationMailForm mailForm = new ConfirmationMailForm();
 
@@ -73,7 +74,7 @@ namespace CourseWork
 
                 mailForm.ShowDialog();
 
-                if (Program.DataRegist.СorrectCode == "Сorrect code")
+                if (Values.СorrectCode == "Сorrect code")
                     Registration();
             }
         }

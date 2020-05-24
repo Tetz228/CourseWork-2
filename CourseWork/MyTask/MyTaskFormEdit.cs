@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork.MyTask
 {
@@ -26,9 +27,9 @@ namespace CourseWork.MyTask
         {
             SelectStatusComboBox();
 
-            textBox_History_date_task.Text = Program.DataMyTask.Date;
+            textBox_History_date_task.Text = Values.MyTaskDate;
 
-            int indexStat = ComboBox_fk_status_task.FindString(Program.DataMyTask.Status);
+            int indexStat = ComboBox_fk_status_task.FindString(Values.MyTaskStatus);
 
             ComboBox_fk_status_task.SelectedIndex = indexStat;
 
@@ -87,7 +88,7 @@ namespace CourseWork.MyTask
 
             command.Parameters.AddWithValue("@fk_status_task", SqlDbType.Int).Value = ComboBox_fk_status_task.SelectedValue;
 
-            command.Parameters.AddWithValue("@id_history_task", Program.DataMyTask.Id);
+            command.Parameters.AddWithValue("@id_history_task", Values.MyTaskId);
 
             try
             {

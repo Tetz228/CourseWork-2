@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -28,12 +29,12 @@ namespace CourseWork
         {
             SelectEmployeeComboBox();
 
-            textBoxProject_name.Text = Program.DataProject.Name;
-            textBoxProject_target.Text = Program.DataProject.Target;
-            textBoxDate_start.Text = Program.DataProject.Start;
-            textBoxDate_completion.Text = Program.DataProject.Completion;
+            textBoxProject_name.Text = Values.ProjectName;
+            textBoxProject_target.Text = Values.ProjectTarget;
+            textBoxDate_start.Text = Values.ProjectStart;
+            textBoxDate_completion.Text = Values.ProjectCompletion;
 
-            int indexEmp = comboBox_fk_leader.FindString(Program.DataProject.Leader);
+            int indexEmp = comboBox_fk_leader.FindString(Values.ProjectLeader);
 
             comboBox_fk_leader.SelectedIndex = indexEmp;
 
@@ -115,7 +116,7 @@ namespace CourseWork
             
             command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
             command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;
-            command.Parameters.AddWithValue("@id_project", Program.DataProject.Id);
+            command.Parameters.AddWithValue("@id_project", Values.ProjectId);
 
             try
             {

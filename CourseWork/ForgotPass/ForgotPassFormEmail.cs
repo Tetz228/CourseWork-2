@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using CourseWork.Authorization_Registration_Forgot_pass;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -88,8 +89,8 @@ namespace CourseWork
 
                 reader.Read();
 
-                Program.DataForgotPass.IdUser = Convert.ToInt32(reader.GetValue(0));
-                Program.DataForgotPass.Email = textBoxEmail.Text.Trim();
+                Values.ForgotIdUser = Convert.ToInt32(reader.GetValue(0));
+                Values.ForgotEmail = textBoxEmail.Text.Trim();
 
                 connection.CloseConnect();
 

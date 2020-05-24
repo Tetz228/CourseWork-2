@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork.Posts
 {
@@ -23,7 +24,7 @@ namespace CourseWork.Posts
         // При загрузки формы
         private void PostsFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataPosts.Name;
+            textBoxEdit.Text = Values.PostsName;
         }
 
         // Вызов проверки и сохранения изменений
@@ -56,7 +57,7 @@ namespace CourseWork.Posts
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@post_name", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_post", Program.DataPosts.Id);
+            command.Parameters.AddWithValue("@id_post", Values.PostsId);
 
             command.ExecuteNonQuery();
 

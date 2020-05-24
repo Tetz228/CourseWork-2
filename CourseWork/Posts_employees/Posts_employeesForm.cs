@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -23,7 +24,7 @@ namespace CourseWork
 
             this.dataGridViewPostsEmployees.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-            if (Program.DataAuth.Role_user == 2)
+            if (Values.AuthRole_user == 2)
                 MainToolStripMenuItem.Visible = false;
         }
 
@@ -110,7 +111,7 @@ namespace CourseWork
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewPostsEmployees_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.KeyCode == Keys.Insert)
                 {
                     Posts_employeesFormAdd formAdd = new Posts_employeesFormAdd();
@@ -126,9 +127,9 @@ namespace CourseWork
         {
             Posts_employeesFormEdit formEdit = new Posts_employeesFormEdit();
 
-            Program.DataPostsEmployees.Id = Convert.ToInt32(dataGridViewPostsEmployees.CurrentRow.Cells[0].Value);
-            Program.DataPostsEmployees.Employees = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[1].Value);
-            Program.DataPostsEmployees.Post = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[2].Value);
+            Values.PostsEmployeesId = Convert.ToInt32(dataGridViewPostsEmployees.CurrentRow.Cells[0].Value);
+            Values.PostsEmployeesEmployees = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[1].Value);
+            Values.PostsEmployeesPost = Convert.ToString(dataGridViewPostsEmployees.CurrentRow.Cells[2].Value);
             
             formEdit.ShowDialog();
 
@@ -138,14 +139,14 @@ namespace CourseWork
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewPostsEmployees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewPostsEmployees.Rows[e.RowIndex];
 
-                    Program.DataPostsEmployees.Id = Convert.ToInt32(view.Cells[0].Value);
-                    Program.DataPostsEmployees.Employees = view.Cells[1].Value.ToString();
-                    Program.DataPostsEmployees.Post = view.Cells[2].Value.ToString();
+                    Values.PostsEmployeesId = Convert.ToInt32(view.Cells[0].Value);
+                    Values.PostsEmployeesEmployees = view.Cells[1].Value.ToString();
+                    Values.PostsEmployeesPost = view.Cells[2].Value.ToString();
 
                     Posts_employeesFormEdit formEdit = new Posts_employeesFormEdit();
 
@@ -167,7 +168,7 @@ namespace CourseWork
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewPostsEmployees_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     DeleteRowPostsEmployees();

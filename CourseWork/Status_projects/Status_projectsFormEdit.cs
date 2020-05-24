@@ -4,6 +4,7 @@ using MaterialSkin;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -23,7 +24,7 @@ namespace CourseWork
         // При загрузки формы
         private void Status_projectsFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxEdit.Text = Program.DataStatus_project.Name;
+            textBoxEdit.Text = Values.StatusProjectName;
         }
 
         // Функция редактирования строки
@@ -37,7 +38,7 @@ namespace CourseWork
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@status_name_project", SqlDbType.NVarChar).Value = textBoxEdit.Text.Trim();
-            command.Parameters.AddWithValue("@id_status_project", Program.DataStatus_project.Id);
+            command.Parameters.AddWithValue("@id_status_project", Values.StatusProjectId);
 
             command.ExecuteNonQuery();
 

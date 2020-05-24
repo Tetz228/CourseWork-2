@@ -3,6 +3,8 @@ using System.Data;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using CourseWork.Main;
+
 namespace CourseWork.Projects_task
 {
     public partial class Projects_taskFormEdit : MaterialForm
@@ -28,10 +30,10 @@ namespace CourseWork.Projects_task
 
             SelectRoleComboBox();
 
-            int indexProj = comboBox_fk_project.FindString(Program.DataProjects_task.Project);
-            int indexType = comboBox_fk_type_task.FindString(Program.DataProjects_task.Type_task);
-            int indexEmp = comboBox_fk_employee.FindString(Program.DataProjects_task.Employee);
-            int indexRole = comboBox_fk_project_role.FindString(Program.DataProjects_task.Project_role);
+            int indexProj = comboBox_fk_project.FindString(Values.ProjectsTaskProject);
+            int indexType = comboBox_fk_type_task.FindString(Values.ProjectsTaskType_task);
+            int indexEmp = comboBox_fk_employee.FindString(Values.ProjectsTaskEmployee);
+            int indexRole = comboBox_fk_project_role.FindString(Values.ProjectsTaskProject_role);
 
             comboBox_fk_project.SelectedIndex = indexProj;
             comboBox_fk_type_task.SelectedIndex = indexType;
@@ -144,7 +146,7 @@ namespace CourseWork.Projects_task
             command.Parameters.AddWithValue("@fk_type_task", SqlDbType.Int).Value = comboBox_fk_type_task.SelectedValue;
             command.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = comboBox_fk_employee.SelectedValue;
             command.Parameters.AddWithValue("@fk_project_role", SqlDbType.Int).Value = comboBox_fk_project_role.SelectedValue;
-            command.Parameters.AddWithValue("@id_task", SqlDbType.Int).Value = Program.DataProjects_task.Id;
+            command.Parameters.AddWithValue("@id_task", SqlDbType.Int).Value = Values.ProjectsTaskId;
 
             command.ExecuteNonQuery();
 

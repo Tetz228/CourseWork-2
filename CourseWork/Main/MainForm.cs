@@ -11,6 +11,7 @@ using CourseWork.Users_roles;
 using CourseWork.Type_task;
 using CourseWork.Projects_task;
 using CourseWork.MyTask;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -29,7 +30,7 @@ namespace CourseWork
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (Program.DataAuth.Role_user == 2)
+            if (Values.AuthRole_user == 2)
             {
                 ListUsersToolStripMenuItem.Visible = false;
                 RoleUsersToolStripMenuItem.Visible = false;

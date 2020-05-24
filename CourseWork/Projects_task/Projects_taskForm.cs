@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using CourseWork.Main;
 
 namespace CourseWork.Projects_task
 {
@@ -23,7 +24,7 @@ namespace CourseWork.Projects_task
 
             this.dataGridViewProjects_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-            if (Program.DataAuth.Role_user == 2)
+            if (Values.AuthRole_user == 2)
                 MainToolStripMenuItem.Visible = false;
         }
 
@@ -112,7 +113,7 @@ namespace CourseWork.Projects_task
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewProjects_task_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.KeyCode == Keys.Insert)
                 {
                     Projects_taskFormAdd formAdd = new Projects_taskFormAdd();
@@ -126,11 +127,11 @@ namespace CourseWork.Projects_task
         // При клике на "Правка" -> "Изменить" открывается форма для изменения
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.DataProjects_task.Id = Convert.ToInt32(dataGridViewProjects_task.CurrentRow.Cells[0].Value);
-            Program.DataProjects_task.Project = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[1].Value);
-            Program.DataProjects_task.Type_task = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[2].Value);
-            Program.DataProjects_task.Employee = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[3].Value);
-            Program.DataProjects_task.Project_role = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[4].Value);
+            Values.ProjectsTaskId = Convert.ToInt32(dataGridViewProjects_task.CurrentRow.Cells[0].Value);
+            Values.ProjectsTaskProject = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[1].Value);
+            Values.ProjectsTaskType_task = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[2].Value);
+            Values.ProjectsTaskEmployee = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[3].Value);
+            Values.ProjectsTaskProject_role = Convert.ToString(dataGridViewProjects_task.CurrentRow.Cells[4].Value);
 
             Projects_taskFormEdit formEdit = new Projects_taskFormEdit();
 
@@ -142,16 +143,16 @@ namespace CourseWork.Projects_task
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewProjects_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewProjects_task.Rows[e.RowIndex];
 
-                    Program.DataProjects_task.Id = Convert.ToInt32(view.Cells[0].Value);
-                    Program.DataProjects_task.Project = view.Cells[1].Value.ToString();
-                    Program.DataProjects_task.Type_task = view.Cells[2].Value.ToString();
-                    Program.DataProjects_task.Employee = view.Cells[3].Value.ToString();
-                    Program.DataProjects_task.Project_role = view.Cells[4].Value.ToString();
+                    Values.ProjectsTaskId = Convert.ToInt32(view.Cells[0].Value);
+                    Values.ProjectsTaskProject = view.Cells[1].Value.ToString();
+                    Values.ProjectsTaskType_task = view.Cells[2].Value.ToString();
+                    Values.ProjectsTaskEmployee = view.Cells[3].Value.ToString();
+                    Values.ProjectsTaskProject_role = view.Cells[4].Value.ToString();
 
                     Projects_taskFormEdit formEdit = new Projects_taskFormEdit();
 
@@ -173,7 +174,7 @@ namespace CourseWork.Projects_task
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewProjects_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     DeleteRowProject();

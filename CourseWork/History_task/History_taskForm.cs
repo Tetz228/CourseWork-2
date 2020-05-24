@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork.History_task
 {
@@ -23,7 +24,7 @@ namespace CourseWork.History_task
 
             this.dataGridViewHistory_task.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
-            if (Program.DataAuth.Role_user == 2)
+            if (Values.AuthRole_user == 2)
                 MainToolStripMenuItem.Visible = false;
         }
 
@@ -114,7 +115,7 @@ namespace CourseWork.History_task
         // При нажатии на клавишу Ins(Insert) открывается форма добавления
         private void dataGridViewHistory_task_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
             {
                 if (e.KeyCode == Keys.Insert)
                 {
@@ -132,10 +133,10 @@ namespace CourseWork.History_task
         {
             History_taskFormEdit formEdit = new History_taskFormEdit();
 
-            Program.DataHistoryTask.Id = Convert.ToInt32(dataGridViewHistory_task.CurrentRow.Cells[0].Value);
-            Program.DataHistoryTask.Name = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[1].Value);
-            Program.DataHistoryTask.Status = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[3].Value);
-            Program.DataHistoryTask.Date = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[4].Value);
+            Values.HistoryTaskId = Convert.ToInt32(dataGridViewHistory_task.CurrentRow.Cells[0].Value);
+            Values.HistoryTaskName = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[1].Value);
+            Values.HistoryTaskStatus = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[3].Value);
+            Values.HistoryTaskDate = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[4].Value);
 
             formEdit.ShowDialog();
 
@@ -145,17 +146,17 @@ namespace CourseWork.History_task
         // При 2-ом клике на ячейку можно провести редактирование
         private void dataGridViewHistory_task_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
             {
                 if (e.RowIndex != -1)
                 {
                     DataGridViewRow view = dataGridViewHistory_task.Rows[e.RowIndex];
 
-                    Program.DataHistoryTask.Id = Convert.ToInt32(view.Cells[0].Value);
-                    Program.DataHistoryTask.Name = view.Cells[1].Value.ToString();
-                    Program.DataHistoryTask.Project = view.Cells[2].Value.ToString();
-                    Program.DataHistoryTask.Status = view.Cells[3].Value.ToString();
-                    Program.DataHistoryTask.Date = view.Cells[4].Value.ToString();
+                    Values.HistoryTaskId = Convert.ToInt32(view.Cells[0].Value);
+                    Values.HistoryTaskName = view.Cells[1].Value.ToString();
+                    Values.HistoryTaskProject = view.Cells[2].Value.ToString();
+                    Values.HistoryTaskStatus = view.Cells[3].Value.ToString();
+                    Values.HistoryTaskDate = view.Cells[4].Value.ToString();
 
                     History_taskFormEdit formEdit = new History_taskFormEdit();
 
@@ -178,7 +179,7 @@ namespace CourseWork.History_task
         // При выделение строки и нажатии на клавишу Del(Delete) вызывается функция удаления
         private void dataGridViewHistory_task_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (Program.DataAuth.Role_user != 2)
+            if (Values.AuthRole_user != 2)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение удаления", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     DeleteRowHistoryTask();

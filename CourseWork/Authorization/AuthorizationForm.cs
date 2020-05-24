@@ -7,6 +7,7 @@ using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Security.Cryptography;
 using System.Text;
+using CourseWork.Main;
 
 namespace CourseWork
 {
@@ -64,8 +65,8 @@ namespace CourseWork
 
                 reader.Read();
 
-                Program.DataAuth.IdUser = Convert.ToInt32(reader.GetValue(0));
-                Program.DataAuth.Role_user = Convert.ToInt32(reader.GetValue(1));
+                Values.AuthIdUser = Convert.ToInt32(reader.GetValue(0));
+                Values.AuthRole_user = Convert.ToInt32(reader.GetValue(1));
 
                 main.Left = this.Left;
                 main.Top = this.Top;
