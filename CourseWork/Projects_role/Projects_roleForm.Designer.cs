@@ -80,6 +80,7 @@
             this.dataGridViewProjects_role.TabIndex = 7;
             this.dataGridViewProjects_role.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProjects_role_CellDoubleClick);
             this.dataGridViewProjects_role.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewProjects_role_UserDeletingRow);
+            this.dataGridViewProjects_role.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Projects_roleForm_KeyDown);
             // 
             // Column_id_project_role
             // 
