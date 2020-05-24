@@ -135,6 +135,7 @@ namespace CourseWork.History_task
 
             Values.HistoryTaskId = Convert.ToInt32(dataGridViewHistory_task.CurrentRow.Cells[0].Value);
             Values.HistoryTaskName = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[1].Value);
+            Values.HistoryTaskProject = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[2].Value);
             Values.HistoryTaskStatus = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[3].Value);
             Values.HistoryTaskDate = Convert.ToString(dataGridViewHistory_task.CurrentRow.Cells[4].Value);
 

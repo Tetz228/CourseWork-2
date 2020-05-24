@@ -82,7 +82,6 @@ namespace CourseWork.MyTask
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Values.MyTaskId = Convert.ToInt32(dataGridViewMy_task.CurrentRow.Cells[0].Value);
-            Values.MyTaskName = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[1].Value);
             Values.MyTaskStatus = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[3].Value);
             Values.MyTaskDate = Convert.ToString(dataGridViewMy_task.CurrentRow.Cells[4].Value);
 
@@ -100,7 +99,6 @@ namespace CourseWork.MyTask
                 DataGridViewRow view = dataGridViewMy_task.Rows[e.RowIndex];
 
                 Values.MyTaskId = Convert.ToInt32(view.Cells[0].Value);
-                Values.MyTaskName = view.Cells[1].Value.ToString();
                 Values.MyTaskStatus = view.Cells[3].Value.ToString();
                 Values.MyTaskDate = view.Cells[4].Value.ToString();
 

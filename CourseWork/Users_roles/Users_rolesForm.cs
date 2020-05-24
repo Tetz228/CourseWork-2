@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork.Users_roles
 {
@@ -106,8 +107,8 @@ namespace CourseWork.Users_roles
         {
             Users_rolesFormEdit formEdit = new Users_rolesFormEdit();
 
-            Program.DataUsers_roles.Id = Convert.ToInt32(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
-            Program.DataUsers_roles.Name = Convert.ToString(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
+            Values.UsersRolesId = Convert.ToInt32(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
+            Values.UsersRolesName = Convert.ToString(dataGridViewUsers_roles.CurrentRow.Cells[0].Value);
 
             formEdit.ShowDialog();
 
@@ -121,8 +122,8 @@ namespace CourseWork.Users_roles
             {
                 DataGridViewRow view = dataGridViewUsers_roles.Rows[e.RowIndex];
 
-                Program.DataUsers_roles.Id = Convert.ToInt32(view.Cells[0].Value);
-                Program.DataUsers_roles.Name = view.Cells[1].Value.ToString();
+                Values.UsersRolesId = Convert.ToInt32(view.Cells[0].Value);
+                Values.UsersRolesName = view.Cells[1].Value.ToString();
 
                 Users_rolesFormEdit formEdit = new Users_rolesFormEdit();
 

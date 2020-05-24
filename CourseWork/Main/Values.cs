@@ -1,6 +1,6 @@
 ﻿namespace CourseWork.Main
 {
-    class Values
+    class  Values
     {
         /////////////////////Авторизация//////////////////////////
 
@@ -77,7 +77,7 @@
         public static string PostsEmployeesPost { get; set; }
 
         ////////////////////Должности///////////////////
-        ///
+        
         public static int PostsId { get; set; }
 
         public static string PostsName { get; set; }
@@ -102,8 +102,6 @@
         //////////////////////Мои задачи/////////////////////////
 
         public static int MyTaskId { get; set; }
-
-        public static string MyTaskName { get; set; }
 
         public static string MyTaskStatus { get; set; }
 

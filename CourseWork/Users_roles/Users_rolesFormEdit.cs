@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CourseWork.Main;
 
 namespace CourseWork.Users_roles
 {
@@ -23,7 +24,7 @@ namespace CourseWork.Users_roles
         // При загрузки формы
         private void Users_rolesFormEdit_Load(object sender, EventArgs e)
         {
-            textBoxNameRole.Text = Program.DataUsers_roles.Name;
+            textBoxNameRole.Text = Values.UsersRolesName;
         }
 
         // Вызов проверки и сохранение изменений
@@ -56,7 +57,7 @@ namespace CourseWork.Users_roles
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@user_name_role", SqlDbType.NVarChar).Value = textBoxNameRole.Text.Trim();
-            command.Parameters.AddWithValue("@id_user_role", SqlDbType.Int).Value = Program.DataUsers_roles.Id;
+            command.Parameters.AddWithValue("@id_user_role", SqlDbType.Int).Value = Values.UsersRolesId;
 
             command.ExecuteNonQuery();
 
