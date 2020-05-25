@@ -10,8 +10,6 @@ namespace CourseWork.MyTask
 {
     public partial class MyTaskFormEdit : MaterialForm
     {
-        DateTime dateHistory_date;
-
         public MyTaskFormEdit()
         {
             InitializeComponent();
@@ -84,7 +82,7 @@ namespace CourseWork.MyTask
             if (string.IsNullOrWhiteSpace(textBox_History_date_task.Text))
                 command.Parameters.AddWithValue("@history_date_task", SqlDbType.Date).Value = DBNull.Value;
             else
-                command.Parameters.AddWithValue("@history_date_task", SqlDbType.Date).Value = dateHistory_date = DateTime.Parse(textBox_History_date_task.Text);
+                command.Parameters.AddWithValue("@history_date_task", SqlDbType.Date).Value = DateTime.Parse(textBox_History_date_task.Text);
 
             command.Parameters.AddWithValue("@fk_status_task", SqlDbType.Int).Value = ComboBox_fk_status_task.SelectedValue;
 
@@ -107,7 +105,7 @@ namespace CourseWork.MyTask
         // Проверка даты на нулевое значение и на корректность
         private void CheckDateNullAndCorrect()
         {
-            bool date = DateTime.TryParse(textBox_History_date_task.Text, out dateHistory_date);
+            bool date = DateTime.TryParse(textBox_History_date_task.Text, out DateTime dateHistory_date);
 
             if (!string.IsNullOrWhiteSpace(textBox_History_date_task.Text))
             {

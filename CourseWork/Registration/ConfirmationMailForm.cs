@@ -29,9 +29,9 @@ namespace CourseWork
         // Вызов функции отправки кода
         private void CallSendingCode()
         {
-            SendingCode sending = new SendingCode();
+            Functions sending = new Functions();
 
-            Values.RegCode = sending.FunSendingCode(Values.RegEmail, "Подтверждение почты", "Ваш код подтверждения - ");
+            Values.RegCode = sending.SendingCode(Values.RegEmail, "Подтверждение почты", "Ваш код подтверждения - ");
         }   
 
         // Сравнивание введенного и полученного кода
@@ -56,23 +56,6 @@ namespace CourseWork
         private void linkLabelConfirmationCode_Click(object sender, EventArgs e)
         {
             CallSendingCode();
-        }
-
-        // Перемещение формы
-        Point point;
-
-        private void ConfirmationMailForm_MouseDown(object sender, MouseEventArgs e)
-        {
-            point = new Point(e.X, e.Y);
-        }
-
-        private void ConfirmationMailForm_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - point.X;
-                this.Top += e.Y - point.Y;
-            }
         }
 
         // При закрытии формы

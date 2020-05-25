@@ -58,9 +58,9 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
         // Получение кода подтвеждения
         private void СonfirmationСode()
         {
-            SendingCode sending = new SendingCode();
+            Functions sending = new Functions();
 
-            Values.FogotCode = sending.FunSendingCode(Values.ForgotEmail, "Код безопасности учетной записи", "Ваш код безопасности для изменения пароля - ");
+            Values.FogotCode = sending.SendingCode(Values.ForgotEmail, "Код безопасности учетной записи", "Ваш код безопасности для изменения пароля - ");
         }
 
         // При закрытии формы

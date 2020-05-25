@@ -3,7 +3,6 @@ using System.Data;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
-using System.Text.RegularExpressions;
 using System.Data.SqlClient;
 using CourseWork.Main;
 
@@ -11,8 +10,6 @@ namespace CourseWork
 {
     public partial class EmployeesFormEdit : MaterialForm
     {
-        string checkEmail;
-
         public EmployeesFormEdit()
         {
             InitializeComponent();
@@ -31,47 +28,27 @@ namespace CourseWork
             textBoxFname.Text = Values.EmployeeFname;
             textBoxMname.Text = Values.EmployeeMname;
             textBoxEmail.Text = Values.EmployeeEmail;
-
-            checkEmail = textBoxEmail.Text;
         }
 
         // Вызов всех проверок и изменение строки
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            Functions functions = new Functions();
+
             if (!CheckTextBox())
                 return;
             else
-            if (!ValidationEmail())
+            if (!functions.ValidationEmail(textBoxEmail.Text.Trim()))
             {
                 labelEmail.Text = "Некорректная почта.";
                 labelEmail.Show();
                 return;
             }
             else
-            if (!ValidationLFMname(textBoxLname.Text))
+            if (textBoxEmail.Text != Values.EmployeeEmail)
             {
-                labelLname.Show();
-                return;
-            }
-            else
-            if (!ValidationLFMname(textBoxFname.Text))
-            {
-                labelFname.Show();
-                return;
-            }
-            else
-            if (!CheckEmailChange())
-            {
-                return;
-            }
-            else
-            if (!string.IsNullOrEmpty(textBoxMname.Text))
-            {
-                if (!ValidationLFMname(textBoxMname.Text))
-                {
-                    labelMname.Show();
+                if (!functions.MailOriginality(textBoxEmail.Text.Trim()))
                     return;
-                }
                 else
                 {
                     EditRowEmployees();
@@ -79,7 +56,7 @@ namespace CourseWork
                     this.Close();
                 }
             }
-            else
+            else           
             {
                 EditRowEmployees();
 
@@ -145,69 +122,6 @@ namespace CourseWork
 
             if (check == 1)
                 return false;
-            else
-                return true;
-        }
-
-        // Валидация почты
-        public bool ValidationEmail()
-        {
-            string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
-
-            Match isMatch = Regex.Match(textBoxEmail.Text, pattern, RegexOptions.IgnoreCase);
-
-            return isMatch.Success;
-        }
-
-        public bool CheckEmailChange()
-        {
-            if (textBoxEmail.Text != checkEmail)
-            {
-                if (!MailOriginality())
-                    return false;
-                else
-                    return true;
-            }
-            else
-                return true;
-        }
-
-        // Валидация фамилии, имени, отчества
-        public bool ValidationLFMname(string LFMname)
-        {
-            string pattern = @"[A-Za-zА-Яа-я]{1,30}";
-
-            Match isMatch = Regex.Match(LFMname, pattern);
-
-            return isMatch.Success;
-        }
-
-        // Проверка на уникальность почты
-        private bool MailOriginality()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            connection.OpenConnect();
-
-            SqlCommand selectLog = new SqlCommand("SELECT Email " +
-                "FROM Employees " +
-                "WHERE Email = @email", connection.GetSqlConnect());
-            selectLog.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = textBoxEmail.Text.Trim();
-
-            adapter.SelectCommand = selectLog;
-            adapter.Fill(table);
-
-            connection.CloseConnect();
-
-            if (table.Rows.Count > 0)
-            {
-                labelEmail.Text = "Пользователь с такой почтой\nуже существует!";
-                labelEmail.Show();
-
-                return false;
-            }
             else
                 return true;
         }

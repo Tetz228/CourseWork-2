@@ -9,8 +9,6 @@ namespace CourseWork
 {
     public partial class History_projectsFormAdd : MaterialForm
     {
-        DateTime dateHistory_date;
-        
         public History_projectsFormAdd()
         {
             InitializeComponent();
@@ -110,7 +108,7 @@ namespace CourseWork
             if(string.IsNullOrWhiteSpace(textBox_History_date_project.Text))
                 command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = DBNull.Value;
             else
-                command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = dateHistory_date = DateTime.Parse(textBox_History_date_project.Text);              
+                command.Parameters.AddWithValue("@history_date_project", SqlDbType.Date).Value = DateTime.Parse(textBox_History_date_project.Text);              
 
             command.Parameters.AddWithValue("@fk_project", SqlDbType.Int).Value = ComboBox_fk_project.SelectedValue;
             command.Parameters.AddWithValue("@fk_status_project", SqlDbType.Int).Value = ComboBox_fk_status_project.SelectedValue;
@@ -160,7 +158,7 @@ namespace CourseWork
         // Проверка даты на нулевое значение и на корректность
         private void CheckDateNullAndCorrect()
         {
-            bool date = DateTime.TryParse(textBox_History_date_project.Text, out dateHistory_date);
+            bool date = DateTime.TryParse(textBox_History_date_project.Text, out DateTime dateHistory_date);
             
             if (!string.IsNullOrWhiteSpace(textBox_History_date_project.Text))
             {

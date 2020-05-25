@@ -4,8 +4,6 @@ using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.Security.Cryptography;
 using System.Text;
 using CourseWork.Main;
 
@@ -13,9 +11,6 @@ namespace CourseWork.Users
 {
     public partial class UsersFormEdit : MaterialForm
     {
-        string log;
-        string pass;
-
         public UsersFormEdit()
         {
             InitializeComponent();
@@ -33,8 +28,8 @@ namespace CourseWork.Users
 
             SelectRoleComboBox();
 
-            TextBoxLog.Text = log = Values.UserLogin;
-            TextBoxPass.Text = pass = Values.UserPassword;
+            TextBoxLog.Text = Values.UserLogin;
+            TextBoxPass.Text = Values.UserPassword;
             TextBoxPassRepeat.Text = Values.UserPassword;
 
             int indexEmp = ComboBox_fk_employee.FindString(Values.UserEmployee);
@@ -87,13 +82,17 @@ namespace CourseWork.Users
         // При нажатии вызов всех проверок и добавление в бд
         private void buttonEdit_Click(object sender, EventArgs e)
         {
+            Functions functions = new Functions();
+
+            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim());
+
             if (!CheckTextBoxs())
                 return;
             else
             if (!CheckLogAndPassLength())
                 return;
             else
-            if (!ValidationLogin())
+            if (!functions.ValidationLogin(TextBoxLog.Text.Trim()))
             {
                 labelValidLog.Text = "Некорректный логин.";
                 labelValidLog.Show();
@@ -101,7 +100,7 @@ namespace CourseWork.Users
                 return;
             }
             else
-            if (!ValidationPassword())
+            if (!functions.ValidationPassword(TextBoxPass.Text.Trim()))
             {
                 labelValidPass.Text = "Некорректный пароль. Первым\nсимволом не может быть цифра.\nПароль должен быть минимум с\nодной цифрой, одной заглавной\nи одной строчной буквой.";
                 labelValidPass.Show();
@@ -109,17 +108,15 @@ namespace CourseWork.Users
                 return;
             }
             else
-            if (log != TextBoxLog.Text.Trim())
+            if (Values.UserLogin != TextBoxLog.Text.Trim())
             {
-                if (!LoginOriginality())
+                if (!functions.LoginOriginality(TextBoxLog.Text.Trim()))
                     return;
                 else
                 {
-                    if (pass != TextBoxPass.Text.Trim())
+                    if (Values.UserPassword != TextBoxPass.Text.Trim())
                     {
-                        byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim().ToString());
-
-                        pass = HashPassword(passtohash);
+                        Values.UserPassword = functions.HashPassword(passtohash);
 
                         EditRowUser();
                     }
@@ -132,11 +129,9 @@ namespace CourseWork.Users
                 }
             }
             else
-            if (pass != TextBoxPass.Text.Trim())
+            if (Values.UserPassword != TextBoxPass.Text.Trim())
             {
-                byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim().ToString());
-
-                pass = HashPassword(passtohash);
+                Values.UserPassword = functions.HashPassword(passtohash);
 
                 EditRowUser();
 
@@ -248,66 +243,6 @@ namespace CourseWork.Users
             return true;
         }
 
-        // Валидация логина
-        private bool ValidationLogin()
-        {
-            string pattern = @"^[A-Za-z][A-Za-z0-9]{3,30}$";
-
-            Match isMatch = Regex.Match(TextBoxLog.Text, pattern);
-
-            return isMatch.Success;
-        }
-
-        // Проверка на уникальность логина
-        private bool LoginOriginality()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            connection.OpenConnect();
-
-            SqlCommand selectLog = new SqlCommand("SELECT login " +
-                "FROM Users " +
-                "WHERE login = @log", connection.GetSqlConnect());
-            selectLog.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxLog.Text;
-
-            adapter.SelectCommand = selectLog;
-            adapter.Fill(table);
-
-            connection.CloseConnect();
-
-            if (table.Rows.Count > 0)
-            {
-                labelValidLog.Text = "Пользователь с таким логином\nуже существует!";
-                labelValidLog.Show();
-                return false;
-            }
-            else
-                return true;
-        }
-
-        // Валидация пароля
-        // От 6 до 35 символов с минимум одной цифрой, одной заглавной и одной строчной буквой
-        private bool ValidationPassword()
-        {
-            string pattern = @"((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,35})";
-
-            Match isMatch = Regex.Match(TextBoxPass.Text.Trim(), pattern);
-
-            return isMatch.Success;
-        }
-
-        // Хеширование пароля
-        private string HashPassword(byte[] val)
-        {
-            using (SHA512Managed sha512 = new SHA512Managed())
-            {
-                var hash = sha512.ComputeHash(val);
-                return Convert.ToBase64String(hash);
-            }
-        }
-
         // Функция изменения пользователя
         private void EditRowUser()
         {
@@ -319,7 +254,7 @@ namespace CourseWork.Users
             connection.OpenConnect();
 
             command.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxLog.Text.Trim();
-            command.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = pass;
+            command.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = Values.UserPassword;
             command.Parameters.AddWithValue("@fk_role", SqlDbType.Int).Value = ComboBox_fk_role_user.SelectedValue;
             command.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = ComboBox_fk_employee.SelectedValue;
             command.Parameters.AddWithValue("@id_user", SqlDbType.Int).Value = Values.UserId;

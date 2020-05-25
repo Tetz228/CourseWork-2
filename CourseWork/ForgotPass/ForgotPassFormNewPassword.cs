@@ -27,21 +27,25 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
         // При нажатии вызов всех проверок и обновление пароля
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
+            Functions functions = new Functions();
+
             if (!CheckTextBox())
                 return;
             else
             if (!CheckPass())
                 return;
             else
-            if (!ValidationPassword(TextBoxNewPass.Text))
+            if (!functions.ValidationPassword(TextBoxNewPass.Text.Trim()))
             {
                 labelValidPass.Text = "Некорректный пароль. Пароль\nдолжен быть минимум с одной\nцифрой, одной заглавной и\nодной строчной буквой.";
                 labelValidPass.Show();
+
                 return;
             }
             else
             {
                 СhangePassword();
+
                 MessageBox.Show("Пароль был успешно изменен!");
                 this.Close();
             }
@@ -64,31 +68,12 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
             authorization.Show();
         }
 
-        // Валидация пароля
-        // От 6 до 35 символов с минимум одной цифрой, одной заглавной и одной строчной буквой
-        private bool ValidationPassword(string password)
-        {
-            string pattern = @"((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,35})";
-
-            Match isMatch = Regex.Match(password, pattern);
-
-            return isMatch.Success;
-        }
-
-        // Хеширование пароля
-        private string HashPassword(byte[] val)
-        {
-            using (SHA512Managed sha512 = new SHA512Managed())
-            {
-                var hash = sha512.ComputeHash(val);
-                return Convert.ToBase64String(hash);
-            }
-        }
-
         // Функция изменения пароля
         private void СhangePassword()
         {
-            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxNewPass.Text.ToString());
+            Functions functions = new Functions();
+
+            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxNewPass.Text.Trim());
 
             ConnectionDB connection = new ConnectionDB();
 
@@ -97,7 +82,7 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
             SqlCommand updatePasswordUser = new SqlCommand("NewPassword", connection.GetSqlConnect());
             updatePasswordUser.CommandType = CommandType.StoredProcedure;
 
-            updatePasswordUser.Parameters.AddWithValue("@password", SqlDbType.VarChar).Value = HashPassword(passtohash);
+            updatePasswordUser.Parameters.AddWithValue("@password", SqlDbType.VarChar).Value = functions.HashPassword(passtohash);
             updatePasswordUser.Parameters.AddWithValue("@id_user", SqlDbType.Int).Value = Values.ForgotIdUser;
 
             updatePasswordUser.ExecuteNonQuery();
@@ -174,7 +159,6 @@ namespace CourseWork.Authorization_Registration_ForgotPass.ForgotPass
                 TextBoxNewPassRepeat.UseSystemPasswordChar = false;
 
                 pictureBoxShowHidePassword.Image = Properties.Resources.ShowPassword;
-
             }
             else
             {

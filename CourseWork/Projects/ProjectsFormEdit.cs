@@ -10,9 +10,6 @@ namespace CourseWork
 {
     public partial class ProjectsFormEdit : MaterialForm
     {
-        DateTime dateTimeStart;
-        DateTime dateTimeCompletion;
-
         public ProjectsFormEdit()
         {
             InitializeComponent();
@@ -99,20 +96,12 @@ namespace CourseWork
             if(string.IsNullOrEmpty(textBoxDate_start.Text))
                 command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = DBNull.Value;
             else
-            {
-                dateTimeStart = DateTime.Parse(textBoxDate_start.Text);
-
-                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = dateTimeStart;
-            }
+                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = DateTime.Parse(textBoxDate_start.Text);
 
             if (string.IsNullOrEmpty(textBoxDate_completion.Text))
                 command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = DBNull.Value;
             else
-            {
-                dateTimeCompletion = DateTime.Parse(textBoxDate_completion.Text);
-
-                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = dateTimeCompletion;
-            }
+                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = DateTime.Parse(textBoxDate_completion.Text);
             
             command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
             command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;
@@ -135,8 +124,8 @@ namespace CourseWork
         // Проверка даты на нулевое значение и на корректность даты
         private void CheckDateNullAndCorrect()
         {
-            bool start = DateTime.TryParse(textBoxDate_start.Text, out dateTimeStart);
-            bool completion = DateTime.TryParse(textBoxDate_completion.Text, out dateTimeCompletion);
+            bool start = DateTime.TryParse(textBoxDate_start.Text, out DateTime dateTimeStart);
+            bool completion = DateTime.TryParse(textBoxDate_completion.Text, out DateTime dateTimeCompletion);
 
             if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text) && !string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
             {

@@ -16,6 +16,8 @@
 
         public static string RegCode { get; set; }
 
+        public static string RegIdEmployee { get; set; }
+
         /////////////////////Забыли пароль?//////////////////////////
 
         public static int ForgotIdUser { get; set; }

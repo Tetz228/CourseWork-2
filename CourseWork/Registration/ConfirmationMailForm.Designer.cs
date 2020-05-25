@@ -130,8 +130,6 @@
             this.Text = "Подтверждение почты";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConfirmationMailForm_FormClosed);
             this.Load += new System.EventHandler(this.ConfirmationMailForm_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ConfirmationMailForm_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ConfirmationMailForm_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 

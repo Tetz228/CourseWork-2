@@ -4,9 +4,8 @@ using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-using System.Security.Cryptography;
 using System.Text;
+using CourseWork.Main;
 
 namespace CourseWork.Users
 {
@@ -82,24 +81,30 @@ namespace CourseWork.Users
         // При нажатии вызов всех проверок и добавление в бд
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            Functions functions = new Functions();
+
             if (!CheckTextBoxsAndComboBoxs())
                 return;
             else
             if (!CheckLogAndPassLength())
                 return;
             else
-            if (!ValidationLogin())
+            if (!functions.ValidationLogin(TextBoxLog.Text.Trim()))
             {
                 labelValidLog.Text = "Некорректный логин.";
                 labelValidLog.Show();
 
                 return;
-            }   
+            }
             else
-            if (!LoginOriginality())
+            if (!functions.LoginOriginality(TextBoxLog.Text.Trim()))
+            {
+                labelValidLog.Text = "Пользователь с таким логином\nуже существует!";
+                labelValidLog.Show();
                 return;
+            }
             else
-            if (!ValidationPassword())
+            if (!functions.ValidationPassword(TextBoxPass.Text.Trim()))
             {
                 labelValidPass.Text = "Некорректный пароль. Первым\nсимволом не может быть цифра.\nПароль должен быть минимум с\nодной цифрой, одной заглавной\nи одной строчной буквой.";
                 labelValidPass.Show();
@@ -109,8 +114,36 @@ namespace CourseWork.Users
             else
             {
                 AddRowUser();
+
                 this.Close();
             }
+        }
+
+        // Функция добавления
+        public void AddRowUser()
+        {
+            ConnectionDB connection = new ConnectionDB();
+            SqlCommand command = new SqlCommand("AddUsers", connection.GetSqlConnect());
+            Functions functions = new Functions();
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim());
+
+            connection.OpenConnect();
+
+            command.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxLog.Text.Trim();
+            command.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = functions.HashPassword(passtohash);
+            command.Parameters.AddWithValue("@fk_role", SqlDbType.Int).Value = ComboBox_fk_role_user.SelectedValue;
+            command.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = ComboBox_fk_employee.SelectedValue;
+
+            SqlParameter parameter = command.Parameters.AddWithValue("@id_user", SqlDbType.Int);
+
+            parameter.Direction = ParameterDirection.Output;
+
+            command.ExecuteNonQuery();
+
+            connection.CloseConnect();
         }
 
         // При нажатии закрытие формы
@@ -197,6 +230,7 @@ namespace CourseWork.Users
                 return false;
             }
             else
+
             if (TextBoxLog.Text.Length < 4)
             {
                 labelValidLog.Text = "Логин должен быть длиной\nот 4 до 25 символов";
@@ -222,93 +256,8 @@ namespace CourseWork.Users
 
                 return false;
             }
+
             return true;
-        }
-
-        // Валидация логина
-        private bool ValidationLogin()
-        {
-            string pattern = @"^[A-Za-z][A-Za-z0-9]{3,30}$";
-
-            Match isMatch = Regex.Match(TextBoxLog.Text, pattern);
-
-            return isMatch.Success;
-        }
-
-        // Проверка на уникальность логина
-        private bool LoginOriginality()
-        {
-            ConnectionDB connection = new ConnectionDB();
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            connection.OpenConnect();
-
-            SqlCommand selectLog = new SqlCommand("SELECT login FROM Users WHERE login = @log", connection.GetSqlConnect());
-            selectLog.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxLog.Text;
-
-            adapter.SelectCommand = selectLog;
-            adapter.Fill(table);
-
-            connection.CloseConnect();
-
-            if (table.Rows.Count > 0)
-            {
-                labelValidLog.Text = "Пользователь с таким логином\nуже существует!";
-                labelValidLog.Show();
-
-                return false;
-            }
-            else
-                return true;
-        }
-
-        // Валидация пароля
-        // От 6 до 35 символов с минимум одной цифрой, одной заглавной и одной строчной буквой
-        private bool ValidationPassword()
-        {
-            string pattern = @"((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,35})";
-
-            Match isMatch = Regex.Match(TextBoxPass.Text.Trim(), pattern);
-
-            return isMatch.Success;
-        }
-
-        // Хеширование пароля
-        private string HashPassword(byte[] val)
-        {
-            using (SHA512Managed sha512 = new SHA512Managed())
-            {
-                var hash = sha512.ComputeHash(val);
-
-                return Convert.ToBase64String(hash);
-            }
-        }
-
-        // Функция добавления
-        private void AddRowUser()
-        {
-            ConnectionDB connection = new ConnectionDB();           
-            SqlCommand command = new SqlCommand("AddUsers", connection.GetSqlConnect());
-
-            command.CommandType = CommandType.StoredProcedure;
-
-            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.Trim().ToString());
-
-            connection.OpenConnect();
-
-            command.Parameters.AddWithValue("@log", SqlDbType.VarChar).Value = TextBoxLog.Text.Trim();
-            command.Parameters.AddWithValue("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
-            command.Parameters.AddWithValue("@fk_role", SqlDbType.Int).Value = ComboBox_fk_role_user.SelectedValue;
-            command.Parameters.AddWithValue("@fk_employee", SqlDbType.Int).Value = ComboBox_fk_employee.SelectedValue;
-
-            SqlParameter parameter = command.Parameters.AddWithValue("@id_user", SqlDbType.Int);
-
-            parameter.Direction = ParameterDirection.Output;
-
-            command.ExecuteNonQuery();
-
-            connection.CloseConnect();
         }
 
         // Скрывать Label`ы при вводе в TextBox`ы или выборе в ComboBox`сах

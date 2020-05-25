@@ -55,7 +55,7 @@
     <Compile Include="Authorization\AuthorizationForm.Designer.cs">
       <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\SendingCode.cs" />
+    <Compile Include="Main\Functions.cs" />
     <Compile Include="Main\Values.cs" />
     <Compile Include="MyTask\MyTaskForm.cs">
       <SubType>Form</SubType>

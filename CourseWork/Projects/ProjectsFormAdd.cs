@@ -9,8 +9,7 @@ namespace CourseWork
 {
     public partial class ProjectsFormAdd : MaterialForm
     {
-        DateTime dateTimeStart;
-        DateTime dateTimeCompletion;
+        
 
         public ProjectsFormAdd()
         {
@@ -73,8 +72,8 @@ namespace CourseWork
         // Проверка даты на нулевое значение и на корректность
         private void CheckDateNullAndCorrect()
         {
-            bool start = DateTime.TryParse(textBoxDate_start.Text, out dateTimeStart);
-            bool completion = DateTime.TryParse(textBoxDate_completion.Text, out dateTimeCompletion);
+            bool start = DateTime.TryParse(textBoxDate_start.Text, out DateTime dateTimeStart);
+            bool completion = DateTime.TryParse(textBoxDate_completion.Text, out DateTime dateTimeCompletion);
 
             if (!string.IsNullOrWhiteSpace(textBoxDate_start.Text) && !string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
             {
@@ -153,12 +152,12 @@ namespace CourseWork
             if (string.IsNullOrWhiteSpace(textBoxDate_start.Text))
                 command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = DBNull.Value;
             else
-                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = dateTimeStart = DateTime.Parse(textBoxDate_start.Text);
+                command.Parameters.AddWithValue("@date_start", SqlDbType.Date).Value = DateTime.Parse(textBoxDate_start.Text);
 
             if (string.IsNullOrWhiteSpace(textBoxDate_completion.Text))
                 command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = DBNull.Value;
             else
-                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = dateTimeCompletion = DateTime.Parse(textBoxDate_completion.Text);
+                command.Parameters.AddWithValue("@date_completion", SqlDbType.Date).Value = DateTime.Parse(textBoxDate_completion.Text);
 
             command.Parameters.AddWithValue("@project_name", SqlDbType.NVarChar).Value = textBoxProject_name.Text.Trim();
             command.Parameters.AddWithValue("@fk_leader", SqlDbType.Int).Value = comboBox_fk_leader.SelectedValue;

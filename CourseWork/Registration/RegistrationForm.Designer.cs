@@ -316,7 +316,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Регистрация нового пользователя";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrationForm_FormClosed);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RegistrationForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowHidePassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

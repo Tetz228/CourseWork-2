@@ -27,7 +27,9 @@ namespace CourseWork
         // При нажатии вызов проверок и показ формы ввода кода
         private void buttonContinue_Click(object sender, EventArgs e)
         {
-            if (!ValidationEmail())
+            Functions functions = new Functions();
+
+            if (!functions.ValidationEmail(textBoxEmail.Text))
             {
                 labelValidEmail.Text = "Некорректная почта.";
                 labelValidEmail.Show();
@@ -54,17 +56,7 @@ namespace CourseWork
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        // Валидация почты
-        private bool ValidationEmail()
-        {
-            string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
-
-            Match isMatch = Regex.Match(textBoxEmail.Text, pattern, RegexOptions.IgnoreCase);
-
-            return isMatch.Success;
-        }
+        } 
 
         // Поиск почты и id пользователя в бд 
         private bool SearchEmail()
@@ -116,23 +108,6 @@ namespace CourseWork
             authorization.Left = this.Left;
             authorization.Top = this.Top;
             authorization.Show();
-        }
-
-        // Перемещение формы
-        Point point;
-
-        private void ForgotPass_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - point.X;
-                this.Top += e.Y - point.Y;
-            }
-        }
-
-        private void ForgotPass_MouseDown(object sender, MouseEventArgs e)
-        {
-            point = new Point(e.X, e.Y);
         }
 
         // При вводе в TextBox скрывать label

@@ -114,8 +114,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Введите почту";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ForgotPass_FormClosed);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ForgotPass_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ForgotPass_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 

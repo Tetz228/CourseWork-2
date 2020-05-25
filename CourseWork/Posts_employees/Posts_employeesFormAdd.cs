@@ -20,13 +20,14 @@ namespace CourseWork
             material.ColorScheme = new ColorScheme(Primary.Orange900, Primary.Orange800, Primary.Orange400, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        // При загрузки формы
         private void Posts_employeesFormAdd_Load(object sender, EventArgs e)
         {
             SelectEmployeeComboBox();
             SelectPostsComboBox();
         }
 
-
+        // При нажатии добавления происходит проверка и добавление
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (!CheckComboBox())
@@ -39,7 +40,7 @@ namespace CourseWork
             } 
         }
 
-
+        // При нажатии закрытие формы
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -97,6 +98,7 @@ namespace CourseWork
             connection.CloseConnect();
         }
 
+        // Проверка ComboBox`ов
         private bool CheckComboBox()
         {
             int check = 0;

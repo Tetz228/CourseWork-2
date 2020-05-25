@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using MaterialSkin.Controls;
 using MaterialSkin;
-using System.Security.Cryptography;
 using System.Text;
 using CourseWork.Main;
 
@@ -13,7 +12,6 @@ namespace CourseWork
 {
     public partial class AuthorizationForm : MaterialForm
     {
-        // vorobv.bm | z4HfUh
         public AuthorizationForm()
         {
             InitializeComponent();
@@ -28,7 +26,7 @@ namespace CourseWork
         // Авторизация в системе
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (!ValidationAuth())
+            if (!CheckLogAndPass())
                 return;
             else
                 Authorization();
@@ -38,11 +36,12 @@ namespace CourseWork
         private void Authorization()
         {
             Form main = new MainForm();
+            Functions functions = new Functions();
             ConnectionDB connection = new ConnectionDB();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
 
-            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text.ToString());
+            byte[] passtohash = Encoding.UTF8.GetBytes(TextBoxPass.Text);
 
             SqlCommand selectLogPass = new SqlCommand("SELECT id_user, fk_role_user " +
                 "login, " +
@@ -51,7 +50,7 @@ namespace CourseWork
                 "WHERE login = @log AND password = @pass", connection.GetSqlConnect());
 
             selectLogPass.Parameters.Add("@log", SqlDbType.VarChar).Value = TextBoxLog.Text;
-            selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = HashPassword(passtohash);
+            selectLogPass.Parameters.Add("@pass", SqlDbType.VarChar).Value = functions.HashPassword(passtohash);
 
             connection.OpenConnect();
 
@@ -84,7 +83,7 @@ namespace CourseWork
         }
         
         // Проверка полей на пустоту
-        public bool ValidationAuth()
+        public bool CheckLogAndPass()
         {
             if (string.IsNullOrEmpty(TextBoxLog.Text) && string.IsNullOrEmpty(TextBoxPass.Text))
             {
@@ -108,33 +107,6 @@ namespace CourseWork
             }
             else
                 return true;
-        }
-
-        // Хеширование пароля
-        private string HashPassword(byte[] val)
-        {
-            using (SHA512Managed sha512 = new SHA512Managed())
-            {
-                var hash = sha512.ComputeHash(val);
-                return Convert.ToBase64String(hash);
-            }
-        }
-
-        // Перемещение формы
-        Point point;
-
-        private void AuthorizationForm_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - point.X;
-                this.Top += e.Y - point.Y;
-            }
-        }
-
-        private void AuthorizationForm_MouseDown(object sender, MouseEventArgs e)
-        {
-            point = new Point(e.X, e.Y);
         }
 
         // Переход в форму регистрации
