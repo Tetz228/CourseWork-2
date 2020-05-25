@@ -36,7 +36,6 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxEmail.Depth = 0;
             this.textBoxEmail.Hint = "Введите почту";
             this.textBoxEmail.Location = new System.Drawing.Point(12, 107);
@@ -88,7 +87,6 @@
             // labelValidEmail
             // 
             this.labelValidEmail.AutoSize = true;
-            this.labelValidEmail.BackColor = System.Drawing.SystemColors.Control;
             this.labelValidEmail.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidEmail.ForeColor = System.Drawing.Color.Red;
             this.labelValidEmail.Location = new System.Drawing.Point(9, 133);
