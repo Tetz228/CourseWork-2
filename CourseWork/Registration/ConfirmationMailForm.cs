@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Net;
-using System.Net.Mail;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -11,10 +9,6 @@ namespace CourseWork
 {
     public partial class ConfirmationMailForm : MaterialForm
     {
-        private string global;
-        private string subject = "Подтверждение почты";
-        private string body = "Ваш код подтверждения - ";
-
         public ConfirmationMailForm()
         {
             InitializeComponent();
@@ -32,46 +26,18 @@ namespace CourseWork
             CallSendingCode();
         }
 
-        // Вызов функции отправки кода и занесение возвращенного значения в глоб. переменную
+        // Вызов функции отправки кода
         private void CallSendingCode()
         {
-            global = SendingCode(Values.RegEmail, subject, body);
-        }
+            SendingCode sending = new SendingCode();
 
-        // Отправка кода подтверждение
-        public string SendingCode(string email, string subject, string body)
-        {
-            Random random = new Random();
+            Values.RegCode = sending.FunSendingCode(Values.RegEmail, "Подтверждение почты", "Ваш код подтверждения - ");
+        }   
 
-            string code;
-
-            MailAddress fromMailAddress = new MailAddress("itproject719@gmail.com", "ITProject");
-            MailAddress toMailAddress = new MailAddress(email);
-
-            using (MailMessage mailMessager = new MailMessage(fromMailAddress, toMailAddress))
-            using (SmtpClient smtp = new SmtpClient())
-            {
-                code = Convert.ToString(random.Next(100000, 999999));
-
-                mailMessager.Subject = subject;
-                mailMessager.Body = body + code;
-
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(fromMailAddress.Address, "%*kHy#l7~x");
-                smtp.Send(mailMessager);
-
-                return code;
-            }
-        }
-
-        // Сравнивание введенного и полученного кода в глобальной переменной
+        // Сравнивание введенного и полученного кода
         private void buttonConfirmationMail_Click(object sender, EventArgs e)
         {
-            if (global == textBoxCode.Text)
+            if (Values.RegCode == textBoxCode.Text)
             {
                 Values.СorrectCode = "Сorrect code";
                 this.Close();

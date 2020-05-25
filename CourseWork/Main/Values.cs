@@ -14,11 +14,15 @@
 
         public static string RegEmail { get; set; }
 
+        public static string RegCode { get; set; }
+
         /////////////////////Забыли пароль?//////////////////////////
 
         public static int ForgotIdUser { get; set; }
 
         public static string ForgotEmail { get; set; }
+
+        public static string FogotCode { get; set; }
 
         /////////////////////Статусы проектов//////////////////////////
 

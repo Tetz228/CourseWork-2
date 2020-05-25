@@ -9,10 +9,6 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
 {
     public partial class ForgotPassFormCode : MaterialForm
     {
-        private string global;
-        private string subject = "Код безопасности учетной записи";
-        private string body = "Ваш код безопасности для изменения пароля - ";
-
         public ForgotPassFormCode()
         {
             InitializeComponent();
@@ -33,7 +29,7 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
         // Проверка отправленного и введенного кода
         private void buttonContinue_Click(object sender, EventArgs e)
         {
-            if (global == textBoxCode.Text)
+            if (Values.FogotCode == textBoxCode.Text)
             {
                 ForgotPassFormNewPassword formNewPassword = new ForgotPassFormNewPassword();
 
@@ -59,12 +55,12 @@ namespace CourseWork.Authorization_Registration_Forgot_pass
             MessageBox.Show("Код безопасности отправлен повторно!");
         }
 
-        // Получение кода подтвеждения с помощью глобальной переменной 
+        // Получение кода подтвеждения
         private void СonfirmationСode()
         {
-            ConfirmationMailForm mailForm = new ConfirmationMailForm();
-            
-            global = mailForm.SendingCode(Values.ForgotEmail, subject, body);
+            SendingCode sending = new SendingCode();
+
+            Values.FogotCode = sending.FunSendingCode(Values.ForgotEmail, "Код безопасности учетной записи", "Ваш код безопасности для изменения пароля - ");
         }
 
         // При закрытии формы

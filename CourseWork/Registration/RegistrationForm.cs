@@ -74,10 +74,10 @@ namespace CourseWork
 
                 mailForm.ShowDialog();
 
-                if (Values.СorrectCode == "Сorrect code")
-                    Registration();
-            }
+            if (Values.СorrectCode == "Сorrect code")
+                Registration();
         }
+    }
 
         // Проверка TextBox`ов на пустоту
         private bool CheckNullAndSpace()
