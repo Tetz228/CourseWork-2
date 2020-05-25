@@ -86,6 +86,7 @@
             // TextBoxLog
             // 
             this.TextBoxLog.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TextBoxLog.BackColor = System.Drawing.SystemColors.Control;
             this.TextBoxLog.Depth = 0;
             this.TextBoxLog.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextBoxLog.Hint = "Логин";
@@ -144,6 +145,7 @@
             // labelValidAuthPass
             // 
             this.labelValidAuthPass.AutoSize = true;
+            this.labelValidAuthPass.BackColor = System.Drawing.SystemColors.Control;
             this.labelValidAuthPass.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidAuthPass.ForeColor = System.Drawing.Color.Red;
             this.labelValidAuthPass.Location = new System.Drawing.Point(32, 203);
@@ -156,6 +158,7 @@
             // labelValidAuthLog
             // 
             this.labelValidAuthLog.AutoSize = true;
+            this.labelValidAuthLog.BackColor = System.Drawing.SystemColors.Control;
             this.labelValidAuthLog.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelValidAuthLog.ForeColor = System.Drawing.Color.Red;
             this.labelValidAuthLog.Location = new System.Drawing.Point(32, 131);

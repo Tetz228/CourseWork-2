@@ -15,7 +15,7 @@ namespace CourseWork
         public AuthorizationForm()
         {
             InitializeComponent();
-            
+
             var material = MaterialSkinManager.Instance;
 
             material.AddFormToManage(this);
