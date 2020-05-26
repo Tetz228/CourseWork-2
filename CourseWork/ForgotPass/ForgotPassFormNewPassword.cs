@@ -2,9 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Security.Cryptography;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using CourseWork.Main;
